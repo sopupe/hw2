@@ -33,6 +33,7 @@ package org.sevenchan.dongs.ui
 		private const goodColor:uint = 0x006600;
 		private const normalColor:uint = 0x000000;
 		private const badColor:uint = 0x660000;
+		private const PROGRESS_HEIGHT:Number = 15;
 		
 		public var upIsGood:Boolean = true;
 		
@@ -78,7 +79,7 @@ package org.sevenchan.dongs.ui
 			addChild(lcdProgress);
 			lcdProgress.y = txtLabel.textHeight + 3;
 			lcdProgress.x = 0;
-			lcdProgress.draw(0, 100, 20, 125);
+			lcdProgress.draw(0, 100, PROGRESS_HEIGHT, 125);
 			
 			showCheatButtons(false);
 		}
@@ -141,7 +142,7 @@ package org.sevenchan.dongs.ui
 			} else {
 				d_max = shown_max = max;
 				d_val = shown_val = val;
-				lcdProgress.draw(shown_val,shown_max, 20, 125);
+				lcdProgress.draw(shown_val,shown_max, PROGRESS_HEIGHT, 125);
 				txtLabel.text = label + ": " + shown_val;
 				if (showMax)
 					txtLabel.appendText("/" + shown_max);
@@ -170,7 +171,7 @@ package org.sevenchan.dongs.ui
 					origColor = badColor;
 			}
 			lcdProgress.color=MathUtils.lerpColor((step / 100), origColor, normalColor);
-			lcdProgress.draw(shown_val, shown_max,20,125);
+			lcdProgress.draw(shown_val, shown_max,PROGRESS_HEIGHT,125);
 			txtLabel.text = label + ": " + shown_val;
 		}
 	}
