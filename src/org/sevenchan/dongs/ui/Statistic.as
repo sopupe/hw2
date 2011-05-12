@@ -1,4 +1,4 @@
-package  
+package org.sevenchan.dongs.ui
 {
 	import flash.display.Sprite;
 	import flash.events.Event;
@@ -13,6 +13,7 @@ package
 	 */
 	public class Statistic extends Sprite implements IHovertextRecipient
 	{
+		private var onValueChanged:Function = null;
 		private var label:String;
 		private var hovertext:String;
 		private var max:Number=100;
@@ -37,8 +38,9 @@ package
 		
 		// Blah: 100   (+)(-)
 		// [================]
-		public function Statistic(label:String,hovertext:String,showMax:Boolean=false) 
+		public function Statistic(label:String,hovertext:String,showMax:Boolean=false,callback:Function=null) 
 		{
+			this.onValueChanged = callback;
 			this.showMax = showMax;
 			this.label = label;
 			this.hovertext = hovertext;
@@ -77,14 +79,16 @@ package
 			lcdProgress.y = txtLabel.textHeight + 3;
 			lcdProgress.x = 0;
 			lcdProgress.draw(0, 100, 20, 125);
+			
+			showCheatButtons(false);
 		}
 		
 		private function addWhatever(e:MouseEvent):void {
-			this.setValue(this.getValue() + 5);
+			this.setValue(this.getValue() + 5,true);
 		}
 		
 		private function removeWhatever(e:MouseEvent):void {
-			this.setValue(this.getValue() - 5);
+			this.setValue(this.getValue() - 5,true);
 		}
 		
 		public function setHoverText(hovertext:String):void {
@@ -93,6 +97,11 @@ package
 		
 		public function getHoverText():String {
 			return this.hovertext;
+		}
+		
+		public function showCheatButtons(show:Boolean):void {
+			this.btnAdd.visible = (onValueChanged != null && show);
+			this.btnRemove.visible = (onValueChanged != null && show);
 		}
 		
 		public function setMax(max:Number, showAnimation:Boolean = true):void {
@@ -104,13 +113,15 @@ package
 			doAnimation(showAnimation);
 		}
 		
-		public function setValue(val:Number, showAnimation:Boolean = true):void {
+		public function setValue(val:Number, showAnimation:Boolean = true, notify:Boolean=false):void {
 			//trace(val);
 			this.val = val;
 			if (this.val > max)
 				this.val = max;
 			if (this.val < 0)
 				this.val = 0;
+			if (notify && onValueChanged!=null)
+				onValueChanged(val);
 			doAnimation(false);
 		}
 		

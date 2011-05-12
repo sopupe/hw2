@@ -1,5 +1,6 @@
 package 
 {
+	import com.adobe.utils.IntUtil;
 	import flash.display.*;
 	import flash.events.*;
 	import flash.sampler.NewObjectSample;
@@ -45,6 +46,7 @@ package
 		
 		private var statMana:Statistic;
 		private var statHP:Statistic;
+		private var statGold:TextField;
 		
 		public var player:Player;
 		
@@ -161,6 +163,10 @@ package
 			statMana = new Statistic("Mana", "Magic stuff");
 			pnlStats.addToStack(statMana);
 			
+			pnlStats.addToStack(new StackHeader("GOLD"));
+			statGold = new TextField();
+			pnlStats.addToStack(statGold);
+			
 			pnlStats.arrangeStack();
 			
 			refreshStats();
@@ -228,6 +234,7 @@ package
 			
 			statHP.setMaxAndValue(player.maxHP, player.HP, false);
 			statMana.setMaxAndValue(100, player.mana, false);
+			statGold.text = player.gold+"";
 		}
 		
 		private function addButton(label:String, size:Number, x:Number, y:Number):SexButton {

@@ -16,6 +16,10 @@ package org.sevenchan.dongs.items
 		public function HarpyTincture(num:uint) 
 		{
 			super(num);
+			this.descr = "A bottle full of a clear liquid, with a feather suspended in it.";
+			this.name = "Harpy Tincture";
+			this.id = 3;
+			this.value = 50;
 		}
 		
 		override public function Use(host:Creature):Boolean 

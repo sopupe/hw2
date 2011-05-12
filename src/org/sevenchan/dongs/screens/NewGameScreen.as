@@ -58,7 +58,7 @@ package org.sevenchan.dongs.screens
 							main.player.setBaseType(new Human());
 							text += "<p>As a simple human, you can either be male or female as you start out.</p>";
 							text += "<ul><li><b>Male</b> - You gain a dick and a couple of balls.</li><li><b>Female</b> - A vagina and randomly-sized boobs.</li></ul>";
-							text += "<p>Humans also get randomly colored skin, hair, and eyes [Once they're implemented...].</p>";
+							text += "<p>Humans also get randomly colored skin, hair, and eyes.</p>";
 							clearButtons();
 							setButton(0, "Male");
 							setButton(2, "Female");
