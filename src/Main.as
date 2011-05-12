@@ -74,7 +74,7 @@ package
 			var tf:TextFormat = new TextFormat();
 			tf.color = 0xffffff;
 			tf.font = "_sans";
-			txtHeader.htmlText = "UNNAMED 7CHAN TEXT GAME <b>TEST BUILD</b>"; 
+			txtHeader.htmlText = "ADVENTURE OF THE SEVEN LEAVES <b>TEST BUILD</b>"; 
 			txtHeader.setTextFormat(tf);
 			txtHeader.autoSize = "left";
 			addChild(txtHeader);
