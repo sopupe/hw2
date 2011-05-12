@@ -261,6 +261,16 @@ package org.sevenchan.dongs.creature
 		public override function get XP():int{ return baseType.XP; }
 		public override function get maxXP():int { trace("maxXP", baseType.maxXP); return baseType.maxXP; }
 		public override function set XP(value:int):void { baseType.XP = value; main.refreshStats(); }
+		
+		override public function get gold():int 
+		{
+			return baseType.gold;
+		}
+		
+		override public function set gold(value:int):void 
+		{
+			baseType.gold = value;
+		}
 	}
 
 }

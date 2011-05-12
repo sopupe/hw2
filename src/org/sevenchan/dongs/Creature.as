@@ -57,7 +57,7 @@ package org.sevenchan.dongs
 		public function Creature() 
 		{
 			trace("Creature.init()");
-			gold = MathUtils.rand(0, 50);
+			_gold = MathUtils.rand(0, 50);
 			genName();
 		}
 		
@@ -310,10 +310,10 @@ package org.sevenchan.dongs
 				_lust = 100;
 			doStatsUpdate();
 		}
-		public function get gold():uint { return _gold; }
-		public function set gold(value:uint):void  
+		public function get gold():int { return _gold; }
+		public function set gold(value:int):void  
 		{ 
-			if (value < 100)
+			if (value < 0)
 				value = 0;
 			_gold = value;
 			doStatsUpdate();
@@ -365,7 +365,7 @@ package org.sevenchan.dongs
 		}
 		public function get XP():int { return _XP; }
 		public function set XP(value:int):void {
-			trace("XP", value);
+			//trace("XP", value);
 			_XP = value;
 			if (_XP >= maxXP) {
 				_XP = 0;
