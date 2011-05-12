@@ -166,6 +166,13 @@ package
 			pnlStats.addToStack(new StackHeader("GOLD"));
 			statGold = new TextField();
 			pnlStats.addToStack(statGold);
+			var tf:TextFormat = new TextFormat();
+			tf.font = "Verdana";
+			tf.bold = true;
+			tf.color = 0x000000;
+			tf.align = TextFormatAlign.CENTER;
+			statGold.setTextFormat(tf);
+			statGold.defaultTextFormat = tf;
 			
 			pnlStats.arrangeStack();
 			

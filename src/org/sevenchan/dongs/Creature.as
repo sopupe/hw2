@@ -36,7 +36,7 @@ package org.sevenchan.dongs
 		public var _HP:int = 100;		//100*(level*0.02)
 		public var _XP:int = 0;			// 50*(level*0.5)
 		public var mana:uint = 0;		// Magic shit, increases over time, especially near relaxing places.
-		public var gold:uint = 0;		// Currency
+		public var _gold:int = 0;		// Currency
 										
 		// Collections
 		public var _abilities:Object = new Object(); 			// What magic/techniques can I use?
@@ -308,6 +308,14 @@ package org.sevenchan.dongs
 			_lust = lst; 
 			if (_lust > 100)
 				_lust = 100;
+			doStatsUpdate();
+		}
+		public function get gold():uint { return _gold; }
+		public function set gold(value:uint):void  
+		{ 
+			if (value < 100)
+				value = 0;
+			_gold = value;
 			doStatsUpdate();
 		}
 		public function get intellect():uint { return _intellect; }
