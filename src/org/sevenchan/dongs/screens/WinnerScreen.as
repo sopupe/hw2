@@ -26,12 +26,13 @@ package org.sevenchan.dongs.screens
 		
 		override public function getScreenText():String 
 		{
-			var text:String= "<h2>You won!</h2><p>You received:<ul>";
-			for (var i:* in loser.inventory) {
-				if (i is Item) {
-					text += "<li>" + i.num + " " + i.description + "</li>";
-					player.addToInventory(i);
-				}
+			var text:String = "<h2>You won!</h2><p>You received:<ul>";
+			trace("LOSER INVENTORY");
+			for (var i:int = 0; i < loser.inventory.length; i++) {
+				var item:Item = loser.inventory[i];
+				trace(i,item);
+				text += "<li>" + item.amount + "x " + item.name + "</li>";
+				player.addToInventory(item);
 			}
 			text += "<li>" + loser.gold + " gold</li>";
 			text += "<li>" + (6+((player.level - loser.level)*1)) + " XP</li>";
