@@ -112,7 +112,7 @@ package org.sevenchan.dongs.screens
 						lose();
 						return true;
 					}
-					if (main.player.Lust>=100)
+					if (main.player.lust>=100)
 					{
 						lose();
 						return true;
@@ -191,7 +191,7 @@ package org.sevenchan.dongs.screens
 					lose();
 					return true;
 				}
-				if (main.player.Lust>=100)
+				if (main.player.lust>=100)
 				{
 					lose();
 					return true;
