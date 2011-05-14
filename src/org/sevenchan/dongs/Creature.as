@@ -52,7 +52,8 @@ package org.sevenchan.dongs
 			},
 			legs: {
 				arachnid: new Leg("Arachnid"),
-				harpy: new Leg("long, birdlike harpy")
+				harpy: new Leg("long, birdlike harpy"),
+				human: new Leg("human")
 			},
 			vaginas: {
 				arachnid: new Vagina("Arachnid"),

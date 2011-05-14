@@ -11,7 +11,6 @@ package org.sevenchan.dongs.bodyparts
 	public class Leg implements IBodyPart
 	{
 		registerClassAlias("P_Leg", Leg);
-		public static const HUMAN:Leg = new Leg("human");
 		
 		private var _name:String;
 		public function Leg(name:String="") 

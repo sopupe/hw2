@@ -37,8 +37,8 @@ package org.sevenchan.dongs.creature
 				BodyPartRegistry.arms.human,
 			];
 			this.legs = [
-				Leg.HUMAN,
-				Leg.HUMAN
+				BodyPartRegistry.legs.human,
+				BodyPartRegistry.legs.human
 			];
 			this.assholes = [
 				BodyPartRegistry.assholes.demon
