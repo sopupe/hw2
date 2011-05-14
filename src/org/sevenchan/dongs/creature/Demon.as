@@ -18,12 +18,6 @@ package org.sevenchan.dongs.creature
 		registerClassAlias("EDemon", Demon);
 		
 		// Body part pool
-		private static var ASSHOLE:Asshole = new Asshole("demon");
-		private static var DICK:Penis = new Penis("demon",10,new Corruption(1),null);
-		private static var BALL:Testicle = new Testicle("demon nut",38,new Corruption(10),null,"boiling-hot, sticky black substance");
-		private static var BOOB:Breast = new Breast("demon");
-		private static var VAGINA:Vagina = new Vagina("demon");
-		private static var eye:Eye = new Eye("demon", "amber", "slit");
 		private static var SKIN:Skin = new Skin("demon", "red", "smooth, yet leathery");
 		private static var HAIR:Hair = new Hair("straight, long, and black hair");
 		
@@ -47,10 +41,10 @@ package org.sevenchan.dongs.creature
 				Leg.HUMAN
 			];
 			this.assholes = [
-				ASSHOLE
+				BodyPartRegistry.assholes.demon
 			];
 			skin = SKIN;
-			eyes = [eye, eye];
+			eyes = [BodyPartRegistry.eyes.demon, BodyPartRegistry.eyes.demon];
 		}
 		
 		override public function getTypeName():String 
@@ -72,22 +66,22 @@ package org.sevenchan.dongs.creature
 		{
 			var i:int = 0;
 			for (i = 0; i < balls.length; i++) {
-				balls[i] = BALL;
+				balls[i] = BodyPartRegistry.balls.demon;
 			}
 			for (i = 0; i < dicks.length; i++) {
 				dicks[i] = getNewDick();
 			}
 			for (i = 0; i < breasts.length; i++) {
-				breasts[i] = BOOB;
+				breasts[i] = BodyPartRegistry.breasts.demon;
 			}
 			for (i = 0; i < vaginas.length; i++) {
-				vaginas[i] = VAGINA;
+				vaginas[i] = BodyPartRegistry.vaginas.demon;
 			}
 			for (i = 0; i < eyes.length; i++) {
-				eyes[i] = eye;
+				eyes[i] = BodyPartRegistry.eyes.demon;
 			}
 			for (i = 0; i < assholes.length; i++) {
-				assholes[i] = ASSHOLE;
+				assholes[i] = BodyPartRegistry.assholes.demon;
 			}
 			InfoScreen.push("<h2>PARADIGM SHIFT</h2><p>No John, you are the demons.</p>");
 		}
@@ -191,25 +185,25 @@ package org.sevenchan.dongs.creature
 			}
 			if(gender.hasDick) {
 				this.balls = [
-					BALL,BALL
+					BodyPartRegistry.balls.demon,BodyPartRegistry.balls.demon
 				];
 				this.dicks = [
-					DICK,
+					BodyPartRegistry.dicks.demon,
 				];
 			}
 			if (gender.hasVag) {				
 				this.vaginas = [
-					VAGINA
+					BodyPartRegistry.vaginas.demon
 				];
 				this.breasts = [
-					BOOB,BOOB
+					BodyPartRegistry.breasts.demon,BodyPartRegistry.breasts.demon
 				];
 			}
 			doMutations();
 		}
 		
 		private function getNewDick():Penis {
-			var wang:Penis = DICK;
+			var wang:Penis = BodyPartRegistry.dicks.demon;
 			wang.size += MathUtils.rand(1, 3, false);
 			return wang;
 		}
@@ -223,17 +217,17 @@ package org.sevenchan.dongs.creature
 					this.dicks.push(getNewDick());
 				}
 				for (i = 0; i < MathUtils.rand(0, 3); i++) {
-					this.balls.push(BALL);
+					this.balls.push(BodyPartRegistry.balls.demon);
 				}
 			}
 			
 			// Vags & Boobs
 			if(gender.hasVag) {
 				for (i = 0; i < MathUtils.rand(0, 2); i++) {
-					this.vaginas.push(VAGINA);
+					this.vaginas.push(BodyPartRegistry.vaginas.demon);
 				}
 				for (i = 0; i < MathUtils.rand(0, 2); i++) {
-					this.breasts.push(BOOB);
+					this.breasts.push(BodyPartRegistry.breasts.demon);
 				}
 			}
 		}

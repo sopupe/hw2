@@ -19,7 +19,8 @@ package org.sevenchan.dongs.creature
 	public class Arachnid extends Creature
 	{
 		// For serialization
-		registerClassAlias("EArachnid", Arachnid);;
+		registerClassAlias("EArachnid", Arachnid);
+		
 		private var isQueen:Boolean = false;
 		public function Arachnid(queen:Boolean) 
 		{		

@@ -27,13 +27,16 @@ package org.sevenchan.dongs
 			},
 			balls: {
 				arachnid: new Testicle("internal testes", 3785, null, null, "hot, thick mixture of semen and eggs"),
+				demon: new Testicle("demon nut",38,new Corruption(10),null,"boiling-hot, sticky black substance"),
 				human: new Testicle("human testicle", 17, null, null, "hot, stringy, off-white seed")
 			},
 			breasts: {
-				human:new Breast("human")
+				demon: new Breast("demon"),
+				human: new Breast("human")
 			},
 			dicks: {
 				arachnid: new Penis("Arachnid"),
+				demon: new Penis("demon",10,new Corruption(1),null),
 				human: new Penis("human", 5, null, null)
 			},
 			eyes: {
@@ -44,13 +47,15 @@ package org.sevenchan.dongs
 				arachnid_big: new Eye("human-ish Arachnid", "red", "round"),
 				arachnid_small: new Eye("small Arachnid", "black", "segment"),
 				harpy_light: new Eye("harpy", "amber", "slit"),
-				harpy_dark: new Eye("darkharpy", "red", "slit")
+				harpy_dark: new Eye("darkharpy", "red", "slit"),
+				demon: new Eye("demon", "amber", "slit")
 			},
 			legs: {
 				arachnid: new Leg("Arachnid")
 			},
 			vaginas: {
 				arachnid: new Vagina("Arachnid"),
+				demon: new Vagina("demon"),
 				human: new Vagina("human")
 			},
 			wings: {
