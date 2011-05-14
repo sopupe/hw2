@@ -11,8 +11,6 @@ package org.sevenchan.dongs.creature
 	public class Human extends Creature 
 	{
 		registerClassAlias("EHuman", Human);
-		
-		public var EYE:Eye = new Eye("human", "blue", "round");
 		public var SKIN:Skin = new Skin("human", "light", "smooth");
 		
 		public function Human() 
@@ -39,8 +37,8 @@ package org.sevenchan.dongs.creature
 				Leg.HUMAN
 			];
 			this.eyes = [
-				EYE,
-				EYE
+				BodyPartRegistry.eyes.human_blue,
+				BodyPartRegistry.eyes.human_blue,
 			];
 			this.skin = SKIN;
 		}
@@ -52,7 +50,7 @@ package org.sevenchan.dongs.creature
 					this.balls = [];
 					this.dicks = [];
 					this.assholes = [
-						Asshole.HUMAN
+						BodyPartRegistry.assholes.human
 					];
 					this.vaginas = [];
 					this.breasts = [];
@@ -61,10 +59,10 @@ package org.sevenchan.dongs.creature
 					this.balls = [];
 					this.dicks = [];
 					this.assholes = [
-						Asshole.HUMAN
+						BodyPartRegistry.assholes.human
 					];
 					this.vaginas = [
-						Vagina.HUMAN,
+						BodyPartRegistry.vaginas.human,
 					];
 					this.breasts = [
 						BodyPartRegistry.breasts.human,
@@ -73,17 +71,17 @@ package org.sevenchan.dongs.creature
 					break;
 				case Gender.HERM:
 					this.balls = [
-						Testicle.HUMAN,
-						Testicle.HUMAN,
+						BodyPartRegistry.balls.human,
+						BodyPartRegistry.balls.human,
 					];
 					this.dicks = [
-						Penis.HUMAN
+						BodyPartRegistry.dicks.human
 					];
 					this.assholes = [
-						Asshole.HUMAN
+						BodyPartRegistry.assholes.human
 					];
 					this.vaginas = [
-						Vagina.HUMAN
+						BodyPartRegistry.vaginas.human
 					];
 					this.breasts = [
 						BodyPartRegistry.breasts.human,
@@ -92,14 +90,14 @@ package org.sevenchan.dongs.creature
 					break;
 				case Gender.MALE:
 					this.balls = [
-						Testicle.HUMAN,
-						Testicle.HUMAN,
+						BodyPartRegistry.balls.human,
+						BodyPartRegistry.balls.human,
 					];
 					this.dicks = [
-						Penis.HUMAN
+						BodyPartRegistry.dicks.human
 					];
 					this.assholes = [
-						Asshole.HUMAN
+						BodyPartRegistry.assholes.human
 					];
 					this.vaginas = [];
 					this.breasts = [];

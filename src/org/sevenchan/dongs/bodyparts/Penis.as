@@ -10,7 +10,7 @@ package org.sevenchan.dongs.bodyparts
 	public class Penis implements IBodyPart
 	{
 		registerClassAlias("P_Dick", Penis);
-		public static const HUMAN:Penis = new Penis("human", 5.5, null, null);
+		
 		public var size:Number = 0;
 		public var sizeMult:Number = 1;
 		public var _name:String;

@@ -132,7 +132,7 @@ package org.sevenchan.dongs.creature
 			if(baseType.eyes.length == 0)
 				descr += " complete lack of eyes (<b>and resulting blindness</b>)";
 			else
-				descr += baseType.getEyesDescr();
+				descr += baseType.geteyesDescr();
 			
 			descr += " and " + baseType.skin.getDescr(0, this);
 			descr += "</p>";

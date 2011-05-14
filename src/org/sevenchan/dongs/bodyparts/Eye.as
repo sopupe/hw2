@@ -1,13 +1,14 @@
 package org.sevenchan.dongs.bodyparts 
 {
 	import org.sevenchan.dongs.Creature;
+	import flash.net.registerClassAlias;
 	/**
 	 * ...
 	 * @author N3X15
 	 */
 	public class Eye implements IBodyPart 
 	{
-		public static const BROWN:Eye = new Eye("human_brown", "brown");
+		registerClassAlias("EEye", Eye);
 		
 		private var _name:String = "";
 		public var color:String = "";

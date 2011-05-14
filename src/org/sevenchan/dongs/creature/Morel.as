@@ -34,7 +34,7 @@ package org.sevenchan.dongs.creature
 			this.assholes = [];
 			inventory = [];
 			skin = new Skin("morel", "pasty white", "soft but dusty");
-			eyes = [Eye.BROWN, Eye.BROWN];
+			eyes = [BodyPartRegistry.eyes.human_brown, BodyPartRegistry.eyes.human_brown];
 			
 			this.abilities={spore:new Spore()};
 		}

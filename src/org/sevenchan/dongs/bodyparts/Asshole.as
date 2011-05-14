@@ -11,9 +11,6 @@ package org.sevenchan.dongs.bodyparts
 	{
 		registerClassAlias("P_Asshole", Asshole);
 		
-		//TODO Get rid of this
-		public static const HUMAN:Asshole = new Asshole("human");;
-		
 		public var _name:String;
 		public var timesFucked:Number = 0;
 		public var volumeFilled:Number = 0;

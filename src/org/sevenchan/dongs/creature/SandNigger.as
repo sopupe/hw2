@@ -43,7 +43,7 @@ package org.sevenchan.dongs.creature
 			this.vaginas = [];
 			this.wings = [];
 			this.skin = new Skin("nigger", "black", "smooth");
-			this.eyes = [Eye.BROWN, Eye.BROWN];
+			this.eyes = [BodyPartRegistry.eyes.human_brown, BodyPartRegistry.eyes.human_brown];
 			
 			
 			this.strength = 20;

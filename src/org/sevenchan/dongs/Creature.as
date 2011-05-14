@@ -26,23 +26,32 @@ package org.sevenchan.dongs
 				human: new Arm("human", null, null)
 			},
 			balls: {
-				arachnid: new Testicle("internal testes", 3785,null,null,"hot, thick mixture of semen and eggs")
+				arachnid: new Testicle("internal testes", 3785, null, null, "hot, thick mixture of semen and eggs"),
+				human: new Testicle("human testicle", 17, null, null, "hot, stringy, off-white seed")
 			},
 			breasts: {
 				human:new Breast("human")
 			},
 			dicks: {
-				arachnid: new Penis("Arachnid")
+				arachnid: new Penis("Arachnid"),
+				human: new Penis("human", 5, null, null)
 			},
 			eyes: {
+				human_blue: new Eye("human", "blue", "round"),
+				human_brown: new Eye("human", "brown", "round"),
+				human_green: new Eye("human", "green", "round"),
+				human_red: new Eye("human", "red", "round"),
 				arachnid_big: new Eye("human-ish Arachnid", "red", "round"),
-				arachnid_small: new Eye("small Arachnid", "black", "segment")
+				arachnid_small: new Eye("small Arachnid", "black", "segment"),
+				harpy_light: new Eye("harpy", "amber", "slit"),
+				harpy_dark: new Eye("darkharpy", "red", "slit")
 			},
 			legs: {
 				arachnid: new Leg("Arachnid")
 			},
 			vaginas: {
-				arachnid: new Vagina("Arachnid")
+				arachnid: new Vagina("Arachnid"),
+				human: new Vagina("human")
 			},
 			wings: {
 				
@@ -226,7 +235,7 @@ package org.sevenchan.dongs
 			if(eyes.length == 0)
 				descr += " complete lack of eyes (<b>and resulting blindness</b>)";
 			else
-				descr += getEyesDescr();
+				descr += geteyesDescr();
 			
 			descr += " and " + skin.getDescr(0, this);
 			descr += "</p>";
@@ -542,7 +551,7 @@ package org.sevenchan.dongs
 			return getBodyPartDesc(arms,	"arm");
 		}
 		
-		public function getEyesDescr():String {
+		public function geteyesDescr():String {
 			return getBodyPartDesc(eyes,	"eye");
 		}
 		

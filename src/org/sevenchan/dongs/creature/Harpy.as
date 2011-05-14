@@ -26,8 +26,6 @@ package org.sevenchan.dongs.creature
 	{
 		registerClassAlias("EHarpy", Human);
 		
-		public static var EYE:Eye = new Eye("harpy", "amber", "slit");
-		public static var DARK_EYE:Eye = new Eye("darkharpy", "red", "slit");
 		public static var SKIN:Skin = new Skin("human", "light", "smooth");
 		public static var LIGHT_WING:Wing = new Wing("harpy", false, "brown and white", 10);
 		public static var DARK_WING:Wing = new Wing("darkharpy", false, "black and violet", 10);
@@ -52,16 +50,16 @@ package org.sevenchan.dongs.creature
 				LEG,
 				LEG
 			];
-			this._vaginas = [Vagina.HUMAN];
-			this.assholes = [Asshole.HUMAN];
+			this._vaginas = [BodyPartRegistry.vaginas.human];
+			this.assholes = [BodyPartRegistry.assholes.human];
 			if(!dark) {
 				this.hair = new Hair("short, straight brown hair");
-				this.eyes = [EYE, EYE];
+				this.eyes = [BodyPartRegistry.eyes.harpy_light, BodyPartRegistry.eyes.harpy_light];
 				this.wings = [LIGHT_WING, LIGHT_WING];
 				this.skin = new Skin("human");
 			} else {
 				this.hair = new Hair("short, straight black hair");
-				this.eyes = [DARK_EYE,DARK_EYE];
+				this.eyes = [BodyPartRegistry.eyes.harpy_dark,BodyPartRegistry.eyes.harpy_dark];
 				this.wings = [DARK_WING, DARK_WING];
 				this.skin = new Skin("human", "pale");
 				this.inventory = [

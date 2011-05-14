@@ -10,8 +10,6 @@ package org.sevenchan.dongs.bodyparts
 	public class Testicle implements IBodyPart
 	{
 		registerClassAlias("P_Ball", Testicle);
-		public static const HUMAN:Testicle = new Testicle("human testicle", 17, null, null, "hot, stringy, off-white seed");
-		public static const STONE:Testicle = new Testicle("rock", 0, null, null, "none");
 		
 		public var _name:String;
 		public var semen:String;

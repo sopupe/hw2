@@ -9,7 +9,6 @@ package org.sevenchan.dongs.bodyparts
 	public class Vagina extends Asshole implements IBodyPart
 	{
 		registerClassAlias("P_Vag", Vagina);
-		public static const HUMAN:Vagina = new Vagina("human");
 		
 		public function Vagina(name:String="") 
 		{

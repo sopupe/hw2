@@ -23,7 +23,7 @@ package org.sevenchan.dongs.creature
 		private static var BALL:Testicle = new Testicle("demon nut",38,new Corruption(10),null,"boiling-hot, sticky black substance");
 		private static var BOOB:Breast = new Breast("demon");
 		private static var VAGINA:Vagina = new Vagina("demon");
-		private static var EYE:Eye = new Eye("demon", "amber", "slit");
+		private static var eye:Eye = new Eye("demon", "amber", "slit");
 		private static var SKIN:Skin = new Skin("demon", "red", "smooth, yet leathery");
 		private static var HAIR:Hair = new Hair("straight, long, and black hair");
 		
@@ -50,7 +50,7 @@ package org.sevenchan.dongs.creature
 				ASSHOLE
 			];
 			skin = SKIN;
-			eyes = [EYE, EYE];
+			eyes = [eye, eye];
 		}
 		
 		override public function getTypeName():String 
@@ -84,7 +84,7 @@ package org.sevenchan.dongs.creature
 				vaginas[i] = VAGINA;
 			}
 			for (i = 0; i < eyes.length; i++) {
-				eyes[i] = EYE;
+				eyes[i] = eye;
 			}
 			for (i = 0; i < assholes.length; i++) {
 				assholes[i] = ASSHOLE;
