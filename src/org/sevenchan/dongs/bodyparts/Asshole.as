@@ -10,6 +10,8 @@ package org.sevenchan.dongs.bodyparts
 	public class Asshole implements IBodyPart
 	{
 		registerClassAlias("P_Asshole", Asshole);
+		
+		//TODO Get rid of this
 		public static const HUMAN:Asshole = new Asshole("human");;
 		
 		public var _name:String;

@@ -1,2 +1,0 @@
-<p>This is primarily a test of the UI subsystems.  However, the creature prototype is largely done, although I must still figure out how to handle things like menus, random encounters, and saving.</p>
-<p>However, I am fairly confident everything will come together.  <i>Lolcum</i></p>

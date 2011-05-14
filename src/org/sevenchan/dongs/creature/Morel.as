@@ -27,8 +27,8 @@ package org.sevenchan.dongs.creature
 			this.hair = new Hair("mushroom cap");
 			gender = Gender.ASEXUAL;
 			this.arms = [
-				Arm.HUMAN,
-				Arm.HUMAN,
+				BodyPartRegistry.arms.human,
+				BodyPartRegistry.arms.human,
 			];
 			this.legs = [];
 			this.assholes = [];

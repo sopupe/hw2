@@ -65,7 +65,7 @@ package org.sevenchan.dongs.enchantment
 				return "You are now corrupted.";
 			}
 			if (statbar == null && host is Player) {
-				statbar = (newHost as Player).main.createNewStatusBar();
+				statbar = (newHost as Player).AdventureController.createNewStatusBar();
 			}
 		}
 		

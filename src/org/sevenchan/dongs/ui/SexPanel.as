@@ -106,7 +106,8 @@ package org.sevenchan.dongs.ui
 			}
 		}
 		
-		public function draw(h:Number,w:Number):void {
+		public function draw(h:Number, w:Number):void {
+			graphics.clear();
 			doGradFilled(0, 0, h, w);
 			textControl.height = h - (padding * 2);
 			

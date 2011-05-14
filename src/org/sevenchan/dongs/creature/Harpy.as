@@ -45,8 +45,8 @@ package org.sevenchan.dongs.creature
 			this.sexualPreference = SexualPreference.BISEXUAL;
 			this.build = Build.AVG;
 			this.arms = [
-				Arm.HUMAN,
-				Arm.HUMAN,
+				BodyPartRegistry.arms.human,
+				BodyPartRegistry.arms.human,
 			];
 			this.legs = [
 				LEG,

@@ -16,7 +16,6 @@ package org.sevenchan.dongs.ui
 		public function draw(steps:Number, max:Number, h:Number, w:Number):void {
 			//trace("Drawing: {x:"+x+", y:"+y+", h:"+h+", w:"+w+"}");
 			graphics.clear();
-			
 			graphics.lineStyle(2, 0x000000, opacity);
 			graphics.moveTo(0, 0);
 			graphics.lineTo(w, 0);

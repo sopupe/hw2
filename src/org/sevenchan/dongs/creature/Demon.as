@@ -39,8 +39,8 @@ package org.sevenchan.dongs.creature
 			this.hair = HAIR;
 			
 			this.arms = [
-				Arm.HUMAN,
-				Arm.HUMAN,
+				BodyPartRegistry.arms.human,
+				BodyPartRegistry.arms.human,
 			];
 			this.legs = [
 				Leg.HUMAN,

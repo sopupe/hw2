@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+               xmlns:s="library://ns.adobe.com/flex/spark"
+               xmlns:dongs="org.sevenchan.dongs.*"
+			   creationComplete="dicks(this)">
+<fx:Script>
+	<![CDATA[
+	import spark.components.Application;
+	import org.sevenchan.AdventureController;
+	
+	public function dicks(hurf:Application):void {
+		dongs.addChild(new AdventureController(Main(hurf)));
+	}
+	
+	public function showBodyParts(show:Boolean):void {
+		trace(show);
+		bodyparts.visible = show;
+		dongs.visible = !show;
+		dongs.alpha = show ? 0 : 1;
+		dongs.percentHeight = dongs.percentWidth = show ? 0 : 100;
+	}
+	]]>
+</fx:Script>
+	<dongs:frmBodyPartsPool id="bodyparts" visible="false" width="90%" height="90%" horizontalCenter="true" verticalCenter="true" />
+	<s:SpriteVisualElement id="dongs" />
+</s:Application>

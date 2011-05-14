@@ -19,12 +19,7 @@ package org.sevenchan.dongs.creature
 	public class Arachnid extends Creature
 	{
 		// For serialization
-		registerClassAlias("EArachnid", Arachnid);
-		
-		private var SMALLEYE:Eye = new Eye("small Arachnid", "black", "segment");
-		private var EYE:Eye = new Eye("human-ish Arachnid", "red", "round");
-		private var BOOB:Breast = new Breast("Arachnid");
-		private var LEG:Leg = new Leg("Arachnid");
+		registerClassAlias("EArachnid", Arachnid);;
 		private var isQueen:Boolean = false;
 		public function Arachnid(queen:Boolean) 
 		{		
@@ -33,22 +28,23 @@ package org.sevenchan.dongs.creature
 		
 		override public function initialGenderSetup():void 
 		{
-			assholes = [new Abdomen("Arachnid")];
+			assholes = [Creature.BodyPartRegistry.assholes.arachnid];
 			eyes = [
-				SMALLEYE,SMALLEYE,
-				SMALLEYE,SMALLEYE,
-				SMALLEYE,SMALLEYE,
-				EYE,EYE
+				BodyPartRegistry.eyes.arachnid_small,BodyPartRegistry.eyes.arachnid_small,
+				BodyPartRegistry.eyes.arachnid_small,BodyPartRegistry.eyes.arachnid_small,
+				BodyPartRegistry.eyes.arachnid_small,BodyPartRegistry.eyes.arachnid_small,
+				BodyPartRegistry.eyes.arachnid_big,BodyPartRegistry.eyes.arachnid_big
 			];
 			this.build = Build.AVG;
 			this.legs = [
-				LEG,LEG,
-				LEG,LEG,
-				LEG,LEG,
-				LEG,LEG,
+				BodyPartRegistry.legs.arachnid,BodyPartRegistry.legs.arachnid,
+				BodyPartRegistry.legs.arachnid,BodyPartRegistry.legs.arachnid,
+				BodyPartRegistry.legs.arachnid,BodyPartRegistry.legs.arachnid,
+				BodyPartRegistry.legs.arachnid,BodyPartRegistry.legs.arachnid,
 			];
 			this.arms = [
-				Arm.HUMAN,Arm.HUMAN
+				BodyPartRegistry.arms.human,
+				BodyPartRegistry.arms.human
 			];
 			
 			this.hair = new Hair("long, silky, white hair");
@@ -56,15 +52,22 @@ package org.sevenchan.dongs.creature
 			this.sexualPreference = SexualPreference.STRAIGHT;
 			
 			if (gender.hasVag) {
-				breasts = [Breast.HUMAN, Breast.HUMAN];
-				vaginas = [new Vagina("Arachnid")];
+				breasts = [BodyPartRegistry.breasts.human, BodyPartRegistry.breasts.human];
+				vaginas = [];
 			}
 			if (gender.hasDick) {
-				dicks = [new Penis("Arachnid", 12 + MathUtils.rand(0, 6))];
-				var testicle:Testicle = new Testicle("internal testes", 3785,null,null,"hot, thick mixture of semen and eggs");
-				balls = [testicle,testicle];
+				dicks = [];
+				addDick("arachnid");
+				balls = [BodyPartRegistry.balls.arachnid,BodyPartRegistry.balls.arachnid];
 			}
 			inventory = [new SpiderVenomSac(1)];
+		}
+		
+		override public function addDick(type:String="human"):void 
+		{
+			var p:Penis = Penis(BodyPartRegistry.dicks[type]);
+			p.size = 12 + MathUtils.rand(0, 6);
+			dicks.push(p);
 		}
 		
 		override public function combatDescr(ply:Creature):String 

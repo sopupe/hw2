@@ -1,5 +1,6 @@
 package org.sevenchan.dongs.creature 
 {
+	import org.sevenchan.AdventureController;
 	import com.adobe.serialization.json.*;
 	import flash.events.Event;
 	import flash.net.*;
@@ -21,9 +22,9 @@ package org.sevenchan.dongs.creature
 		private var waitingForLoad:Boolean = false;
 		private var cancelled:Boolean = false;
 		public var currentTown:Town = Town.knownTowns["barn"];
-		public var main:Main;
+		public var main:AdventureController;
 		
-		public function Player(main:Main) 
+		public function Player(main:AdventureController) 
 		{
 			this.main = main;
 			trace("Player.init()");
@@ -216,10 +217,6 @@ package org.sevenchan.dongs.creature
 			return baseType.notifyEnchantments(e);
 		}
 		
-		override public function get wings():Array { return baseType._wings; }
-		override public function set wings(wings:Array):void { baseType._wings=wings;
-			customized = true; }
-		
 		override public function get vaginas():Array { return baseType._vaginas; }
 		override public function set vaginas(balls:Array):void { baseType._vaginas=balls;
 			customized = true; }
@@ -227,24 +224,49 @@ package org.sevenchan.dongs.creature
 		override public function get dicks():Array { return baseType._dicks; }
 		override public function set dicks(balls:Array):void { baseType._dicks=balls;
 			customized = true; }
+		
+		override public function get assholes():Array { return baseType._assholes; }
+		override public function set assholes(balls:Array):void { baseType._assholes=balls;
+			customized = true; }
+		
+		override public function get arms():Array { return baseType._arms; }
+		override public function set arms(balls:Array):void { baseType._arms=balls;
+			customized = true; }
+		
+		override public function get breasts():Array { return baseType._breasts; }
+		override public function set breasts(balls:Array):void { baseType._breasts=balls;
+			customized = true; }
+		
+		override public function get eyes():Array { return baseType._eyes; }
+		override public function set eyes(balls:Array):void { baseType._eyes=balls;
+			customized = true; }
+		
+		override public function get legs():Array { return baseType._legs; }
+		override public function set legs(balls:Array):void { baseType._legs=balls;
+			customized = true; }
+		
+		
+		override public function get wings():Array { return baseType._wings; }
+		override public function set wings(balls:Array):void { baseType._wings=balls;
+			customized = true; }
 			
 		public override function get strength():int { return baseType.strength; }
 		public override function set strength(value:int):void { baseType.strength = value; }
+			
+		public override function get mana():int { return baseType.mana; }
+		public override function set mana(value:int):void { baseType.mana = value; }
 		
-		public override function get speed():uint { return baseType.speed; }
-		public override function set speed(value:uint):void { baseType.speed=value; }
+		public override function get speed():int { return baseType.speed; }
+		public override function set speed(value:int):void { baseType.speed=value; }
 		
 		public override function get balls():Array { return baseType.balls; }
 		public override function set balls(balls:Array):void { baseType.balls=balls; }
 		
-		public override function get intellect():uint { return baseType.intellect; }
-		public override function set intellect(value:uint):void { baseType.intellect = value; }
+		public override function get intellect():int { return baseType.intellect; }
+		public override function set intellect(value:int):void { baseType.intellect = value; }
 		
-		public override function get arms():Array { return baseType.arms; }
-		public override function set arms(arr:Array):void { baseType.arms = arr; }
-		
-		public override function get legs():Array { return baseType.legs; }
-		public override function set legs(arr:Array):void{ baseType.legs=arr; }
+		public override function get sensitivity():int { return baseType.sensitivity; }
+		public override function set sensitivity(value:int):void { baseType.sensitivity = value; }
 		
 		public override function get abilities():Object { return baseType.abilities; }
 		public override function set abilities(arr:Object):void{ baseType.abilities=arr; }

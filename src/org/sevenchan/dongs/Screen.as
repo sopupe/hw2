@@ -1,12 +1,13 @@
 package org.sevenchan.dongs 
 {
+	import org.sevenchan.AdventureController;
 	/**
 	 * ...
 	 * @author N3X15
 	 */
 	public class Screen 
 	{
-		public var main:Main;
+		public var main:AdventureController;
 		private var buttons:Array = [
 		"", "", "", "", "", "",
 		"", "", "", "", "", ""];
@@ -33,7 +34,7 @@ package org.sevenchan.dongs
 		public function setButton(id:int, label:String):void {
 			buttons[id] = label;
 		}
-		public function setMain(main:Main):void {
+		public function setMain(main:AdventureController):void {
 			this.main = main;
 		}
 		public function updateScreen():void {

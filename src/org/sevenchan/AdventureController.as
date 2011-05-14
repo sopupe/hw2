@@ -1,10 +1,12 @@
-package 
+package org.sevenchan
 {
 	import com.adobe.utils.IntUtil;
 	import flash.display.*;
 	import flash.events.*;
 	import flash.sampler.NewObjectSample;
 	import flash.text.*;
+	import spark.components.Application;
+	import mx.core.UIComponent;
 	import org.sevenchan.dongs.Creature;
 	import org.sevenchan.dongs.creature.*;
 	import org.sevenchan.dongs.enchantment.events.CombatStartEvent;
@@ -19,9 +21,11 @@ package
 	 */
 	[Frame(factoryClass = "Preloader", backgroundColor = 0x666666, frames = 10)]
 	[SWF(width = 800, height = 600, frameRate = 60 , backgroundColor = "#666666")]
-	public class Main extends Sprite 
+	public class AdventureController extends Sprite
 	{
+		private var app:Main;
 		private const default_bg_color:uint = 0x333333;
+		public var bodyPartsDialog:org.sevenchan.dongs.frmBodyPartsPool = new org.sevenchan.dongs.frmBodyPartsPool;
 		private var bgshape:Sprite;
 
 		private var currentScreen:Screen;
@@ -52,11 +56,19 @@ package
 		
 		public static var screenQueue:Queue = new Queue();
 		
-		public function Main():void 
+		public function AdventureController(appl:Main):void 
 		{
+			super();
+			this.app = appl;
 			player = new Player(this);
 			if (stage) init();
 			else addEventListener(Event.ADDED_TO_STAGE, init);
+		}
+		
+		public static function init(app:Main):void {
+			var ui:UIComponent = new UIComponent();
+			ui.addChild(new AdventureController(app));
+			app.addChild(ui);
 		}
 
 		private function init(e:Event = null):void 
@@ -88,7 +100,7 @@ package
 			btnLoadSaveGame	= addButton("Load Game",	100, y, toprow); y += 129.2; btnLoadSaveGame.addEventListener(MouseEvent.CLICK, onLoadOrSave);
 			btnSelectPerk 	= addButton("Select Perk",	100, y, toprow); y += 129.2; //btnNewGame.addEventListener(MouseEvent.CLICK, onSelectPerk);
 			btnExportGame 	= addButton("Export Game",	100, y, toprow); y += 129.2; //btnNewGame.addEventListener(MouseEvent.CLICK, onExport);
-			btnDebugMenu 	= addButton("Debug Menu",	100, y, toprow); y += 129.2;
+			btnDebugMenu 	= addButton("Debug Menu",	100, y, toprow); y += 129.2; btnDebugMenu.addEventListener(MouseEvent.CLICK, onDebugMenu);
 			btnAppearance 	= addButton("Appearance",	100, y, toprow); 			 btnAppearance.addEventListener(MouseEvent.CLICK, onAppearance);
 			
 			//Panels
@@ -103,7 +115,29 @@ package
 				btnAction[i] = btn;
 				btn.addEventListener(MouseEvent.CLICK, onActionClick);
 			}
+			
 			setScreen(new StartupScreen());
+		}
+		
+		public function onDebugMenu(lolno:MouseEvent):void {
+			setScreen(new DebugScreen());
+		}
+		
+		public function showBodyPartSelector(show:Boolean):void {
+				app.showBodyParts(show);
+				visible = !show;
+				updateScreen(currentScreen);
+		}
+		
+		public function setCheatMode(val:Boolean):void {
+			statHP.showCheatButtons(val);
+			statXP.showCheatButtons(val);
+			statIntellect.showCheatButtons(val);
+			statLust.showCheatButtons(val);
+			statMana.showCheatButtons(val);
+			statSensitivity.showCheatButtons(val);
+			statSpeed.showCheatButtons(val);
+			statStrength.showCheatButtons(val);
 		}
 		
 		private function onAppearance(e:MouseEvent):void {
@@ -113,6 +147,7 @@ package
 		private function onNewGame(e:MouseEvent):void {
 			player = new Player(this);
 			player.setMain(this);
+			app.bodyparts.init(player);
 			setScreen(new NewGameScreen());
 		}
 		
@@ -144,23 +179,23 @@ package
 		public function setupStatsPanel():void {
 			pnlStats.stackMode(); // Remove textField.
 			pnlStats.addToStack(new StackHeader("STATS"));
-			statXP = new Statistic("Experience", "How far you are from levelling up",true);
+			statXP = new Statistic("Experience", "How far you are from levelling up",true,setXP);
 			pnlStats.addToStack(statXP);
-			statStrength = new Statistic("Strength", "How much power your attacks will have.");
+			statStrength = new Statistic("Strength", "How much power your attacks will have.",false,setStrength);
 			pnlStats.addToStack(statStrength);
-			statSpeed = new Statistic("Speed", "How fast you are; Affects dodging and catching opponents.");
+			statSpeed = new Statistic("Speed", "How fast you are; Affects dodging and catching opponents.",false,null);
 			pnlStats.addToStack(statSpeed);
-			statIntellect = new Statistic("Intellect", "Perceptiveness.  Allows you to sense impending danger and figure out puzzles easier.");
+			statIntellect = new Statistic("Intellect", "Perceptiveness.  Allows you to sense impending danger and figure out puzzles easier.", false, null);
 			pnlStats.addToStack(statIntellect);
-			statSensitivity = new Statistic("Sensitivity", "The more sensitive you are, the faster your lust rises.  However, lack of sensation means you cannot masturbate.");
+			statSensitivity = new Statistic("Sensitivity", "The more sensitive you are, the faster your lust rises.  However, lack of sensation means you cannot masturbate.",false,null);
 			pnlStats.addToStack(statSensitivity);
-			statLust = new Statistic("Lust", "How horny you are right now.");
+			statLust = new Statistic("Lust", "How horny you are right now.",false,null);
 			pnlStats.addToStack(statLust);
 		
 			pnlStats.addToStack(new StackHeader("COMBAT"));
-			statHP = new Statistic("HP", "Health left.");
+			statHP = new Statistic("HP", "Health left.",false,null);
 			pnlStats.addToStack(statHP);
-			statMana = new Statistic("Mana", "Magic stuff");
+			statMana = new Statistic("Mana", "Magic stuff",false,null);
 			pnlStats.addToStack(statMana);
 			
 			pnlStats.addToStack(new StackHeader("GOLD"));
@@ -178,6 +213,16 @@ package
 			
 			refreshStats();
 		}
+		
+		private function setGold(value:int):void { player.gold = value; }
+		private function setHP(value:int):void { player.HP = value; }
+		private function setIntellect(value:int):void { player.intellect = value; }
+		private function setLust(value:int):void { player.lust = value; }
+		private function setMana(value:int):void { player.mana = value; }
+		private function setSensitivity(value:int):void { player.sensitivity = value; }
+		private function setSpeed(value:int):void { player.speed = value; }
+		private function setStrength(value:int):void { player.strength = value; }
+		private function setXP(value:int):void { player.XP = value; }
 		
 		private function setScreen(screen:Screen):void {
 			//trace("setscreen ",screen);
@@ -204,7 +249,7 @@ package
 					var done:Boolean = currentScreen.processButtonPress(i);
 					//trace(currentScreen,done);
 					if (done) {
-						setScreen(Main.screenQueue.read());
+						setScreen(AdventureController.screenQueue.read());
 					}
 					return;
 				}
@@ -212,18 +257,21 @@ package
 		}
 		
 		public function updateScreen(screen:Screen):void {
+			pnlMain.visible = visible;
+			pnlStats.visible = visible;
 			var btns:Array = screen.getButtons();
 			for (var i:int = 0; i < 12; i++) {
 				var btn:SexButton = (btnAction[i] as SexButton);
-				btn.visible = (btns[i] != "");
+				btn.visible = (btns[i] != "") && visible;
 				btn.setText(btns[i]);
 			}
-			this.btnAppearance.visible = screen.appearanceButton;
-			this.btnDebugMenu.visible = screen.debugMenuButton;
-			this.btnExportGame.visible = screen.exportGameButton;
+			this.btnAppearance.visible = screen.appearanceButton && visible;
+			this.btnDebugMenu.visible = screen.debugMenuButton && visible && player!=null;
+			this.btnExportGame.visible = screen.exportGameButton && visible;
 			this.btnLoadSaveGame.setText((screen.loadOrSaveButton)?"Save Game":"Load Game");
-			this.btnNewGame.visible = screen.newGameButton;
-			this.btnSelectPerk.visible = screen.selectPerkButton;
+			btnLoadSaveGame.visible = visible;
+			this.btnNewGame.visible = screen.newGameButton&& visible;
+			this.btnSelectPerk.visible = screen.selectPerkButton&& visible;
 			
 			this.pnlMain.text = screen.getScreenText();
 		}
@@ -292,7 +340,7 @@ package
 		public function endCombat(oldScreen:Screen):void {
 			//inCombat = false;
 			combatScreen = null;
-			//setScreen(Main.screenQueue.read());
+			//setScreen(AdventureController.screenQueue.read());
 		}
 		
 		public function setTown(t:Town):void {

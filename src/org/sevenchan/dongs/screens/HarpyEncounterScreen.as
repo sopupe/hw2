@@ -1,5 +1,6 @@
 package org.sevenchan.dongs.screens 
 {
+	import org.sevenchan.AdventureController;
 	import org.sevenchan.dongs.Screen;
 	
 	/**
@@ -12,7 +13,7 @@ package org.sevenchan.dongs.screens
 		private var state:String = "main";
 		
 		public static function push():void {
-			Main.screenQueue.write(new HarpyEncounterScreen());
+			AdventureController.screenQueue.write(new HarpyEncounterScreen());
 		}
 		
 		public function HarpyEncounterScreen() 

@@ -1,5 +1,6 @@
 package org.sevenchan.dongs.screens 
 {
+	import org.sevenchan.AdventureController;
 	import org.sevenchan.dongs.Creature;
 	import org.sevenchan.dongs.Screen;
 	/**
@@ -12,8 +13,8 @@ package org.sevenchan.dongs.screens
 		private var winner:Creature;
 		
 		public static function push(ply:Creature, winner:Creature):void {
-			Main.screenQueue.write(new LoserScreen(ply, winner));
-			Main.screenQueue.dump();
+			AdventureController.screenQueue.write(new LoserScreen(ply, winner));
+			AdventureController.screenQueue.dump();
 		}
 		
 		public function LoserScreen(ply:Creature,wnr:Creature) 

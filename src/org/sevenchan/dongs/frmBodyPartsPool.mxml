@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009" 
+               xmlns:s="library://ns.adobe.com/flex/spark" 
+               xmlns:mx="library://ns.adobe.com/flex/halo"
+		title="Body Parts (WIP)" width="90%">
+		<fx:Script>
+			<![CDATA[
+			import mx.collections.ArrayCollection;
+			import org.sevenchan.AdventureController;
+			import org.sevenchan.dongs.bodyparts.IBodyPart;
+			import org.sevenchan.dongs.creature.Player;
+			import spark.components.DataGroup;
+			
+			public var player:Player = null;
+			public function init(ply:Player):void {
+				player = ply;
+				poolSelector.dataProvider = new ArrayCollection();
+				(poolSelector.dataProvider as ArrayCollection).addItem("arms");
+				(poolSelector.dataProvider as ArrayCollection).addItem("assholes");
+				(poolSelector.dataProvider as ArrayCollection).addItem("balls");
+				(poolSelector.dataProvider as ArrayCollection).addItem("breasts");
+				(poolSelector.dataProvider as ArrayCollection).addItem("dicks");
+				(poolSelector.dataProvider as ArrayCollection).addItem("eyes");
+				(poolSelector.dataProvider as ArrayCollection).addItem("legs");
+				(poolSelector.dataProvider as ArrayCollection).addItem("vaginas");
+				(poolSelector.dataProvider as ArrayCollection).addItem("wings");
+			}
+			private function poolChanged():void {
+				partList.dataProvider = new ArrayCollection();
+				partSelector.dataProvider = new ArrayCollection();
+				for each (var part:IBodyPart in player[poolSelector.selectedItem]) {
+					(partList.dataProvider as ArrayCollection).addItem(part.name);
+				}
+				for (var partname:String in Creature.BodyPartRegistry[poolSelector.selectedItem]) {
+					(partSelector.dataProvider as ArrayCollection).addItem(partname);
+				}
+			}
+			
+			private function addPart():void {
+				var pool:String = poolSelector.selectedItem;
+				trace(pool, partSelector.selectedItem);
+				var part:IBodyPart = Creature.BodyPartRegistry[pool][partSelector.selectedItem];
+				trace(part);
+				(player[pool] as Array).push(part);
+				poolChanged();
+			}
+			private function removePart():void {
+				var pool:String = poolSelector.selectedItem;
+				var idx:int = partList.selectedIndex;
+				(player[pool] as Array).splice(idx, 1);
+				poolChanged();
+			}
+			private function lolclose():void {
+				player.main.showBodyPartSelector(false);
+			}
+			]]>
+		</fx:Script>
+	<s:VGroup>
+		<s:HGroup>
+			<s:DropDownList prompt="Collection" id="poolSelector" change="poolChanged()" width="90%">
+			</s:DropDownList>
+		</s:HGroup>
+		<s:List id="partList" width="90%"></s:List>
+		<s:DropDownList id="partSelector" width="90%"></s:DropDownList>
+		<s:HGroup>
+			<s:Button id="add" label="Add" click="addPart()" width="50%" />
+			<s:Button id="remove" label="Remove" click="removePart()" width="50%" />
+		</s:HGroup>
+		<s:Button label="Close" click="lolclose()" width="90%"></s:Button>
+	</s:VGroup>
+</s:Panel>

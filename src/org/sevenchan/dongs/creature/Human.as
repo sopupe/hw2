@@ -31,8 +31,8 @@ package org.sevenchan.dongs.creature
 			this.build = Build.AVG;
 			this.hair = Hair.BALD;
 			this.arms = [
-				Arm.HUMAN,
-				Arm.HUMAN,
+				BodyPartRegistry.arms.human,
+				BodyPartRegistry.arms.human,
 			];
 			this.legs = [
 				Leg.HUMAN,
@@ -67,8 +67,8 @@ package org.sevenchan.dongs.creature
 						Vagina.HUMAN,
 					];
 					this.breasts = [
-						Breast.HUMAN,
-						Breast.HUMAN
+						BodyPartRegistry.breasts.human,
+						BodyPartRegistry.breasts.human
 					];
 					break;
 				case Gender.HERM:
@@ -86,8 +86,8 @@ package org.sevenchan.dongs.creature
 						Vagina.HUMAN
 					];
 					this.breasts = [
-						Breast.HUMAN,
-						Breast.HUMAN,
+						BodyPartRegistry.breasts.human,
+						BodyPartRegistry.breasts.human,
 					];
 					break;
 				case Gender.MALE:

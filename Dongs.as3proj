@@ -60,7 +60,7 @@
   </rslPaths>
   <!-- Intrinsic Libraries -->
   <intrinsics>
-    <!-- example: <element path="..." /> -->
+    <element path="Library\AS3\frameworks\Flex4" />
   </intrinsics>
   <!-- Assets to embed into the output SWF -->
   <library>
@@ -68,7 +68,7 @@
   </library>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>
-    <compile path="src\Main.as" />
+    <compile path="src\Main.mxml" />
   </compileTargets>
   <!-- Paths to exclude from the Project Explorer tree -->
   <hiddenPaths>

@@ -1,5 +1,6 @@
 package org.sevenchan.dongs.screens 
 {
+	import org.sevenchan.AdventureController;
 	import org.sevenchan.dongs.Screen;
 	
 	/**
@@ -9,8 +10,8 @@ package org.sevenchan.dongs.screens
 	public class InfoScreen extends Screen 
 	{
 		public static function push(text:String):void {
-			Main.screenQueue.write(new InfoScreen(text));
-			Main.screenQueue.dump();
+			AdventureController.screenQueue.write(new InfoScreen(text));
+			AdventureController.screenQueue.dump();
 		}
 		
 		private var text:String;

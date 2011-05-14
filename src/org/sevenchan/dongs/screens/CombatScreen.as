@@ -1,5 +1,6 @@
 package org.sevenchan.dongs.screens 
 {
+	import org.sevenchan.AdventureController;
 	import flash.accessibility.Accessibility;
 	import org.sevenchan.dongs.bodyparts.Arm;
 	import org.sevenchan.dongs.bodyparts.IBodyPart;
@@ -69,8 +70,8 @@ package org.sevenchan.dongs.screens
 					return true;
 				}
 			if ("items" == act) {
-				Main.screenQueue.write(new InventoryScreen());
-				//Main.screenQueue.write(new InfoScreen("NOT IMPLEMENTED"));
+				AdventureController.screenQueue.write(new InventoryScreen());
+				//AdventureController.screenQueue.write(new InfoScreen("NOT IMPLEMENTED"));
 				return true;
 			}
 			if ("abilities" == act) {
@@ -114,7 +115,7 @@ package org.sevenchan.dongs.screens
 					return true;
 					break;
 				case 1: //Items
-					Main.screenQueue.write(new InventoryScreen());
+					AdventureController.screenQueue.write(new InventoryScreen());
 					return true;
 					break;
 				case 2:
@@ -227,7 +228,7 @@ package org.sevenchan.dongs.screens
 				text = "<p>Your attacker doesn't have arms or legs, so it can't attack!</p>";
 			//txt += "<p>Arms: " + from.arms.length +"</p>";
 			//txt += "<p>Legs: " + from.legs.length +"</p>";
-			Main.screenQueue.write(new InfoScreen(txt));
+			AdventureController.screenQueue.write(new InfoScreen(txt));
 			to.yourMove(this,main.player);
 		}
 		

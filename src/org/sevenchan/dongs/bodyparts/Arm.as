@@ -12,7 +12,6 @@ package org.sevenchan.dongs.bodyparts
 	public class Arm implements IBodyPart
 	{
 		registerClassAlias("P_Arm", Arm);
-		public static const HUMAN:Arm = new Arm("human", null, null);
 		
 		private var _name:String;
 		public function Arm(name:String="human",atkEnch:Enchantment=null,defEnch:Enchantment=null) 

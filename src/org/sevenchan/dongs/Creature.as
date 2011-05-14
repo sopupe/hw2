@@ -1,7 +1,9 @@
 package org.sevenchan.dongs 
 {
+	import org.sevenchan.AdventureController;
 	import flash.net.*;
 	import org.sevenchan.dongs.bodyparts.*;
+	import org.sevenchan.dongs.bodyparts.asshole.Abdomen;
 	import org.sevenchan.dongs.creature.*;
 	import org.sevenchan.dongs.enchantment.*;
 	import org.sevenchan.dongs.enchantment.events.*;
@@ -13,6 +15,39 @@ package org.sevenchan.dongs
 	public class Creature 
 	{
 		registerClassAlias("ECreature", Creature);
+		
+		public static var BodyPartRegistry:Object = {
+			assholes: {
+				human:new Asshole("human"),
+				demon:new Asshole("demon"),
+				arachnid:new Abdomen("Arachnid")
+			},
+			arms: {
+				human: new Arm("human", null, null)
+			},
+			balls: {
+				arachnid: new Testicle("internal testes", 3785,null,null,"hot, thick mixture of semen and eggs")
+			},
+			breasts: {
+				human:new Breast("human")
+			},
+			dicks: {
+				arachnid: new Penis("Arachnid")
+			},
+			eyes: {
+				arachnid_big: new Eye("human-ish Arachnid", "red", "round"),
+				arachnid_small: new Eye("small Arachnid", "black", "segment")
+			},
+			legs: {
+				arachnid: new Leg("Arachnid")
+			},
+			vaginas: {
+				arachnid: new Vagina("Arachnid")
+			},
+			wings: {
+				
+			}
+		};
 		
 		// Characteristics
 		public var customized:Boolean = false;
@@ -26,34 +61,34 @@ package org.sevenchan.dongs
 		public var sexualPreference:SexualPreference = SexualPreference.ASEXUAL;	// Straight, Gay, ASexual, Bi?
 		
 		// Stats (CACHED VALUES)
-		public var _level:uint = 0;		// In comparison to standard human being.  No attacking rats for 20 levels.
-		private var d_level:uint = 0;	// Delta
+		public var _level:int = 0;		// In comparison to standard human being.  No attacking rats for 20 levels.
+		private var d_level:int = 0;	// Delta
 		public var _strength:int = 1;	// Damage caused in case of a successful attack.
-		public var _speed:uint = 1;		// Chance of dodging.  defending.speed-attacking.speed = relative chance of dodging.
-		public var _intellect:uint = 1;  // Smartness.  Opens dialog trees and gives hints.
-		public var _lust:uint = 1;		// Slowly increases over time, eliminated by masturbation or smecks.  Some battles are nonsexual and will not affect lust, others will slightly increase it based on ((number of balls x ball hormone output)+(number of vaginas * vagina hormone output)* sensitivity).
-		public var sensitivity:Number = 0; // 0-1, 0 being not sensitive
+		public var _speed:int = 1;		// Chance of dodging.  defending.speed-attacking.speed = relative chance of dodging.
+		public var _intellect:int = 1;  // Smartness.  Opens dialog trees and gives hints.
+		public var _lust:int = 1;		// Slowly increases over time, eliminated by masturbation or smecks.  Some battles are nonsexual and will not affect lust, others will slightly increase it based on ((number of balls x ball hormone output)+(number of vaginas * vagina hormone output)* sensitivity).
+		public var _sensitivity:Number = 0; // 0-1, 0 being not sensitive
 		public var _HP:int = 100;		//100*(level*0.02)
 		public var _XP:int = 0;			// 50*(level*0.5)
-		public var mana:uint = 0;		// Magic shit, increases over time, especially near relaxing places.
+		public var _mana:int = 0;		// Magic shit, increases over time, especially near relaxing places.
 		public var _gold:int = 0;		// Currency
 										
 		// Collections
 		public var _abilities:Object = new Object(); 			// What magic/techniques can I use?
-		public var assholes:Array = new Array(); 				// How many, and what type of assholes do I possess?
+		public var _assholes:Array = new Array(); 				// How many, and what type of assholes do I possess?
 		public var _arms:Array = new Array();					// Needed to attack. Tentacles are ok.
 		public var _balls:Array = new Array(); 					// Testes (Cum and pregnancy options)
-		public var breasts:Array = new Array(); 				// Boobs (fuckable)
+		public var _breasts:Array = new Array(); 				// Boobs (fuckable)
 		public var _dicks:Array = new Array(); 					// Penises (Pleasure options, testes required for preggo/cum stuff)
 		public var enchantments:Object = new Object();			// What kinds of effects am I suffering/benefiting from?
-		public var eyes:Array = new Array();					// How many/what kinds of eyes do I have?
+		public var _eyes:Array = new Array();					// How many/what kinds of eyes do I have?
 		public var inventory:Array = new Array();				// What stuff am I carrying?
 		public var _legs:Array = new Array();					// Legs or locomotive tentacles or some other propulsion. (NONE = CAN'T MOVE OR DODGE)
 		public var _vaginas:Array = new Array();					// Places to put babies if the "father" has a penis and doesn't know the FALCON PUNCH.  Anal pregnancy is okay but only with dicks with that flag.
 		public var _wings:Array = new Array();					// For flight.
 		public var explored:Array = new Array();				
 		
-		private var main:Main = null;
+		private var main:AdventureController = null;
 		public function Creature() 
 		{
 			trace("Creature.init()");
@@ -83,7 +118,9 @@ package org.sevenchan.dongs
 			cs.tryAttack(this, ply);
 			return;
 		}
-		
+		public function addDick(type:String="human"):void {
+			
+		}
 		public function addLust(amt:Number=1):void {
 			lust += (amt * getLustMult());
 		}
@@ -296,14 +333,14 @@ package org.sevenchan.dongs
 			doStatsUpdate();
 		}
 		
-		public function get speed():uint { return _speed; }
-		public function set speed(spd:uint):void  { 
+		public function get speed():int { return _speed; }
+		public function set speed(spd:int):void  { 
 			_speed = spd;
 			doStatsUpdate(); 
 		}
 		
-		public function get lust():uint { return _lust; }
-		public function set lust(lst:uint):void  
+		public function get lust():int { return _lust; }
+		public function set lust(lst:int):void  
 		{ 
 			_lust = lst; 
 			if (_lust > 100)
@@ -318,12 +355,42 @@ package org.sevenchan.dongs
 			_gold = value;
 			doStatsUpdate();
 		}
-		public function get intellect():uint { return _intellect; }
-		public function set intellect(i:uint):void  
+		public function get intellect():int { return _intellect; }
+		public function set intellect(i:int):void  
 		{ 
 			_intellect = i; 
 			doStatsUpdate();
 		}
+		public function get mana():int { return _mana; }
+		public function set mana(i:int):void  
+		{ 
+			_mana = i; 
+			doStatsUpdate();
+		}
+		public function get sensitivity():int { return _sensitivity; }
+		public function set sensitivity(i:int):void  
+		{ 
+			_sensitivity = i; 
+			doStatsUpdate();
+		}
+		
+		public function get assholes():Array { return this._assholes; }
+		public function set assholes(balls:Array):void { this._assholes=balls;
+			customized = true; }
+			
+			
+		
+		public function get breasts():Array { return this._breasts; }
+		public function set breasts(balls:Array):void { this._breasts=balls;
+			customized = true; }
+		
+		public function get eyes():Array { return this._eyes; }
+		public function set eyes(balls:Array):void { this._eyes=balls;
+			customized = true; }
+		
+		public function get vaginas():Array { return this._vaginas; }
+		public function set vaginas(balls:Array):void { this._vaginas=balls;
+			customized = true; }
 		
 		public function get arms():Array { return _arms; }
 		public function set arms(arr:Array):void { 
@@ -341,10 +408,6 @@ package org.sevenchan.dongs
 		
 		public function get balls():Array { return _balls; }
 		public function set balls(balls:Array):void { _balls=balls;
-			customized = true; }
-		
-		public function get vaginas():Array { return _vaginas; }
-		public function set vaginas(balls:Array):void { _vaginas=balls;
 			customized = true; }
 		
 		public function get dicks():Array { return _dicks; }
@@ -375,7 +438,7 @@ package org.sevenchan.dongs
 		}
 		
 		
-		public function setMain(main:Main):void {
+		public function setMain(main:AdventureController):void {
 			this.main = main;
 		}
 		
