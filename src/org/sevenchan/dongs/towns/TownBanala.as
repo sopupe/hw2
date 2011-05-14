@@ -18,7 +18,7 @@ package org.sevenchan.dongs.towns
 			ID = "banala";
 			name = "Banala";
 			inhabitants = [
-				new Demon(),
+				Creature.CreatureRegistry.demon
 			];
 			isWilds = false;
 			freeRest = false;

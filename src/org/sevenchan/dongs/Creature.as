@@ -16,6 +16,8 @@ package org.sevenchan.dongs
 	{
 		registerClassAlias("ECreature", Creature);
 		
+		public static var CreatureRegistry:Object = null;
+		
 		public static var BodyPartRegistry:Object = {
 			assholes: {
 				human:new Asshole("human"),
@@ -66,16 +68,6 @@ package org.sevenchan.dongs
 			}
 		};
 		
-		public static var CreatureRegistry:Object = {
-			arachnid: new Arachnid(false),
-			arachnid_pregnant: new Arachnid(true),
-			harpy: new Harpy(false),
-			harpy_dark: new Harpy(true),
-			human: new Human(),
-			morel: new Morel(),
-			oldspace: new SandNigger()
-		};
-		
 		// Characteristics
 		public var customized:Boolean = false;
 		public var ownName:String = "Blah Blah"; 									// Who am I?
@@ -116,6 +108,18 @@ package org.sevenchan.dongs
 		public var explored:Array = new Array();				
 		
 		private var main:AdventureController = null;
+		
+		public static function init_creatures():void {
+			CreatureRegistry={
+				arachnid: new Arachnid(false),
+				arachnid_pregnant: new Arachnid(true),
+				harpy: new Harpy(false),
+				harpy_dark: new Harpy(true),
+				human: new Human(),
+				morel: new Morel(),
+				oldspace: new SandNigger()
+			};
+		}
 		public function Creature() 
 		{
 			trace("Creature.init()");

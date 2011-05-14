@@ -1,12 +1,10 @@
 package org.sevenchan.dongs.creature 
 {
-	import flash.text.engine.BreakOpportunity;
-	import org.sevenchan.dongs.bodyparts.asshole.Abdomen;
+	import flash.net.*;
+	import org.sevenchan.dongs.*;
 	import org.sevenchan.dongs.bodyparts.*;
-	import org.sevenchan.dongs.Creature;
-	import flash.net.registerClassAlias;
-	import org.sevenchan.dongs.items.SpiderVenomSac;
-	import org.sevenchan.dongs.screens.InfoScreen;
+	import org.sevenchan.dongs.items.*;
+	import org.sevenchan.dongs.screens.*;
 	/**
 	 * Spiderbitch, spiderbitch, does whatever a spiderbitch does...
 	 * Will she suck, on a dick?  Goddamnit I dunno.
@@ -29,7 +27,15 @@ package org.sevenchan.dongs.creature
 		
 		override public function initialGenderSetup():void 
 		{
-			assholes = [Creature.BodyPartRegistry.assholes.arachnid];
+			trace("ASS", BodyPartRegistry.assholes.arachnid);
+			trace("EYE_BIG",BodyPartRegistry.eyes.arachnid_big);
+			trace("EYE_SMALL",BodyPartRegistry.eyes.arachnid_small);
+			trace("LEG", BodyPartRegistry.legs.arachnid);
+			trace("ARMS",BodyPartRegistry.arms.human);
+			trace("BOOBS",BodyPartRegistry.breasts.human);
+			trace("DICK",BodyPartRegistry.dicks.arachnid);
+			trace("BALLS",BodyPartRegistry.balls.arachnid);
+			assholes = [BodyPartRegistry.assholes.arachnid];
 			eyes = [
 				BodyPartRegistry.eyes.arachnid_small,BodyPartRegistry.eyes.arachnid_small,
 				BodyPartRegistry.eyes.arachnid_small,BodyPartRegistry.eyes.arachnid_small,
@@ -54,7 +60,7 @@ package org.sevenchan.dongs.creature
 			
 			if (gender.hasVag) {
 				breasts = [BodyPartRegistry.breasts.human, BodyPartRegistry.breasts.human];
-				vaginas = [];
+				vaginas = [BodyPartRegistry.vaginas.arachnid];
 			}
 			if (gender.hasDick) {
 				dicks = [];

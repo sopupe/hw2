@@ -51,6 +51,7 @@ package org.sevenchan.dongs
 		private var menu:String = "main";
 		
 		public static function setup():void {
+			Creature.init_creatures();
 			knownTowns={
 				barn: new TownBarn(),
 				banala: new TownBanala(),

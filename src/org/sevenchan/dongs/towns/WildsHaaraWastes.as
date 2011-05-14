@@ -18,8 +18,8 @@ package org.sevenchan.dongs.towns
 			ID = "haara";
 			name = "Haara Wastes";
 			inhabitants = [
-				new SandNigger(),
-				new Arachnid(false)
+				Creature.CreatureRegistry.oldspace,
+				Creature.CreatureRegistry.arachnid,
 			];
 			isWilds = true;
 			freeRest = true;
