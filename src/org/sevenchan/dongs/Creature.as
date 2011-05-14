@@ -66,6 +66,16 @@ package org.sevenchan.dongs
 			}
 		};
 		
+		public static var CreatureRegistry:Object = {
+			arachnid: new Arachnid(false),
+			arachnid_pregnant: new Arachnid(true),
+			harpy: new Harpy(false),
+			harpy_dark: new Harpy(true),
+			human: new Human(),
+			morel: new Morel(),
+			oldspace: new SandNigger()
+		};
+		
 		// Characteristics
 		public var customized:Boolean = false;
 		public var ownName:String = "Blah Blah"; 									// Who am I?

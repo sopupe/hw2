@@ -19,9 +19,11 @@ package org.sevenchan.dongs.screens
 		
 		override public function processButtonPress(id:int):Boolean 
 		{
+			clearButtons();
 			if (act == "main") {
 				setButton(0, "EXIT");
-				setButton(1, "dbgStats:" + (dbgStats?"1":"0"));
+				if(main.statHP!=null)
+					setButton(1, "dbgStats:" + (dbgStats?"1":"0"));
 				setButton(2, "SuperStore");
 				setButton(3, "BodyParts");
 				setButton(4, "ChangeTo");

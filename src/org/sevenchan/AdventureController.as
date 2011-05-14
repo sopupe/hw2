@@ -25,6 +25,7 @@ package org.sevenchan
 	{
 		private var app:Main;
 		private const default_bg_color:uint = 0x333333;
+		private var currentBGColor:uint = default_bg_color;
 		public var bodyPartsDialog:org.sevenchan.dongs.frmBodyPartsPool = new org.sevenchan.dongs.frmBodyPartsPool;
 		private var bgshape:Sprite;
 
@@ -49,7 +50,7 @@ package org.sevenchan
 		private var statLust:Statistic;
 		
 		private var statMana:Statistic;
-		private var statHP:Statistic;
+		public var statHP:Statistic;
 		private var statGold:TextField;
 		
 		public var player:Player;
@@ -312,7 +313,8 @@ package org.sevenchan
 		private function initBG():void
 		{
 			bgshape = new Sprite();
-			bgshape.graphics.beginFill(default_bg_color);
+			bgshape.graphics.clear();
+			bgshape.graphics.beginFill(currentBGColor);
 			bgshape.graphics.drawRect(0,0,stage.stageWidth, stage.stageHeight);
 			addChildAt(bgshape, 0);
 			stage.addEventListener(Event.RESIZE, resizeBGWithStage);
@@ -335,12 +337,16 @@ package org.sevenchan
 			player.notifyEnchantments(new CombatStartEvent(combatant));
 			combatScreen = new CombatScreen(oldScreen, combatant, playerInitiated);
 			setScreen(combatScreen);
+			currentBGColor = 0x330000;
+			initBG();
 		}
 
 		public function endCombat(oldScreen:Screen):void {
 			//inCombat = false;
 			combatScreen = null;
 			//setScreen(AdventureController.screenQueue.read());
+			currentBGColor = default_bg_color;
+			initBG();
 		}
 		
 		public function setTown(t:Town):void {
