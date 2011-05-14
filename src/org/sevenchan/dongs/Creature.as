@@ -235,7 +235,7 @@ package org.sevenchan.dongs
 			if(eyes.length == 0)
 				descr += " complete lack of eyes (<b>and resulting blindness</b>)";
 			else
-				descr += geteyesDescr();
+				descr += getEyesDescr();
 			
 			descr += " and " + skin.getDescr(0, this);
 			descr += "</p>";
@@ -551,7 +551,7 @@ package org.sevenchan.dongs
 			return getBodyPartDesc(arms,	"arm");
 		}
 		
-		public function geteyesDescr():String {
+		public function getEyesDescr():String {
 			return getBodyPartDesc(eyes,	"eye");
 		}
 		
