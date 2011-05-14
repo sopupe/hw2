@@ -112,6 +112,11 @@ package org.sevenchan.dongs.screens
 						lose();
 						return true;
 					}
+					if (main.player.Lust>=100)
+					{
+						lose();
+						return true;
+					}
 					return true;
 					break;
 				case 1: //Items
@@ -182,6 +187,11 @@ package org.sevenchan.dongs.screens
 					return true;
 				}
 				if (main.player.HP<=0)
+				{
+					lose();
+					return true;
+				}
+				if (main.player.Lust>=100)
 				{
 					lose();
 					return true;
