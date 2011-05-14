@@ -51,7 +51,8 @@ package org.sevenchan.dongs
 				demon: new Eye("demon", "amber", "slit")
 			},
 			legs: {
-				arachnid: new Leg("Arachnid")
+				arachnid: new Leg("Arachnid"),
+				harpy: new Leg("long, birdlike harpy")
 			},
 			vaginas: {
 				arachnid: new Vagina("Arachnid"),
@@ -59,7 +60,8 @@ package org.sevenchan.dongs
 				human: new Vagina("human")
 			},
 			wings: {
-				
+				harpy: new Wing("harpy", false, "brown and white", 10),
+				harpy_dark: new Wing("darkharpy", false, "black and violet", 10)
 			}
 		};
 		

@@ -27,9 +27,6 @@ package org.sevenchan.dongs.creature
 		registerClassAlias("EHarpy", Human);
 		
 		public static var SKIN:Skin = new Skin("human", "light", "smooth");
-		public static var LIGHT_WING:Wing = new Wing("harpy", false, "brown and white", 10);
-		public static var DARK_WING:Wing = new Wing("darkharpy", false, "black and violet", 10);
-		public static var LEG:Leg = new Leg("long, birdlike harpy");
 		
 		public var dark:Boolean;
 		public function Harpy(corrupt:Boolean=false) 
@@ -47,25 +44,25 @@ package org.sevenchan.dongs.creature
 				BodyPartRegistry.arms.human,
 			];
 			this.legs = [
-				LEG,
-				LEG
+				BodyPartRegistry.legs.harpy,
+				BodyPartRegistry.legs.harpy
 			];
 			this._vaginas = [BodyPartRegistry.vaginas.human];
 			this.assholes = [BodyPartRegistry.assholes.human];
 			if(!dark) {
 				this.hair = new Hair("short, straight brown hair");
 				this.eyes = [BodyPartRegistry.eyes.harpy_light, BodyPartRegistry.eyes.harpy_light];
-				this.wings = [LIGHT_WING, LIGHT_WING];
+				this.wings = [BodyPartRegistry.wings.harpy_light, BodyPartRegistry.wings.harpy_light];
 				this.skin = new Skin("human");
 			} else {
 				this.hair = new Hair("short, straight black hair");
 				this.eyes = [BodyPartRegistry.eyes.harpy_dark,BodyPartRegistry.eyes.harpy_dark];
-				this.wings = [DARK_WING, DARK_WING];
+				this.wings = [BodyPartRegistry.wings.harpy_dark, BodyPartRegistry.wings.harpy_dark];
 				this.skin = new Skin("human", "pale");
-				this.inventory = [
-					new HarpyTincture(1)
-				];
 			}
+			this.inventory = [
+				new HarpyTincture(1)
+			];
 		}
 		
 		override public function onEncounter(ply:Creature):Boolean 

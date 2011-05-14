@@ -26,9 +26,9 @@ package org.sevenchan.dongs.items
 		{
 			InfoScreen.push("<h2>Use Harpy Tincture</h2><p>You sprout two "+(host is Demon ? "black":"brown")+" wings from your back.</p>");
 			if(host is Demon) {
-				host.wings.push(Harpy.DARK_WING, Harpy.DARK_WING);
+				host.wings.push(Creature.BodyPartRegistry.wings.harpy_dark, Creature.BodyPartRegistry.wings.harpy_dark);
 			} else {
-				host.wings.push(Harpy.LIGHT_WING, Harpy.LIGHT_WING);
+				host.wings.push(Creature.BodyPartRegistry.wings.harpy_light, Creature.BodyPartRegistry.wings.harpy_light);
 			}
 			return true;
 		}
