@@ -13,13 +13,18 @@ package org.sevenchan.dongs.items
 	public class HarpyTincture extends Item 
 	{
 		
-		public function HarpyTincture(num:uint) 
+		public function HarpyTincture(num:uint=0) 
 		{
 			super(num);
 			this.descr = "A bottle full of a clear liquid, with a feather suspended in it.";
 			this.name = "Harpy Tincture";
-			this.id = 3;
+			this.id = 2;
 			this.value = 50;
+		}
+		
+		override public function copy():Item 
+		{
+			return new HarpyTincture(amount);
 		}
 		
 		override public function Use(host:Creature):Boolean 

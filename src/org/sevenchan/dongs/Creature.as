@@ -1,5 +1,6 @@
 package org.sevenchan.dongs 
 {
+	import flash.media.ID3Info;
 	import org.sevenchan.AdventureController;
 	import flash.net.*;
 	import org.sevenchan.dongs.bodyparts.*;
@@ -163,6 +164,17 @@ package org.sevenchan.dongs
 				loadMultSum += (balls[i] as Testicle).loadMult;
 			}
 			return (numballs * (loadMultSum / numballs))*0.5;
+		}
+		
+		public function takeFromInventory(item:Item):void {
+			for (var i:int = 0; i < inventory.length; i++) {
+				if ((inventory[i] as Item).id == item.id) {
+					(inventory[i] as Item).amount -= item.amount;
+					if ((inventory[i] as Item).amount <= 0)
+						inventory.splice(i, 1);
+					return;
+				}
+			}
 		}
 		
 		public function addToInventory(item:Item):void {

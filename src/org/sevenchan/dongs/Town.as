@@ -1,7 +1,9 @@
 package org.sevenchan.dongs 
 {
+	import org.sevenchan.AdventureController;
 	import org.sevenchan.dongs.creature.Player;
 	import org.sevenchan.dongs.screens.InventoryScreen;
+	import org.sevenchan.dongs.screens.ShopScreen;
 	import org.sevenchan.dongs.towns.TownBanala;
 	import org.sevenchan.dongs.towns.TownBarn;
 	import org.sevenchan.dongs.towns.WildsHaaraWastes;
@@ -16,7 +18,7 @@ package org.sevenchan.dongs
 		
 		public static var knownTowns:Object = { };
 		
-		
+		public var shop:ShopScreen=null;
 		
 		/**
 		 * ID of the town
@@ -51,6 +53,7 @@ package org.sevenchan.dongs
 		private var menu:String = "main";
 		
 		public static function setup():void {
+			Item.fillRegistry();
 			Creature.init_creatures();
 			knownTowns={
 				barn: new TownBarn(),
@@ -72,6 +75,19 @@ package org.sevenchan.dongs
 			this.clearButtons()
 		}
 		
+		public function onShopBuyMenu():String {
+			return "<p>&quot;So, what interests you today, buddy?&quot;  The shopkeeper asks, watching you (and your money-bag) with great intensity.</p>";
+		}
+		
+		public function onShopSellMenu():String {
+			return "<p>&quot;All right, let's see what you got, chief.&quot;</p>";
+		}
+		
+		public function onShopWelcome():String {
+			return "<p>The shopkeeper is, as usual, mopping the old, dirty floor with an equally old and dirty mop when he notices you enter.  His piggish face brightens a bit.</p>" +
+			"<p>&quot;Oh great. My favorite customer.&quot; He mutters sarcastically, continuing to mop.  &quot;So, do you wanna buy, or sell?&quot;</p>";
+		}
+		
 		// Explore, Shop, Rest (10G), Leave, Fap
 		override public function processButtonPress(id:int):Boolean 
 		{
@@ -86,8 +102,9 @@ package org.sevenchan.dongs
 				}
 				clearButtons();
 				setButton(0, "Explore");
-				if(!isWilds) {
-					setButton(1, "Shop");
+				if (!isWilds) {
+					if(shop!=null)
+						setButton(1, "Shop");
 					if(freeRest)
 						setButton(2, "Rest");
 					else
@@ -124,9 +141,8 @@ package org.sevenchan.dongs
 								onExplore(null);
 								break;
 							case 1:
-								text = "Not implemented yet.";
-								//menu = "shop";
-								//displayShop();
+								AdventureController.screenQueue.write(this.shop);
+								return true;
 								break;
 							case 2:
 								menu = "rest";

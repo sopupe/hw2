@@ -11,12 +11,19 @@ package org.sevenchan.dongs.items
 	 */
 	public class SpiderVenomSac extends Item 
 	{
-		public function SpiderVenomSac(num:uint) {
+		public function SpiderVenomSac(num:uint=0) {
 			super(num);
+			id = 3;
 			value = 20;
 			this.descr = "A black, sticky gland the size of your fist.";
 			this.name = "Spider Venom Sac";
 		}
+		
+		override public function copy():Item 
+		{
+			return new SpiderVenomSac(amount);
+		}
+		
 		override public function Use(host:Creature):Boolean 
 		{
 			var action:Function = function(nut:*, index:int, array:Array):void {

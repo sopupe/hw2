@@ -11,12 +11,18 @@ package org.sevenchan.dongs.items
 	public class WhiteBerries extends Item 
 	{
 		
-		public function WhiteBerries(num:uint) 
+		public function WhiteBerries(num:uint=0) 
 		{
 			super(num);
 			value = 15;
+			id = 1;
 			this.descr = "A plump pearly-white berry the size of a pea, and bears a red cross centered on the stem.";
 			this.name = "White Berry";
+		}
+		
+		override public function copy():Item 
+		{
+			return new WhiteBerries(amount);
 		}
 		
 		override public function Use(host:Creature):Boolean 

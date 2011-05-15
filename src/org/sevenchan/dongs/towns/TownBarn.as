@@ -2,6 +2,8 @@ package org.sevenchan.dongs.towns
 {
 	import org.sevenchan.dongs.Creature;
 	import org.sevenchan.dongs.creature.Player;
+	import org.sevenchan.dongs.Item;
+	import org.sevenchan.dongs.screens.ShopScreen;
 	import org.sevenchan.dongs.Town;
 	
 	/**
@@ -10,7 +12,6 @@ package org.sevenchan.dongs.towns
 	 */
 	public class TownBarn extends Town 
 	{
-		
 		public function TownBarn() 
 		{
 			super();
@@ -22,6 +23,10 @@ package org.sevenchan.dongs.towns
 			connectedTowns = [
 				"banala"
 			];
+			
+			this.shop = new ShopScreen(this, 1, [
+				Item.Registry.berry_white.id
+			]);
 		}
 		
 		override public function onRevelation():void 
