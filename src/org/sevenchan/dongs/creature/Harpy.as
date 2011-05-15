@@ -3,6 +3,7 @@ package org.sevenchan.dongs.creature
 	import org.sevenchan.dongs.Creature;
 	import org.sevenchan.dongs.bodyparts.*;
 	import flash.net.registerClassAlias;
+	import org.sevenchan.dongs.Item;
 	import org.sevenchan.dongs.items.HarpyTincture;
 	import org.sevenchan.dongs.screens.HarpyEncounterScreen;
 	/**
@@ -19,6 +20,7 @@ package org.sevenchan.dongs.creature
 	 *  putting him on an island with a buffet of food which he could never eat. The 
 	 *  harpies always arrived and stole the food out of his hands before he could 
 	 *  satisfy his hunger, and befouled the remains of his food." - (Wikipedia:Harpy)
+	 * tl;dr zeus got made at some faggot and made birds shit in his soup.
 	 * 
 	 * @author N3X15
 	 */
@@ -59,10 +61,11 @@ package org.sevenchan.dongs.creature
 				this.eyes = [BodyPartRegistry.eyes.harpy_dark,BodyPartRegistry.eyes.harpy_dark];
 				this.wings = [BodyPartRegistry.wings.harpy_dark, BodyPartRegistry.wings.harpy_dark];
 				this.skin = new Skin("human", "pale");
+				this.inventory.push(Item.Registry.darkharpyegg);
 			}
-			this.inventory = [
+			this.inventory.push(
 				new HarpyTincture(1)
-			];
+			);
 		}
 		
 		override public function onEncounter(ply:Creature):Boolean 

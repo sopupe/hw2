@@ -6,6 +6,7 @@ package org.sevenchan.dongs
 	import org.sevenchan.dongs.screens.ShopScreen;
 	import org.sevenchan.dongs.towns.TownBanala;
 	import org.sevenchan.dongs.towns.TownBarn;
+	import org.sevenchan.dongs.towns.TownHarpyCabin;
 	import org.sevenchan.dongs.towns.WildsHaaraWastes;
 	import org.sevenchan.dongs.towns.WildsHorusSpine;
 	/**
@@ -59,6 +60,7 @@ package org.sevenchan.dongs
 				barn: new TownBarn(),
 				banala: new TownBanala(),
 				haara: new WildsHaaraWastes(),
+				harpycabin: new TownHarpyCabin(),
 				horus: new WildsHorusSpine()
 			};
 		}

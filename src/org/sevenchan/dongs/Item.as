@@ -29,7 +29,8 @@ package org.sevenchan.dongs
 			Registry={
 				berry_white: new WhiteBerries(),
 				harpy_tincture: new HarpyTincture(),
-				spider_venom: new SpiderVenomSac()
+				spider_venom: new SpiderVenomSac(),
+				darkharpyegg: new DarkHarpyEgg()
 			};
 		}
 		
