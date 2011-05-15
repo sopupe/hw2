@@ -24,13 +24,37 @@ package org.sevenchan.dongs.towns
 			];
 		}
 		
-		// TODO: Rework
 		override public function onRevelation():void 
 		{
-			text = "<p>You slowly awaken.</p>";
-			text += "<p>You stand up, cursing from both pain and frustration as you survey your surroundings.  You appear to have landed in an ancient wooden barn, heavily damaged by an equally ancient fire.  The roof is gone, and the blackened walls have immense cracks through which you can see slivers of the outside world. Looking out of the warped windows, all you can see are rolling red sand dunes beneath a bright, red sky that shimmers in the heat.  The sun looms above, taking up about two-thirds of the sky. The horizon is filled with shimmering mirages.  You tense when you realize that one is coming closer and growing larger, and duck behind a windowsill, still watching.</p>";
-			text += "<p>The mirage slowly takes the form of an old, frail main atop an old, rickety merchant's wagon pulled by unseen, but apparently domesticated creatures. As hew draws nearer, a wheel creaks, and then snaps off, throwing the cursing old man into the soft sand below.  You cringe, praying that he'd okay, and sure enough, he stands, muttering &quot;As good a place as any,&quot; and begins setting up his shop.</p>";
-			text += "<p>You slink ito the corner of the barn and begin setting up camp, yourself, but quietly. You ARE in Hell, after all, so it wouldn't be wise to run up to the merchant right away.</p>";
+			text = "<h2>Welcome to Hell</h2>";
+			text += "<p>You slowly awaken.</p>";
+			text += "<p>You stand up, cursing from both pain and ";
+			text += "frustration as you survey your surroundings. You appear to have landed ";
+			text += "in an ancient wooden barn, heavily damaged by an equally ancient fire. ";
+			text += "The roof is gone, and the blackened walls have immense cracks through ";
+			text += "which you can see slivers of the outside world. Looking out through the ";
+			text += "warped windows, all you can see are rolling red sand dunes beneath a ";
+			text += "bright, red sky that shimmers in the heat. The sun looms above, taking ";
+			text += "up about two-thirds of the sky. The horizon is filled with shimmering ";
+			text += "mirages. You tense when you realize that one is coming closer and ";
+			text += "growing larger, and your heart races. Besides the demons known to ";
+			text += "populate this land, you have no idea what to expect, and duck behind a ";
+			text += "charred windowsill to be safe. You peek over the top, nervously ";
+			text += "observing.</p>";
+			text += "<p>The mirage slowly takes the form of an old, frail ";
+			text += "sunburnt man atop an old, rickety merchant's wagon pulled by unseen, but ";
+			text += "apparently domesticated creatures. As he draws nearer, a wheel creaks, ";
+			text += "and then snaps off, throwing the cursing old man into the soft sand ";
+			text += "below. You cringe, praying that he'd okay, and sure enough, he stands ";
+			text += "and mutters in frustration. He examines the remains of his wagon’s axle ";
+			text += "before sighing and initiating the process of setting up his shop in the ";
+			text += "back of the wagon, still cursing under his breath.</p>";
+			text += "<p>Satisfied that ";
+			text += "he’s probably not a threat, you quietly set up camp in the shaded back ";
+			text += "of the barn. However, you decide to take your time and observe the ";
+			text += "merchant some more before approaching him for wares. This is Hell, after ";
+			text += "all. Who knows what could happen?</p> ";
+			text += "";
 		}
 		
 		override public function onEnter():void 
