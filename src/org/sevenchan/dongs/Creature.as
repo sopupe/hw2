@@ -109,6 +109,7 @@ package org.sevenchan.dongs
 		public var explored:Array = new Array();				
 		
 		private var main:AdventureController = null;
+		protected var abilityUseProbability:Number = 1;
 		
 		public static function init_creatures():void {
 			CreatureRegistry={
@@ -142,7 +143,7 @@ package org.sevenchan.dongs
 				InfoScreen.push("<p>The " + getTypeName() + " cannot attack!</p>");
 				return;
 			}
-			if (MathUtils.lengthOf(abilities) > 0 && MathUtils.rand(0,1) == 0) {
+			if (MathUtils.lengthOf(abilities) > 0 && MathUtils.rand(0,abilityUseProbability) == 0) {
 				var ab:Ability = Ability(MathUtils.getRandomObjectEntry(abilities));
 				if(ab.activate(this, ply))
 					return;

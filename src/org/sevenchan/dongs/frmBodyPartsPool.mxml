@@ -25,6 +25,7 @@
 				(poolSelector.dataProvider as ArrayCollection).addItem("vaginas");
 				(poolSelector.dataProvider as ArrayCollection).addItem("wings");
 			}
+			
 			private function poolChanged():void {
 				partList.dataProvider = new ArrayCollection();
 				partSelector.dataProvider = new ArrayCollection();

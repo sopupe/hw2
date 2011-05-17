@@ -31,6 +31,7 @@ package org.sevenchan.dongs.ui
 		private var scrollDown:TinyButton = new TinyButton("˅");
 		private var bounds:Rectangle;
 		private var bgpanel:Sprite = new Sprite();
+		
 		public function SexPanel(text:String) 
 		{
 			this.textControl.htmlText = text;
@@ -44,7 +45,8 @@ package org.sevenchan.dongs.ui
 			var style:StyleSheet = new StyleSheet();
 			style.parseCSS("" +
 			"h2 { font-size:24;font-weight:bold;padding-bottom:32px;font-family:'Georgia','Times New Roman',_serif;}"+
-			"p,li { font-family:'Georgia','Times New Roman',_serif;font-size:14;margin-bottom:1em; }");
+			"p,li { font-family:'Georgia','Times New Roman',_serif;font-size:14;margin-bottom:1em; }" +
+			"a {color:#0000ff;text-decoration:underline;}");
 			textControl.styleSheet = style;
 			this.textControl.multiline = true;
 			this.textControl.wordWrap = true;

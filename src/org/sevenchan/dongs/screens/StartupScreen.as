@@ -22,7 +22,7 @@ package org.sevenchan.dongs.screens
 		{
 			var text:String = "<h2>Adventure of the Seven Leaves</h2>";
 			text += "<p>Inspired by Corruption of Champions by Fenoxo</p>";
-			text += "<p>Written in ActionScript 3 by N3X15 for the Open-Source Adobe Flex 4 platform.  Visit http://repo.or.cz/w/18plus-7leafadventure.git to see the source code.</p>";
+			text += "<p>Written in ActionScript 3 by N3X15 for the Open-Source Adobe Flex 4 platform.  Visit <a href=\"http://repo.or.cz/w/18plus-7leafadventure.git\">our repo.or.cz</a> to see the source code.</p>";
 			return text;
 		}
 		

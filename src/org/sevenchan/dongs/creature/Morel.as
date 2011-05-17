@@ -8,6 +8,8 @@ package org.sevenchan.dongs.creature
 	/**
 	 * Mushroom-bitch
 	 * 
+	 * I was originally going to make this a friendly.
+	 * 
 	 * Abilities:
 	 * 	Spore - Releases a cloud of spores from head
 	 * 
@@ -35,7 +37,7 @@ package org.sevenchan.dongs.creature
 			inventory = [];
 			skin = new Skin("morel", "pasty white", "soft but dusty");
 			eyes = [BodyPartRegistry.eyes.human_brown, BodyPartRegistry.eyes.human_brown];
-			
+			abilityUseProbability = 2;
 			this.abilities={spore:new Spore()};
 		}
 		
