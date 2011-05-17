@@ -30,8 +30,8 @@ package org.sevenchan.dongs.towns
 			];
 			
 			shop = new ShopScreen(this, 10, [
-				Item.Registry.white_berries,
-				Item.Registry.spider_venom
+				Item.Registry.berry_white.id,
+				Item.Registry.spider_venom.id
 			]);
 		}
 		
