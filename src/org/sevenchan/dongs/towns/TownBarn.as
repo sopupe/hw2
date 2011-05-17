@@ -78,6 +78,21 @@ package org.sevenchan.dongs.towns
 			text += "<p>Sometime during the night, the merchant decided to move into the barn, and you suddenly notice that he has red skin, like the demons, but doesn’t seem to have bothered you during your sleep.  Maybe there are multiple species, or factions of demons?  You might be able to use this to your advantage.</p>";
 			text += "<p>You also notice that flies and dust vanish once they reach the burnt-out hole in the ceiling, so it’s possible that the other end of the portal lies there.  However, the portal is far too high for you to reach.  You silently wish you had wings, despite the fact that you need to finish your business in this world before you return.</p>";
 		}
+		
+		override public function onShopBuyMenu():String 
+		{
+			return "<p>The old demon smiles, revealing a few yellowed teeth behind his dirty white beard, his eyes displaying a faint glimmer of dumb happiness. &quot;Great!  What can I get'ya?&quot;</p>";
+		}
+		
+		override public function onShopSellMenu():String 
+		{
+			return "<p>He nods understandingly, and leans over to peer in your bag.  He's so close that you can smell how old he is. &quot;Okay, let's see what you've got.&quot;</p>";
+		}
+		
+		override public function onShopWelcome():String 
+		{
+			return "<p>The merchant is a short, ancient demon, with a wispy white beard that blows across his face in the dry, dusty wind as he works to maintain his equally old wagon of wares. Startled, he whips around and flattens his back against the wagon.  Seeing that you are of no threat, he relaxes, letting out a whistly sigh. &quot;Good lord, kid, you nearly scared me to redeath.. Gonna have ta' put a bell on ya' so I can hear you comin'.&quot;  A wheazy chuckle escapes his red chest. &quot;So... What can I do ya' for?&quot;";
+		}
 	}
 
 }
