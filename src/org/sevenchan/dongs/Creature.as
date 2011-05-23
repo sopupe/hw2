@@ -131,9 +131,7 @@ package org.sevenchan.dongs
 			genName();
 		}
 		
-		public function addBoob():void {
-			
-		}
+		public function addBoob():void { trace("USING CREATURE.ADDBOOB INSTEAD OF OVERRIDING"); }
 		
 		public function addEnchantment(ench:Enchantment):String {
 			var story:String = ench.onInit(this);

@@ -30,6 +30,11 @@ package org.sevenchan.dongs.creature
 			trace("Player.init()");
 		}
 		
+		override public function addBoob():void 
+		{
+			baseType.addBoob();
+		}
+		
 		public function changeTo(t:Creature):void {
 			var tmp:Creature = baseType;
 			baseType = t;

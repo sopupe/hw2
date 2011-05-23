@@ -39,7 +39,8 @@ package org.sevenchan.dongs.items
 			+"onto a wall, you stumble over to a mirror.  Your shirt feels tight against your skin, so " 
 			+"you remove it as fast as you can.  Your eyes open wide as your look at your chest and notice that your" 
 			+host.getBreastDescr() + " have changed to become ";
-			if(!host.breasts.length==0) {
+			if (host.breasts.length == 0) {
+				trace(host);
 				host.addBoob();
 				host.addBoob();
 			} else {
@@ -48,6 +49,7 @@ package org.sevenchan.dongs.items
 			text += host.getBreastDescr() + ".  The extra weight pulls you forward a bit, and they wobble ";
 			text += "slightly.  You hold them in your hands and rub them gently, feeling their larger size.</p>";
 			text += "<i>TODO: Do something smexy.  Have an idea? Drop it in the thread.</i>";
+			host.lust += 10;
 			InfoScreen.push(text);
 			return true;
 		}

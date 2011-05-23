@@ -43,65 +43,36 @@ package org.sevenchan.dongs.creature
 			this.skin = SKIN;
 		}
 		
+		override public function addBoob():void 
+		{
+			breasts.push(BodyPartRegistry.breasts.human);
+		}
+		
 		override public function initialGenderSetup():void 
 		{
-			switch(gender) {
-				case Gender.ASEXUAL:
-					this.balls = [];
-					this.dicks = [];
-					this.assholes = [
-						BodyPartRegistry.assholes.human
-					];
-					this.vaginas = [];
-					this.breasts = [];
-					break;
-				case Gender.FEMALE:
-					this.balls = [];
-					this.dicks = [];
-					this.assholes = [
-						BodyPartRegistry.assholes.human
-					];
-					this.vaginas = [
-						BodyPartRegistry.vaginas.human,
-					];
-					this.breasts = [
-						BodyPartRegistry.breasts.human,
-						BodyPartRegistry.breasts.human
-					];
-					break;
-				case Gender.HERM:
-					this.balls = [
-						BodyPartRegistry.balls.human,
-						BodyPartRegistry.balls.human,
-					];
-					this.dicks = [
-						BodyPartRegistry.dicks.human
-					];
-					this.assholes = [
-						BodyPartRegistry.assholes.human
-					];
-					this.vaginas = [
-						BodyPartRegistry.vaginas.human
-					];
-					this.breasts = [
-						BodyPartRegistry.breasts.human,
-						BodyPartRegistry.breasts.human,
-					];
-					break;
-				case Gender.MALE:
-					this.balls = [
-						BodyPartRegistry.balls.human,
-						BodyPartRegistry.balls.human,
-					];
-					this.dicks = [
-						BodyPartRegistry.dicks.human
-					];
-					this.assholes = [
-						BodyPartRegistry.assholes.human
-					];
-					this.vaginas = [];
-					this.breasts = [];
-					break;
+			this.breasts = [
+				BodyPartRegistry.breasts.human,
+				BodyPartRegistry.breasts.human,
+			];
+			this._assholes = [
+				BodyPartRegistry.assholes.human
+			];
+			if(gender.hasDick) {
+				this.balls = [
+					BodyPartRegistry.balls.human,
+					BodyPartRegistry.balls.human,
+				];
+				this.dicks = [
+					BodyPartRegistry.dicks.human
+				];
+				(breasts[0] as Breast).size=0;
+				(breasts[1] as Breast).size=0;
+			}
+			if(gender.hasVag) {
+				this.vaginas = [
+					BodyPartRegistry.vaginas.human
+				];
+				(breasts[0] as Breast).size=(breasts[1] as Breast).size=MathUtils.rand(0,5);
 			}
 			customized = false;
 		}

@@ -56,14 +56,14 @@
 			}
 			]]>
 		</fx:Script>
-	<s:VGroup>
-		<s:HGroup>
+	<s:VGroup width="90%">
+		<s:HGroup width="90%">
 			<s:DropDownList prompt="Collection" id="poolSelector" change="poolChanged()" width="90%">
 			</s:DropDownList>
 		</s:HGroup>
 		<s:List id="partList" width="90%"></s:List>
 		<s:DropDownList id="partSelector" width="90%"></s:DropDownList>
-		<s:HGroup>
+		<s:HGroup width="90%">
 			<s:Button id="add" label="Add" click="addPart()" width="50%" />
 			<s:Button id="remove" label="Remove" click="removePart()" width="50%" />
 		</s:HGroup>
