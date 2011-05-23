@@ -4,6 +4,7 @@ package org.sevenchan.dongs.creature
 	import org.sevenchan.dongs.bodyparts.*;
 	import flash.net.registerClassAlias;
 	import org.sevenchan.dongs.Item;
+	import org.sevenchan.dongs.ItemRegistry;
 	import org.sevenchan.dongs.items.HarpyTincture;
 	import org.sevenchan.dongs.screens.HarpyEncounterScreen;
 	/**
@@ -61,7 +62,7 @@ package org.sevenchan.dongs.creature
 				this.eyes = [BodyPartRegistry.eyes.harpy_dark,BodyPartRegistry.eyes.harpy_dark];
 				this.wings = [BodyPartRegistry.wings.harpy_dark, BodyPartRegistry.wings.harpy_dark];
 				this.skin = new Skin("human", "pale");
-				this.inventory.push(Item.Registry.darkharpyegg);
+				this.inventory.push(ItemRegistry.DARK_HARPY_EGG);
 			}
 			this.inventory.push(
 				new HarpyTincture(1)

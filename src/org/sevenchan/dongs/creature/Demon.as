@@ -86,6 +86,11 @@ package org.sevenchan.dongs.creature
 			InfoScreen.push("<h2>PARADIGM SHIFT</h2><p>No John, you are the demons.</p>");
 		}
 		
+		override public function addBoob():void 
+		{
+			breasts.push(BodyPartRegistry.breasts.demon);
+		}
+		
 		override public function onWin(ply:Creature):Boolean 
 		{
 			if (getInterested(ply) && gender.hasDick) {

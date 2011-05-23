@@ -7,6 +7,7 @@ package org.sevenchan.dongs
 	 */
 	public class Ability 
 	{
+		
 		public var label:String = "";
 		public var name:String = "";
 		public var description:String = "";

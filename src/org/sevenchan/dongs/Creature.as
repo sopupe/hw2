@@ -5,6 +5,7 @@ package org.sevenchan.dongs
 	import flash.net.*;
 	import org.sevenchan.dongs.bodyparts.*;
 	import org.sevenchan.dongs.bodyparts.asshole.Abdomen;
+	import org.sevenchan.dongs.bodyparts.eye.GhostEye;
 	import org.sevenchan.dongs.creature.*;
 	import org.sevenchan.dongs.enchantment.*;
 	import org.sevenchan.dongs.enchantment.events.*;
@@ -43,6 +44,7 @@ package org.sevenchan.dongs
 				human: new Penis("human", 5, null, null)
 			},
 			eyes: {
+				ghost_yellow: new GhostEye("ghost", "yellow"),
 				human_blue: new Eye("human", "blue", "round"),
 				human_brown: new Eye("human", "brown", "round"),
 				human_green: new Eye("human", "green", "round"),
@@ -127,6 +129,10 @@ package org.sevenchan.dongs
 			trace("Creature.init()");
 			_gold = MathUtils.rand(0, 50);
 			genName();
+		}
+		
+		public function addBoob():void {
+			
 		}
 		
 		public function addEnchantment(ench:Enchantment):String {

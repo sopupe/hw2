@@ -45,6 +45,16 @@ package org.sevenchan.dongs
 			}
 			return false;
 		}
+		
+		public static function pluralize(t:String, num:Number):String {
+			if (num == 1)
+				return t;
+			if (t.substr(t.length - 1) == "y") {
+				return t.substr(0, t.length - 1) + "ies";
+			} else {
+				return t + "s";
+			}
+		}
 	}
 
 }

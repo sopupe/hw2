@@ -13,7 +13,7 @@ package org.sevenchan.dongs.ability
 		
 		public function Instawin() 
 		{
-			this.description = "Because the attack damage algoritm is fucked.";
+			this.description = "Because the attack damage algorithm is fucked.";
 			this.label = "Instawin";
 			this.name = "Instant Win";
 		}

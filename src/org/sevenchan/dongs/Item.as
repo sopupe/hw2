@@ -30,12 +30,14 @@ package org.sevenchan.dongs
 				berry_white: new WhiteBerries(),
 				harpy_tincture: new HarpyTincture(),
 				spider_venom: new SpiderVenomSac(),
-				darkharpyegg: new DarkHarpyEgg()
+				darkharpyegg: new DarkHarpyEgg(),
+				potion_pink: new PinkPotion()
 			};
 		}
 		
 		public static function findByID(id:int):Item {
 			for each(var item:Item in Registry) {
+				trace(item.name, item.id);
 				if (item.id == id) return item.copy();
 			}
 			return null;

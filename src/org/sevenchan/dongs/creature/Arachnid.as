@@ -145,7 +145,7 @@ package org.sevenchan.dongs.creature
 				InfoScreen.push(gender.doReplace(text));
 				return true;
 			} else if(gender.hasDick) {
-				text += "<p><b>TODO: Story about Arachnid w/dick droppan babies into your butt</b></p>";
+				text += "";
 				var eggs:String = "Arachnid eggs";
 				for (var idx:int = 0; idx < ply.assholes.length; idx++) {
 					if((ply.assholes[idx] as Asshole).pregnantWith==null) {

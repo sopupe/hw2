@@ -1,12 +1,7 @@
 package org.sevenchan.dongs.towns 
 {
-	import org.sevenchan.dongs.Creature;
-	import org.sevenchan.dongs.creature.Demon;
-	import org.sevenchan.dongs.creature.SandNigger;
-	import org.sevenchan.dongs.Item;
-	import org.sevenchan.dongs.items.SpiderVenomSac;
-	import org.sevenchan.dongs.screens.ShopScreen;
-	import org.sevenchan.dongs.Town;
+	import org.sevenchan.dongs.*;
+	import org.sevenchan.dongs.screens.*;
 	
 	/**
 	 * ...
@@ -30,8 +25,9 @@ package org.sevenchan.dongs.towns
 			];
 			
 			shop = new ShopScreen(this, 10, [
-				Item.Registry.berry_white.id,
-				Item.Registry.spider_venom.id
+				ItemRegistry.BERRY_WHITE.id,
+				ItemRegistry.SPIDER_VENOM.id,
+				ItemRegistry.POTION_PINK.id
 			]);
 		}
 		

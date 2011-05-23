@@ -1,6 +1,7 @@
 package org.sevenchan.dongs.creature 
 {
 	import org.sevenchan.dongs.*;
+	import org.sevenchan.dongs.ability.AbilityRegistry;
 	import org.sevenchan.dongs.ability.Spore;
 	import org.sevenchan.dongs.bodyparts.*;
 	import org.sevenchan.dongs.screens.InfoScreen;
@@ -38,7 +39,7 @@ package org.sevenchan.dongs.creature
 			skin = new Skin("morel", "pasty white", "soft but dusty");
 			eyes = [BodyPartRegistry.eyes.human_brown, BodyPartRegistry.eyes.human_brown];
 			abilityUseProbability = 2;
-			this.abilities={spore:new Spore()};
+			this.abilities={spore:AbilityRegistry.spore};
 		}
 		
 		override public function getHostile(subj:Creature):Boolean 
