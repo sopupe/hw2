@@ -1,11 +1,13 @@
 package org.sevenchan.dongs.creature 
 {
+	import mx.collections.ArrayList;
 	import org.sevenchan.dongs.Creature;
 	import org.sevenchan.dongs.bodyparts.*;
 	import flash.net.registerClassAlias;
 	import org.sevenchan.dongs.Item;
 	import org.sevenchan.dongs.ItemRegistry;
 	import org.sevenchan.dongs.items.HarpyTincture;
+	import org.sevenchan.dongs.items.WhiteBerries;
 	import org.sevenchan.dongs.screens.HarpyEncounterScreen;
 	/**
 	 * Two versions for our purposes.
@@ -42,25 +44,25 @@ package org.sevenchan.dongs.creature
 			this.gender = Gender.FEMALE;
 			this.sexualPreference = SexualPreference.BISEXUAL;
 			this.build = Build.AVG;
-			this.arms = [
+			this.arms.push(
 				BodyPartRegistry.arms.human,
-				BodyPartRegistry.arms.human,
-			];
-			this.legs = [
+				BodyPartRegistry.arms.human
+			);
+			this.legs.push(
 				BodyPartRegistry.legs.harpy,
 				BodyPartRegistry.legs.harpy
-			];
-			this._vaginas = [BodyPartRegistry.vaginas.human];
-			this.assholes = [BodyPartRegistry.assholes.human];
+			);
+			this._vaginas.push(BodyPartRegistry.vaginas.human);
+			this.assholes.push(BodyPartRegistry.assholes.human);
 			if(!dark) {
 				this.hair = new Hair("short, straight brown hair");
-				this.eyes = [BodyPartRegistry.eyes.harpy_light, BodyPartRegistry.eyes.harpy_light];
-				this.wings = [BodyPartRegistry.wings.harpy_light, BodyPartRegistry.wings.harpy_light];
+				this.eyes.push(BodyPartRegistry.eyes.harpy_light, BodyPartRegistry.eyes.harpy_light);
+				this.wings.push(BodyPartRegistry.wings.harpy_light, BodyPartRegistry.wings.harpy_light);
 				this.skin = new Skin("human");
 			} else {
 				this.hair = new Hair("short, straight black hair");
-				this.eyes = [BodyPartRegistry.eyes.harpy_dark,BodyPartRegistry.eyes.harpy_dark];
-				this.wings = [BodyPartRegistry.wings.harpy_dark, BodyPartRegistry.wings.harpy_dark];
+				this.eyes.push(BodyPartRegistry.eyes.harpy_dark,BodyPartRegistry.eyes.harpy_dark);
+				this.wings.push(BodyPartRegistry.wings.harpy_dark, BodyPartRegistry.wings.harpy_dark);
 				this.skin = new Skin("human", "pale");
 				this.inventory.push(ItemRegistry.DARK_HARPY_EGG);
 			}
@@ -89,6 +91,11 @@ package org.sevenchan.dongs.creature
 		
 		override public function onLose(ply:Creature):Boolean 
 		{
+			// Remove all white berries.
+			for (var i:int = 0; i < ply.inventory.length; i++) {
+				if (ply.inventory[i] is WhiteBerries)
+					ply.inventory.splice(i, 1);
+			}
 			return super.onLose(ply);
 		}
 		

@@ -27,13 +27,32 @@ package org.sevenchan.dongs.bodyparts
 		public function get name():String {
 			return _name;
 		}
+		
+		public function impregnate(balls:Vector.<Testicle>):void {
+			var amtCum:Number = 0;
+			var enchTxt:String = "";
+			var semen:String = balls[0].semen;
+			var asshole:Boolean = true;
+			// Get values
+			for (var i:int = 0; i < balls.length; i++) {
+				var t:Testicle = balls[i];
+				amtCum+=t.loadMult * t.normalLoad;
+			}
+
+			timesFucked++;
+			volumeFilled = amtCum;
+			if (amtCum > capacity)
+				semen+=" <b>Your belly has swelled to accomodate the sheer volume.</b>";
+			filledWith = semen;
+		}
+		
 		public function getDescr(num:Number, host:Creature):String {
 			var tightness:String = "tight";
 			var filled:String = "";
 			if (timesFucked > 10)
 				tightness = "loose";
 			if (pregCounter > -1)
-				filled = ", pregnant"; // Oh god how do i describe this
+				filled = ", "+pregnantWith.getTypeName()+"-impregnated"; // Oh god how do i describe this
 			else {
 				if (filledWith.length != 0)
 					filled = ", " + filledWith + "-filled";

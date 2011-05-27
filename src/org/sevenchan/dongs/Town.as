@@ -226,7 +226,7 @@ package org.sevenchan.dongs
 		}
 		
 		private function getRandomInhabitant():Creature {
-			return MathUtils.getRandomEntry(inhabitants);
+			return MathUtils.getRandomArrayEntry(inhabitants);
 		}
 		
 		override public function getScreenText():String 

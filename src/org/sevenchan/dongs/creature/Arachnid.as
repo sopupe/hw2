@@ -27,47 +27,38 @@ package org.sevenchan.dongs.creature
 		
 		override public function initialGenderSetup():void 
 		{
-			trace("ASS", BodyPartRegistry.assholes.arachnid);
-			trace("EYE_BIG",BodyPartRegistry.eyes.arachnid_big);
-			trace("EYE_SMALL",BodyPartRegistry.eyes.arachnid_small);
-			trace("LEG", BodyPartRegistry.legs.arachnid);
-			trace("ARMS",BodyPartRegistry.arms.human);
-			trace("BOOBS",BodyPartRegistry.breasts.human);
-			trace("DICK",BodyPartRegistry.dicks.arachnid);
-			trace("BALLS",BodyPartRegistry.balls.arachnid);
-			assholes = [BodyPartRegistry.assholes.arachnid];
-			eyes = [
+			assholes.push(BodyPartRegistry.assholes.arachnid);
+			eyes.push(
 				BodyPartRegistry.eyes.arachnid_small,BodyPartRegistry.eyes.arachnid_small,
 				BodyPartRegistry.eyes.arachnid_small,BodyPartRegistry.eyes.arachnid_small,
 				BodyPartRegistry.eyes.arachnid_small,BodyPartRegistry.eyes.arachnid_small,
 				BodyPartRegistry.eyes.arachnid_big,BodyPartRegistry.eyes.arachnid_big
-			];
+			);
 			this.build = Build.AVG;
-			this.legs = [
+			this.legs.push(
 				BodyPartRegistry.legs.arachnid,BodyPartRegistry.legs.arachnid,
 				BodyPartRegistry.legs.arachnid,BodyPartRegistry.legs.arachnid,
 				BodyPartRegistry.legs.arachnid,BodyPartRegistry.legs.arachnid,
-				BodyPartRegistry.legs.arachnid,BodyPartRegistry.legs.arachnid,
-			];
-			this.arms = [
+				BodyPartRegistry.legs.arachnid,BodyPartRegistry.legs.arachnid
+			);
+			this.arms.push(
 				BodyPartRegistry.arms.human,
 				BodyPartRegistry.arms.human
-			];
+			);
 			
 			this.hair = new Hair("long, silky, white hair");
 			this.gender = Gender.FEMALE;
 			this.sexualPreference = SexualPreference.STRAIGHT;
 			
 			if (gender.hasVag) {
-				breasts = [BodyPartRegistry.breasts.human, BodyPartRegistry.breasts.human];
-				vaginas = [BodyPartRegistry.vaginas.arachnid];
+				breasts.push(BodyPartRegistry.breasts.human, BodyPartRegistry.breasts.human);
+				vaginas.push(BodyPartRegistry.vaginas.arachnid);
 			}
 			if (gender.hasDick) {
-				dicks = [];
 				addDick("arachnid");
-				balls = [BodyPartRegistry.balls.arachnid,BodyPartRegistry.balls.arachnid];
+				balls.push(BodyPartRegistry.balls.arachnid,BodyPartRegistry.balls.arachnid);
 			}
-			inventory = [new SpiderVenomSac(1)];
+			inventory.push(new SpiderVenomSac(1));
 		}
 		
 		override public function addDick(type:String="human"):void 

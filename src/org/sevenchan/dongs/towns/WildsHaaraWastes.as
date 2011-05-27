@@ -20,6 +20,7 @@ package org.sevenchan.dongs.towns
 			inhabitants = [
 				Creature.CreatureRegistry.oldspace,
 				Creature.CreatureRegistry.arachnid,
+				Creature.CreatureRegistry.ala
 			];
 			isWilds = true;
 			freeRest = true;

@@ -32,19 +32,19 @@ package org.sevenchan.dongs.creature
 			this.build = Build.AVG;
 			this.hair = HAIR;
 			
-			this.arms = [
+			this.arms.push(
 				BodyPartRegistry.arms.human,
-				BodyPartRegistry.arms.human,
-			];
-			this.legs = [
+				BodyPartRegistry.arms.human
+			);
+			this.legs.push(
 				BodyPartRegistry.legs.human,
 				BodyPartRegistry.legs.human
-			];
-			this.assholes = [
+			);
+			this.assholes.push(
 				BodyPartRegistry.assholes.demon
-			];
+			);
 			skin = SKIN;
-			eyes = [BodyPartRegistry.eyes.demon, BodyPartRegistry.eyes.demon];
+			eyes.push(BodyPartRegistry.eyes.demon, BodyPartRegistry.eyes.demon);
 		}
 		
 		override public function getTypeName():String 
@@ -95,23 +95,17 @@ package org.sevenchan.dongs.creature
 		{
 			if (getInterested(ply) && gender.hasDick) {
 				// Do rape
-				
-				var amtCum:Number = 0;
 				var enchTxt:String = "";
-				var semen:String = (balls[0] as Testicle).semen;
-				var asshole:Boolean = true;
+				var asshole:Boolean = false;
+				var amtCum:Number = 0;
+				
 				for (var i:int = 0; i < balls.length; i++) {
 					var t:Testicle = balls[i];
-					enchTxt += ply.addEnchantment(t.targetFX)+"  ";
-					amtCum+=t.loadMult * t.normalLoad;
+					enchTxt += ply.addEnchantment(t.targetFX) + "  ";
 				}
 				for (var idx:int = 0; idx < ply.vaginas.length; idx++) {
-					if((ply.assholes[idx] as Asshole).pregnantWith==null) {
-						(ply.assholes[idx] as Asshole).timesFucked++;
-						(ply.assholes[idx] as Asshole).volumeFilled = amtCum;
-						if (amtCum > (ply.assholes[idx] as Asshole).capacity)
-							semen+=" <b>Your belly has swelled to accomodate the sheer volume.</b>";
-						(ply.assholes[idx] as Asshole).filledWith = semen;
+					if (ply.assholes[idx].pregnantWith == null) {
+						ply.assholes[idx].impregnate(balls);
 						asshole = true;
 					}
 				}
@@ -189,20 +183,20 @@ package org.sevenchan.dongs.creature
 					break;
 			}
 			if(gender.hasDick) {
-				this.balls = [
+				this.balls.push(
 					BodyPartRegistry.balls.demon,BodyPartRegistry.balls.demon
-				];
-				this.dicks = [
-					BodyPartRegistry.dicks.demon,
-				];
+				);
+				this.dicks.push(
+					BodyPartRegistry.dicks.demon
+				);
 			}
 			if (gender.hasVag) {				
-				this.vaginas = [
+				this.vaginas.push(
 					BodyPartRegistry.vaginas.demon
-				];
-				this.breasts = [
+				);
+				this.breasts.push(
 					BodyPartRegistry.breasts.demon,BodyPartRegistry.breasts.demon
-				];
+				);
 			}
 			doMutations();
 		}

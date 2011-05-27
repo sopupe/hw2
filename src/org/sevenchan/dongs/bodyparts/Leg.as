@@ -36,14 +36,14 @@ package org.sevenchan.dongs.bodyparts
 			var dmg:Number = Math.max(7, from.strength - to.strength);
 			var txt:String = "";
 			if (from is Player) {
-				txt=MathUtils.getRandomEntry([
+				txt=MathUtils.getRandomArrayEntry([
 					"You deliver a powerful round kick to the " + to.getTypeName(),
 					"You kick the " + to.getTypeName(),
 					"The "+to.getTypeName()+" gets a foot to the face",
 				]);
 				InfoScreen.push(to.gender.doReplace("<p>"+txt+", dealing " + dmg + " damage!</p>"));
 			} else {
-				txt=MathUtils.getRandomEntry([
+				txt=MathUtils.getRandomArrayEntry([
 					"%CSUB% kicks you",
 					"You discover how "+from.getTypeName()+" feet taste",
 					"One of %SUB%'s kicks finds your face",

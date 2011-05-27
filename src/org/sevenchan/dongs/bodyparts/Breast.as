@@ -86,7 +86,7 @@ package org.sevenchan.dongs.bodyparts
 			var text:String = num + " " + breastSizes[size];
 			if (milkMult != 1)
 				text += ", " + getMilkFeeling();
-			text += " " + name + " " + Utils.pluralize(MathUtils.getRandomEntry(breastSynonyms), num);
+			text += " " + name + " " + Utils.pluralize(MathUtils.getRandomArrayEntry(breastSynonyms), num);
 			return text;
 		}
 		public function onFailedAttack(from:Creature, to:Creature):void{}

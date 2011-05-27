@@ -28,18 +28,18 @@ package org.sevenchan.dongs.creature
 			}
 			this.build = Build.AVG;
 			this.hair = Hair.BALD;
-			this.arms = [
+			this.arms.push(
 				BodyPartRegistry.arms.human,
-				BodyPartRegistry.arms.human,
-			];
-			this.legs = [
+				BodyPartRegistry.arms.human
+			);
+			this.legs.push(
 				BodyPartRegistry.legs.human,
 				BodyPartRegistry.legs.human
-			];
-			this.eyes = [
+			);
+			this.eyes.push(
 				BodyPartRegistry.eyes.human_blue,
-				BodyPartRegistry.eyes.human_blue,
-			];
+				BodyPartRegistry.eyes.human_blue
+			);
 			this.skin = SKIN;
 		}
 		
@@ -50,29 +50,29 @@ package org.sevenchan.dongs.creature
 		
 		override public function initialGenderSetup():void 
 		{
-			this.breasts = [
+			this.breasts.push(
 				BodyPartRegistry.breasts.human,
-				BodyPartRegistry.breasts.human,
-			];
-			this._assholes = [
+				BodyPartRegistry.breasts.human
+			);
+			this._assholes.push(
 				BodyPartRegistry.assholes.human
-			];
+			);
 			if(gender.hasDick) {
-				this.balls = [
+				this.balls.push(
 					BodyPartRegistry.balls.human,
-					BodyPartRegistry.balls.human,
-				];
-				this.dicks = [
+					BodyPartRegistry.balls.human
+				);
+				this.dicks.push(
 					BodyPartRegistry.dicks.human
-				];
-				(breasts[0] as Breast).size=0;
-				(breasts[1] as Breast).size=0;
+				);
+				breasts[0].size=0;
+				breasts[1].size=0;
 			}
 			if(gender.hasVag) {
-				this.vaginas = [
+				this.vaginas.push(
 					BodyPartRegistry.vaginas.human
-				];
-				(breasts[0] as Breast).size=(breasts[1] as Breast).size=MathUtils.rand(0,5);
+				);
+				breasts[0].size=breasts[1].size=MathUtils.rand(0,5);
 			}
 			customized = false;
 		}

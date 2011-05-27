@@ -222,37 +222,42 @@ package org.sevenchan.dongs.creature
 			return baseType.notifyEnchantments(e);
 		}
 		
-		override public function get vaginas():Array { return baseType._vaginas; }
-		override public function set vaginas(balls:Array):void { baseType._vaginas=balls;
+		override public function get assholes():Vector.<Asshole> { return baseType._assholes; }
+		override public function set assholes(balls:Vector.<Asshole>):void { baseType._assholes=balls;
 			customized = true; }
 		
-		override public function get dicks():Array { return baseType._dicks; }
-		override public function set dicks(balls:Array):void { baseType._dicks=balls;
+		override public function get breasts():Vector.<Breast> { return baseType._breasts; }
+		override public function set breasts(balls:Vector.<Breast>):void { baseType._breasts=balls;
 			customized = true; }
 		
-		override public function get assholes():Array { return baseType._assholes; }
-		override public function set assholes(balls:Array):void { baseType._assholes=balls;
+		override public function get eyes():Vector.<Eye> { return baseType._eyes; }
+		override public function set eyes(balls:Vector.<Eye>):void { baseType._eyes=balls;
 			customized = true; }
 		
-		override public function get arms():Array { return baseType._arms; }
-		override public function set arms(balls:Array):void { baseType._arms=balls;
+		override public function get vaginas():Vector.<Vagina> { return baseType._vaginas; }
+		override public function set vaginas(balls:Vector.<Vagina>):void { baseType._vaginas=balls;
 			customized = true; }
 		
-		override public function get breasts():Array { return baseType._breasts; }
-		override public function set breasts(balls:Array):void { baseType._breasts=balls;
+		override public function get arms():Vector.<Arm> { return baseType._arms; }
+		override public function set arms(arr:Vector.<Arm>):void { 
+			baseType._arms = arr;
+			customized = true;
+		}
+		
+		override public function get legs():Vector.<Leg>{ return baseType._legs; }
+		override public function set legs(arr:Vector.<Leg>):void { baseType._legs = arr;
+			customized = true; }
+			
+		override public function get wings():Vector.<Wing> { return baseType._wings; }
+		override public function set wings(arr:Vector.<Wing>):void { baseType._wings = arr;
 			customized = true; }
 		
-		override public function get eyes():Array { return baseType._eyes; }
-		override public function set eyes(balls:Array):void { baseType._eyes=balls;
+		override public function get balls():Vector.<Testicle> { return baseType._balls; }
+		override public function set balls(balls:Vector.<Testicle>):void { baseType._balls=balls;
 			customized = true; }
 		
-		override public function get legs():Array { return baseType._legs; }
-		override public function set legs(balls:Array):void { baseType._legs=balls;
-			customized = true; }
-		
-		
-		override public function get wings():Array { return baseType._wings; }
-		override public function set wings(balls:Array):void { baseType._wings=balls;
+		override public function get dicks():Vector.<Penis> { return baseType._dicks; }
+		override public function set dicks(balls:Vector.<Penis>):void { baseType._dicks=balls;
 			customized = true; }
 			
 		public override function get strength():int { return baseType.strength; }
@@ -263,9 +268,6 @@ package org.sevenchan.dongs.creature
 		
 		public override function get speed():int { return baseType.speed; }
 		public override function set speed(value:int):void { baseType.speed=value; }
-		
-		public override function get balls():Array { return baseType.balls; }
-		public override function set balls(balls:Array):void { baseType.balls=balls; }
 		
 		public override function get intellect():int { return baseType.intellect; }
 		public override function set intellect(value:int):void { baseType.intellect = value; }

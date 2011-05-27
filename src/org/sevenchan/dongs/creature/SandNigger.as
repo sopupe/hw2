@@ -16,34 +16,26 @@ package org.sevenchan.dongs.creature
 		{
 			ownName = "OLDSPACE GUY";
 			//this.abilities = {};
-			this.arms = [
+			this.arms.push(
 				new Arm("expensive", null, null),
-				new Arm("expensive", null, null),
-			];
-			this.legs = [
+				new Arm("expensive", null, null)
+			);
+			this.legs.push(
 				new Leg("sexy black"),
-				new Leg("sexy black"),
-			];
-			this.assholes = [];
+				new Leg("sexy black")
+			);
 			var t:Testicle = new Testicle("black ball", 100, new Instakill("turns you into a pile of diamonds, from which erupts a large stick of OldSpace deodorant."), null, "white, nice-smelling fluid");
-			this.balls = [t,t];
-			this.breasts = [];
+			this.balls.push(t,t);
 			this.build = Build.PRETTYSTRONG;
-			this.dicks = [
+			this.dicks.push(
 				new Penis("stick of OldSpace", 12, new Paralyze(), null)
-			];
-			this.enchantments = [];
+			);
 			this.gender = Gender.MALE;
 			this.sexualPreference = SexualPreference.STRAIGHT;
 			this.gold = 350;
 			this.height = 6.6;
-			this.inventory = [
-				
-			];
-			this.vaginas = [];
-			this.wings = [];
 			this.skin = new Skin("nigger", "black", "smooth");
-			this.eyes = [BodyPartRegistry.eyes.human_brown, BodyPartRegistry.eyes.human_brown];
+			this.eyes.push(BodyPartRegistry.eyes.human_brown, BodyPartRegistry.eyes.human_brown);
 			
 			
 			this.strength = 20;

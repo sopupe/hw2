@@ -214,7 +214,7 @@ package org.sevenchan.dongs.screens
 		public function tryAttack(from:Creature, to:Creature):void {
 			// Check if paralyze affects from
 			if (from.arms.length > 0 && (from.legs.length==0 || MathUtils.rand(0,1) == 0)) {
-				var arm:IBodyPart = MathUtils.getRandomEntry(from.arms);
+				var arm:IBodyPart = MathUtils.getRandomVectorEntry(Vector.<*>(from.arms));
 				if(missed(arm,from,to))
 					arm.onFailedAttack(from,to);
 				else
@@ -223,7 +223,7 @@ package org.sevenchan.dongs.screens
 				return;
 			}
 			if (from.legs.length > 0) {
-				var leg:IBodyPart = MathUtils.getRandomEntry(from.legs);
+				var leg:IBodyPart = MathUtils.getRandomVectorEntry(Vector.<*>(from.legs));
 				if(missed(leg,from,to))
 					leg.onFailedAttack(from,to);
 				else

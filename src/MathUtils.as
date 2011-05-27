@@ -84,7 +84,13 @@ package {
 			
 		}
 		
-		public static function getRandomEntry(arr:Array):* {
+		public static function getRandomArrayEntry(arr:Array):* {
+			var idx:int = rand(0, arr.length - 1);
+			trace(0, arr.length - 1, "=", idx);
+			return arr[idx];
+		}
+		
+		public static function getRandomVectorEntry(arr:Vector.<*>):* {
 			var idx:int = rand(0, arr.length - 1);
 			trace(0, arr.length - 1, "=", idx);
 			return arr[idx];
@@ -95,7 +101,7 @@ package {
 			for (var k:String in o) {
 				ab.push(o[k]);
 			}
-			return getRandomEntry(ab);
+			return getRandomArrayEntry(ab);
 		}
 		
 		public static function lengthOf(o:Object):int {

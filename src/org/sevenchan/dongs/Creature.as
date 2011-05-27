@@ -78,8 +78,8 @@ package org.sevenchan.dongs
 		public var build:Build = Build.AVG; 										// How fat am I?
 		public var material:Material = Material.NO_MATERIAL_MODIFIER;				// What am I made of?
 		public var hair:Hair = Hair.BALD; 											// His/her/hir hair is...
-		public var skin:Skin = new Skin("human"); 											// His/her/hir hair is...
-		public var _gender:Gender = Gender.ASEXUAL; 									// Boy, Girl, Neither, Both?
+		public var skin:Skin = new Skin("human"); 									// His/her/hir hair is...
+		public var _gender:Gender = Gender.ASEXUAL; 								// Boy, Girl, Neither, Both?
 		public var sexualPreference:SexualPreference = SexualPreference.ASEXUAL;	// Straight, Gay, ASexual, Bi?
 		
 		// Stats (CACHED VALUES)
@@ -96,25 +96,39 @@ package org.sevenchan.dongs
 		public var _gold:int = 0;		// Currency
 										
 		// Collections
-		public var _abilities:Object = new Object(); 			// What magic/techniques can I use?
-		public var _assholes:Array = new Array(); 				// How many, and what type of assholes do I possess?
-		public var _arms:Array = new Array();					// Needed to attack. Tentacles are ok.
-		public var _balls:Array = new Array(); 					// Testes (Cum and pregnancy options)
-		public var _breasts:Array = new Array(); 				// Boobs (fuckable)
-		public var _dicks:Array = new Array(); 					// Penises (Pleasure options, testes required for preggo/cum stuff)
-		public var enchantments:Object = new Object();			// What kinds of effects am I suffering/benefiting from?
-		public var _eyes:Array = new Array();					// How many/what kinds of eyes do I have?
-		public var inventory:Array = new Array();				// What stuff am I carrying?
-		public var _legs:Array = new Array();					// Legs or locomotive tentacles or some other propulsion. (NONE = CAN'T MOVE OR DODGE)
-		public var _vaginas:Array = new Array();					// Places to put babies if the "father" has a penis and doesn't know the FALCON PUNCH.  Anal pregnancy is okay but only with dicks with that flag.
-		public var _wings:Array = new Array();					// For flight.
-		public var explored:Array = new Array();				
+		// What magic/techniques can I use?
+		public var _abilities:Object = new Object(); 			
+		// How many, and what type of assholes do I possess?
+		public var _assholes:Vector.<Asshole> = new Vector.<Asshole>();	
+		// Needed to attack. Tentacles are ok.
+		public var _arms:Vector.<Arm> = new Vector.<Arm>();		
+		// Testes (Cum and pregnancy options)
+		public var _balls:Vector.<Testicle> = new Vector.<Testicle>();	
+		// Boobs (fuckable)
+		public var _breasts:Vector.<Breast> = new Vector.<Breast>();
+		// Penises (Pleasure options, testes required for preggo/cum stuff)
+		public var _dicks:Vector.<Penis> = new Vector.<Penis>();
+		// What kinds of effects am I suffering/benefiting from?
+		public var enchantments:Object = new Object();			
+		// How many/what kinds of eyes do I have?
+		public var _eyes:Vector.<Eye> = new Vector.<Eye>();		
+		// What stuff am I carrying?
+		public var inventory:Vector.<Item> = new Vector.<Item>();
+		// Legs or locomotive tentacles or some other propulsion. (NONE = CAN'T MOVE OR DODGE)
+		public var _legs:Vector.<Leg> = new Vector.<Leg>();
+		// Places to put babies if the "father" has a penis and doesn't know the FALCON PUNCH.  Anal pregnancy is okay but only with dicks with that flag.
+		public var _vaginas:Vector.<Vagina> = new Vector.<Vagina>();
+		// For flight.
+		public var _wings:Vector.<Wing> = new Vector.<Wing>();
+		// Explored locations
+		public var explored:Vector.<String> = new Vector.<String>();
 		
 		private var main:AdventureController = null;
 		protected var abilityUseProbability:Number = 1;
 		
 		public static function init_creatures():void {
-			CreatureRegistry={
+			CreatureRegistry = {
+				ala: new Ala(),
 				arachnid: new Arachnid(false),
 				arachnid_pregnant: new Arachnid(true),
 				harpy: new Harpy(false),
@@ -241,7 +255,7 @@ package org.sevenchan.dongs
 				"Rubin",
 				"Schwarzeneggar"
 			];
-			ownName = MathUtils.getRandomEntry(firstNames) + " " + MathUtils.getRandomEntry(lastNames);
+			ownName = MathUtils.getRandomArrayEntry(firstNames) + " " + MathUtils.getRandomArrayEntry(lastNames);
 			//trace(ownName);
 		}
 		
@@ -422,44 +436,42 @@ package org.sevenchan.dongs
 			doStatsUpdate();
 		}
 		
-		public function get assholes():Array { return this._assholes; }
-		public function set assholes(balls:Array):void { this._assholes=balls;
-			customized = true; }
-			
-			
-		
-		public function get breasts():Array { return this._breasts; }
-		public function set breasts(balls:Array):void { this._breasts=balls;
+		public function get assholes():Vector.<Asshole> { return this._assholes; }
+		public function set assholes(balls:Vector.<Asshole>):void { this._assholes=balls;
 			customized = true; }
 		
-		public function get eyes():Array { return this._eyes; }
-		public function set eyes(balls:Array):void { this._eyes=balls;
+		public function get breasts():Vector.<Breast> { return this._breasts; }
+		public function set breasts(balls:Vector.<Breast>):void { this._breasts=balls;
 			customized = true; }
 		
-		public function get vaginas():Array { return this._vaginas; }
-		public function set vaginas(balls:Array):void { this._vaginas=balls;
+		public function get eyes():Vector.<Eye> { return this._eyes; }
+		public function set eyes(balls:Vector.<Eye>):void { this._eyes=balls;
 			customized = true; }
 		
-		public function get arms():Array { return _arms; }
-		public function set arms(arr:Array):void { 
+		public function get vaginas():Vector.<Vagina> { return this._vaginas; }
+		public function set vaginas(balls:Vector.<Vagina>):void { this._vaginas=balls;
+			customized = true; }
+		
+		public function get arms():Vector.<Arm> { return _arms; }
+		public function set arms(arr:Vector.<Arm>):void { 
 			_arms = arr;
 			customized = true;
 		}
 		
-		public function get legs():Array { return _legs; }
-		public function set legs(arr:Array):void { _legs = arr;
+		public function get legs():Vector.<Leg>{ return _legs; }
+		public function set legs(arr:Vector.<Leg>):void { _legs = arr;
 			customized = true; }
 			
-		public function get wings():Array { return _wings; }
-		public function set wings(arr:Array):void { _wings = arr;
+		public function get wings():Vector.<Wing> { return _wings; }
+		public function set wings(arr:Vector.<Wing>):void { _wings = arr;
 			customized = true; }
 		
-		public function get balls():Array { return _balls; }
-		public function set balls(balls:Array):void { _balls=balls;
+		public function get balls():Vector.<Testicle> { return _balls; }
+		public function set balls(balls:Vector.<Testicle>):void { _balls=balls;
 			customized = true; }
 		
-		public function get dicks():Array { return _dicks; }
-		public function set dicks(balls:Array):void { _dicks=balls;
+		public function get dicks():Vector.<Penis> { return _dicks; }
+		public function set dicks(balls:Vector.<Penis>):void { _dicks=balls;
 			customized = true; }
 		
 		public function get abilities():Object { return _abilities; }
@@ -500,7 +512,7 @@ package org.sevenchan.dongs
 			return _level;
 		}
 		
-		private function getBodyPartDesc(collection:Array, singular:String):String {
+		private function getBodyPartDesc(collection:Vector.<IBodyPart>, singular:String):String {
 			
 			if (collection.length== 0) {
 				return "no "+singular+"s";
@@ -567,39 +579,39 @@ package org.sevenchan.dongs
 		}
 		
 		public function getTesticleDescr():String {
-			return getBodyPartDesc(balls,"ball");
+			return getBodyPartDesc(Vector.<IBodyPart>(balls),"ball");
 		}
 		
 		public function getDickDescr():String {
-			return getBodyPartDesc(dicks,"dick");
+			return getBodyPartDesc(Vector.<IBodyPart>(dicks),"dick");
 		}
 		
 		public function getVagDescr():String {
-			return getBodyPartDesc(vaginas,"vag");
+			return getBodyPartDesc(Vector.<IBodyPart>(vaginas),"vag");
 		}
 		
 		public function getBreastDescr():String {
-			return getBodyPartDesc(breasts, "boob");		
+			return getBodyPartDesc(Vector.<IBodyPart>(breasts), "boob");		
 		}
 		
 		public function getAssDescr():String {
-			return getBodyPartDesc(assholes,"asshole");
+			return getBodyPartDesc(Vector.<IBodyPart>(assholes),"asshole");
 		}
 		
 		public function getArmsDescr():String {
-			return getBodyPartDesc(arms,	"arm");
+			return getBodyPartDesc(Vector.<IBodyPart>(arms),	"arm");
 		}
 		
 		public function getEyesDescr():String {
-			return getBodyPartDesc(eyes,	"eye");
+			return getBodyPartDesc(Vector.<IBodyPart>(eyes),	"eye");
 		}
 		
 		public function getLegsDescr():String {
-			return getBodyPartDesc(legs,	"leg");
+			return getBodyPartDesc(Vector.<IBodyPart>(legs),	"leg");
 		}
 		
 		public function getWingsDescr():String {
-			return getBodyPartDesc(wings,	"wing");
+			return getBodyPartDesc(Vector.<IBodyPart>(wings),	"wing");
 		}
 		
 		/**

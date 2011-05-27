@@ -29,15 +29,12 @@ package org.sevenchan.dongs.creature
 			this.build = Build.AVG;
 			this.hair = new Hair("mushroom cap");
 			gender = Gender.ASEXUAL;
-			this.arms = [
+			this.arms.push(
 				BodyPartRegistry.arms.human,
-				BodyPartRegistry.arms.human,
-			];
-			this.legs = [];
-			this.assholes = [];
-			inventory = [];
+				BodyPartRegistry.arms.human
+			);
 			skin = new Skin("morel", "pasty white", "soft but dusty");
-			eyes = [BodyPartRegistry.eyes.human_brown, BodyPartRegistry.eyes.human_brown];
+			eyes.push(BodyPartRegistry.eyes.human_brown, BodyPartRegistry.eyes.human_brown);
 			abilityUseProbability = 2;
 			this.abilities={spore:AbilityRegistry.spore};
 		}
