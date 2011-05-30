@@ -19,7 +19,7 @@ package org.sevenchan.dongs.creature
 		{
 			abilities = [
 				AbilityRegistry.sandstorm,
-				//AbilityRegistry.Lightning,
+				AbilityRegistry.lightning,
 				AbilityRegistry.tornado
 			];
 			abilityUseProbability = 1;

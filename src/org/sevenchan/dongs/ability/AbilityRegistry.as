@@ -10,6 +10,7 @@ package org.sevenchan.dongs.ability
 		public static var sandstorm:Sandstorm = new Sandstorm();
 		public static var spore:Spore = new Spore();
 		public static var tornado:Tornado = new Tornado(); 
+		public static var lightning:Lightning = new Lightning();
 		
 		public function AbilityRegistry() 
 		{

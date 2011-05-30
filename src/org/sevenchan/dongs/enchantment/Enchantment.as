@@ -1,6 +1,7 @@
 package org.sevenchan.dongs.enchantment 
 {
 	import org.sevenchan.dongs.Creature;
+	import flash.utils.getQualifiedClassName;
 	/**
 	 * MAGICK
 	 * @author N3X15
@@ -26,7 +27,10 @@ package org.sevenchan.dongs.enchantment
 		 * Unique name for every enchantment (so the enchantment can remove itself).
 		 * @return
 		 */
-		public function getID():String { return ""; }
+		public function getID():String { 
+			throw new Error("FATAL ERROR: " + getQualifiedClassName(this) + " does not specify a custom getID()!");
+			return ""; 
+		}
 		
 		/**
 		 * Do stuff after host wins/loses.
@@ -53,8 +57,14 @@ package org.sevenchan.dongs.enchantment
 			return false;
 		}
 		
-		public function getName():String { return getID() + "[WIP?]"; }
-		public function getDescr():String { return "???"; }
+		public function getName():String { 
+			trace("ERROR: " + getQualifiedClassName(this) + " does not specify a custom getName()!");
+			return getID() + " [WIP?]"; 
+		}
+		public function getDescr():String { 
+			trace("ERROR: " + getQualifiedClassName(this) + " does not specify a custom getDescr()!");
+			return "???"; 
+		}
 	}
 
 }
