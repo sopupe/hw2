@@ -5,7 +5,6 @@ package org.sevenchan.dongs.creature
 	import org.sevenchan.dongs.bodyparts.*;
 	import flash.net.registerClassAlias;
 	import org.sevenchan.dongs.Item;
-	import org.sevenchan.dongs.ItemRegistry;
 	import org.sevenchan.dongs.items.HarpyTincture;
 	import org.sevenchan.dongs.items.WhiteBerries;
 	import org.sevenchan.dongs.screens.HarpyEncounterScreen;

@@ -29,7 +29,7 @@ package org.sevenchan.dongs.towns
 			]);
 		}
 		
-		override public function onRevelation():void 
+		override public function onRevelation():Boolean 
 		{
 			text = "<h2>Welcome to Hell</h2>";
 			text += "<p>You slowly awaken.</p>";
@@ -60,6 +60,7 @@ package org.sevenchan.dongs.towns
 			text += "merchant some more before approaching him for wares. This is Hell, after ";
 			text += "all. Who knows what could happen?</p> ";
 			text += "";
+			return true;
 		}
 		
 		override public function onEnter():void 

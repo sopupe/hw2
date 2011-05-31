@@ -47,7 +47,7 @@ package org.sevenchan.dongs.towns
 		
 		
 		// TODO: Rework
-		override public function onRevelation():void 
+		override public function onRevelation():Boolean 
 		{
 			text = "<p>You round a sand dune, probably the 5th one this hour, and curse to yourself for not bringing enough water.  <i>Brilliant fucking work,</i> you scold yourself, and continue walking, feeling faint.</p>";
 			text += "<p>An hour later, you arrive at Banala.  You immediately begin drinking out of the community well, and nearly fall in.  After a few minutes of slurping noisily from the bucket, you lift your head, suddenly acutely aware of a great number of demons and demonesses looking in your direction, most carrying weapons or shop implements.</p>";
@@ -56,6 +56,7 @@ package org.sevenchan.dongs.towns
 			text += "<p>&quot;Are you inferring that I am a part of that sick, traitorous bastard's personal army?&quot;  You ask, your mood souring as the insult touches a nerve.  The anger boils in your blood. &quot;He burned our villages, raped our women, and sold our children into slavery.  I want nothing more than to see him die on my sword.&quot;</p>";
 			text += "<p>&quot;... I see.&quot; The fat one responds as the villagers lower their weapons, &quot;Then you are welcome here. I assume you arrived from the old barn, yes?&quot; You nod hesistantly. She smiles sadly. &quot;Then you are woefully unprepared for what lies ahead.&quot;  Without saying more, she waddles away, with the rest of the villagers in tow.</p>";
 			text += "<p><i>Fuck.</i></p>";
+			return true;
 		}
 		
 		override public function onFailedRest():void 

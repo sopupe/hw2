@@ -237,7 +237,7 @@ package org.sevenchan.dongs
 		/**
 		 * omg new town what's it like
 		 */
-		public function onRevelation():void { text = "REVELATION"; }
+		public function onRevelation():Boolean { text = "REVELATION"; return true; }
 		
 		public function onExplore(bumpedInto:Creature):void { text = "EXPLORE"; }
 		

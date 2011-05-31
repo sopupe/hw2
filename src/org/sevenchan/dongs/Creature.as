@@ -264,8 +264,15 @@ package org.sevenchan.dongs
 		 * @return String Whatever it's called
 		 */
 		public function getTypeName():String {
+			throw new Error("SOME DUMBASS DIDN'T GIVE THIS CREATURE A NAME");
 			return "NOT FUCKING NAMED YET";
 		}
+		
+		/**
+		 * Do I have the option to run?
+		 * @return Button visibility
+		 */
+		public function canRun():Boolean { return true; }
 		
 		public function getDescription():String {
 			var descr:String = "";

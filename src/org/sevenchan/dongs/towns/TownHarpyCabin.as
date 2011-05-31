@@ -25,6 +25,13 @@ package org.sevenchan.dongs.towns
 			];
 		}
 		
+		override public function onRevelation():Boolean 
+		{
+			text = "Whoops, I forgot this one. WIP.";
+			
+			return true;
+		}
+		
 		override public function onEnter():void 
 		{
 			text = "<p>The cabin is warm, despite the falling snow and ice outside.  </p>";

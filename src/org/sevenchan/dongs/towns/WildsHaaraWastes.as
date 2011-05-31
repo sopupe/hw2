@@ -19,8 +19,7 @@ package org.sevenchan.dongs.towns
 			name = "Haara Wastes";
 			inhabitants = [
 				Creature.CreatureRegistry.oldspace,
-				Creature.CreatureRegistry.arachnid,
-				Creature.CreatureRegistry.ala
+				Creature.CreatureRegistry.arachnid
 			];
 			isWilds = true;
 			freeRest = true;
@@ -65,9 +64,10 @@ package org.sevenchan.dongs.towns
 			text +=".</p>";
 		}
 		
-		override public function onRevelation():void 
+		override public function onRevelation():Boolean 
 		{
 			text = new Intro();
+			return true;
 		}
 		
 	}

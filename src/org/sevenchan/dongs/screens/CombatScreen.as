@@ -86,7 +86,8 @@ package org.sevenchan.dongs.screens
 				setButton(0, "Attack");
 				setButton(1, "Items");
 				setButton(2, "Abilities");
-				setButton(3, "Run");
+				if (combatant.canRun())
+					setButton(3, "Run");
 				setButton(4, "Forfeit");
 			} else {
 				setButton(0, "PARALYZED");

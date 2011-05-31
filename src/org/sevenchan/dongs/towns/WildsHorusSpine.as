@@ -25,7 +25,7 @@ package org.sevenchan.dongs.towns
 			isWilds = true;
 			freeRest = true;
 			connectedTowns = [
-				"banala"
+				"banala","damned"
 			];
 		}
 		
@@ -70,11 +70,13 @@ package org.sevenchan.dongs.towns
 			
 		}
 		
-		override public function onRevelation():void 
+		override public function onRevelation():Boolean 
 		{
 			text = "<h2>Horus' Spine</h2>";
 			text += "<p>It's not hard to see how the travelers who crossed these mountains long ago gave them their name.  Gigantic white rocks stretch into the sky.  You assume them to be limestone, not that it matters here.  For all you know, it could be the dried semen that the lustful creatures here collect and dump into massive piles that reach into the sky.  You shudder at the thought.</p>";
 			text += "<p>Gripping a random branch on the ground as a walking stick, you begin your ascent into the unknown.</p>";
+			
+			return true;
 		}
 		
 		
