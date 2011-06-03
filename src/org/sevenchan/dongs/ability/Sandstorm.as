@@ -14,6 +14,7 @@ package org.sevenchan.dongs.ability
 		
 		public function Sandstorm() 
 		{
+			this.manaCost = 15;
 			this.description = "Summons a massive sandstorm to blind your enemies.";
 			this.label = "Sandstrm";
 			this.name = "Sandstorm";

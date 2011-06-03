@@ -34,6 +34,7 @@ package org.sevenchan.dongs.items
 			delete host.enchantments["corruption"];
 			delete host.enchantments["paralyze"];
 			host.HP = host.maxHP;
+			host.HP = host.maxMana;
 			return true;
 		}
 		

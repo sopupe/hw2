@@ -5,6 +5,7 @@ package org.sevenchan
 	import flash.events.*;
 	import flash.sampler.NewObjectSample;
 	import flash.text.*;
+	import org.sevenchan.dongs.enchantment.events.ScreenChangedEvent;
 	import spark.components.Application;
 	import mx.core.UIComponent;
 	import org.sevenchan.dongs.Creature;
@@ -52,6 +53,8 @@ package org.sevenchan
 		private var statMana:Statistic;
 		public var statHP:Statistic;
 		private var statGold:TextField;
+		
+		private var statsAreSetUp:Boolean = false;
 		
 		public var player:Player;
 		
@@ -211,6 +214,7 @@ package org.sevenchan
 			statGold.defaultTextFormat = tf;
 			
 			pnlStats.arrangeStack();
+			statsAreSetUp = true;
 			
 			refreshStats();
 		}
@@ -275,12 +279,17 @@ package org.sevenchan
 			this.btnSelectPerk.visible = screen.selectPerkButton&& visible;
 			
 			this.pnlMain.text = screen.getScreenText();
+			if (player != null) {
+				player.notifyEnchantments(new ScreenChangedEvent());
+				player.addLust();
+			}
 		}
 		
 		public function refreshStats():void {
 			if (player.level == 0) {
 				player.levelUp(true);
 			}
+			if (!statsAreSetUp) return;
 			statXP.setMaxAndValue(player.maxXP, player.XP, false);
 			statStrength.setMaxAndValue(100, player.strength, false);
 			statSpeed.setMaxAndValue(100, player.speed, false);

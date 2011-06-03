@@ -285,6 +285,7 @@ package org.sevenchan.dongs.creature
 		
 		public override function get HP():int{ return baseType.HP; }
 		public override function get maxHP():int{ return baseType.maxHP; }
+		public override function get maxMana():int{ return baseType.maxMana; }
 		public override function set HP(value:int):void { baseType.HP = value; main.refreshStats(); }
 		
 		public override function get XP():int{ return baseType.XP; }

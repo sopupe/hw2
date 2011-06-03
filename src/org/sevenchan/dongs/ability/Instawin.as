@@ -13,6 +13,7 @@ package org.sevenchan.dongs.ability
 		
 		public function Instawin() 
 		{
+			this.manaCost = 0;
 			this.description = "Because the attack damage algorithm is fucked.";
 			this.label = "Instawin";
 			this.name = "Instant Win";

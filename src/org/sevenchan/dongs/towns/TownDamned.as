@@ -1,7 +1,6 @@
 package org.sevenchan.dongs.towns 
 {
 	import org.sevenchan.dongs.Creature;
-	import org.sevenchan.dongs.ItemRegistry;
 	import org.sevenchan.dongs.screens.ShopScreen;
 	import org.sevenchan.dongs.Town;
 	
@@ -19,7 +18,7 @@ package org.sevenchan.dongs.towns
 			name = "Damned";
 			inhabitants = [
 				Creature.CreatureRegistry.demon,
-				Creature.CreatureRegistry.cowgirl
+				//Creature.CreatureRegistry.cowgirl
 			];
 			isWilds = false;
 			freeRest = false;
@@ -53,6 +52,7 @@ package org.sevenchan.dongs.towns
 				return true;
 			} else {
 				// WIND BOSS
+				trace("COMBATTIEM");
 				main.startCombat(null, Creature.CreatureRegistry.ala);
 				return false;
 			}

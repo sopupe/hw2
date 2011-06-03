@@ -1,10 +1,9 @@
 package org.sevenchan.dongs.creature 
 {
-	import org.sevenchan.dongs.Ability;
+	import org.sevenchan.dongs.*;
 	import org.sevenchan.dongs.ability.AbilityRegistry;
 	import org.sevenchan.dongs.bodyparts.Eye;
 	import org.sevenchan.dongs.bodyparts.Gender;
-	import org.sevenchan.dongs.Creature;
 	import org.sevenchan.dongs.enchantment.WindBlessing;
 	import org.sevenchan.dongs.screens.InfoScreen;
 	/**
@@ -21,6 +20,8 @@ package org.sevenchan.dongs.creature
 		{
 			abilities = [
 				AbilityRegistry.sandstorm,
+				AbilityRegistry.rainstorm,
+				AbilityRegistry.hailstorm,
 				AbilityRegistry.lightning,
 				AbilityRegistry.tornado
 			];
@@ -29,9 +30,10 @@ package org.sevenchan.dongs.creature
 				BodyPartRegistry.eyes.ghost_yellow,
 				BodyPartRegistry.eyes.ghost_yellow
 			);
+			mana = 100;
 			this.gold = 100;
 			this.inventory.push(
-			ItemRegistry.POTION_GOLD.id
+				ItemRegistry.POTION_GOLD
 			);
 			this._gender = Gender.ASEXUAL;
 		}
@@ -76,10 +78,15 @@ package org.sevenchan.dongs.creature
 			return false;
 		}
 		
-		override public function onWin(ply:Creature):Boolean 
+		override public function onLose(ply:Creature):Boolean 
 		{
 			ply.addEnchantment(new WindBlessing());
 			ply.abilities["lightning"] = AbilityRegistry.lightning;
+			ply.gold += 100;
+			for (var i:int = 0; i < inventory.length; i++) {
+				var item:Item = inventory[i];
+				ply.addToInventory(item);
+			}
 			
 			InfoScreen.push("<p>The rain slows to a stop as the great beast before you stumbles, its "
 			+"body disintegrating as the storm dissipates.  You stand, and before you are able to "
@@ -89,7 +96,8 @@ package org.sevenchan.dongs.creature
 			+"sound overwhelms your senses and you pass out.</p><p>You awaken a short time later, "
 			+"and feel rested.  You notice that you have 100 more gold, a flask of Gold Potion that "
 			+"you don't remember buying, and a user's manual for the new lightning ability you now "
-			+"have.</p>");
+			+"apparently have.</p><p>A gentle gust ruffles your tattered clothing, and you swear "
+			+"that you heard it whisper, \"You may pass\".</p>");
 			return true; // Yes, we are overriding the winnings screen.
 		}
 	}

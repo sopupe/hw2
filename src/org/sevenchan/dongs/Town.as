@@ -6,6 +6,7 @@ package org.sevenchan.dongs
 	import org.sevenchan.dongs.screens.ShopScreen;
 	import org.sevenchan.dongs.towns.TownBanala;
 	import org.sevenchan.dongs.towns.TownBarn;
+	import org.sevenchan.dongs.towns.TownDamned;
 	import org.sevenchan.dongs.towns.TownHarpyCabin;
 	import org.sevenchan.dongs.towns.WildsHaaraWastes;
 	import org.sevenchan.dongs.towns.WildsHorusSpine;
@@ -59,6 +60,7 @@ package org.sevenchan.dongs
 			knownTowns={
 				barn: new TownBarn(),
 				banala: new TownBanala(),
+				damned: new TownDamned(),
 				haara: new WildsHaaraWastes(),
 				harpycabin: new TownHarpyCabin(),
 				horus: new WildsHorusSpine()
@@ -97,8 +99,12 @@ package org.sevenchan.dongs
 			{
 				menu = "main";
 				if (!main.player.getExplored(ID)) {
-					onRevelation();
-					main.player.setExplored(ID);
+					if(onRevelation()) {
+						main.player.setExplored(ID);
+					} else {
+						text += "You cannot enter this area... Yet.";
+						return false;
+					}
 				} else {
 					onEnter();	
 				}
@@ -129,6 +135,7 @@ package org.sevenchan.dongs
 									c._level = Math.max(1, main.player.level + MathUtils.rand( -2, 2));
 									c._strength = Math.max(1, main.player.strength + MathUtils.rand( -2, 2));
 									c.HP = c.maxHP;
+									c.mana = c.maxMana;
 									c.initialGenderSetup();
 									if (c.getHostile(main.player)) {
 										main.startCombat(this, c);

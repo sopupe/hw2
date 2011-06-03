@@ -125,6 +125,7 @@ package org.sevenchan.dongs
 		
 		private var main:AdventureController = null;
 		protected var abilityUseProbability:Number = 1;
+		protected var turnsToLose:int = 0;
 		
 		public static function init_creatures():void {
 			CreatureRegistry = {
@@ -142,7 +143,7 @@ package org.sevenchan.dongs
 		{
 			trace("Creature.init()");
 			_gold = MathUtils.rand(0, 50);
-			genName();
+			_mana = maxMana;
 		}
 		
 		public function addBoob():void { trace("USING CREATURE.ADDBOOB INSTEAD OF OVERRIDING"); }
@@ -157,14 +158,24 @@ package org.sevenchan.dongs
 		public function initialGenderSetup():void { }
 		
 		public function yourMove(cs:CombatScreen, ply:Creature):void {
-			if (notifyEnchantments(new CombatTurnEvent(ply))) {
+			if ((turnsToLose>0)||notifyEnchantments(new CombatTurnEvent(ply))) {
 				InfoScreen.push("<p>The " + getTypeName() + " cannot attack!</p>");
 				return;
 			}
+			if (turnsToLose > 0) {
+				turnsToLose--;
+			}
 			if (MathUtils.lengthOf(abilities) > 0 && MathUtils.rand(0,abilityUseProbability) == 0) {
 				var ab:Ability = Ability(MathUtils.getRandomObjectEntry(abilities));
-				if(ab.activate(this, ply))
+				if (this.mana < ab.manaCost)
+				{
+					InfoScreen.push("<p>The " + getTypeName() + " tried to use " + ab.name + " but is too exhausted!</p>");
 					return;
+				}
+				if (ab.activate(this, ply)) {
+					this.mana -= ab.manaCost
+					return;
+				}
 			}
 			cs.tryAttack(this, ply);
 			return;
@@ -173,16 +184,18 @@ package org.sevenchan.dongs
 			
 		}
 		public function addLust(amt:Number=1):void {
-			lust += (amt * getLustMult());
+			var adding2Lust:Number = (amt * getLustMult());
+			trace("Adding to lust ", adding2Lust);
+			lust += Math.ceil(adding2Lust);
 		}
 		
 		private function getLustMult():Number {
 			var numballs:Number = balls.length;
 			var loadMultSum:Number = 0;
 			for (var i:int = 0; i < balls.length; i++) {
-				loadMultSum += (balls[i] as Testicle).loadMult;
+				loadMultSum += (balls[i] as Testicle).loadMult/10;
 			}
-			return (numballs * (loadMultSum / numballs))*0.5;
+			return (numballs * (loadMultSum/numballs));
 		}
 		
 		public function takeFromInventory(item:Item):void {
@@ -362,13 +375,15 @@ package org.sevenchan.dongs
 				HP = this.maxHP;
 		}
 		
+		public function get maxMana():int {
+			return 100 + ((level-1) * 10);
+		}
+		
 		public function get maxHP():int {
-			return 100 + ((level-1) * 5);
+			return 100 + ((level-1) * 10);
 		}
 		
 		public function get maxXP():int {
-			trace("_level", _level);
-			trace("_strength", _strength);
 			return Math.max(1,50*(_level * 0.5));
 		}
 		
@@ -657,12 +672,17 @@ package org.sevenchan.dongs
 			this.gold = f.gold;
 			this.height = f.height;
 			this.HP = f.maxHP;
+			this.mana = f.maxMana;
 			this.ownName = f.ownName;
 			this.sensitivity = f.sensitivity;
 			this.sexualPreference = f.sexualPreference;
 			this.inventory = f.inventory;
 			
 			this.performConversion(f);
+		}
+		
+		public function loseTurns(numturns:int):void {
+			turnsToLose += numturns;
 		}
 	}
 }

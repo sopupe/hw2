@@ -13,6 +13,7 @@ package org.sevenchan.dongs.ability
 		
 		public function Tornado() 
 		{
+			this.manaCost = 75;
 			this.description = "Summons a tornado to return player to barn.";
 			this.label = "Tornado";
 			this.name = "Tornado";

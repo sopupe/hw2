@@ -57,6 +57,12 @@ package org.sevenchan.dongs.enchantment
 			return false;
 		}
 		
+		/**
+		 * Do stuff after each screen update.
+		 * @return
+		 */
+		public function onScreenUpdate():void {}
+		
 		public function getName():String { 
 			trace("ERROR: " + getQualifiedClassName(this) + " does not specify a custom getName()!");
 			return getID() + " [WIP?]"; 

@@ -14,6 +14,7 @@ package org.sevenchan.dongs.ability
 		
 		public function Spore() 
 		{
+			this.manaCost = 15;
 			this.description = "Paralyzes your ass.";
 			this.label = "Spore";
 			this.name = "Spore";

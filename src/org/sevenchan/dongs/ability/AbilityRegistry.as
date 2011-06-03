@@ -8,6 +8,8 @@ package org.sevenchan.dongs.ability
 	{
 		public static var instawin:Instawin = new Instawin();
 		public static var sandstorm:Sandstorm = new Sandstorm();
+		public static var rainstorm:Rainstorm = new Rainstorm();
+		public static var hailstorm:Hailstorm = new Hailstorm();
 		public static var spore:Spore = new Spore();
 		public static var tornado:Tornado = new Tornado(); 
 		public static var lightning:Lightning = new Lightning();

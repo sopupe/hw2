@@ -56,7 +56,10 @@ package org.sevenchan.dongs.creature
 			}
 			if (gender.hasDick) {
 				addDick("arachnid");
-				balls.push(BodyPartRegistry.balls.arachnid,BodyPartRegistry.balls.arachnid);
+				balls.push(BodyPartRegistry.balls.arachnid, BodyPartRegistry.balls.arachnid);
+				for each(var t:Testicle in balls) {
+					t.loadMult = 10;
+				}
 			}
 			inventory.push(new SpiderVenomSac(1));
 		}
