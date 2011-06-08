@@ -74,7 +74,23 @@ package org.sevenchan.dongs.creature
 		override public function combatDescr(ply:Creature):String 
 		{
 			ply.lust += 2;
-			return "<p>While exploring the area, you suddenly come across many large spiderwebs. You brush through them, when you hear something scuttle through the brush behind you. Worried, you slowly turn around, and see "+getDescription();
+			var text:String = "";
+			text += "<p>While exploring the area, you suddenly come across many large spiderwebs. ";
+			text += "You brush through them, when you hear something scuttle through the brush ";
+			text += "behind you. Worried, you slowly turn around, and see a beautiful woman.  ";
+			text += "Or at least, the top half of one atop the body of a enormous black spider, ";
+			text += "and if women had 8 eyes. ";
+			if(gender.hasDick) {
+				text += "Her abdomen seems greatly swollen, bulging with eggs.  Her eyes roll crazily ";
+				text += " in her head, as though she has lost control of herself. Strange fluid drips";
+				text += " from the rear of her abdomen.";
+			} else {
+				text += "She blushes as you stare at her strange, twisted body.  &quot;I hope you like";
+				text += " what you ssssssee,&quot; she hisses awkwardly.  &quot;I mussssst mate ";
+				text += " ssssssoon, and it ssssseems that you are the only male in the viccccccinity.";
+				text += "&quot;  She smiles, fondling one of her plump breasts.  &quot;I hope you don't";
+				text += " mind.  Otherwise, I will have to fffffight you.&quot;";
+			}
 		}
 		
 		override public function getHostile(subj:Creature):Boolean 
@@ -138,18 +154,43 @@ package org.sevenchan.dongs.creature
 				text += "<p>You will now gain lust faster.</p>";
 				InfoScreen.push(gender.doReplace(text));
 				return true;
-			} else if(gender.hasDick) {
-				text += "";
-				var eggs:String = "Arachnid eggs";
-				for (var idx:int = 0; idx < ply.assholes.length; idx++) {
-					if((ply.assholes[idx] as Asshole).pregnantWith==null) {
-						(ply.assholes[idx] as Asshole).timesFucked++;
-						(ply.assholes[idx] as Asshole).volumeFilled = amtCum;
-						if (amtCum > (ply.assholes[idx] as Asshole).capacity)
-							eggs+=" <b>Your belly has swelled to accomodate the sheer volume.</b>";
-						(ply.assholes[idx] as Asshole).filledWith = eggs;
-						(ply.assholes[idx] as Asshole).pregnantWith = new Arachnid(false);
-						(ply.assholes[idx] as Asshole).pregCounter = 100;
+			} else if (gender.hasDick) {
+				var rectum:String = (ply.gender.hasVag)?"birth canal and into your womb":"rectum";
+				text = "<p>You collapse to the ground";
+				text += " once again,";
+				text += " defeated and exhausted.  Blood drips from seemingly every part of your body, and you " +
+				"look up at the creature through a single swollen eye.  ";
+				if (HP < maxHP) {
+					text += "She isn't unscatched herself, gashes and dents mar her exoskeleton and ";
+					text += "humanlike upper body.";
+				} else {
+					text += "She is completely unscratched, her maniacal grin accentuating her ";
+					text += "complete victory."
+				}
+				text += "</p><p>She shivers, arching her thin upper body as a thick, ";
+				text += MathUtils.inchesToFootInches(dicks[0].size) + "-long cock erupts from her ";
+				text += "abdomen and hardens into a throbbing, swollen shaft.  You stare at it in ";
+				text += "pure horror.  She steps forward, eliciting an immediate flee reaction from ";
+				text += "you.  It doesn't last long, as you trip over one of her long legs and are ";
+				text += "then pinned to the ground.  You try to struggle, but you're weak and a ";
+				text += "pinprick at the base of your neck halts any movement.</p>";
+				text += "<p>You feel her lower herself down, and try to scream as she roughly slides";
+				text += " her ovipositor deep into your " + rectum + " painfully, getting thicker as it ";
+				text += "intrudes further, spreading you wider and wider until it hilts against her ";
+				text += "swollen abdomen.  Her ovpositor begins swelling with eggs passing into your ";
+				text += "body.  You can feel the leathery bags being deposited into you.</p>";
+				text += "<p>The pain becomes too much and mercifully, you pass out.</p>";
+				if(!ply.gender.hasVag) {
+					for (var idx:int = 0; idx < ply.assholes.length; idx++) {
+						if ((ply.assholes[idx]).pregnantWith == null) {
+							ply.assholes[idx].impregnate(balls);
+						}
+					} 
+				} else {
+					for (var idx:int = 0; idx < ply.vaginas.length; idx++) {
+						if ((ply.vaginas[idx]).pregnantWith == null) {
+							ply.vaginas[idx].impregnate(balls);
+						}
 					}
 				}
 				InfoScreen.push(gender.doReplace(text));
