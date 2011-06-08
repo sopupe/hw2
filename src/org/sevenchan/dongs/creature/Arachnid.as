@@ -82,15 +82,17 @@ package org.sevenchan.dongs.creature
 			text += "and if women had 8 eyes. ";
 			if(gender.hasDick) {
 				text += "Her abdomen seems greatly swollen, bulging with eggs.  Her eyes roll crazily ";
-				text += " in her head, as though she has lost control of herself. Strange fluid drips";
+				text += " in her head, as though she has lost control of herself. A strange, sticky fluid drips";
 				text += " from the rear of her abdomen.";
 			} else {
 				text += "She blushes as you stare at her strange, twisted body.  &quot;I hope you like";
 				text += " what you ssssssee,&quot; she hisses awkwardly.  &quot;I mussssst mate ";
-				text += " ssssssoon, and it ssssseems that you are the only male in the viccccccinity.";
+				text += " ssssssoon, and it ssssseems that you are the only... male nearby.";
 				text += "&quot;  She smiles, fondling one of her plump breasts.  &quot;I hope you don't";
 				text += " mind.  Otherwise, I will have to fffffight you.&quot;";
 			}
+			text += "</p>";
+			return text;
 		}
 		
 		override public function getHostile(subj:Creature):Boolean 

@@ -193,9 +193,9 @@ package org.sevenchan.dongs
 			var numballs:Number = balls.length;
 			var loadMultSum:Number = 0;
 			for (var i:int = 0; i < balls.length; i++) {
-				loadMultSum += (balls[i] as Testicle).loadMult/10;
+				loadMultSum += (balls[i] as Testicle).loadMult*0.5;
 			}
-			return (numballs * (loadMultSum/numballs));
+			return loadMultSum;
 		}
 		
 		public function takeFromInventory(item:Item):void {
