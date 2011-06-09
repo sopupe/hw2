@@ -34,6 +34,13 @@ package org.sevenchan.dongs.bodyparts.asshole
 		}
 		
 		
+		override public function getShortDescr(withModifier:Boolean = false):String 
+		{
+			var t:String = "abdomen";
+			if (withModifier)
+				t = name + " " + t;
+			return t;
+		}
 		
 	}
 

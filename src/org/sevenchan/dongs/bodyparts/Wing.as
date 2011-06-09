@@ -25,6 +25,15 @@ package org.sevenchan.dongs.bodyparts
 		
 		public function get name():String { return species; }
 		
+		
+		public function getShortDescr(withModifier:Boolean = false):String 
+		{
+			var t:String = "wing";
+			if (withModifier)
+				t = name + " " + t;
+			return t;
+		}
+		
 		public function onFailedAttack(from:Creature, to:Creature):void {}
 		public function onGoodAttack(from:Creature, to:Creature):void {}
 		

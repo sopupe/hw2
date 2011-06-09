@@ -50,9 +50,14 @@ package org.sevenchan.dongs.bodyparts
 				]);
 				InfoScreen.push(from.gender.doReplace("<p>"+txt+", causing " + dmg + " damage!</p>"));
 			}
-			trace("["+getDescr(1,from)+"] BEFORE: "+to.HP);
 			to.HP -= dmg;
-			trace("["+getDescr(1,from)+"] AFTER: "+to.HP);
+		}
+		
+		public function getShortDescr(withModifier:Boolean = false):String {
+			var t:String = "leg";
+			if(withModifier)
+				t = name + " " + t;
+			return t;
 		}
 	}
 

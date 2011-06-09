@@ -17,6 +17,13 @@ package org.sevenchan.dongs.bodyparts
 			this.descr = _descr;
 		}
 		public function getDescription():String { return descr; }
+		
+		public function getShortDescr(withModifier:Boolean = false):String {
+			var t:String = "hair";
+			if(withModifier)
+				t = descr;
+			return t;
+		}
 	}
 
 }

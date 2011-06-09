@@ -56,7 +56,6 @@ package org.sevenchan.dongs
 		
 		public static function setup():void {
 			Item.fillRegistry();
-			Creature.init_creatures();
 			knownTowns={
 				barn: new TownBarn(),
 				banala: new TownBanala(),

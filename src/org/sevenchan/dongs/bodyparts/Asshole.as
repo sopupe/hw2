@@ -59,6 +59,14 @@ package org.sevenchan.dongs.bodyparts
 			}
 			return num + " " +tightness+filled+ " "+_name + " asshole"+((num>1)?"s":"");
 		}
+		
+		
+		public function getShortDescr(withModifier:Boolean = false):String {
+			var t:String = "asshole";
+			if(withModifier)
+				t = _name + " " + t;
+			return t;
+		}
 		public function onFailedAttack(from:Creature, to:Creature):void{}
 		public function onGoodAttack(from:Creature, to:Creature):void{}
 		

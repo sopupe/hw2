@@ -2,7 +2,6 @@ package org.sevenchan.dongs.screens
 {
 	import org.sevenchan.dongs.Item;
 	import org.sevenchan.dongs.Screen;
-	import org.sevenchan.dongs.Utils;
 	/**
 	 * ...
 	 * @author N3X15

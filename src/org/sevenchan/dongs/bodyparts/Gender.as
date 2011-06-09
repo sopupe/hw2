@@ -61,6 +61,8 @@ package org.sevenchan.dongs.bodyparts
 			this.hasVag = hasVag;
 		}	
 		
+		
+		
 		/**
 		 * Replaces %SUB% with subjective gender, %OBJ% with objectives, %REF% with reflexives, %POS% with possessive, and %POSP% with possessive pronouns.
 		 * @param _s

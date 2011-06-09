@@ -1,4 +1,4 @@
-package org.sevenchan.dongs 
+package  
 {
 	import flash.utils.Dictionary;
 	/**
@@ -7,6 +7,13 @@ package org.sevenchan.dongs
 	 */
 	public class Utils 
 	{
+		
+		
+		public static function capitalize(s:String):String
+		{
+			return s.substr(0,1).toUpperCase() + s.substr(1);
+		}
+		
 		/**
 		 * a/an, depending on input
 		 * @param	hurr

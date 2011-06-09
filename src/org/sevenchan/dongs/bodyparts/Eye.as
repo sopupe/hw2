@@ -22,6 +22,15 @@ package org.sevenchan.dongs.bodyparts
 		
 		/* INTERFACE org.sevenchan.dongs.bodyparts.IBodyPart */
 		
+		
+		
+		public function getShortDescr(withModifier:Boolean = false):String {
+			var t:String = "eye";
+			if(withModifier)
+				t = name + " " + t;
+			return t;
+		}
+		
 		public function get name():String 
 		{
 			return _name;

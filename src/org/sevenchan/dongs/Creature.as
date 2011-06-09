@@ -127,18 +127,6 @@ package org.sevenchan.dongs
 		protected var abilityUseProbability:Number = 1;
 		protected var turnsToLose:int = 0;
 		
-		public static function init_creatures():void {
-			CreatureRegistry = {
-				ala: new Ala(),
-				arachnid: new Arachnid(false),
-				arachnid_pregnant: new Arachnid(true),
-				harpy: new Harpy(false),
-				harpy_dark: new Harpy(true),
-				human: new Human(),
-				morel: new Morel(),
-				oldspace: new SandNigger()
-			};
-		}
 		public function Creature() 
 		{
 			trace("Creature.init()");
@@ -184,7 +172,7 @@ package org.sevenchan.dongs
 			
 		}
 		public function addLust(amt:Number=1):void {
-			var adding2Lust:Number = (amt * getLustMult());
+			var adding2Lust:int = (amt * getLustMult());
 			trace("Adding to lust ", adding2Lust);
 			lust += Math.ceil(adding2Lust);
 		}

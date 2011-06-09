@@ -24,8 +24,16 @@ package org.sevenchan.dongs.bodyparts
 		}
 		
 		public function getDescr(num:Number, host:Creature):String {
-			return num + " " + name + " arm"+((num>1)?"s":"");
+			return num + " "+getShortDescr(true);
 		}
+		
+		public function getShortDescr(withModifier:Boolean = false):String {
+			var t:String = "arm";
+			if(withModifier)
+				t = name + " " + t;
+			return t;
+		}
+		
 		public function onFailedAttack(from:Creature, to:Creature):void
 		{
 			if (from is Player)
@@ -39,9 +47,9 @@ package org.sevenchan.dongs.bodyparts
 				InfoScreen.push(to.gender.doReplace("<p>You smash the " + to.getTypeName() + " in the face with your fist, dealing " + dmg + " damage!</p>"));
 			else 
 				InfoScreen.push(from.gender.doReplace("<p>%CSUB% punches you with %POS% fist, dealing " + dmg + " damage!</p>"));
-			trace("["+getDescr(1,from)+"] BEFORE: "+to.HP);
+			//trace("["+getDescr(1,from)+"] BEFORE: "+to.HP);
 			to.HP -= dmg;
-			trace("["+getDescr(1,from)+"] AFTER: "+to.HP);
+			//trace("["+getDescr(1,from)+"] AFTER: "+to.HP);
 		}
 	}
 

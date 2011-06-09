@@ -27,7 +27,15 @@ package org.sevenchan.dongs.bodyparts
 				if (filledWith.length != 0)
 					filled = ", " + filledWith + "-filled";
 			}
-			return num + " " +tightness+filled+ " "+_name + " puss"+((num>1)?"ies":"y");
+			return num + " " +tightness+filled+ " "+getShortDescr(true);
+		}
+		
+		override public function getShortDescr(withModifier:Boolean = false):String 
+		{
+			var t:String = "pussy";
+			if (withModifier)
+				t = name + " " + t;
+			return t;
 		}
 		
 		public override function onFailedAttack(from:Creature, to:Creature):void{}

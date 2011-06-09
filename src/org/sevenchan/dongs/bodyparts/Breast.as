@@ -2,7 +2,6 @@ package org.sevenchan.dongs.bodyparts
 {
 	import org.sevenchan.dongs.Creature;
 	import flash.net.registerClassAlias;
-	import org.sevenchan.dongs.Utils;
 	/**
 	 * ...
 	 * @author N3X15
@@ -86,9 +85,19 @@ package org.sevenchan.dongs.bodyparts
 			var text:String = num + " " + breastSizes[size];
 			if (milkMult != 1)
 				text += ", " + getMilkFeeling();
-			text += " " + name + " " + Utils.pluralize(MathUtils.getRandomArrayEntry(breastSynonyms), num);
+			text += " " + Utils.pluralize(getShortDescr(), num);
 			return text;
 		}
+		
+		
+		
+		public function getShortDescr(withModifier:Boolean = false):String {
+			var t:String = MathUtils.getRandomArrayEntry(breastSynonyms);
+			if(withModifier)
+				t = name + " " + t;
+			return t;
+		}
+		
 		public function onFailedAttack(from:Creature, to:Creature):void{}
 		public function onGoodAttack(from:Creature, to:Creature):void{}
 	}

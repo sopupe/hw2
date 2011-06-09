@@ -17,10 +17,11 @@ package org.sevenchan.dongs.towns
 			ID = "horus";
 			name = "Horus' Spine";
 			inhabitants = [
-				Creature.CreatureRegistry.arachnid,
-				Creature.CreatureRegistry.morel,
-				Creature.CreatureRegistry.harpy,
-				Creature.CreatureRegistry.harpy_dark
+				CreatureRegistry.morel,
+				CreatureRegistry.harpy,
+				CreatureRegistry.harpy_dark,
+				CreatureRegistry.arachnid,
+				CreatureRegistry.arachnid_pregnant
 			];
 			isWilds = true;
 			freeRest = true;

@@ -1,7 +1,6 @@
 package org.sevenchan.dongs.items 
 {
 	import org.sevenchan.dongs.Item;
-	import org.sevenchan.dongs.Utils;
 	
 	/**
 	 * ...

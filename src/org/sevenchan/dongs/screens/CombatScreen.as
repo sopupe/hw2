@@ -14,7 +14,6 @@ package org.sevenchan.dongs.screens
 	import org.sevenchan.dongs.Ability;
 	import org.sevenchan.dongs.Town;
 	import org.sevenchan.dongs.towns.TownBarn;
-	import org.sevenchan.dongs.Utils;
 	
 	/**
 	 * ...

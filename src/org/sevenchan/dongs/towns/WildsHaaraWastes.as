@@ -18,8 +18,9 @@ package org.sevenchan.dongs.towns
 			ID = "haara";
 			name = "Haara Wastes";
 			inhabitants = [
-				Creature.CreatureRegistry.oldspace,
-				Creature.CreatureRegistry.arachnid
+				CreatureRegistry.oldspace,
+				CreatureRegistry.arachnid,
+				CreatureRegistry.arachnid_pregnant,
 			];
 			isWilds = true;
 			freeRest = true;

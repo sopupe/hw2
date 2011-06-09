@@ -44,25 +44,15 @@ package org.sevenchan.dongs.bodyparts
 			else if (lust >= 50)	erectDesc = "hardening";
 			else if (lust >= 25)	erectDesc = "growing";
 			
-			switch(Math.round(MathUtils.rand(0, 3))) {
-				case 0:
-					dick = "dick";
-					break;
-				case 1:
-					dick = "cock";
-					break;
-				case 2:
-					if(lust<55)
-						dick = "wang";
-					else
-						dick = "erection";
-					break;
-				case 3:
-					dick = "dong";
-					break;
-			}
 			
 			return num + " " +sizeDesc+" "+ erectDesc+" "+MathUtils.inchesToFootInches(sz)+" "+ name + " "+dick+((num>1)?"s":"");
+		}
+		
+		public function getShortDescr(withModifier:Boolean = false):String {
+			var t:String = "dick"
+			if(withModifier)
+				t = name + " " + t;
+			return t;
 		}
 		public function onFailedAttack(from:Creature, to:Creature):void{}
 		public function onGoodAttack(from:Creature, to:Creature):void{}

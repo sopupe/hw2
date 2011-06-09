@@ -40,5 +40,14 @@ package org.sevenchan.dongs.bodyparts.eye
 		{
 			return num + " ghostlike " + color + " glowing eye" + ((num > 1)?"s":"");
 		}
+		
+		
+		override public function getShortDescr(withModifier:Boolean = false):String 
+		{
+			var t:String = "glowing eye";
+			if (withModifier)
+				t = name + " " + t;
+			return t;
+		}
 	}
 }

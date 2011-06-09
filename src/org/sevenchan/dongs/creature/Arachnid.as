@@ -19,10 +19,15 @@ package org.sevenchan.dongs.creature
 		// For serialization
 		registerClassAlias("EArachnid", Arachnid);
 		
-		private var isQueen:Boolean = false;
-		public function Arachnid(queen:Boolean) 
+		private var isPregnant:Boolean = false;
+		public function Arachnid(pregnant:Boolean) 
 		{		
-			isQueen = queen;
+			isPregnant = pregnant;
+		}
+		
+		public static function Add2Town(town:Town):void {
+			town.inhabitants.push(CreatureRegistry.arachnid);
+			town.inhabitants.push(CreatureRegistry.pregnant_arachnid);
 		}
 		
 		override public function initialGenderSetup():void 
@@ -64,7 +69,7 @@ package org.sevenchan.dongs.creature
 			inventory.push(new SpiderVenomSac(1));
 		}
 		
-		override public function addDick(type:String="human"):void 
+		override public function addDick(type:String="arachnid"):void 
 		{
 			var p:Penis = Penis(BodyPartRegistry.dicks[type]);
 			p.size = 12 + MathUtils.rand(0, 6);
@@ -102,7 +107,7 @@ package org.sevenchan.dongs.creature
 		
 		override public function getTypeName():String 
 		{
-			return "Arachnid";
+			return (isPregnant)?"Pregnant Arachnid":"Arachnid";
 		}
 		
 		override public function onWin(ply:Creature):Boolean 
@@ -110,6 +115,9 @@ package org.sevenchan.dongs.creature
 			var text:String = "<h2>YOU LOSE</h2>";
 			
 			if (ply.gender.hasDick && gender.hasVag) {
+				if(ply.getExplored("lostToArachnid"))
+					ply.setExplored("lostToArachnid");
+					
 				var amtCum:Number = 0;
 				for (var i:int = 0; i < ply.balls.length; i++) {
 					(ply.balls[i] as Testicle).loadMult += 1;
@@ -145,8 +153,9 @@ package org.sevenchan.dongs.creature
 				text += "terrifying the entire situation is. After a few minutes, the flow stops, ";
 				text += "and %SUB% releases you. &quot;Sssso ssssorry ffffor the trouble,&quot; ";
 				text += "%SUB% apologizes, a clawed foot cutting slits into the webbing around your ";
-				text += "arms, somehow without opening your veins. &quot;Hopeffffully thissss ";
-				text += "will help...&quot;</p>";
+				text += "arms, somehow without opening your veins. You realize that she is helping you ";
+				text += "get lose of the webbing once the neurotoxin is gone from your body. &quot; ";
+				text += "Hopeffffully thissss will help...&quot;</p>";
 
 				text += "<p>%CSUB% slowly moves away. &quot;You will ssssleeep now. I hope you ";
 				text += "ffforgive me, and maybe we will meet again...&quot; %CSUB% vanishes into ";
@@ -176,22 +185,31 @@ package org.sevenchan.dongs.creature
 				text += "you.  It doesn't last long, as you trip over one of her long legs and are ";
 				text += "then pinned to the ground.  You try to struggle, but you're weak and a ";
 				text += "pinprick at the base of your neck halts any movement.</p>";
+				
 				text += "<p>You feel her lower herself down, and try to scream as she roughly slides";
 				text += " her ovipositor deep into your " + rectum + " painfully, getting thicker as it ";
 				text += "intrudes further, spreading you wider and wider until it hilts against her ";
 				text += "swollen abdomen.  Her ovpositor begins swelling with eggs passing into your ";
 				text += "body.  You can feel the leathery bags being deposited into you.</p>";
+				
 				text += "<p>The pain becomes too much and mercifully, you pass out.</p>";
+				var idx:int = 0;
 				if(!ply.gender.hasVag) {
-					for (var idx:int = 0; idx < ply.assholes.length; idx++) {
+					for (idx = 0; idx < ply.assholes.length; idx++) {
 						if ((ply.assholes[idx]).pregnantWith == null) {
 							ply.assholes[idx].impregnate(balls);
+							text += "<p><b>Your " + ply.assholes[idx].getShortDescr() + " is now ";
+							text += "pregnant.</p></b>";
+							break;
 						}
 					} 
 				} else {
-					for (var idx:int = 0; idx < ply.vaginas.length; idx++) {
+					for (idx = 0; idx < ply.vaginas.length; idx++) {
 						if ((ply.vaginas[idx]).pregnantWith == null) {
 							ply.vaginas[idx].impregnate(balls);
+							text += "<p><b>Your " + ply.assholes[idx].getShortDescr() + " is now ";
+							text += "pregnant.</p></b>";
+							break;
 						}
 					}
 				}
