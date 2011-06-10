@@ -21,7 +21,8 @@ package org.sevenchan.dongs.creature
 		
 		private var isPregnant:Boolean = false;
 		public function Arachnid(pregnant:Boolean) 
-		{		
+		{
+			super();
 			isPregnant = pregnant;
 		}
 		

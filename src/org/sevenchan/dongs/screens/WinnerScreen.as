@@ -29,9 +29,7 @@ package org.sevenchan.dongs.screens
 		{
 			var text:String = "<h2>You won!</h2><p>You received:<ul>";
 			trace("LOSER INVENTORY");
-			for (var i:int = 0; i < loser.inventory.length; i++) {
-				var item:Item = loser.inventory[i];
-				trace(i,item);
+			for each (var item:Item in loser.inventory) {
 				text += "<li>" + item.amount + "x " + item.name + "</li>";
 				player.addToInventory(item);
 			}

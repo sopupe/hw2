@@ -28,6 +28,7 @@ package org.sevenchan.dongs.creature
 		{
 			this.main = main;
 			trace("Player.init()");
+			super();
 		}
 		
 		override public function addBoob():void 

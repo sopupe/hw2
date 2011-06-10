@@ -18,6 +18,7 @@ package org.sevenchan.dongs.creature
 		
 		public function Ala() 
 		{
+			super();
 			abilities = [
 				AbilityRegistry.sandstorm,
 				AbilityRegistry.rainstorm,

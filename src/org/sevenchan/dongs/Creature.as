@@ -132,6 +132,21 @@ package org.sevenchan.dongs
 			trace("Creature.init()");
 			_gold = MathUtils.rand(0, 50);
 			_mana = maxMana;
+			
+			// reset all collections
+			_abilities = new Object();
+			_assholes = new Vector.<Asshole>();	
+			_arms = new Vector.<Arm>();		
+			_balls = new Vector.<Testicle>();	
+			_breasts = new Vector.<Breast>();
+			_dicks = new Vector.<Penis>();
+			enchantments = new Object();			
+			_eyes = new Vector.<Eye>();		
+			inventory = new Vector.<Item>();
+			_legs = new Vector.<Leg>();
+			_vaginas = new Vector.<Vagina>();
+			_wings = new Vector.<Wing>();
+			explored = new Vector.<String>();
 		}
 		
 		public function addBoob():void { trace("USING CREATURE.ADDBOOB INSTEAD OF OVERRIDING"); }

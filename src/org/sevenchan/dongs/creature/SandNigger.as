@@ -14,6 +14,7 @@ package org.sevenchan.dongs.creature
 		
 		public function SandNigger() 
 		{
+			super();
 			ownName = "OLDSPACE GUY";
 			//this.abilities = {};
 			this.arms.push(
