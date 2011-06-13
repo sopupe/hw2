@@ -8,15 +8,15 @@ package
 	 */
 	public class CreatureRegistry 
 	{
-		public static var ala:Creature = new Ala();
-		public static var arachnid:Creature = new Arachnid(false);
-		public static var arachnid_pregnant:Creature = new Arachnid(true);
-		public static var demon:Creature = new Demon();
-		public static var harpy:Creature = new Harpy(false);
-		public static var harpy_dark:Creature = new Harpy(true);
-		public static var human:Creature = new Human();
-		public static var morel:Creature = new Morel();
-		public static var oldspace:Creature = new SandNigger();
+		public static function get ala():Creature { return new Ala(); }
+		public static function get arachnid():Creature { return new Arachnid(false); }
+		public static function get arachnid_pregnant():Creature { return new Arachnid(true); }
+		public static function get demon():Creature { return new Demon(); }
+		public static function get harpy():Creature { return new Harpy(false); }
+		public static function get harpy_dark():Creature { return new Harpy(true); }
+		public static function get human():Creature { return new Human(); }
+		public static function get morel():Creature { return new Morel(); }
+		public static function get oldspace():Creature { return new SandNigger(); }
 	}
 
 }

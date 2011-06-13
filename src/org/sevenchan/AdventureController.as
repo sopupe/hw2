@@ -133,6 +133,12 @@ package org.sevenchan
 				updateScreen(currentScreen);
 		}
 		
+		public function showCreatureViewer(show:Boolean):void {
+				app.showCreatureViewer(show);
+				visible = !show;
+				updateScreen(currentScreen);
+		}
+		
 		public function setCheatMode(val:Boolean):void {
 			statHP.showCheatButtons(val);
 			statXP.showCheatButtons(val);
@@ -152,6 +158,7 @@ package org.sevenchan
 			player = new Player(this);
 			player.setMain(this);
 			app.bodyparts.init(player);
+			app.creatures.init(player);
 			setScreen(new NewGameScreen());
 		}
 		
@@ -342,6 +349,12 @@ package org.sevenchan
 
 		public function startCombat(oldScreen:Screen, combatant:Creature, playerInitiated:Boolean = false):void {
 			//inCombat = true;
+			
+			combatant._level = Math.max(1, player.level + MathUtils.rand( -2, 2));
+			combatant._strength = Math.max(1, player.strength + MathUtils.rand( -2, 2));
+			combatant.HP = combatant.maxHP;
+			combatant.mana = combatant.maxMana;
+			
 			combatant.notifyEnchantments(new CombatStartEvent(player));
 			player.notifyEnchantments(new CombatStartEvent(combatant));
 			combatScreen = new CombatScreen(oldScreen, combatant, playerInitiated);

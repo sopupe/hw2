@@ -15,12 +15,23 @@
 	public function showBodyParts(show:Boolean):void {
 		trace(show);
 		bodyparts.visible = show;
+		creatures.visible = !show;
+		dongs.visible = !show;
+		dongs.alpha = show ? 0 : 1;
+		dongs.percentHeight = dongs.percentWidth = show ? 0 : 100;
+	}
+	
+	public function showCreatureViewer(show:Boolean):void {
+		trace(show);
+		creatures.visible = show;
+		bodyparts.visible = !show;
 		dongs.visible = !show;
 		dongs.alpha = show ? 0 : 1;
 		dongs.percentHeight = dongs.percentWidth = show ? 0 : 100;
 	}
 	]]>
 </fx:Script>
-	<dongs:frmBodyPartsPool id="bodyparts" visible="false" width="90%" height="90%" horizontalCenter="true" verticalCenter="true" />
+	<dongs:frmBodyPartsPool id="bodyparts" visible="false" width="100%" height="100%" horizontalCenter="true" verticalCenter="true" />
+	<dongs:frmCreatureViewer id="creatures" visible="false" width="100%" height="100%" horizontalCenter="true" verticalCenter="true" />
 	<s:SpriteVisualElement id="dongs" />
 </s:Application>

@@ -24,11 +24,10 @@ package org.sevenchan.dongs.creature
 		{
 			super();
 			isPregnant = pregnant;
-		}
-		
-		public static function Add2Town(town:Town):void {
-			town.inhabitants.push(CreatureRegistry.arachnid);
-			town.inhabitants.push(CreatureRegistry.pregnant_arachnid);
+			if (pregnant)
+				gender = Gender.HERM;
+			else
+				gender = Gender.FEMALE;
 		}
 		
 		override public function initialGenderSetup():void 
@@ -53,7 +52,7 @@ package org.sevenchan.dongs.creature
 			);
 			
 			this.hair = new Hair("long, silky, white hair");
-			this.gender = Gender.FEMALE;
+			//this.gender = Gender.FEMALE;
 			this.sexualPreference = SexualPreference.STRAIGHT;
 			
 			if (gender.hasVag) {
@@ -66,15 +65,17 @@ package org.sevenchan.dongs.creature
 				for each(var t:Testicle in balls) {
 					t.loadMult = 10;
 				}
+				inventory.push(new SpiderEgg(2));
 			}
 			inventory.push(new SpiderVenomSac(1));
 		}
 		
 		override public function addDick(type:String="arachnid"):void 
 		{
-			var p:Penis = Penis(BodyPartRegistry.dicks[type]);
-			p.size = 12 + MathUtils.rand(0, 6);
-			dicks.push(p);
+			var p:Penis = Penis(BodyPartRegistry.dicks.arachnid);
+			p.size = 12 + MathUtils.rand(0, 12);
+			trace(dicks);
+			this.dicks.push(p);
 		}
 		
 		override public function combatDescr(ply:Creature):String 
@@ -115,7 +116,7 @@ package org.sevenchan.dongs.creature
 		{
 			var text:String = "<h2>YOU LOSE</h2>";
 			
-			if (ply.gender.hasDick && gender.hasVag) {
+			if (ply.gender.hasDick && gender==Gender.FEMALE) {
 				if(ply.getExplored("lostToArachnid"))
 					ply.setExplored("lostToArachnid");
 					

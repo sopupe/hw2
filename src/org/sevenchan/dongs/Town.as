@@ -131,10 +131,6 @@ package org.sevenchan.dongs
 								trace("COMBAT CHANCE SAMPLE " +cs);
 								if(cs==0 && inhabitants.length>0) {
 									var c:Creature = getRandomInhabitant();
-									c._level = Math.max(1, main.player.level + MathUtils.rand( -2, 2));
-									c._strength = Math.max(1, main.player.strength + MathUtils.rand( -2, 2));
-									c.HP = c.maxHP;
-									c.mana = c.maxMana;
 									c.initialGenderSetup();
 									if (c.getHostile(main.player)) {
 										main.startCombat(this, c);

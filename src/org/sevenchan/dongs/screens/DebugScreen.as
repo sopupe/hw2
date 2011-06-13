@@ -26,9 +26,8 @@ package org.sevenchan.dongs.screens
 					setButton(1, "dbgStats:" + (dbgStats?"1":"0"));
 				setButton(2, "SuperStore");
 				setButton(3, "BodyParts");
-				setButton(4, "ChangeTo");
+				setButton(4, "Creatures");
 				setButton(5, "MoreGold");
-				setButton(6, "Fight");
 				//var enc:JSONEncoder = new JSONEncoder(main.player);
 				text = "<h2>DEBUG MENU</h2>";
 				switch(id) {
@@ -54,18 +53,13 @@ package org.sevenchan.dongs.screens
 						updateScreen();
 						return false;
 						break;
-					case 4: // ChangeTo
-						//main.showCreatureSelector();
+					case 4: // Creatures
+						main.showCreatureViewer(true);
 						updateScreen();
 						return false;
 						break;
 					case 5: // MoreGold
 						main.player.gold += 1000;
-						updateScreen();
-						return false;
-						break;
-					case 6: // Fight
-						text = "Not ready yet";
 						updateScreen();
 						return false;
 						break;

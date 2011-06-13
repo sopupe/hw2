@@ -13,6 +13,7 @@ package
 		public static var DARK_HARPY_EGG:DarkHarpyEgg = new DarkHarpyEgg(1);
 		public static var POTION_PINK:PinkPotion = new PinkPotion(1);
 		public static var POTION_GOLD:GoldPotion = new GoldPotion(1);
+		public static var SPIDER_EGG:SpiderEgg = new SpiderEgg(1);
 	}
 
 }

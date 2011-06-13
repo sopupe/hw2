@@ -18,8 +18,6 @@ package org.sevenchan.dongs
 	{
 		registerClassAlias("ECreature", Creature);
 		
-		public static var CreatureRegistry:Object = null;
-		
 		public static var BodyPartRegistry:Object = {
 			assholes: {
 				human:new Asshole("human"),
@@ -82,6 +80,8 @@ package org.sevenchan.dongs
 		public var _gender:Gender = Gender.ASEXUAL; 								// Boy, Girl, Neither, Both?
 		public var sexualPreference:SexualPreference = SexualPreference.ASEXUAL;	// Straight, Gay, ASexual, Bi?
 		
+		private var mGenderInitialized:Boolean = false;
+		
 		// Stats (CACHED VALUES)
 		public var _level:int = 0;		// In comparison to standard human being.  No attacking rats for 20 levels.
 		private var d_level:int = 0;	// Delta
@@ -132,21 +132,6 @@ package org.sevenchan.dongs
 			trace("Creature.init()");
 			_gold = MathUtils.rand(0, 50);
 			_mana = maxMana;
-			
-			// reset all collections
-			_abilities = new Object();
-			_assholes = new Vector.<Asshole>();	
-			_arms = new Vector.<Arm>();		
-			_balls = new Vector.<Testicle>();	
-			_breasts = new Vector.<Breast>();
-			_dicks = new Vector.<Penis>();
-			enchantments = new Object();			
-			_eyes = new Vector.<Eye>();		
-			inventory = new Vector.<Item>();
-			_legs = new Vector.<Leg>();
-			_vaginas = new Vector.<Vagina>();
-			_wings = new Vector.<Wing>();
-			explored = new Vector.<String>();
 		}
 		
 		public function addBoob():void { trace("USING CREATURE.ADDBOOB INSTEAD OF OVERRIDING"); }
@@ -158,7 +143,9 @@ package org.sevenchan.dongs
 			return story;
 		}
 		
-		public function initialGenderSetup():void { }
+		public function initialGenderSetup():void { 
+			mGenderInitialized = true;	
+		}
 		
 		public function yourMove(cs:CombatScreen, ply:Creature):void {
 			if ((turnsToLose>0)||notifyEnchantments(new CombatTurnEvent(ply))) {
