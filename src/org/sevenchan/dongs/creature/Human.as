@@ -43,7 +43,7 @@ package org.sevenchan.dongs.creature
 			this.skin = SKIN;
 		}
 		
-		override public function addBoob():void 
+		override public function addBreast():void 
 		{
 			breasts.push(BodyPartRegistry.breasts.human);
 		}

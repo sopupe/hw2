@@ -134,7 +134,7 @@ package org.sevenchan.dongs
 			_mana = maxMana;
 		}
 		
-		public function addBoob():void { trace("USING CREATURE.ADDBOOB INSTEAD OF OVERRIDING"); }
+		public function addBreast():void { trace("USING CREATURE.ADDBOOB INSTEAD OF OVERRIDING"); }
 		
 		public function addEnchantment(ench:Enchantment):String {
 			var story:String = ench.onInit(this);

@@ -41,8 +41,8 @@ package org.sevenchan.dongs.items
 			+host.getBreastDescr() + " have changed to become ";
 			if (host.breasts.length == 0) {
 				trace(host);
-				host.addBoob();
-				host.addBoob();
+				host.addBreast();
+				host.addBreast();
 			} else {
 				host.breasts.forEach(embiggen);
 			}

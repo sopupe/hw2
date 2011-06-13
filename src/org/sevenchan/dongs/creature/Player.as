@@ -31,9 +31,9 @@ package org.sevenchan.dongs.creature
 			super();
 		}
 		
-		override public function addBoob():void 
+		override public function addBreast():void 
 		{
-			baseType.addBoob();
+			baseType.addBreast();
 		}
 		
 		public function changeTo(t:Creature):void {

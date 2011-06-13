@@ -86,7 +86,7 @@ package org.sevenchan.dongs.creature
 			InfoScreen.push("<h2>PARADIGM SHIFT</h2><p>No John, you are the demons.</p>");
 		}
 		
-		override public function addBoob():void 
+		override public function addBreast():void 
 		{
 			breasts.push(BodyPartRegistry.breasts.demon);
 		}
