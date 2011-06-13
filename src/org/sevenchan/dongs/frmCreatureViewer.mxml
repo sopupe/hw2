@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009" 
+               xmlns:s="library://ns.adobe.com/flex/spark" 
+               xmlns:mx="library://ns.adobe.com/flex/halo"
+		title="Creature Viewer (WIP)" width="100%">
+		<fx:Script>
+			<![CDATA[
+			import flashx.textLayout.conversion.ConversionType;
+			import flashx.textLayout.conversion.TextConverter;
+			import mx.collections.ArrayCollection;
+			import org.sevenchan.AdventureController;
+			import org.sevenchan.dongs.bodyparts.IBodyPart;
+			import org.sevenchan.dongs.creature.Player;
+			import spark.components.DataGroup;    
+			import flash.utils.describeType;
+			
+			public var player:Player = null;
+			private var currentCreature:Creature = null;
+			public function init(ply:Player):void {
+				player = ply;
+				cmbCreature.dataProvider = new ArrayCollection();
+				for each(var creatureName:XML in describeType(CreatureRegistry)..accessor.@name) {
+					(cmbCreature.dataProvider as ArrayCollection).addItem(creatureName.toXMLString());
+				}
+				var dat:XML = describeType(CreatureRegistry);
+				trace("[frmCreatureViewer]",dat);
+				txtDescr.text = dat;
+			}
+			
+			private function creatureChanged():void {
+				currentCreature = CreatureRegistry[(String(cmbCreature.selectedItem))]
+				currentCreature.initialGenderSetup();
+				txtDescr.text = currentCreature.getDescription();
+				txtDescr.text += "<ul>";
+				txtDescr.text += "<li><b>_strength:</b> " + currentCreature._strength + "</li>";
+				txtDescr.text += "<li><b>_speed:</b> " + currentCreature._speed + "</li>";
+				txtDescr.text += "<li><b>_intellect:</b> " + currentCreature._intellect + "</li>";
+				txtDescr.text += "<li><b>_lust:</b> " + currentCreature._lust + "</li>";
+				txtDescr.text += "<li><b>_sensitivity:</b> " + currentCreature._sensitivity + "</li>";
+				txtDescr.text += "<li><b>_HP:</b> " + currentCreature._HP + "</li>";
+				txtDescr.text += "<li><b>_XP:</b> " + currentCreature._XP + "</li>";
+				txtDescr.text += "<li><b>_mana:</b> " + currentCreature._mana + "</li>";
+				txtDescr.text += "<li><b>_gold:</b> " + currentCreature._gold + "</li>";
+				txtDescr.text += "</ul>";
+				txtDescr.textFlow=TextConverter.importToFlow(txtDescr.text, TextConverter.TEXT_FIELD_HTML_FORMAT);
+			}
+			
+			private function onFight():void {
+				lolclose();
+				player.main.startCombat(null,currentCreature);
+			}
+			private function onTransform():void {
+				lolclose();
+				player.changeTo(currentCreature);
+			}
+			private function lolclose():void {
+				player.main.showCreatureViewer(false);
+			}
+			
+			private function append(message:String):void {
+				var oldText:String = TextConverter.export(txtDescr.textFlow, TextConverter.TEXT_FIELD_HTML_FORMAT, ConversionType.STRING_TYPE) as String;
+				txtDescr.textFlow = TextConverter.importToFlow(oldText + message, TextConverter.TEXT_FIELD_HTML_FORMAT);	
+			}
+			]]>
+		</fx:Script>
+	<s:VGroup width="100%">
+		<s:DropDownList prompt="Creature" id="cmbCreature" change="creatureChanged()" width="100%">
+		</s:DropDownList>
+		<s:TextArea id="txtDescr" width="100%" height="50%">Select a creature</s:TextArea>
+		<s:HGroup width="100%">
+			<s:Button id="cmdFight" label="Fight" click="onFight()" width="50%" />
+			<s:Button id="cmdTransform" label="Change Into" click="onTransform()" width="50%" />
+		</s:HGroup>
+		<s:Button label="Close" click="lolclose()" width="90%"></s:Button>
+	</s:VGroup>
+</s:Panel>
