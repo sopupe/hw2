@@ -41,14 +41,13 @@ package org.sevenchan.dongs.bodyparts
 
 			timesFucked++;
 			volumeFilled = amtCum;
-			if (amtCum > capacity)
-				semen+=" <b>Your belly has swelled to accomodate the sheer volume.</b>";
 			filledWith = semen;
 		}
 		
 		public function getDescr(num:Number, host:Creature):String {
 			var tightness:String = "tight";
 			var filled:String = "";
+			var stretched:String = "";
 			if (timesFucked > 10)
 				tightness = "loose";
 			if (pregCounter > -1)
@@ -57,7 +56,9 @@ package org.sevenchan.dongs.bodyparts
 				if (filledWith.length != 0)
 					filled = ", " + filledWith + "-filled";
 			}
-			return num + " " +tightness+filled+ " "+_name + " asshole"+((num>1)?"s":"");
+			if (volumeFilled > capacity)
+				stretched=" (<b>Your belly has swelled to accomodate the sheer volume.</b>)";
+			return num + " " +tightness+filled+ " "+_name + " asshole"+((num>1)?"s":"")+stretched;
 		}
 		
 		

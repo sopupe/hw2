@@ -288,7 +288,7 @@ package org.sevenchan
 			this.pnlMain.text = screen.getScreenText();
 			if (player != null) {
 				player.notifyEnchantments(new ScreenChangedEvent());
-				player.addLust();
+				player.addLust(screen.lustCost);
 			}
 		}
 		

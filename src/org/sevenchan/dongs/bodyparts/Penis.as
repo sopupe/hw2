@@ -27,7 +27,7 @@ package org.sevenchan.dongs.bodyparts
 		public function getDescr(num:Number, host:Creature):String {
 			var sizeDesc:String = "average";
 			var erectDesc:String = "flaccid";
-			var dick:String = "";
+			var dick:String = getShortDescr();
 			
 			var lust:Number = host.lust;
 			var sz:Number = size * sizeMult;

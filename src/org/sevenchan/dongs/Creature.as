@@ -28,7 +28,7 @@ package org.sevenchan.dongs
 				human: new Arm("human", null, null)
 			},
 			balls: {
-				arachnid: new Testicle("internal testes", 3785, null, null, "hot, thick mixture of semen and eggs"),
+				arachnid: new Testicle("internal testes", 3785, null, null, "spider egg"),
 				demon: new Testicle("demon nut",38,new Corruption(10),null,"boiling-hot, sticky black substance"),
 				human: new Testicle("human testicle", 17, null, null, "hot, stringy, off-white seed")
 			},
@@ -134,7 +134,7 @@ package org.sevenchan.dongs
 			_mana = maxMana;
 		}
 		
-		public function addBreast():void { trace("USING CREATURE.ADDBOOB INSTEAD OF OVERRIDING"); }
+		public function addBreast():void { trace("USING CREATURE.ADDBREAST INSTEAD OF OVERRIDING"); }
 		
 		public function addEnchantment(ench:Enchantment):String {
 			var story:String = ench.onInit(this);
