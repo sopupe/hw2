@@ -8,6 +8,7 @@ package org.sevenchan.dongs.bodyparts
 	public interface IBodyPart 
 	{
 		function get name():String;
+		function get category():String;
 		/**
 		 * Retrieve a long description of the body part
 		 * 

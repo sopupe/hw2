@@ -19,11 +19,13 @@ package org.sevenchan.dongs.towns
 			inhabitants = [
 				CreatureRegistry.demon,
 				//CreatureRegistry.cowgirl
+				CreatureRegistry.witch,
 			];
 			isWilds = false;
 			freeRest = false;
 			connectedTowns = [
-				"horus"
+				"horus",
+				"lake"
 			];
 			this.shop = new ShopScreen(this, 20, [
 				ItemRegistry.BERRY_WHITE.id,
@@ -62,7 +64,7 @@ package org.sevenchan.dongs.towns
 		{
 			text = "<p>Damned is an immense city built from a black stone mined from the surrounding "
 				+"mountains. Torches are everywhere because of the stone making the rooms, towers, and "
-				+"catwalks around the city look dark.  You doubt anyamount of torches would make the "
+				+"catwalks around the city look dark.  You doubt any amount of torches would make the "
 				+"city look even remotely inviting, as the designers seemed to have thrown up their "
 				+"hands in exasperation and went with the evil theme.  Sharp-looking rock spires jut "
 				+"from every external surface, and some corpses are even skewered on many of them,  "

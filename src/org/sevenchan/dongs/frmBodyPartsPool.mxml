@@ -10,6 +10,7 @@
 			import org.sevenchan.dongs.bodyparts.IBodyPart;
 			import org.sevenchan.dongs.creature.Player;
 			import spark.components.DataGroup;
+			import flash.utils.describeType;
 			
 			public var player:Player = null;
 			public function init(ply:Player):void {
@@ -32,23 +33,31 @@
 				for each (var part:IBodyPart in player[poolSelector.selectedItem]) {
 					(partList.dataProvider as ArrayCollection).addItem(part.name);
 				}
-				for (var partname:String in Creature.BodyPartRegistry[poolSelector.selectedItem]) {
-					(partSelector.dataProvider as ArrayCollection).addItem(partname);
+				for each(var name:XML in describeType(BodyPartRegistry)..accessor.@name) {
+					var partname:String = name.toString();
+					var bp:* = BodyPartRegistry[partname];
+					if(bp is IBodyPart) {
+						if(bp.category==poolSelector.selectedItem) {
+							(partSelector.dataProvider as ArrayCollection).addItem(partname);
+						}
+					}
 				}
 			}
 			
 			private function addPart():void {
 				var pool:String = poolSelector.selectedItem;
 				trace(pool, partSelector.selectedItem);
-				var part:IBodyPart = Creature.BodyPartRegistry[pool][partSelector.selectedItem];
-				trace(part);
-				(player[pool] as Array).push(part);
+				var part:* = BodyPartRegistry[partSelector.selectedItem];
+				if(part is IBodyPart) {
+					trace(part);
+					(player[pool] as Vector.<*>).push(part);
+				}
 				poolChanged();
 			}
 			private function removePart():void {
 				var pool:String = poolSelector.selectedItem;
 				var idx:int = partList.selectedIndex;
-				(player[pool] as Array).splice(idx, 1);
+				(player[pool] as Vector.<*>).splice(idx, 1);
 				poolChanged();
 			}
 			private function lolclose():void {

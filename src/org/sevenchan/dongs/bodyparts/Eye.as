@@ -24,6 +24,10 @@ package org.sevenchan.dongs.bodyparts
 		
 		
 		
+		public  function get category():String {
+			return "eyes";
+		}
+		
 		public function getShortDescr(withModifier:Boolean = false):String {
 			var t:String = "eye";
 			if(withModifier)

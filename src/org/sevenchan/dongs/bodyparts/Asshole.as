@@ -24,6 +24,10 @@ package org.sevenchan.dongs.bodyparts
 			_name = name;
 		}
 		
+		public  function get category():String {
+			return "assholes";
+		}
+		
 		public function get name():String {
 			return _name;
 		}

@@ -23,6 +23,10 @@ package org.sevenchan.dongs.bodyparts
 			return _name;
 		}
 		
+		public  function get category():String {
+			return "arms";
+		}
+		
 		public function getDescr(num:Number, host:Creature):String {
 			return num + " "+getShortDescr(true);
 		}

@@ -36,7 +36,7 @@ package org.sevenchan.dongs.creature
 			this.gold = 350;
 			this.height = 6.6;
 			this.skin = new Skin("nigger", "black", "smooth");
-			this.eyes.push(BodyPartRegistry.eyes.human_brown, BodyPartRegistry.eyes.human_brown);
+			this.eyes.push(BodyPartRegistry.human_brown_eye, BodyPartRegistry.human_brown_eye);
 			
 			
 			this.strength = 20;

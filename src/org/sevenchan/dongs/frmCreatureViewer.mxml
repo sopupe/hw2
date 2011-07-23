@@ -30,18 +30,17 @@
 			private function creatureChanged():void {
 				currentCreature = CreatureRegistry[(String(cmbCreature.selectedItem))]
 				currentCreature.initialGenderSetup();
+				cmdEncounter.enabled = currentCreature.onEncounter(null);
 				txtDescr.text = currentCreature.getDescription();
-				txtDescr.text += "<ul>";
-				txtDescr.text += "<li><b>_strength:</b> " + currentCreature._strength + "</li>";
-				txtDescr.text += "<li><b>_speed:</b> " + currentCreature._speed + "</li>";
-				txtDescr.text += "<li><b>_intellect:</b> " + currentCreature._intellect + "</li>";
-				txtDescr.text += "<li><b>_lust:</b> " + currentCreature._lust + "</li>";
-				txtDescr.text += "<li><b>_sensitivity:</b> " + currentCreature._sensitivity + "</li>";
-				txtDescr.text += "<li><b>_HP:</b> " + currentCreature._HP + "</li>";
-				txtDescr.text += "<li><b>_XP:</b> " + currentCreature._XP + "</li>";
-				txtDescr.text += "<li><b>_mana:</b> " + currentCreature._mana + "</li>";
-				txtDescr.text += "<li><b>_gold:</b> " + currentCreature._gold + "</li>";
-				txtDescr.text += "</ul>";
+				txtDescr.text += "<br /><b>_strength:</b> " + currentCreature._strength;
+				txtDescr.text += "<br /><b>_speed:</b> " + currentCreature._speed;
+				txtDescr.text += "<br /><b>_intellect:</b> " + currentCreature._intellect;
+				txtDescr.text += "<br /><b>_lust:</b> " + currentCreature._lust;
+				txtDescr.text += "<br /><b>_sensitivity:</b> " + currentCreature._sensitivity;
+				txtDescr.text += "<br /><b>_HP:</b> " + currentCreature._HP;
+				txtDescr.text += "<br /><b>_XP:</b> " + currentCreature._XP;
+				txtDescr.text += "<br /><b>_mana:</b> " + currentCreature._mana;
+				txtDescr.text += "<br /><b>_gold:</b> " + currentCreature._gold;
 				txtDescr.textFlow=TextConverter.importToFlow(txtDescr.text, TextConverter.TEXT_FIELD_HTML_FORMAT);
 			}
 			
@@ -52,6 +51,10 @@
 			private function onTransform():void {
 				lolclose();
 				player.changeTo(currentCreature);
+			}
+			private function onEncounter():void {
+				lolclose();
+				currentCreature.onEncounter(player);
 			}
 			private function lolclose():void {
 				player.main.showCreatureViewer(false);
@@ -68,8 +71,9 @@
 		</s:DropDownList>
 		<s:TextArea id="txtDescr" width="100%" height="50%">Select a creature</s:TextArea>
 		<s:HGroup width="100%">
-			<s:Button id="cmdFight" label="Fight" click="onFight()" width="50%" />
-			<s:Button id="cmdTransform" label="Change Into" click="onTransform()" width="50%" />
+			<s:Button id="cmdFight" label="Fight" click="onFight()" width="33%" />
+			<s:Button id="cmdEncounter" label="Encounter" click="onEncounter()" width="33%" />
+			<s:Button id="cmdTransform" label="Change Into" click="onTransform()" width="33%" />
 		</s:HGroup>
 		<s:Button label="Close" click="lolclose()" width="90%"></s:Button>
 	</s:VGroup>

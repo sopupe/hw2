@@ -18,6 +18,10 @@ package org.sevenchan.dongs.bodyparts
 			_name = name;
 		}
 		
+		public function get category():String {
+			return "legs";
+		}
+		
 		public function get name():String {
 			return _name;
 		}

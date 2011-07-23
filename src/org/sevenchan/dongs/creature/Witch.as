@@ -1,32 +1,34 @@
 package org.sevenchan.dongs.creature 
 {
-	import org.sevenchan.dongs.Creature;
+	import flash.net.*;
+	import org.sevenchan.dongs.*;
 	import org.sevenchan.dongs.bodyparts.*;
-	import flash.net.registerClassAlias;
+	import org.sevenchan.dongs.items.*;
+	import org.sevenchan.dongs.screens.*;
+	import org.sevenchan.dongs.bodyparts.Build;
+	import org.sevenchan.dongs.Creature;
+	import org.sevenchan.dongs.enchantment.Corruption;
+	import org.sevenchan.dongs.screens.WitchShopScreen;
 	
 	/**
-	 * ...
+	 * A travelling merchant who sell body modifications and potions.
+	 * 
+	 * Some are also hostile.
 	 * @author N3X15
 	 */
-	public class Human extends Creature 
+	public class Witch extends Creature 
 	{
-		registerClassAlias("EHuman", Human);
-		public var SKIN:Skin = new Skin("human", "light", "smooth");
+		registerClassAlias("EWitch", Witch);
+		public var SKIN:Skin = new Skin("human", "pale", "wrinkled and covered in boils");
 		
-		public function Human() 
+		public function Witch() 
 		{
-			trace("Human.init()");
+			trace("Witch.init()");
 			super();
+			this.addEnchantment(new Corruption(90));
 			height = Math.random()*1.5 + 5;
-			switch(Math.round(MathUtils.rand(0, 1))) {
-				case 0:
-					this.gender = Gender.MALE;
-					break;
-				case 1:
-					this.gender = Gender.FEMALE;
-					break;
-			}
-			this.build = Build.AVG;
+			this.gender = Gender.FEMALE;
+			this.build = Build.MALNOURISHED;
 			this.hair = Hair.BALD;
 			this.arms.push(
 				BodyPartRegistry.human_arm,
@@ -37,8 +39,8 @@ package org.sevenchan.dongs.creature
 				BodyPartRegistry.human_leg
 			);
 			this.eyes.push(
-				BodyPartRegistry.human_blue_eye,
-				BodyPartRegistry.human_blue_eye
+				BodyPartRegistry.human_green_eye,
+				BodyPartRegistry.human_green_eye
 			);
 			this.skin = SKIN;
 		}
@@ -79,7 +81,24 @@ package org.sevenchan.dongs.creature
 		
 		override public function getTypeName():String 
 		{
-			return "human";
+			return "witch";
+		}
+		
+		override public function onEncounter(ply:Creature):Boolean 
+		{
+			if(ply!=null)
+				WitchShopScreen.push();
+			return true;
+		}
+		
+		override public function getHostile(subj:Creature):Boolean 
+		{
+			return false;
+		}
+		
+		override public function getInterested(subj:Creature):Boolean 
+		{
+			return false;
 		}
 	}
 

@@ -1,77 +1,70 @@
-package org.sevenchan.dongs.towns 
+package org.sevenchan.dongs.towns
 {
 	import org.sevenchan.dongs.items.WhiteBerries;
 	import org.sevenchan.dongs.Town;
 	import org.sevenchan.dongs.Creature;
 	import org.sevenchan.dongs.creature.*;
+	
 	/**
 	 * ...
 	 * @author N3X15
 	 */
-	public class WildsHorusSpine extends Town 
+	public class WildsHorusSpine extends Town
 	{
 		
-		public function WildsHorusSpine() 
+		public function WildsHorusSpine()
 		{
 			super();
 			ID = "horus";
 			name = "Horus' Spine";
-			inhabitants = [
-				CreatureRegistry.morel,
-				CreatureRegistry.harpy,
-				CreatureRegistry.harpy_dark,
-				CreatureRegistry.arachnid,
-				CreatureRegistry.arachnid_pregnant
-			];
+			inhabitants = [CreatureRegistry.morel, CreatureRegistry.harpy, CreatureRegistry.harpy_dark, CreatureRegistry.arachnid, CreatureRegistry.arachnid_pregnant, CreatureRegistry.witch,];
 			isWilds = true;
 			freeRest = true;
-			connectedTowns = [
-				"banala","damned"
-			];
+			connectedTowns = ["banala", "damned"];
 		}
 		
-		
-		
-		override public function onEnter():void 
+		override public function onEnter():void
 		{
 			text = "<p>The mountains wait, as they have since the beginning of time.</p>";
 		}
 		
-		override public function onExplore(bumpedInto:Creature):void 
+		override public function onExplore(bumpedInto:Creature):void
 		{
 			var re:Number = Math.round(MathUtils.rand(0, 3));
-			switch(re) {
-				case 0:
+			switch (re)
+			{
+				case 0: 
 					text = "<p>The serene landscape clears your thoughts, and tests your muscles.</p><p><b>+1 INT, +1 STR</b></p>";
 					this.main.player.intellect += 1;
 					this.main.player.strength += 1;
-				break;
-				case 1:
+					break;
+				case 1: 
 					text = "<p>A rock falls onto your head while you explore, eliciting a long string of curses that echo across the landscape.</p>";
 					main.player.HP -= 5;
-				break;
-				case 2:
+					break;
+				case 2: 
 					text = "<p>You see harpies circling over a mountain peak, probably preparing to swoop down on some poor bastard.  You take a turn to avoid them.</p>";
 					return;
-				break;
-				case 3:
+					break;
+				case 3: 
 					text = "<p>You find some sweet, white berries.</p>";
 					main.player.addToInventory(new WhiteBerries(2));
 					return;
-				break;
+					break;
 			}
 			main.player.mana += 10;
 			
 			text += "<p>Not much else happens during your exploration";
-			if(bumpedInto!=null) {
+			if (bumpedInto != null)
+			{
 				text += ", except for bumping into a " + bumpedInto.getTypeName();
 				text += ", who nearly tumbles off a cliff";
 			}
 			text += ".</p>";
-			
+		
 		}
 		
-		override public function onRevelation():Boolean 
+		override public function onRevelation():Boolean
 		{
 			text = "<h2>Horus' Spine</h2>";
 			text += "<p>It's not hard to see how the travelers who crossed these mountains long ago gave them their name.  Gigantic white rocks stretch into the sky.  You assume them to be limestone, not that it matters here.  For all you know, it could be the dried semen that the lustful creatures here collect and dump into massive piles that reach into the sky.  You shudder at the thought.</p>";
@@ -79,9 +72,7 @@ package org.sevenchan.dongs.towns
 			
 			return true;
 		}
-		
-		
-		
+	
 	}
 
 }

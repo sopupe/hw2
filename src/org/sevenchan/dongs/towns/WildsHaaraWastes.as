@@ -21,6 +21,7 @@ package org.sevenchan.dongs.towns
 				CreatureRegistry.oldspace,
 				CreatureRegistry.arachnid,
 				CreatureRegistry.arachnid_pregnant,
+				CreatureRegistry.witch,
 			];
 			isWilds = true;
 			freeRest = true;

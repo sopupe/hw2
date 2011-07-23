@@ -22,6 +22,11 @@ package org.sevenchan.dongs.bodyparts
 		public var TESTICLE_SYNONYMS:Array = [
 			"ball","nut","knocker","testicle"
 		];
+		
+		public function get category():String {
+			return "balls";
+		}
+		
 		public function Testicle(name:String="",load:Number=0,targetEnch:Enchantment=null,hostEnch:Enchantment=null,semenDesc:String="") 
 		{
 			this._name = name;

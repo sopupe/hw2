@@ -10,6 +10,7 @@ package org.sevenchan.dongs
 	import org.sevenchan.dongs.towns.TownHarpyCabin;
 	import org.sevenchan.dongs.towns.WildsHaaraWastes;
 	import org.sevenchan.dongs.towns.WildsHorusSpine;
+	import org.sevenchan.dongs.towns.WildsLake;
 	/**
 	 * ...
 	 * @author N3X15
@@ -62,7 +63,8 @@ package org.sevenchan.dongs
 				damned: new TownDamned(),
 				haara: new WildsHaaraWastes(),
 				harpycabin: new TownHarpyCabin(),
-				horus: new WildsHorusSpine()
+				horus: new WildsHorusSpine(),
+				lake: new WildsLake()
 			};
 		}
 		

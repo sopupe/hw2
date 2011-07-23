@@ -42,6 +42,11 @@ package org.sevenchan.dongs.screens
 		{
 			main.refreshStats();
 			clearButtons();
+			if (main.player.getInterested(combatant))
+				lustCost = 1;
+			else
+				lustCost = 0;
+				
 			if (id == -1 && act=="")
 			{
 				act = "main";
@@ -70,7 +75,6 @@ package org.sevenchan.dongs.screens
 				}
 			if ("items" == act) {
 				AdventureController.screenQueue.write(new InventoryScreen());
-				//AdventureController.screenQueue.write(new InfoScreen("NOT IMPLEMENTED"));
 				return true;
 			}
 			if ("abilities" == act) {
@@ -97,7 +101,7 @@ package org.sevenchan.dongs.screens
 					main.player.notifyEnchantments(new CombatTurnEvent(combatant));
 					if (Paralyze.isParalyzed(main.player))
 					{
-						InfoScreen.push("<h2>Paralyzed</h2><p>You are paralyzed, so you can't do shit.</p>");
+						InfoScreen.push("<h2>Paralyzed</h2><p>You are paralyzed, so you can't do <em>shit</em>.</p>");
 						combatant.yourMove(this, main.player);
 					} else {
 						tryAttack(main.player, combatant);

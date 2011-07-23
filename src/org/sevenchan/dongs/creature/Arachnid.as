@@ -32,23 +32,23 @@ package org.sevenchan.dongs.creature
 		
 		override public function initialGenderSetup():void 
 		{
-			assholes.push(BodyPartRegistry.assholes.arachnid);
+			assholes.push(BodyPartRegistry.arachnid_anus);
 			eyes.push(
-				BodyPartRegistry.eyes.arachnid_small,BodyPartRegistry.eyes.arachnid_small,
-				BodyPartRegistry.eyes.arachnid_small,BodyPartRegistry.eyes.arachnid_small,
-				BodyPartRegistry.eyes.arachnid_small,BodyPartRegistry.eyes.arachnid_small,
-				BodyPartRegistry.eyes.arachnid_big,BodyPartRegistry.eyes.arachnid_big
+				BodyPartRegistry.arachnid_small_eye,BodyPartRegistry.arachnid_small_eye,
+				BodyPartRegistry.arachnid_small_eye,BodyPartRegistry.arachnid_small_eye,
+				BodyPartRegistry.arachnid_small_eye,BodyPartRegistry.arachnid_small_eye,
+				BodyPartRegistry.arachnid_big_eye,BodyPartRegistry.arachnid_big_eye
 			);
 			this.build = Build.AVG;
 			this.legs.push(
-				BodyPartRegistry.legs.arachnid,BodyPartRegistry.legs.arachnid,
-				BodyPartRegistry.legs.arachnid,BodyPartRegistry.legs.arachnid,
-				BodyPartRegistry.legs.arachnid,BodyPartRegistry.legs.arachnid,
-				BodyPartRegistry.legs.arachnid,BodyPartRegistry.legs.arachnid
+				BodyPartRegistry.arachnid_leg,BodyPartRegistry.arachnid_leg,
+				BodyPartRegistry.arachnid_leg,BodyPartRegistry.arachnid_leg,
+				BodyPartRegistry.arachnid_leg,BodyPartRegistry.arachnid_leg,
+				BodyPartRegistry.arachnid_leg,BodyPartRegistry.arachnid_leg
 			);
 			this.arms.push(
-				BodyPartRegistry.arms.human,
-				BodyPartRegistry.arms.human
+				BodyPartRegistry.human_arm,
+				BodyPartRegistry.human_arm
 			);
 			
 			this.hair = new Hair("long, silky, white hair");
@@ -56,12 +56,12 @@ package org.sevenchan.dongs.creature
 			this.sexualPreference = SexualPreference.STRAIGHT;
 			
 			if (gender.hasVag) {
-				breasts.push(BodyPartRegistry.breasts.human, BodyPartRegistry.breasts.human);
-				vaginas.push(BodyPartRegistry.vaginas.arachnid);
+				breasts.push(BodyPartRegistry.human_breast, BodyPartRegistry.human_breast);
+				vaginas.push(BodyPartRegistry.arachnid_vagina);
 			}
 			if (gender.hasDick) {
 				addDick("arachnid");
-				balls.push(BodyPartRegistry.balls.arachnid, BodyPartRegistry.balls.arachnid);
+				balls.push(BodyPartRegistry.arachnid_testicle, BodyPartRegistry.arachnid_testicle);
 				for each(var t:Testicle in balls) {
 					t.loadMult = 10;
 				}
@@ -70,12 +70,12 @@ package org.sevenchan.dongs.creature
 			inventory.push(new SpiderVenomSac(1));
 		}
 		
-		override public function addDick(type:String="arachnid"):void 
+		override public function addDick(type:String="default"):Penis 
 		{
-			var p:Penis = Penis(BodyPartRegistry.dicks.arachnid);
+			var p:Penis = Penis(BodyPartRegistry.arachnid_penis);
 			p.size = 12 + MathUtils.rand(0, 12);
-			trace(dicks);
 			this.dicks.push(p);
+			return p;
 		}
 		
 		override public function combatDescr(ply:Creature):String 
@@ -194,7 +194,7 @@ package org.sevenchan.dongs.creature
 				text += "swollen abdomen.  Her ovpositor begins swelling with eggs passing into your ";
 				text += "body.  You can feel the leathery bags being deposited into you.</p>";
 				
-				text += "<p>The pain becomes too much and mercifully, you pass out.</p>";
+				text += "<p>The pain becomes too much and, mercifully, you pass out.</p>";
 				var idx:int = 0;
 				if(!ply.gender.hasVag) {
 					for (idx = 0; idx < ply.assholes.length; idx++) {
@@ -209,7 +209,7 @@ package org.sevenchan.dongs.creature
 					for (idx = 0; idx < ply.vaginas.length; idx++) {
 						if ((ply.vaginas[idx]).pregnantWith == null) {
 							ply.vaginas[idx].impregnate(balls);
-							text += "<p><b>Your " + ply.assholes[idx].getShortDescr() + " is now ";
+							text += "<p><b>Your " + ply.vaginas[idx].getShortDescr() + " is now ";
 							text += "pregnant.</p></b>";
 							break;
 						}

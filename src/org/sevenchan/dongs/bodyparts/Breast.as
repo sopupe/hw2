@@ -41,6 +41,10 @@ package org.sevenchan.dongs.bodyparts
 			this.milkMult = milkMultiplier;
 		}
 		
+		public  function get category():String {
+			return "breasts";
+		}
+		
 		public function get name():String {
 			return _name;
 		}

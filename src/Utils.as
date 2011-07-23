@@ -19,8 +19,11 @@ package
 		 * @param	hurr
 		 * @return
 		 */
-		public static function A(hurr:String,caps:Boolean=false):String {
-			if (hurr.substr(0, 1).toLowerCase() in ["a", "e", "i", "o", "u"])
+		public static function A(hurr:String, caps:Boolean = false):String {
+			var firstchar:String = hurr.substr(0, 1);
+			if (firstchar == " ")
+				return A(hurr.substr(1));
+			if (firstchar.toLowerCase() in ["a", "e", "i", "o", "u"])
 				return (caps)?"An":"an";
 			return (caps)?"A":"a";
 		}

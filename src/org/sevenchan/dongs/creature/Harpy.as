@@ -44,24 +44,24 @@ package org.sevenchan.dongs.creature
 			this.sexualPreference = SexualPreference.BISEXUAL;
 			this.build = Build.AVG;
 			this.arms.push(
-				BodyPartRegistry.arms.human,
-				BodyPartRegistry.arms.human
+				BodyPartRegistry.human_arm,
+				BodyPartRegistry.human_arm
 			);
 			this.legs.push(
-				BodyPartRegistry.legs.harpy,
-				BodyPartRegistry.legs.harpy
+				BodyPartRegistry.harpy_leg,
+				BodyPartRegistry.harpy_leg
 			);
-			this._vaginas.push(BodyPartRegistry.vaginas.human);
-			this.assholes.push(BodyPartRegistry.assholes.human);
+			this._vaginas.push(BodyPartRegistry.human_vagina);
+			this.assholes.push(BodyPartRegistry.human_anus);
 			if(!dark) {
 				this.hair = new Hair("short, straight brown hair");
-				this.eyes.push(BodyPartRegistry.eyes.harpy_light, BodyPartRegistry.eyes.harpy_light);
-				this.wings.push(BodyPartRegistry.wings.harpy_light, BodyPartRegistry.wings.harpy_light);
+				this.eyes.push(BodyPartRegistry.harpy_light_eye, BodyPartRegistry.harpy_light_eye);
+				this.wings.push(BodyPartRegistry.harpy_wing, BodyPartRegistry.harpy_wing);
 				this.skin = new Skin("human");
 			} else {
 				this.hair = new Hair("short, straight black hair");
-				this.eyes.push(BodyPartRegistry.eyes.harpy_dark,BodyPartRegistry.eyes.harpy_dark);
-				this.wings.push(BodyPartRegistry.wings.harpy_dark, BodyPartRegistry.wings.harpy_dark);
+				this.eyes.push(BodyPartRegistry.harpy_dark_eye,BodyPartRegistry.harpy_dark_eye);
+				this.wings.push(BodyPartRegistry.harpy_dark_wing, BodyPartRegistry.harpy_dark_wing);
 				this.skin = new Skin("human", "pale");
 				this.inventory.push(ItemRegistry.DARK_HARPY_EGG);
 			}
@@ -72,7 +72,7 @@ package org.sevenchan.dongs.creature
 		
 		override public function onEncounter(ply:Creature):Boolean 
 		{
-			if (!dark) {
+			if (ply!=null && !dark) {
 				HarpyEncounterScreen.push();
 			}
 			return !dark;

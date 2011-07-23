@@ -30,11 +30,11 @@ package org.sevenchan.dongs.creature
 			this.hair = new Hair("mushroom cap");
 			gender = Gender.ASEXUAL;
 			this.arms.push(
-				BodyPartRegistry.arms.human,
-				BodyPartRegistry.arms.human
+				BodyPartRegistry.human_arm,
+				BodyPartRegistry.human_arm
 			);
 			skin = new Skin("morel", "pasty white", "soft but dusty");
-			eyes.push(BodyPartRegistry.eyes.human_brown, BodyPartRegistry.eyes.human_brown);
+			eyes.push(BodyPartRegistry.human_brown_eye, BodyPartRegistry.human_brown_eye);
 			abilityUseProbability = 2;
 			this.abilities={spore:AbilityRegistry.spore};
 		}

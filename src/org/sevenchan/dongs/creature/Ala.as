@@ -28,8 +28,8 @@ package org.sevenchan.dongs.creature
 			];
 			abilityUseProbability = 1;
 			this._eyes.push(
-				BodyPartRegistry.eyes.ghost_yellow,
-				BodyPartRegistry.eyes.ghost_yellow
+				BodyPartRegistry.ghost_yellow_eye,
+				BodyPartRegistry.ghost_yellow_eye
 			);
 			mana = 100;
 			this.gold = 100;

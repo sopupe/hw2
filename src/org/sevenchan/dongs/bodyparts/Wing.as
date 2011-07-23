@@ -19,6 +19,10 @@ package org.sevenchan.dongs.bodyparts
 			this.wingspan = wingspan;
 		}
 		
+		public function get category():String {
+			return "wings";
+		}
+		
 		public function getDescr(num:Number, host:Creature):String {
 			return num + " " + descriptor + " "+(reptilian?"reptilian":"feathered")+ " " + species + " wing"+(num>1?"s":"");
 		}

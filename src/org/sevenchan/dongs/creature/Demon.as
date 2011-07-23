@@ -33,18 +33,18 @@ package org.sevenchan.dongs.creature
 			this.hair = HAIR;
 			
 			this.arms.push(
-				BodyPartRegistry.arms.human,
-				BodyPartRegistry.arms.human
+				BodyPartRegistry.human_arm,
+				BodyPartRegistry.human_arm
 			);
 			this.legs.push(
-				BodyPartRegistry.legs.human,
-				BodyPartRegistry.legs.human
+				BodyPartRegistry.human_leg,
+				BodyPartRegistry.human_leg
 			);
 			this.assholes.push(
-				BodyPartRegistry.assholes.demon
+				BodyPartRegistry.demon_anus
 			);
 			skin = SKIN;
-			eyes.push(BodyPartRegistry.eyes.demon, BodyPartRegistry.eyes.demon);
+			eyes.push(BodyPartRegistry.demon_eye, BodyPartRegistry.demon_eye);
 		}
 		
 		override public function getTypeName():String 
@@ -66,29 +66,29 @@ package org.sevenchan.dongs.creature
 		{
 			var i:int = 0;
 			for (i = 0; i < balls.length; i++) {
-				balls[i] = BodyPartRegistry.balls.demon;
+				balls[i] = BodyPartRegistry.demon_testicle;
 			}
 			for (i = 0; i < dicks.length; i++) {
 				dicks[i] = getNewDick();
 			}
 			for (i = 0; i < breasts.length; i++) {
-				breasts[i] = BodyPartRegistry.breasts.demon;
+				breasts[i] = BodyPartRegistry.demon_breast;
 			}
 			for (i = 0; i < vaginas.length; i++) {
-				vaginas[i] = BodyPartRegistry.vaginas.demon;
+				vaginas[i] = BodyPartRegistry.demon_vagina;
 			}
 			for (i = 0; i < eyes.length; i++) {
-				eyes[i] = BodyPartRegistry.eyes.demon;
+				eyes[i] = BodyPartRegistry.demon_eye;
 			}
 			for (i = 0; i < assholes.length; i++) {
-				assholes[i] = BodyPartRegistry.assholes.demon;
+				assholes[i] = BodyPartRegistry.demon_anus;
 			}
 			InfoScreen.push("<h2>PARADIGM SHIFT</h2><p>No John, you are the demons.</p>");
 		}
 		
 		override public function addBreast():void 
 		{
-			breasts.push(BodyPartRegistry.breasts.demon);
+			breasts.push(BodyPartRegistry.demon_breast);
 		}
 		
 		override public function onWin(ply:Creature):Boolean 
@@ -184,25 +184,27 @@ package org.sevenchan.dongs.creature
 			}
 			if(gender.hasDick) {
 				this.balls.push(
-					BodyPartRegistry.balls.demon,BodyPartRegistry.balls.demon
+					BodyPartRegistry.demon_testicle,
+					BodyPartRegistry.demon_testicle
 				);
 				this.dicks.push(
-					BodyPartRegistry.dicks.demon
+					getNewDick()
 				);
 			}
 			if (gender.hasVag) {				
 				this.vaginas.push(
-					BodyPartRegistry.vaginas.demon
+					BodyPartRegistry.demon_vagina
 				);
 				this.breasts.push(
-					BodyPartRegistry.breasts.demon,BodyPartRegistry.breasts.demon
+					BodyPartRegistry.demon_breast,
+					BodyPartRegistry.demon_breast
 				);
 			}
 			doMutations();
 		}
 		
 		private function getNewDick():Penis {
-			var wang:Penis = BodyPartRegistry.dicks.demon;
+			var wang:Penis = BodyPartRegistry.demon_penis
 			wang.size += MathUtils.rand(1, 3, false);
 			return wang;
 		}
@@ -216,39 +218,19 @@ package org.sevenchan.dongs.creature
 					this.dicks.push(getNewDick());
 				}
 				for (i = 0; i < MathUtils.rand(0, 3); i++) {
-					this.balls.push(BodyPartRegistry.balls.demon);
+					this.balls.push(BodyPartRegistry.demon_testicle);
 				}
 			}
 			
 			// Vags & Boobs
 			if(gender.hasVag) {
 				for (i = 0; i < MathUtils.rand(0, 2); i++) {
-					this.vaginas.push(BodyPartRegistry.vaginas.demon);
+					this.vaginas.push(BodyPartRegistry.demon_vagina);
 				}
 				for (i = 0; i < MathUtils.rand(0, 2); i++) {
-					this.breasts.push(BodyPartRegistry.breasts.demon);
+					this.breasts.push(BodyPartRegistry.demon_breast);
 				}
 			}
-		}
-		
-		public static function replaceDialogue(s:String, g:Gender):String {
-			var it:Boolean = g == Gender.ASEXUAL;
-			// 'e, she, shi, it
-			s = demonify(s,/%DMON_SUB%/g, 							g.subject,		(it||g==Gender.FEMALE));
-			s = demonify(s,/%DMON_CSUB%/g, StringTools.capitalize(	g.subject),		(it||g==Gender.FEMALE));
-			// 'im, 'er, 'ir, it
-			s = demonify(s,/%DMON_(C?)SUB%/g, 						g.objective,	it);
-			// 'imself, 'erself, 'irself, itself
-			s = demonify(s,/%DMON_(C?)REF%/g, 						g.reflexive,	it);
-			// 'is, 'er, its
-			s = demonify(s,/%DMON_(C?)POS%/g, 						g.possessive,	it);
-			// 'is, 'ers, its
-			s = demonify(s,/%DMON_(C?)PP%/g, 						g.possessivePronoun,	it);
-			return s;
-		}
-		
-		private static function demonify(str:String, reg:*, wif:String, asOrig:Boolean):String {
-			return str.replace(reg, asOrig ? wif : "'" + wif.substr(1));
 		}
 	}
 

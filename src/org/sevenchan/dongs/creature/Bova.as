@@ -1,21 +1,27 @@
 package org.sevenchan.dongs.creature 
 {
-	import org.sevenchan.dongs.Creature;
+	import flash.net.*;
+	import org.sevenchan.dongs.*;
 	import org.sevenchan.dongs.bodyparts.*;
-	import flash.net.registerClassAlias;
+	import org.sevenchan.dongs.items.*;
+	import org.sevenchan.dongs.screens.*;
 	
 	/**
-	 * ...
+	 * Cowgirl
+	 * 
+	 * Friendly creature that sells milk and sex, although
+	 * sex without a gas mask = you turn into a cowgirl.
 	 * @author N3X15
 	 */
-	public class Human extends Creature 
+	public class Bova extends Creature 
 	{
-		registerClassAlias("EHuman", Human);
+		
+		registerClassAlias("EBova", Bova);
 		public var SKIN:Skin = new Skin("human", "light", "smooth");
 		
-		public function Human() 
+		public function Bova() 
 		{
-			trace("Human.init()");
+			trace("Bova.init()");
 			super();
 			height = Math.random()*1.5 + 5;
 			switch(Math.round(MathUtils.rand(0, 1))) {
@@ -24,6 +30,9 @@ package org.sevenchan.dongs.creature
 					break;
 				case 1:
 					this.gender = Gender.FEMALE;
+					break;
+				case 2:
+					this.gender = Gender.HERM;
 					break;
 			}
 			this.build = Build.AVG;
@@ -62,9 +71,7 @@ package org.sevenchan.dongs.creature
 					BodyPartRegistry.human_testicle,
 					BodyPartRegistry.human_testicle
 				);
-				this.dicks.push(
-					BodyPartRegistry.human_penis
-				);
+				this.addDick();
 				breasts[0].size=0;
 				breasts[1].size=0;
 			}
@@ -79,8 +86,26 @@ package org.sevenchan.dongs.creature
 		
 		override public function getTypeName():String 
 		{
-			return "human";
+			return "bova";
 		}
+		
+		override public function addDick(type:String="default"):Penis 
+		{
+			var penis:Penis = BodyPartRegistry.human_penis;
+			penis.size = 6 + MathUtils.rand(0, 12);
+			this._dicks.push(penis);
+			return penis;
+		}
+		
+		override public function onEncounter(ply:Creature):Boolean 
+		{
+			if (ply != null) // Debug screen checking to see if encounters are possible
+			{
+				// Encounter screen
+			}
+			return true;
+		}
+		
 	}
 
 }

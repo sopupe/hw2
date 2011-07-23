@@ -14,6 +14,13 @@ package org.sevenchan.dongs.bodyparts
 		{
 			_name = name;
 		}
+		
+		
+		
+		public override function get category():String {
+			return "vaginas";
+		}
+		
 		public override function getDescr(num:Number, host:Creature):String {
 			var tightness:String = "tight";
 			var filled:String = "";

@@ -26,6 +26,11 @@ package org.sevenchan.dongs.bodyparts
 		
 		/* INTERFACE org.sevenchan.dongs.bodyparts.IBodyPart */
 		
+		
+		public  function get category():String {
+			return "skins";
+		}
+		
 		public function getShortDescr(withModifier:Boolean = false):String {
 			var t:String = "skin";
 			if(withModifier)
