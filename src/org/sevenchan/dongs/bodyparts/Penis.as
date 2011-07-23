@@ -115,12 +115,14 @@ package org.sevenchan.dongs.bodyparts
 			InfoScreen.push(text);
 		}
 		
-		public function grow(ply:Creature, atStore:Boolean, size:Number):String {
+		public function grow(ply:Creature, atStore:Boolean, _size:Number):String {
+			this.size += _size;
 			var descr:String = getDescr(1, ply);
 			return "You feel more weight in your trousers.  Frightened, you look down and see a penis has grown to become " +Utils.A(descr)+" "+descr+ ".";
 		}
 		
 		public function shrink(ply:Creature,atStore:Boolean, size:Number):String {
+			this.size -= _size;
 			return "You groan as you feel your " + getDescr(1, ply) + " sucked back into your body a few inches.";
 		}
 	}
