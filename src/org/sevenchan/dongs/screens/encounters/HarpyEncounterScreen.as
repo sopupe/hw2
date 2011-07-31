@@ -1,8 +1,9 @@
-package org.sevenchan.dongs.screens 
+package org.sevenchan.dongs.screens.encounters
 {
 	import org.sevenchan.AdventureController;
 	import org.sevenchan.dongs.creature.Harpy;
 	import org.sevenchan.dongs.Screen;
+	import org.sevenchan.dongs.screens.InfoScreen;
 	import org.sevenchan.dongs.Town;
 	import org.sevenchan.dongs.towns.WildsHorusSpine;
 	
@@ -10,67 +11,78 @@ package org.sevenchan.dongs.screens
 	 * ...
 	 * @author N3X15
 	 */
-	public class HarpyEncounterScreen extends Screen 
+	public class HarpyEncounterScreen extends Screen
 	{
 		private var text:String = "";
 		private var state:String = "main";
 		
-		public static function push():void {
+		public static function push():void
+		{
 			AdventureController.screenQueue.write(new HarpyEncounterScreen());
 		}
 		
-		public function HarpyEncounterScreen() 
+		public function HarpyEncounterScreen()
 		{
-			
+			lustCost = 3;
 		}
-		override public function processButtonPress(id:int):Boolean 
+		
+		override public function processButtonPress(id:int):Boolean
 		{
 			clearButtons();
-			switch(id) {
-			case -1:
-				onStartupScreen();
-				updateScreen();
-				return false;
-				break;
-			case 0:
-				if (!main.player.getExplored("harpycabin")) {
-					main.player.setExplored("harpycabin");
-					onQuestStart();
-				} else {
-					text = "<p>She shrieks with glee, splitting your tortured eardrums, and then lifts you into the sky.</p>";
-					main.setTown(Town.knownTowns.harpycabin);
-				}
-				return true;
-			case 1:
-				onFuck();
-				return true;
-			case 2:
-				main.startCombat(null, new Harpy(false), true);
-				return true;
-			case 3:
-				return true;
+			switch (id)
+			{
+				case-1: 
+					onStartupScreen();
+					updateScreen();
+					return false;
+					break;
+				case 0: 
+					if (!main.player.getExplored("harpycabin"))
+					{
+						main.player.setExplored("harpycabin");
+						onQuestStart();
+					}
+					else
+					{
+						text = "<p>She shrieks with glee, splitting your tortured eardrums, and then lifts you into the sky.</p>";
+						main.setTown(Town.knownTowns.harpycabin);
+					}
+					return true;
+				case 1: 
+					onFuck();
+					return true;
+				case 2: 
+					main.startCombat(null, new Harpy(false), true);
+					return true;
+				case 3: 
+					return true;
 			}
 			return false;
 		}
 		
-		override public function getScreenText():String 
+		override public function getScreenText():String
 		{
 			return text;
 		}
 		
-		public function addHarpyCabin():void {
-			if (main.player.getExplored("harpycabin")) {
+		public function addHarpyCabin():void
+		{
+			if (main.player.getExplored("harpycabin"))
+			{
 				main.player.setExplored("harpycabin");
 			}
-			if((Town.knownTowns.horus as WildsHorusSpine).connectedTowns["harpycabin"]==null) {
+			if ((Town.knownTowns.horus as WildsHorusSpine).connectedTowns["harpycabin"] == null)
+			{
 				(Town.knownTowns.horus as WildsHorusSpine).connectedTowns.push("harpycabin");
 			}
 		}
 		
-		public function onFuck():void {
+		public function onFuck():void
+		{
 			addHarpyCabin();
-			if (!main.player.getExplored("seenharpy")) {
-				text  = "<p><i>Fuck annoying but cute birdwoman, or go after deadly ";
+			if (!main.player.getExplored("seenharpy"))
+			{
+				text = "<p><i>Fuck annoying but cute birdwoman, or go after deadly ";
 				text += "airborne demons with 9-inch claws?</i> You go after the only reasonable option, ";
 				text += "and drop your torn trousers.</p> ";
 				text += "<p>She beams again, then hops into the air and suddenly grabs ";
@@ -91,7 +103,9 @@ package org.sevenchan.dongs.screens
 				text += "<p><i>Thank Christ that's over</i>.&nbsp; You pull out ";
 				text += "your earplugs you made with some white berries you stole from her kitchen and ";
 				text += "get on your way.</p>";
-			} else {
+			}
+			else
+			{
 				text = "<p>&quot;Yes.  I brought you my dick.&quot; You quip, this time keeping your ";
 				text += "pants on.  She blushes, giggles, and swoops you away to her nest.</p>";
 				main.setTown(Town.knownTowns.harpycabin);
@@ -100,9 +114,10 @@ package org.sevenchan.dongs.screens
 			text = "";
 		}
 		
-		public function onQuestStart():void {
+		public function onQuestStart():void
+		{
 			addHarpyCabin();
-			text  = "<p>You consider your options, and decide that she may be a ";
+			text = "<p>You consider your options, and decide that she may be a ";
 			text += "useful ally, but you don't want to know how loudly she screams during ";
 			text += "sex. &quot;I'll get the eggs.&quot;&nbsp; You assure her, edging away. </p> ";
 			text += "<p>She beams, white teeth gleaming in the sun;&nbsp; She ";
@@ -115,15 +130,17 @@ package org.sevenchan.dongs.screens
 			text = "";
 		}
 		
-		public function onStartupScreen():void {
-			if (!main.player.getExplored("seenharpy")) {
+		public function onStartupScreen():void
+		{
+			if (!main.player.getExplored("seenharpy"))
+			{
 				main.player.setExplored("seenharpy");
 				//[Get Eggs][Fuck][Run Away]
 				setButton(0, "Eggs");
 				setButton(1, "Fuck");
 				setButton(2, "Fight");
 				setButton(3, "Run");
-				text  = "<p>You hear large wings beating the air above you, and look up ";
+				text = "<p>You hear large wings beating the air above you, and look up ";
 				text += "to see a beautiful woman with large, brown feathered wings and short brown hair ";
 				text += "looking down at you from about 10 meters away.&nbsp; You squint against the ";
 				text += "bright sunlight (and downwash from her great wings), and notice that her long ";
@@ -160,7 +177,9 @@ package org.sevenchan.dongs.screens
 				text += "old truck shifting gears. &quot;Yeah, if you bring me dark harpy eggs, I can ";
 				text += "raise them to be normal harpies. Or...&quot; She blushes, fidgeting. &quot;It... ";
 				text += "IS harpy mating season, you know...&quot;</p> ";
-			} else {
+			}
+			else
+			{
 				setButton(0, "Eggs");
 				setButton(1, "Dick");
 				setButton(2, "Fist");
@@ -172,7 +191,7 @@ package org.sevenchan.dongs.screens
 				text += "<p>She scratches at the thin layer of dirt accumulated on the ledge idly, but eyes you with anxiety.  &quot;So... Do you have anything for me?&quot;  The smile widens nervously, and she blushes.</p>";
 			}
 		}
-		
+	
 	}
 
 }

@@ -31,7 +31,10 @@ package org.sevenchan.dongs
 				harpy_tincture: new HarpyTincture(),
 				spider_venom: new SpiderVenomSac(),
 				darkharpyegg: new DarkHarpyEgg(),
-				potion_pink: new PinkPotion()
+				potion_pink: new PinkPotion(),
+				potion_gold:new GoldPotion(),
+				spider_egg:new SpiderEgg(),
+				gas_mask:new GasMask()
 			};
 		}
 		

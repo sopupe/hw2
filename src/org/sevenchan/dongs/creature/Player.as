@@ -31,11 +31,14 @@ package org.sevenchan.dongs.creature
 			super();
 		}
 		
-		override public function addBreast():void 
+		override public function addBreast():Breast 
 		{
-			baseType.addBreast();
+			return baseType.addBreast();
 		}
 		
+		override public function addDick(type:String = "default"):Penis {
+			return baseType.addDick(type);
+		}
 		public function changeTo(t:Creature):void {
 			var tmp:Creature = baseType;
 			baseType = t;

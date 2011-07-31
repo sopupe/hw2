@@ -22,6 +22,7 @@ package org.sevenchan.dongs.screens
 			player = ply;
 			this.loser = loser;
 			clearButtons();
+			lustCost = 1;
 			setButton(NEXT_BUTTON, "Next");
 		}
 		

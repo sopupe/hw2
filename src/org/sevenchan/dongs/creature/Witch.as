@@ -45,9 +45,12 @@ package org.sevenchan.dongs.creature
 			this.skin = SKIN;
 		}
 		
-		override public function addBreast():void 
+		override public function addBreast():Breast 
 		{
-			breasts.push(BodyPartRegistry.human_breast);
+			var boob:Breast = BodyPartRegistry.human_breast;
+			boob.size = MathUtils.rand(0, 3);
+			breasts.push(boob);
+			return boob;
 		}
 		
 		override public function initialGenderSetup():void 

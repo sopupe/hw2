@@ -50,7 +50,7 @@ package org.sevenchan.dongs.bodyparts
 				txt=MathUtils.getRandomArrayEntry([
 					"%CSUB% kicks you",
 					"You discover how "+from.getTypeName()+" feet taste",
-					"One of %SUB%'s kicks finds your face",
+					"One of %POS%'s kicks find your face",
 				]);
 				InfoScreen.push(from.gender.doReplace("<p>"+txt+", causing " + dmg + " damage!</p>"));
 			}

@@ -44,18 +44,15 @@ package org.sevenchan.dongs.items
 				host.addBreast();
 				host.addBreast();
 			} else {
-				host.breasts.forEach(embiggen);
+				for (var i:int = 0; i < host.breasts.length;i++)
+					host.breasts[i].bigger();
 			}
 			text += host.getBreastDescr() + ".  The extra weight pulls you forward a bit, and they wobble ";
 			text += "slightly.  You hold them in your hands and rub them gently, feeling their larger size.</p>";
-			text += "<i>TODO: Do something smexy.  Have an idea? Drop it in the thread.</i>";
+			text += "<p><i>TODO: Do something smexy.  Have an idea? Drop it in the thread.</i></p>";
 			host.lust += 10;
 			InfoScreen.push(text);
 			return true;
-		}
-		
-		private function embiggen(obj:Object):void {
-			(obj as Breast).bigger();
 		}
 	}
 

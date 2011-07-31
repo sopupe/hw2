@@ -5,6 +5,7 @@ package org.sevenchan.dongs.creature
 	import org.sevenchan.dongs.bodyparts.*;
 	import org.sevenchan.dongs.items.*;
 	import org.sevenchan.dongs.screens.*;
+	import org.sevenchan.dongs.screens.encounters.BovaEncounterScreen;
 	
 	/**
 	 * Cowgirl
@@ -24,7 +25,7 @@ package org.sevenchan.dongs.creature
 			trace("Bova.init()");
 			super();
 			height = Math.random()*1.5 + 5;
-			switch(Math.round(MathUtils.rand(0, 1))) {
+			switch(Math.round(MathUtils.rand(0, 2))) {
 				case 0:
 					this.gender = Gender.MALE;
 					break;
@@ -52,9 +53,12 @@ package org.sevenchan.dongs.creature
 			this.skin = SKIN;
 		}
 		
-		override public function addBreast():void 
+		override public function addBreast():Breast 
 		{
-			breasts.push(BodyPartRegistry.human_breast);
+			var boob:Breast = BodyPartRegistry.human_breast;
+			boob.size = MathUtils.rand(0, 3);
+			breasts.push(boob);
+			return boob;
 		}
 		
 		override public function initialGenderSetup():void 
@@ -97,11 +101,16 @@ package org.sevenchan.dongs.creature
 			return penis;
 		}
 		
+		override public function getHostile(subj:Creature):Boolean 
+		{
+			return false;
+		}
+		
 		override public function onEncounter(ply:Creature):Boolean 
 		{
 			if (ply != null) // Debug screen checking to see if encounters are possible
 			{
-				// Encounter screen
+				BovaEncounterScreen.push(this);
 			}
 			return true;
 		}

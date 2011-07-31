@@ -18,7 +18,7 @@ package org.sevenchan.dongs.towns
 			name = "Damned";
 			inhabitants = [
 				CreatureRegistry.demon,
-				//CreatureRegistry.cowgirl
+				CreatureRegistry.bova,
 				CreatureRegistry.witch,
 			];
 			isWilds = false;
@@ -30,7 +30,8 @@ package org.sevenchan.dongs.towns
 			this.shop = new ShopScreen(this, 20, [
 				ItemRegistry.BERRY_WHITE.id,
 				ItemRegistry.POTION_PINK.id,
-				ItemRegistry.SPIDER_VENOM.id
+				ItemRegistry.SPIDER_VENOM.id,
+				ItemRegistry.GAS_MASK.id,
 			]);
 		}
 		

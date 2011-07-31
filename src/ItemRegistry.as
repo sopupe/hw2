@@ -14,6 +14,7 @@ package
 		public static var POTION_PINK:PinkPotion = new PinkPotion(1);
 		public static var POTION_GOLD:GoldPotion = new GoldPotion(1);
 		public static var SPIDER_EGG:SpiderEgg = new SpiderEgg(1);
+		public static var GAS_MASK:GasMask = new GasMask(1);
 	}
 
 }

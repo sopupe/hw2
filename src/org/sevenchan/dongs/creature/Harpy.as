@@ -7,7 +7,7 @@ package org.sevenchan.dongs.creature
 	import org.sevenchan.dongs.Item;
 	import org.sevenchan.dongs.items.HarpyTincture;
 	import org.sevenchan.dongs.items.WhiteBerries;
-	import org.sevenchan.dongs.screens.HarpyEncounterScreen;
+	import org.sevenchan.dongs.screens.encounters.HarpyEncounterScreen;
 	/**
 	 * Two versions for our purposes.
 	 * 

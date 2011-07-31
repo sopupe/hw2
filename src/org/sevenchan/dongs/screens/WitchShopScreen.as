@@ -2,6 +2,7 @@ package org.sevenchan.dongs.screens
 {
 	import flash.utils.*;
 	import org.sevenchan.AdventureController;
+	import org.sevenchan.dongs.bodyparts.Breast;
 	import org.sevenchan.dongs.bodyparts.Penis;
 	import org.sevenchan.dongs.Item;
 	import org.sevenchan.dongs.items.GoldPotion;
@@ -288,7 +289,8 @@ package org.sevenchan.dongs.screens
 				return BSChooseSpecies(id);
 			if (subpage == "penises")
 				return BSPenises(id);
-			//if (subpage == "testes") return BSTestes(id);
+			if (subpage == "testes") 
+			return BSTestes(id);
 			//if (subpage == "vaginas") return BSVaginas(id);
 			//if (subpage == "breasts") return BSBreasts(id);
 			//if (subpage == "abilities") return BSAbilities(id);
@@ -406,6 +408,199 @@ package org.sevenchan.dongs.screens
 					wang = main.player.dicks.pop();
 					main.player.gold += 900 - priceoffset;
 					wang.onRemoved(true, main.player);
+					WitchShopScreen.push(type);
+					return true;
+					break;
+				case 3: 
+					text = "<h2>Grow Dicks</h2>";
+					var glassDesc:String = "shot glass";
+					if (dickincrement >= 6 && dickincrement < 12)
+					{
+						glassDesc = "vial";
+					}
+					else if (dickincrement >= 12 && dickincrement < 18)
+					{
+						glassDesc = "flask";
+					}
+					else if (dickincrement >= 18 && dickincrement < 24)
+					{
+						glassDesc = "tumbler";
+					}
+					else if (dickincrement >= 24)
+					{
+						glassDesc = "beer mug";
+					}
+					text += "<p>The proprietor of the shop produces a " + glassDesc + " full of a maroon, murky liquid and hands the warm glass ";
+					text += "to you. </p><p>&quot;Drink.&quot; She directs in a bored tone.</p><p>You give the liquid a quick glance, and then ";
+					text += "shrug, raising the " + glassDesc + " to your lips and draining it of its sweet contents.  It doesn't take long for ";
+					text += "the effects to take hold, as pins-and-needles rush over your " + Utils.pluralize("penis", main.player.dicks.length) + ".  The skin tightens, ";
+					text += "and then expands.  You groan loudly as your " + Utils.pluralize("member", main.player.dicks.length) + " erect to their full size, and then ";
+					text += "continue until they reach the size you requested:</p><ul>";
+					for (var i:int = 0; i < main.player.dicks.length; i++)
+					{
+						text += "<li>" + main.player.dicks[i].grow(main.player, true, dickincrement) + "</li>";
+						main.player.gold -= 100 + priceoffset;
+					}
+					text += "</ul>";
+					break;
+				case 4: 
+					text = "<h2>Shrink Dicks</h2>";
+					text += "<p>The old woman nods after counting her cash, picks up her wand, and then suddenly screams at your groin, pointing ";
+					text += "her wand at it.  She stops and returns to counting her cash as your penises retract the amount you specified:</p>";
+					text += "<ul>";
+					for (i = 0; i < main.player.dicks.length; i++)
+					{
+						text += "<li>" + main.player.dicks[i].shrink(main.player, true, dickincrement) + "</li>";
+						main.player.gold -= 100 + priceoffset;
+					}
+					text += "</ul>";
+					break;
+				case 5: 
+					var cc:Class = getDefinitionByName(getQualifiedClassName(main.player)) as Class;
+					var c:Creature = new cc();
+					main.player.gold -= 1000;
+					return true;
+					break;
+			}
+			updateScreen();
+			return false;
+		}
+		
+		public function BSTestes(id:int):Boolean
+		{
+			trace("BSPenises", id)
+			clearButtons();
+			setButton(0, "CANCEL");
+			text = "<h2>Testicle Modifications</h2><p>Here, you can modify your nut(s)... For a price.</p>";
+			text += "<ul>";
+			text += addMenuOption(1, "Add", 1000 + priceoffset, "Grow a new testicle of your choice");
+			var numballs:int = main.player.dicks.length;
+			if (numballs > 0)
+			{
+				text += addMenuOption(2, "Remove", -900 + priceoffset, "Remove one of your balls and sell it to the store.");
+					//text += addMenuOption(5, "Reset", 1000 + priceoffset, "Reset your groin to the default number, type, and size of dicks for your species.");
+			}
+			text += "</ul>";
+			
+			switch (id)
+			{
+				case 0: 
+					subpage = "main";
+					return processButtonPress(-1);
+					break;
+				case 1: 
+					var wang:Penis = /*main.player.addBall()*/null;
+					if (wang == null)
+					{
+						InfoScreen.push("Your species doesn't have a default penis, so you'll get a human dick instead.");
+						wang = BodyPartRegistry.human_penis;
+					}
+					wang.onAdded(true, main.player);
+					WitchShopScreen.push(type);
+					main.player.gold -= 1000 + priceoffset;
+					return true;
+					break;
+				case 2: 
+					wang = main.player.dicks.pop();
+					main.player.gold += 900 - priceoffset;
+					wang.onRemoved(true, main.player);
+					WitchShopScreen.push(type);
+					return true;
+					break;
+				case 3: 
+					text = "<h2>Grow Dicks</h2>";
+					var glassDesc:String = "shot glass";
+					if (dickincrement >= 6 && dickincrement < 12)
+					{
+						glassDesc = "vial";
+					}
+					else if (dickincrement >= 12 && dickincrement < 18)
+					{
+						glassDesc = "flask";
+					}
+					else if (dickincrement >= 18 && dickincrement < 24)
+					{
+						glassDesc = "tumbler";
+					}
+					else if (dickincrement >= 24)
+					{
+						glassDesc = "beer mug";
+					}
+					text += "<p>The proprietor of the shop produces a " + glassDesc + " full of a maroon, murky liquid and hands the warm glass ";
+					text += "to you. </p><p>&quot;Drink.&quot; She directs in a bored tone.</p><p>You give the liquid a quick glance, and then ";
+					text += "shrug, raising the " + glassDesc + " to your lips and draining it of its sweet contents.  It doesn't take long for ";
+					text += "the effects to take hold, as pins-and-needles rush over your " + Utils.pluralize("penis", main.player.dicks.length) + ".  The skin tightens, ";
+					text += "and then expands.  You groan loudly as your " + Utils.pluralize("member", main.player.dicks.length) + " erect to their full size, and then ";
+					text += "continue until they reach the size you requested:</p><ul>";
+					for (var i:int = 0; i < main.player.dicks.length; i++)
+					{
+						text += "<li>" + main.player.dicks[i].grow(main.player, true, dickincrement) + "</li>";
+						main.player.gold -= 100 + priceoffset;
+					}
+					text += "</ul>";
+					break;
+				case 4: 
+					text = "<h2>Shrink Dicks</h2>";
+					text += "<p>The old woman nods after counting her cash, picks up her wand, and then suddenly screams at your groin, pointing ";
+					text += "her wand at it.  She stops and returns to counting her cash as your penises retract the amount you specified:</p>";
+					text += "<ul>";
+					for (i = 0; i < main.player.dicks.length; i++)
+					{
+						text += "<li>" + main.player.dicks[i].shrink(main.player, true, dickincrement) + "</li>";
+						main.player.gold -= 100 + priceoffset;
+					}
+					text += "</ul>";
+					break;
+				case 5: 
+					var cc:Class = getDefinitionByName(getQualifiedClassName(main.player)) as Class;
+					var c:Creature = new cc();
+					main.player.gold -= 1000;
+					return true;
+					break;
+			}
+			updateScreen();
+			return false;
+		}
+		public function BSBreasts(id:int):Boolean
+		{
+			trace("BSBreasts", id)
+			clearButtons();
+			setButton(0, "CANCEL");
+			text = "<h2>Breast Modifications</h2><p>Want bigger boobs?  More tits?  Fewer tits?  Pay up and they're yours.</p>";
+			text += "<ul>";
+			text += addMenuOption(1, "Add", 1000 + priceoffset, "Grow a new breast");
+			var numboobs:int = main.player.breasts.length;
+			if (numboobs > 0)
+			{
+				text += addMenuOption(2, "Remove", -900 + priceoffset, "Remove one of your balls and sell it to the store.");
+				text += addMenuOption(3, "Grow", 100 + priceoffset, "Fuck up your back by growing enormous tits!");
+				text += addMenuOption(4, "Shrink", 100 + priceoffset, "Shrink your boobs");
+					//text += addMenuOption(5, "Reset", 1000 + priceoffset, "Reset your groin to the default number, type, and size of dicks for your species.");
+			}
+			text += "</ul>";
+			
+			switch (id)
+			{
+				case 0: 
+					subpage = "main";
+					return processButtonPress(-1);
+					break;
+				case 1: 
+					var boob:Breast = main.player.addBreast();
+					if (boob == null)
+					{
+						InfoScreen.push("Your species doesn't have a default breast type, so you'll get a human boob instead.");
+						boob = BodyPartRegistry.human_breast;
+					}
+					boob.onAdded(true, main.player);
+					WitchShopScreen.push(type);
+					main.player.gold -= 1000 + priceoffset;
+					return true;
+					break;
+				case 2: 
+					boob = main.player.breasts.pop();
+					main.player.gold += 900 - priceoffset;
+					boob.onRemoved(true, main.player);
 					WitchShopScreen.push(type);
 					return true;
 					break;

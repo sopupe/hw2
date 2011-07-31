@@ -2,6 +2,7 @@ package org.sevenchan.dongs.bodyparts
 {
 	import org.sevenchan.dongs.Creature;
 	import flash.net.registerClassAlias;
+	import org.sevenchan.dongs.screens.InfoScreen;
 	/**
 	 * ...
 	 * @author N3X15
@@ -104,6 +105,33 @@ package org.sevenchan.dongs.bodyparts
 		
 		public function onFailedAttack(from:Creature, to:Creature):void{}
 		public function onGoodAttack(from:Creature, to:Creature):void{}
+		
+		public function onAdded(atStore:Boolean, ply:Creature):void
+		{
+			var text:String = "<h2>New Breast</h2>";
+			if (atStore)
+			{
+				text += "<p>The witch blows at your chest over her dry, spindly fingers, as though she were blowing a kiss.  The creepy throught passes as you ";
+			}
+			else
+			{
+				text += "<p>You ";
+			}
+			text += " feel a bulge of flesh come into being on your chest, slowly expanding into " + Utils.A(getDescr(1, ply)) + " " + getDescr(1, ply)+"</p>";
+			InfoScreen.push(text);
+		}
+		
+		public function onRemoved(atStore:Boolean, ply:Creature):void
+		{
+			var text:String = "<h2>Remove a Breast</h2>";
+			
+			if (atStore)
+				text += "<p>The old lady simply prods your unwanted flesh tumor with her wand, and it ";
+			else
+				text += "<p>One of your breasts ";
+			text += "slowly deflates, and then recedes back into your body with a warm tingling sensation.</p>";
+			InfoScreen.push(text);
+		}
 	}
 
 }

@@ -84,9 +84,10 @@ package org.sevenchan.dongs
 			_mana = maxMana;
 		}
 		
-		public function addBreast():void
+		public function addBreast():Breast
 		{
 			trace("USING CREATURE.ADDBREAST INSTEAD OF OVERRIDING");
+			return null;
 		}
 		
 		public function addEnchantment(ench:Enchantment):String
@@ -395,6 +396,8 @@ package org.sevenchan.dongs
 			explored.push(loc);
 		}
 		
+		// TODO: This is stupid.
+		// http://www.gamedev.net/topic/183822-rpg-combat-formula-question/
 		public function recalcStrength():void
 		{
 			//trace("height:", height);
@@ -499,6 +502,13 @@ package org.sevenchan.dongs
 			customized = true;
 		}
 		
+		public function hasItem(id:int):Boolean {
+			for each (var item:Item in this.inventory) {
+				if (item.id == id)
+					return true;
+			}
+			return false;
+		}
 		public function get breasts():Vector.<Breast>
 		{
 			return this._breasts;

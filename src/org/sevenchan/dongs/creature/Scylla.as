@@ -49,11 +49,12 @@ package org.sevenchan.dongs.creature
 			addBreast();
 		}
 		
-		override public function addBreast():void 
+		override public function addBreast():Breast 
 		{
 			var boob:Breast = BodyPartRegistry.human_breast;
-			boob.size = 3;
-			_breasts.push(boob);
+			boob.size = MathUtils.rand(0, 3);
+			breasts.push(boob);
+			return boob;
 		}
 		
 		public override function getTypeName():String { return "Scylla"; }

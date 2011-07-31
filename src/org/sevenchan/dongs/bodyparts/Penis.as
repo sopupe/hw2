@@ -65,6 +65,10 @@ package org.sevenchan.dongs.bodyparts
 				erectDesc = "growing";
 			
 			var dm:String = sizeDesc + " " + erectDesc + " " + MathUtils.inchesToFootInches(sz) + " " + name + " " + dick + ((num > 1) ? "s" : "");
+			if (num == -1)
+				return dm;
+			if (num == 1)
+				dm = "single "+dm;
 			if (num > 1)
 				dm = num + " " + dm;
 			return dm;

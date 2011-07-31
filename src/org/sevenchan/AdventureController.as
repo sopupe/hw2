@@ -335,6 +335,11 @@ package org.sevenchan
 			addChildAt(bgshape, 0);
 			stage.addEventListener(Event.RESIZE, resizeBGWithStage);
 		}
+		
+		private function redrawBG():void {
+			bgshape.graphics.beginFill(currentBGColor);
+			bgshape.graphics.drawRect(0,0,stage.stageWidth, stage.stageHeight);
+		}
 		private function resizeBGWithStage(e:Event):void
 		{
 			try {
@@ -360,7 +365,7 @@ package org.sevenchan
 			combatScreen = new CombatScreen(oldScreen, combatant, playerInitiated);
 			setScreen(combatScreen);
 			currentBGColor = 0x330000;
-			initBG();
+			redrawBG();
 		}
 
 		public function endCombat(oldScreen:Screen):void {
@@ -368,7 +373,7 @@ package org.sevenchan
 			combatScreen = null;
 			//setScreen(AdventureController.screenQueue.read());
 			currentBGColor = default_bg_color;
-			initBG();
+			redrawBG();
 		}
 		
 		public function setTown(t:Town):void {

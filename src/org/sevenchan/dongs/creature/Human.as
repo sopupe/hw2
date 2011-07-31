@@ -43,20 +43,21 @@ package org.sevenchan.dongs.creature
 			this.skin = SKIN;
 		}
 		
-		override public function addBreast():void 
+		override public function addBreast():Breast 
 		{
-			breasts.push(BodyPartRegistry.human_breast);
+			var boob:Breast = BodyPartRegistry.human_breast;
+			boob.size = MathUtils.rand(0, 3);
+			breasts.push(boob);
+			return boob;
 		}
 		
 		override public function initialGenderSetup():void 
 		{
-			this.breasts.push(
-				BodyPartRegistry.human_breast,
-				BodyPartRegistry.human_breast
-			);
 			this._assholes.push(
 				BodyPartRegistry.human_anus
 			);
+			addBreast();
+			addBreast();
 			if(gender.hasDick) {
 				this.balls.push(
 					BodyPartRegistry.human_testicle,
@@ -69,6 +70,10 @@ package org.sevenchan.dongs.creature
 				breasts[1].size=0;
 			}
 			if(gender.hasVag) {
+				this.breasts.push(
+					BodyPartRegistry.human_breast,
+					BodyPartRegistry.human_breast
+				);
 				this.vaginas.push(
 					BodyPartRegistry.human_vagina
 				);
