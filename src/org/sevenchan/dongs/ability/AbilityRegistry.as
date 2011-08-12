@@ -14,6 +14,7 @@ package org.sevenchan.dongs.ability
 		public static var spore:Spore = new Spore();
 		public static var tornado:Tornado = new Tornado(); 
 		public static var lightning:Lightning = new Lightning();
+		public static var flatulence:Flatulence = new Flatulence();
 		
 		public function AbilityRegistry() 
 		{
