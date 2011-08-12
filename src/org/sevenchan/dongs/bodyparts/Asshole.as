@@ -18,6 +18,7 @@ package org.sevenchan.dongs.bodyparts
 		public var filledWith:String = "";
 		public var pregCounter:Number = -1;
 		public var pregnantWith:Creature = null;
+		public var _pen:Boolean = false;
 
 		public function Asshole(name:String="") 
 		{
@@ -73,7 +74,9 @@ package org.sevenchan.dongs.bodyparts
 			return t;
 		}
 		public function onFailedAttack(from:Creature, to:Creature):void{}
-		public function onGoodAttack(from:Creature, to:Creature):void{}
+		public function onGoodAttack(from:Creature, to:Creature):void { }
+		
+		public function isPenetrated():Boolean { return _pen; }
 		
 	}
 

@@ -90,7 +90,7 @@ package org.sevenchan.dongs.bodyparts
 			var text:String = num + " " + breastSizes[size];
 			if (milkMult != 1)
 				text += ", " + getMilkFeeling();
-			text += " " + Utils.pluralize(getShortDescr(), num);
+			text += " " + Utils.pluralize(num,getShortDescr());
 			return text;
 		}
 		

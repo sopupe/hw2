@@ -17,6 +17,7 @@ package org.sevenchan.dongs.ability
 			this.description = "Utterly rape something for the cost of 100 Mana.";
 			this.label = "Lightning";
 			this.name = "Lightning";
+			this.cannotBeRestrainedToUse = false;
 		}
 		
 		override public function activate(activator:Creature, rapee:Creature):Boolean 

@@ -15,7 +15,8 @@ package org.sevenchan.dongs
 		public var lustCost:Number = 0.0;
 		public var newGameButton:Boolean = false;
 		public var loadOrSaveButton:Boolean = true;
-		public var selectPerkButton:Boolean = false;
+		public var showLoadOrSaveButton:Boolean = true;
+		public var importGameButton:Boolean = false;
 		public var exportGameButton:Boolean = true;
 		public var debugMenuButton:Boolean = true;
 		public var appearanceButton:Boolean = true;

@@ -17,6 +17,7 @@ package org.sevenchan.dongs.ability
 			this.label = "Rainstorm";
 			this.name = "Rainstorm";
 			this.manaCost = 10;
+			this.cannotBeRestrainedToUse = false;
 		}
 		
 		override public function activate(activator:Creature, rapee:Creature):Boolean 

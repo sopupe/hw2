@@ -12,6 +12,7 @@ package org.sevenchan.dongs.screens
 	{
 		protected var subject:Creature;
 		protected var text:String = "";
+		protected var abort:Boolean = false;
 		public var currentItem:INode = new MenuNode(null, "", "");
 		
 		public function Encounter(target:Creature) {
@@ -24,6 +25,9 @@ package org.sevenchan.dongs.screens
 		override public function processButtonPress(id:int):Boolean
 		{
 			clearButtons();
+			if (abort) {
+				return true;
+			}
 			switch (id)
 			{
 				case-1: 
@@ -50,16 +54,27 @@ package org.sevenchan.dongs.screens
 					if (nci is ActionNode) {
 						ret = (ActionNode(nci)).invoke(this, this.main.player);
 					} else {
-						currentItem = nci;
+						if((MenuNode(nci)).canSwitchTo(main.player,subject,this)) {
+							currentItem = nci;
+						}
 					}
-					text = nci.content;
-					if (!ret) {
+					if(!abort)
+						text = nci.content;
+					if (!ret && !abort) {
 						appendMenu();
 					}
 					updateScreen();
 					return ret;
 			}
 			return false;
+		}
+		
+		public function abortEncounter(text:String):void {
+			abort = true;
+			this.text = text;
+			clearButtons();
+			setButton(NEXT_BUTTON, "OK");
+			main.endCombat(null);
 		}
 		
 		public function appendMenu():void {
@@ -89,7 +104,7 @@ package org.sevenchan.dongs.screens
 		}
 		
 		public function performRape(ply:Creature,node:ActionNode):Boolean {
-			InfoScreen.push("<h2>Rape</h2><p>This feature isn't ready yet, so NOTHING HAPPENS ALTHOUGH I WAS GOING TO KILL YOU BUT FORGOT HOW.</p>");
+			main.startRape(null,this.subject,true);
 			return true;	
 		}
 		

@@ -2,6 +2,7 @@ package org.sevenchan.dongs.creature
 {
 	import flash.net.*;
 	import org.sevenchan.dongs.*;
+	import org.sevenchan.dongs.ability.Flatulence;
 	import org.sevenchan.dongs.bodyparts.*;
 	import org.sevenchan.dongs.items.*;
 	import org.sevenchan.dongs.screens.*;
@@ -18,7 +19,7 @@ package org.sevenchan.dongs.creature
 	{
 		
 		registerClassAlias("EBova", Bova);
-		public var SKIN:Skin = new Skin("human", "light", "smooth");
+		public var SKIN:Skin = new Skin("bovan", "patterned", "fuzzy");
 		
 		public function Bova() 
 		{
@@ -37,7 +38,7 @@ package org.sevenchan.dongs.creature
 					break;
 			}
 			this.build = Build.AVG;
-			this.hair = Hair.BALD;
+			this.hair = new Hair("long, blonde");
 			this.arms.push(
 				BodyPartRegistry.human_arm,
 				BodyPartRegistry.human_arm
@@ -51,12 +52,13 @@ package org.sevenchan.dongs.creature
 				BodyPartRegistry.human_blue_eye
 			);
 			this.skin = SKIN;
+			this.abilities["flatulence"] = new Flatulence();
 		}
 		
 		override public function addBreast():Breast 
 		{
 			var boob:Breast = BodyPartRegistry.human_breast;
-			boob.size = MathUtils.rand(0, 3);
+			boob.size = MathUtils.rand(2, 4);
 			breasts.push(boob);
 			return boob;
 		}
@@ -113,6 +115,24 @@ package org.sevenchan.dongs.creature
 				BovaEncounterScreen.push(this);
 			}
 			return true;
+		}
+		
+		override public function performConversion(oldMe:Creature):void 
+		{
+			var text:String = "";
+			text += "<p>The changes are drastic.  First, you feel a strange sensation inside of your abdomen as you grow new organs.  Your stomach bulges a bit as your stomach enlarges, and holstein-patterned short ripples across everything but your head, which retains its old hair.";
+			skin._name = "Bova";
+			skin.color = "patterned";
+			skin.texture = "short furry";
+			this._abilities.flatulence = new Flatulence();
+			if (oldMe.gender == Gender.MALE||oldMe.gender == Gender.ASEXUAL) {
+				text += "Your facial hair vanishes, replaced by smooth skin.  Your facial structure changes, becoming more feminine, and your breasts grow immensely, putting incredible stress on your back.  You also shudder as you feel your groin split in two, the crack spreading up into your body and forming a new womb.";
+				breasts = new Vector.<Breast>();
+				addBreast();
+				addBreast();
+			}
+			text += "</p>";
+			InfoScreen.push(text);
 		}
 		
 	}

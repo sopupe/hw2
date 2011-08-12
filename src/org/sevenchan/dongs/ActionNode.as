@@ -41,8 +41,22 @@ package org.sevenchan.dongs
 			_content=value;
 		}
 		
+		
+		
 		public function pushChild(c:INode):void {
 			_children.push(c);
+		}
+		
+		public function pushMenu(name:String, desc:String, conditionalCallback:Function=null):MenuNode {
+			var n:MenuNode = new MenuNode(this, name, desc, conditionalCallback);
+			pushChild(n);
+			return n;
+		}
+		
+		public function pushAction(name:String, cost:int, desc:String, callback:Function):ActionNode {
+			var n:ActionNode = new ActionNode(this, name, cost, desc, callback);
+			pushChild(n);
+			return n;
 		}
 		
 		public function invoke(context:Encounter,ply:Creature):Boolean {
@@ -51,6 +65,10 @@ package org.sevenchan.dongs
 		
 		public function hasEnoughMoney(ply:Creature):Boolean {
 			return ply.gold >= _cost;
+		}
+		
+		public function clearChildren():void {
+			children.splice(0, children.length);
 		}
 	}
 }

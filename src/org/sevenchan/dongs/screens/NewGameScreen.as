@@ -26,7 +26,7 @@ package org.sevenchan.dongs.screens
 			this.exportGameButton = false;
 			this.loadOrSaveButton = false;
 			this.newGameButton = false;
-			this.selectPerkButton = false;
+			this.importGameButton = true;
 			
 			this.clearButtons();
 			this.setButton(NEXT_BUTTON, "Next");
@@ -47,6 +47,8 @@ package org.sevenchan.dongs.screens
 					this.stage = 1;
 					this.clearButtons();
 					setButton(0, "Human");
+					setButton(1, "Bova");
+					setButton(2, "Demon");
 					text = "<h2>Species</h2><p>Select whatever the hell you want to be.  Note that this list is very incomplete.</p>";
 					updateScreen();
 					break;
@@ -63,6 +65,23 @@ package org.sevenchan.dongs.screens
 							setButton(0, "Male");
 							setButton(2, "Female");
 							break;
+						case 1:
+							main.player.setBaseType(new Bova());
+							text += "<p>You are a Bova, a cow-girl who transforms others into Bovae via flatulence.</p>";
+							text += "<p>Bovae can be Female or Hermophrodites (Franks, beans AND tacos).</p>";
+							clearButtons();
+							setButton(1, "Hermophrodite");
+							setButton(2, "Female");
+							break;
+						case 2:
+							main.player.setBaseType(new Bova());
+							text += "<p>You have chosen to become a Demon.  Demons can infect other creatures with an STD that eventually changes them into demons, as well.</p>";
+							text += "<p>Demons can be any gender except asexual.</p>";
+							clearButtons();
+							setButton(0, "Male");
+							setButton(1, "Hermophrodite");
+							setButton(2, "Female");
+							break;
 					}
 					updateScreen();
 					break;
@@ -70,6 +89,9 @@ package org.sevenchan.dongs.screens
 					switch(id) {
 						case 0:
 							main.player.gender = Gender.MALE;
+							break;
+						case 1:
+							main.player.gender = Gender.HERM;
 							break;
 						case 2:
 							main.player.gender = Gender.FEMALE;
@@ -86,8 +108,8 @@ package org.sevenchan.dongs.screens
 					setButton(1, "Brute");
 					text += "<li>Brute - You excel in brute strength, and can benchpress a horse.  However, you're not too fast, and not too smart. (+3 STR)</li>";
 					setButton(2, "Bookworm");
-					text += "<li>Bookworm - You read a lot of scrolls as a kid, and paid attention in class.  Unfortunately, the other village kids beat the crap out of you.  (+2 INT, +1 SPD)</li>";
-					if(main.player.gender == Gender.MALE) {
+					text += "<li>Bookworm - You read a lot of scrolls as a kid, and paid attention in class. Strength, however, is not your forte. (+2 INT, +1 SPD)</li>";
+					if(main.player.gender == Gender.MALE || main.player.gender == Gender.HERM) {
 						text += "<li>Freak - You were cursed at birth with a third testicle, which gives you more volume and lust, but it reduced your muscle development, despite the extra testosterone. (+1 TESTICLE, +1 STR, +1 SPD)</li>";
 						setButton(3, "Freak");
 					}

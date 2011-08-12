@@ -73,7 +73,15 @@ package org.sevenchan.dongs
 		// Explored locations
 		public var explored:Vector.<String> = new Vector.<String>();
 		
+		/**
+		 * Do stats scale with the PC (false) or stay the same (true)?
+		 * Mostly useful for bosses.
+		 */
+		public var staticStats:Boolean = false;
+		
 		private var main:AdventureController = null;
+		
+		
 		protected var abilityUseProbability:Number = 1;
 		protected var turnsToLose:int = 0;
 		
@@ -355,8 +363,6 @@ package org.sevenchan.dongs
 			_level++;
 			if (!firstOne)
 				InfoScreen.push("<h2>Levelled up!</h2><p>You are now level " + level + "!</p>");
-			recalcStrength();
-			//recalcSpeed();
 		}
 		
 		public function onCombatInit():void
@@ -396,18 +402,40 @@ package org.sevenchan.dongs
 			explored.push(loc);
 		}
 		
-		// TODO: This is stupid.
-		// http://www.gamedev.net/topic/183822-rpg-combat-formula-question/
-		public function recalcStrength():void
-		{
-			//trace("height:", height);
-			var weight:Number = build.calculateWeight(height, 0.5)
-			//trace("weight:",weight);
-			var A:Number = Math.ceil((Math.pow(level, 2) * 0.01) - (Math.abs(17.5 - (weight * 0.1))) + 8);
-			if (level <= 1)
-				_strength = A;
-			var B:Number = Math.ceil((Math.pow(level - 1, 2) * 0.01) - (Math.abs(17.5 - (weight * 0.1))) + 8);
-			_strength = _strength + (A - B);
+		public function getEffectivenessMultiplier(defender:Creature):Number {
+			var a:Number = strength;
+			var e:Number = defender.strength;
+			return (a * (100 - e))/10000;
+		}
+		
+		/**
+		 * Calculation from http://www.gamedev.net/topic/183822-rpg-combat-formula-question/
+		 * @param	attacker
+		 */
+		public function speedCheckAgainst(attacker:Creature):Boolean {
+			// C = A * (100% - E)
+			// WHERE
+			// C = Chance to hit
+			// A = Attacker's accuracy (speed, in our case)
+			// E = Defender's evasion rate (speed, again)
+			var a:Number = attacker.speed;
+			var e:Number = speed;
+			return Math.random() <= (a * (100 - e))/10000;
+		}
+		
+		/**
+		 * Calculation from http://www.gamedev.net/topic/183822-rpg-combat-formula-question/
+		 * @param	attacker
+		 */
+		public function strengthCheckAgainst(attacker:Creature):Boolean {
+			// C = A * (100% - E)
+			// WHERE
+			// C = Chance to hit
+			// A = Attacker's accuracy (strength, in our case)
+			// E = Defender's evasion rate (strength, again)
+			var a:Number = attacker.strength;
+			var e:Number = strength;
+			return Math.random() <= (a * (100 - e))/10000;
 		}
 		
 		public function get strength():int
@@ -826,7 +854,7 @@ package org.sevenchan.dongs
 		{
 			this._speed = f._speed;
 			this._strength = f._strength;
-			this.abilities = f.abilities;
+			this._abilities = f._abilities;
 			this.enchantments = f.enchantments;
 			this.explored = f.explored;
 			this.gender = f.gender;
@@ -845,6 +873,10 @@ package org.sevenchan.dongs
 		public function loseTurns(numturns:int):void
 		{
 			turnsToLose += numturns;
+		}
+		
+		public function getRapable():Boolean {
+			return canRun();
 		}
 	}
 }

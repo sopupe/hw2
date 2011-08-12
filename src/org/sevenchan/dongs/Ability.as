@@ -12,6 +12,7 @@ package org.sevenchan.dongs
 		public var name:String = "";
 		public var description:String = "";
 		public var manaCost:Number = 25;
+		public var cannotBeRestrainedToUse:Boolean = true;
 		
 		public function Ability() 
 		{

@@ -18,6 +18,7 @@ package org.sevenchan.dongs.ability
 			this.description = "Summons a massive sandstorm to blind your enemies.";
 			this.label = "Sandstrm";
 			this.name = "Sandstorm";
+			this.cannotBeRestrainedToUse = false;
 		}
 		
 		override public function activate(activator:Creature, rapee:Creature):Boolean 

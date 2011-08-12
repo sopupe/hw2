@@ -74,26 +74,56 @@ package org.sevenchan.dongs.creature
 			baseType.explored.push(loc);
 		}
 		
-		public function save():void {
-			var f:FileReference = new FileReference();
-			var ba:ByteArray = new ByteArray();
-			ba.writeObject(
-			{
-				currentTown: currentTown.ID,
-				body: baseType
+		public function save(slot:int=-1):void {
+			if(slot==-1) { // Export
+				var ba:ByteArray = new ByteArray();
+				ba.writeObject(
+				{
+					currentTown: currentTown.ID,
+					body: baseType
+				}
+				);
+				var f:FileReference = new FileReference();
+				f.save(ba, "save.dat");
+			} else {
+				var so:SharedObject = SharedObject.getLocal("7la_slot" + slot.toString());
+				so.data.currentTown = currentTown.ID;
+				so.data.body= baseType;
+				so.flush();
 			}
-			);
-			f.save(ba, "save.dat");
 		}
 		
-		public function load():Boolean {
+		public function load(slot:int=-1):Boolean {
+			if(slot==-1) {
+				waitingForLoad = true;
+				f.addEventListener(Event.SELECT, onFileSelected);
+				f.addEventListener(Event.CANCEL, onFileCancelled);
+				if (!f.browse([new FileFilter("Saves","*.dat")]))
+					return false;
+				return true;
+			} else {
+				var so:SharedObject = SharedObject.getLocal("7la_slot" + slot.toString());
+				currentTown = Town.knownTowns[so.data.currentTown];
+				baseType = so.data.body;
+				return true;
+			}
+		}
+		
+		// Slot 1: Level 150 Bova in Horus's Spine 
+		// [HP: 50, Lust: 50]
+		public static function previewSlot(slot:int):String {
+			var so:SharedObject = SharedObject.getLocal("7la_slot" + slot.toString());
 			
-			waitingForLoad = true;
-			f.addEventListener(Event.SELECT, onFileSelected);
-			f.addEventListener(Event.CANCEL, onFileCancelled);
-			if (!f.browse([new FileFilter("Saves","*.dat")]))
-				return false;
-			return true;
+			if (so == null || so.data == null)
+				return "Empty Slot";
+			
+			var t:Town = Town.knownTowns[so.data.currentTown];
+			var c:Creature = so.data.body;
+			if (t == null || c == null)
+				return "Empty Slot";
+			var o:String = "Slot " + slot + ": Level " + c.level + " " + c.getTypeName() + " at " + t.name + "<br />";
+			o += "[HP: " + c.HP + ", Lust: " + c.lust + "]";
+			return o;
 		}
 		
 		private function onFileSelected(e:Event):void {
@@ -131,7 +161,7 @@ package org.sevenchan.dongs.creature
 			//
 			// In other words, you're an average human, which probably won't last long down here.
 			//
-			descr += "<p>You, " + baseType.ownName + ", are " + Utils.A(baseType.sexualPreference.label) + " " + baseType.gender.label + " " + baseType.getTypeName() + " " + baseType.build.getDescription()
+			descr += "<p>You, " + baseType.ownName + ", are " + Utils.A(baseType.gender.label) + " " + baseType.gender.label + " " + baseType.getTypeName() + " whose body " + baseType.build.getDescription()
 			+" You also possess " + baseType.hair.getDescription();
 			
 			if (baseType.hair == Hair.BALD)
@@ -150,7 +180,7 @@ package org.sevenchan.dongs.creature
 			//if (baseType.customized)
 			//	descr += "you're a bit different from the average bear.  ";
 			//else
-				descr += "you're not too odd, compared to other "+baseType.getTypeName()+"s.  ";
+			//	descr += "you're not too odd, compared to other "+baseType.getTypeName()+"s.  ";
 			var haveBalls:Boolean = (baseType.balls.length > 0);
 			var haveDicks:Boolean = (baseType.dicks.length > 0);
 			var haveVags:Boolean = (baseType.vaginas.length > 0);
@@ -200,11 +230,6 @@ package org.sevenchan.dongs.creature
 		override public function levelUp(firstTime:Boolean=false):void 
 		{
 			baseType.levelUp(firstTime);
-		}
-		
-		override public function recalcStrength():void 
-		{
-			baseType.recalcStrength();
 		}
 		
 		public function setBaseType(base:Creature):void {

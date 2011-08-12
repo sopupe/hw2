@@ -94,7 +94,7 @@ package
 				txtLoading.x = (stageWidth / 2) - (txtLoading.width / 2);
 				txtLoading.y = (stageHeight / 2) - (txtLoading.height / 2);
 			}
-			catch (e)
+			catch (e:*)
 			{
 			}
 		}

@@ -58,7 +58,8 @@ package org.sevenchan.dongs.screens
 			}
 			text = "<h2>Fight</h2>";
 			text += combatant.combatDescr(main.player);
-			text += "<p><b>Attacker's HP:</b> "+combatant.HP+"/"+combatant.maxHP+" (" + Math.round((combatant.HP / combatant.maxHP) * 100) + "%)</p>";
+			text += "<p><b>Attacker's HP:</b> " + combatant.HP + "/" + combatant.maxHP + " (" + Math.round((combatant.HP / combatant.maxHP) * 100) + "%)</p>";
+			text += "<p><b>Attacker's Level:</b> "+combatant.level+" (STR"+combatant.strength+" SPD"+combatant.speed+")</p>";
 			if ("main" == act)
 				return mainMenu(id);
 			if ("attack" == act)
@@ -92,6 +93,8 @@ package org.sevenchan.dongs.screens
 				if (combatant.canRun())
 					setButton(3, "Run");
 				setButton(4, "Forfeit");
+				if (combatant.getRapable())
+					setButton(5, "Rape");
 			} else {
 				setButton(0, "PARALYZED");
 			}
@@ -146,6 +149,10 @@ package org.sevenchan.dongs.screens
 					lose();
 					return true;
 					break;
+				case 5:
+					main.startRape(this, combatant, true);
+					return true;
+					break;
 			}
 			updateScreen();
 			return false;
@@ -197,7 +204,7 @@ package org.sevenchan.dongs.screens
 				}
 				if (main.player.lust>=100)
 				{
-					lose();
+					main.startRape(this,combatant,true);
 					return true;
 				}
 				act = "main";

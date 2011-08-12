@@ -433,8 +433,8 @@ package org.sevenchan.dongs.screens
 					text += "<p>The proprietor of the shop produces a " + glassDesc + " full of a maroon, murky liquid and hands the warm glass ";
 					text += "to you. </p><p>&quot;Drink.&quot; She directs in a bored tone.</p><p>You give the liquid a quick glance, and then ";
 					text += "shrug, raising the " + glassDesc + " to your lips and draining it of its sweet contents.  It doesn't take long for ";
-					text += "the effects to take hold, as pins-and-needles rush over your " + Utils.pluralize("penis", main.player.dicks.length) + ".  The skin tightens, ";
-					text += "and then expands.  You groan loudly as your " + Utils.pluralize("member", main.player.dicks.length) + " erect to their full size, and then ";
+					text += "the effects to take hold, as pins-and-needles rush over your " + Utils.pluralize(main.player.dicks.length,"penis") + ".  The skin tightens, ";
+					text += "and then expands.  You groan loudly as your " + Utils.pluralize(main.player.dicks.length,"member") + " erect to their full size, and then ";
 					text += "continue until they reach the size you requested:</p><ul>";
 					for (var i:int = 0; i < main.player.dicks.length; i++)
 					{
@@ -529,8 +529,8 @@ package org.sevenchan.dongs.screens
 					text += "<p>The proprietor of the shop produces a " + glassDesc + " full of a maroon, murky liquid and hands the warm glass ";
 					text += "to you. </p><p>&quot;Drink.&quot; She directs in a bored tone.</p><p>You give the liquid a quick glance, and then ";
 					text += "shrug, raising the " + glassDesc + " to your lips and draining it of its sweet contents.  It doesn't take long for ";
-					text += "the effects to take hold, as pins-and-needles rush over your " + Utils.pluralize("penis", main.player.dicks.length) + ".  The skin tightens, ";
-					text += "and then expands.  You groan loudly as your " + Utils.pluralize("member", main.player.dicks.length) + " erect to their full size, and then ";
+					text += "the effects to take hold, as pins-and-needles rush over your " + Utils.pluralize(main.player.dicks.length,"penis") + ".  The skin tightens, ";
+					text += "and then expands.  You groan loudly as your " + Utils.pluralize(main.player.dicks.length,"dick") + " erect to their full size, and then ";
 					text += "continue until they reach the size you requested:</p><ul>";
 					for (var i:int = 0; i < main.player.dicks.length; i++)
 					{
@@ -626,8 +626,8 @@ package org.sevenchan.dongs.screens
 					text += "<p>The proprietor of the shop produces a " + glassDesc + " full of a maroon, murky liquid and hands the warm glass ";
 					text += "to you. </p><p>&quot;Drink.&quot; She directs in a bored tone.</p><p>You give the liquid a quick glance, and then ";
 					text += "shrug, raising the " + glassDesc + " to your lips and draining it of its sweet contents.  It doesn't take long for ";
-					text += "the effects to take hold, as pins-and-needles rush over your " + Utils.pluralize("penis", main.player.dicks.length) + ".  The skin tightens, ";
-					text += "and then expands.  You groan loudly as your " + Utils.pluralize("member", main.player.dicks.length) + " erect to their full size, and then ";
+					text += "the effects to take hold, as pins-and-needles rush over your " + Utils.pluralize(main.player.dicks.length,"penis") + ".  The skin tightens, ";
+					text += "and then expands.  You groan loudly as your " + Utils.pluralize(main.player.dicks.length,"member") + " erect to their full size, and then ";
 					text += "continue until they reach the size you requested:</p><ul>";
 					for (var i:int = 0; i < main.player.dicks.length; i++)
 					{

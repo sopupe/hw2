@@ -17,6 +17,7 @@ package org.sevenchan.dongs.ability
 			this.description = "Because the attack damage algorithm is fucked.";
 			this.label = "Instawin";
 			this.name = "Instant Win";
+			this.cannotBeRestrainedToUse = false;
 		}
 		
 		override public function activate(activator:Creature, rapee:Creature):Boolean 

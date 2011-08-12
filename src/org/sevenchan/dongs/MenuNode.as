@@ -1,5 +1,6 @@
 package org.sevenchan.dongs 
 {
+	import org.sevenchan.dongs.screens.Encounter;
 	/**
 	 * ...
 	 * @author ...
@@ -11,11 +12,13 @@ package org.sevenchan.dongs
 		private var _name:String;
 		private var _desc:String;
 		private var _content:String = "[?]";
-		public function MenuNode(parent:INode,name:String,desc:String) 
+		private var conditionalCallback:Function = null;
+		public function MenuNode(parent:INode,name:String,desc:String, conditionalCallback:Function=null) 
 		{
 			this._name = name;
 			this._desc = desc;
 			this._parent = parent;
+			this.conditionalCallback = conditionalCallback;
 		}
 		
 		public function get name():String {
@@ -37,8 +40,31 @@ package org.sevenchan.dongs
 			return _parent;
 		}
 		
+		public function canSwitchTo(ply:Creature, otherCreature:Creature, context:Encounter):Boolean {
+			if(conditionalCallback==null)
+				return true;
+			else
+				return conditionalCallback.call(context, ply, otherCreature, this);
+		}
+		
 		public function pushChild(c:INode):void {
 			_children.push(c);
+		}
+		
+		public function pushMenu(name:String, desc:String, conditionalCallback:Function=null):MenuNode {
+			var n:MenuNode = new MenuNode(this, name, desc, conditionalCallback);
+			pushChild(n);
+			return n;
+		}
+		
+		public function pushAction(name:String, cost:int, desc:String, callback:Function):ActionNode {
+			var n:ActionNode = new ActionNode(this, name, cost, desc, callback);
+			pushChild(n);
+			return n;
+		}
+		
+		public function clearChildren():void {
+			children.splice(0, children.length);
 		}
 	}
 

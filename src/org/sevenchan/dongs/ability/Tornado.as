@@ -17,6 +17,7 @@ package org.sevenchan.dongs.ability
 			this.description = "Summons a tornado to return player to barn.";
 			this.label = "Tornado";
 			this.name = "Tornado";
+			this.cannotBeRestrainedToUse = false;
 		}
 		
 		override public function activate(activator:Creature, rapee:Creature):Boolean 

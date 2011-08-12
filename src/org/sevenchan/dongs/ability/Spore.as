@@ -18,6 +18,7 @@ package org.sevenchan.dongs.ability
 			this.description = "Paralyzes your ass.";
 			this.label = "Spore";
 			this.name = "Spore";
+			this.cannotBeRestrainedToUse = false;
 		}
 		
 		override public function activate(activator:Creature, rapee:Creature):Boolean 

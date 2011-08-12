@@ -75,7 +75,7 @@ package org.sevenchan.dongs
 			this.exportGameButton = false;
 			this.loadOrSaveButton = true;
 			this.newGameButton = false;
-			this.selectPerkButton = false;
+			this.importGameButton = false;
 			
 			this.clearButtons()
 		}

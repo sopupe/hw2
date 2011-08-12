@@ -15,7 +15,6 @@ package org.sevenchan.dongs.screens
 			this.exportGameButton = false;
 			this.loadOrSaveButton = false;
 			this.newGameButton = true;
-			this.selectPerkButton = false;
 		}
 		
 		override public function getScreenText():String 

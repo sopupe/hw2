@@ -56,9 +56,11 @@ package
 			return false;
 		}
 		
-		public static function pluralize(t:String, num:Number):String {
+		public static function pluralize(num:Number,t:String,tp:String=null):String {
 			if (num == 1)
 				return t;
+			if (tp != null)
+				return tp;
 			if (t.substr(t.length - 1) == "y") {
 				return t.substr(0, t.length - 1) + "ies";
 			} else {

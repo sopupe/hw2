@@ -39,6 +39,11 @@ package org.sevenchan.dongs.creature
 			this.abilities={spore:AbilityRegistry.spore};
 		}
 		
+		/* No orifaces */
+		override public function getRapable():Boolean 
+		{
+			return false;
+		}
 		override public function getHostile(subj:Creature):Boolean 
 		{
 			strength += 2;

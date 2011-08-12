@@ -16,7 +16,7 @@ package org.sevenchan.dongs.screens
 			this.exportGameButton = true;
 			this.loadOrSaveButton = true;
 			this.newGameButton = false;
-			this.selectPerkButton = false;
+			this.importGameButton = false;
 			
 			clearButtons();
 			this.setButton(NEXT_BUTTON, "Next");
