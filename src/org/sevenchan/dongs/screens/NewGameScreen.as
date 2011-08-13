@@ -74,7 +74,7 @@ package org.sevenchan.dongs.screens
 							setButton(2, "Female");
 							break;
 						case 2:
-							main.player.setBaseType(new Bova());
+							main.player.setBaseType(new Demon());
 							text += "<p>You have chosen to become a Demon.  Demons can infect other creatures with an STD that eventually changes them into demons, as well.</p>";
 							text += "<p>Demons can be any gender except asexual.</p>";
 							clearButtons();
