@@ -70,10 +70,6 @@ package org.sevenchan.dongs.creature
 				breasts[1].size=0;
 			}
 			if(gender.hasVag) {
-				this.breasts.push(
-					BodyPartRegistry.human_breast,
-					BodyPartRegistry.human_breast
-				);
 				this.vaginas.push(
 					BodyPartRegistry.human_vagina
 				);
