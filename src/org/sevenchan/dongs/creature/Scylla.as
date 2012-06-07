@@ -97,6 +97,8 @@ package org.sevenchan.dongs.creature
 				if(ply.balls.length>0)
 					story += " and balls";
 				story += ", tasting you a bit.";
+			} else {
+				story += " rolls across your blank groin disappointedly."
 			}
 			story += "  She seems to become more hungry, her face flushing and her gulps";
 			story += " becoming more urgent.  You’re too terrified to understand what's";
@@ -111,6 +113,8 @@ package org.sevenchan.dongs.creature
 				story += ", and the tongue's warm, wet texture, in addition to the pressure";
 				story += " around your member, causes you to release your payload into her";
 				story += " mouth.</p>";
+			} else {
+				// Nope.
 			}
 			story += "<p>Satisfied, she finishes swallowing you.  After a few weeks of agony in her stomach acid (passing the time by reading a wet, acid - eaten book someone had left inside), you pass away.</p>";
 			story += "<p>...And then wake up at the barn again.  Great.</p>";

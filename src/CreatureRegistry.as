@@ -17,7 +17,7 @@ package
 		public static function get harpy_dark():Creature { return new Harpy(true); }
 		public static function get human():Creature { return new Human(); }
 		public static function get morel():Creature { return new Morel(); }
-		public static function get oldspace():Creature { return new SandNigger(); }
+		public static function get oldspace():Creature { return new OldSpaceGuy(); }
 		public static function get scylla():Creature { return new Scylla(); }
 		public static function get witch():Creature { return new Witch(); }
 	}

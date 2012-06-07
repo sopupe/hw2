@@ -402,7 +402,7 @@ package org.sevenchan
 			return btn;
 		}
 		
-		public function onResize(h:Number, w:Number, measuredHeight:Number, measuredWidth:Number)
+		public function onResize(h:Number, w:Number, measuredHeight:Number, measuredWidth:Number):void
 		{
 			var originalPanelHeightPCT:Number = 464.5 / 600;
 			//pnlStats = addPanel("", 464.5, 144.9, 15.75, 56.75);
