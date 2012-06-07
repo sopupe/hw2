@@ -1,10 +1,8 @@
 package org.sevenchan.dongs.creature 
 {
-	import mx.collections.ArrayList;
-	import org.sevenchan.dongs.Creature;
-	import org.sevenchan.dongs.bodyparts.*;
 	import flash.net.registerClassAlias;
-	import org.sevenchan.dongs.Item;
+	import org.sevenchan.dongs.bodyparts.*;
+	import org.sevenchan.dongs.Creature;
 	import org.sevenchan.dongs.items.HarpyTincture;
 	import org.sevenchan.dongs.items.WhiteBerries;
 	import org.sevenchan.dongs.screens.encounters.HarpyEncounterScreen;

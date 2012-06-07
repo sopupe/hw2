@@ -18,6 +18,7 @@ package org.sevenchan.dongs.bodyparts
 		public var filledWith:String = "";
 		public var pregCounter:Number = -1;
 		public var pregnantWith:Creature = null;
+		public var location:String = "right where it should be";
 		public var _pen:Boolean = false;
 
 		public function Asshole(name:String="") 
@@ -63,7 +64,7 @@ package org.sevenchan.dongs.bodyparts
 			}
 			if (volumeFilled > capacity)
 				stretched=" (<b>Your belly has swelled to accomodate the sheer volume.</b>)";
-			return num + " " +tightness+filled+ " "+_name + " asshole"+((num>1)?"s":"")+stretched;
+			return num + " " +tightness+filled+ " "+_name + " asshole"+((num>1)?"s":"")+", "+location+"."+stretched;
 		}
 		
 		

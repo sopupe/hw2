@@ -28,7 +28,7 @@ package org.sevenchan.dongs.bodyparts
 		}
 		
 		public function getDescr(num:Number, host:Creature):String {
-			return num + " "+getShortDescr(true);
+			return num + " "+Utils.pluralize(num,getShortDescr(true));
 		}
 		
 		public function getShortDescr(withModifier:Boolean = false):String {

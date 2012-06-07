@@ -322,11 +322,21 @@ package org.sevenchan.dongs
 			if (!haveBalls && !haveDicks && !haveVags)
 				descr += " %CSUB% doesn't have any sexual organs.  At least you won't get raped.";
 			
-			if (breasts.length > 0)
-				descr += " %CSUB% has " + getBreastDescr() + ", and wears ";
-			else
-				descr += " %CSUB% doesn't have any breasts, but does have ";
-			descr += getAssDescr() + ".";
+			if (breasts.length > 0) {
+				descr += " %CSUB% has " + getBreastDescr();
+				if(assholes.length>0) {
+					descr += ", and also has "+getAssDescr() + ".";
+				} else {
+					descr += ", but does not have any rectal orifaces to speak of.";
+				}
+			}else{
+				descr += " %CSUB% doesn't have any breasts";
+				if(assholes.length>0) {
+					descr += ", but does have "+getAssDescr() + ".";;
+				} else {
+					descr += ", nor do you see any rectal orifaces.";
+				}
+			}
 			
 			if (arms.length > 0)
 				descr += " %CSUB% has " + getArmsDescr() + ", ";
@@ -362,7 +372,7 @@ package org.sevenchan.dongs
 		{
 			_level++;
 			if (!firstOne)
-				InfoScreen.push("<h2>Levelled up!</h2><p>You are now level " + level + "!</p>");
+				InfoScreen.push("<h2>Levelled up!</h2><p>You are now at level " + level + "!</p>");
 		}
 		
 		public function onCombatInit():void
@@ -697,7 +707,7 @@ package org.sevenchan.dongs
 			
 			if (collection.length == 0)
 			{
-				return "no " + singular + "s";
+				return "no " + Utils.pluralize(2,singular);
 			}
 			var out:String = "";
 			var varying:Boolean = false;
@@ -852,21 +862,6 @@ package org.sevenchan.dongs
 		
 		public function changeFrom(f:Creature):void
 		{
-			this._speed = f._speed;
-			this._strength = f._strength;
-			this._abilities = f._abilities;
-			this.enchantments = f.enchantments;
-			this.explored = f.explored;
-			this.gender = f.gender;
-			this.gold = f.gold;
-			this.height = f.height;
-			this.HP = f.maxHP;
-			this.mana = f.maxMana;
-			this.ownName = f.ownName;
-			this.sensitivity = f.sensitivity;
-			this.sexualPreference = f.sexualPreference;
-			this.inventory = f.inventory;
-			
 			this.performConversion(f);
 		}
 		

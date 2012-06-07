@@ -7,6 +7,7 @@ package org.sevenchan.dongs.screens
 	import org.sevenchan.dongs.Item;
 	import org.sevenchan.dongs.items.GoldPotion;
 	import org.sevenchan.dongs.items.PinkPotion;
+	import org.sevenchan.dongs.items.Potion;
 	import org.sevenchan.dongs.Screen;
 	
 	/**
@@ -43,6 +44,9 @@ package org.sevenchan.dongs.screens
 					break;
 				case 1: 
 					setup(0, 6, "Hallasee's Potion Shoppe: Always Low Quality.  Always.");
+					inventory = [
+						new GoldPotion(MathUtils.rand(6, 10)), 
+						new PinkPotion(MathUtils.rand(6, 10))];
 					break;
 				case 2: 
 					setup(1, 12, "Ehf's Dick Depot: Every Fuck Begins with Ehf.");
@@ -51,7 +55,6 @@ package org.sevenchan.dongs.screens
 					setup(10, 24, "Granny Rasputin's Grand Gonads: The Balls of Champions.");
 					break;
 			}
-			inventory = [new GoldPotion(MathUtils.rand(6, 10)), new PinkPotion(MathUtils.rand(6, 10)),];
 		}
 		
 		private function setup(po:Number, i:Number, t:String):void
@@ -290,8 +293,9 @@ package org.sevenchan.dongs.screens
 			if (subpage == "penises")
 				return BSPenises(id);
 			if (subpage == "testes") 
-			return BSTestes(id);
-			//if (subpage == "vaginas") return BSVaginas(id);
+				return BSTestes(id);
+			//if (subpage == "vaginas") 
+			//	return BSVaginas(id);
 			//if (subpage == "breasts") return BSBreasts(id);
 			//if (subpage == "abilities") return BSAbilities(id);
 			//if (subpage == "enchantments") return BSEnchantments(id);
@@ -656,6 +660,11 @@ package org.sevenchan.dongs.screens
 					break;
 			}
 			updateScreen();
+			return false;
+		}
+		
+		private function BSVaginas(id:int):Boolean
+		{
 			return false;
 		}
 	}

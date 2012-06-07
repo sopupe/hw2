@@ -24,7 +24,7 @@ package org.sevenchan.dongs.bodyparts
 		}
 		
 		public function getDescr(num:Number, host:Creature):String {
-			return num + " " + descriptor + " "+(reptilian?"reptilian":"feathered")+ " " + species + " wing"+(num>1?"s":"");
+			return num + " " + descriptor + " "+(reptilian?"leathery":"feathered")+ " " + species + " wing"+(num>1?"s":"");
 		}
 		
 		public function get name():String { return species; }

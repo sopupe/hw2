@@ -31,6 +31,7 @@ package org.sevenchan.dongs.creature
 				BodyPartRegistry.ghost_yellow_eye,
 				BodyPartRegistry.ghost_yellow_eye
 			);
+			this.HP = 1100;
 			mana = 100;
 			this.gold = 100;
 			this.inventory.push(

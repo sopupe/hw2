@@ -3,7 +3,7 @@ package org.sevenchan.dongs.bodyparts.asshole
 	import org.sevenchan.dongs.bodyparts.Asshole;
 	import org.sevenchan.dongs.Creature;
 	/**
-	 * ...
+	 * As in spiders.
 	 * @author N3X15
 	 */
 	public class Abdomen extends Asshole

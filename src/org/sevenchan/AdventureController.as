@@ -122,7 +122,6 @@ package org.sevenchan
 			
 			//Panels
 			pnlMain = addPanel("", 464.5, 618.5, 167.75, 56.75);
-			
 			pnlStats = addPanel("", 464.5, 144.9, 15.75, 56.75);
 			
 			// Second row of buttons
@@ -312,7 +311,7 @@ package org.sevenchan
 				else
 					screen = new StartupScreen();
 			}
-			if(screen==null)
+			if (screen == null)
 				screen = new StartupScreen();
 			currentScreen = screen;
 			currentScreen.setMain(this);
@@ -401,6 +400,79 @@ package org.sevenchan
 			btn.y = y;
 			btn.draw(h, w);
 			return btn;
+		}
+		
+		public function onResize(h:Number, w:Number, measuredHeight:Number, measuredWidth:Number)
+		{
+			var originalPanelHeightPCT:Number = 464.5 / 600;
+			//pnlStats = addPanel("", 464.5, 144.9, 15.75, 56.75);
+			//pnlMain = addPanel("", 464.5, 618.5, 167.75, 56.75);
+			
+			pnlStats.height = pnlMain.height = (464.5 / 600) * h;
+			pnlStats.width = (144.9 / 800) * w;
+			pnlStats.x = (15.75 / 800) * w;
+			pnlStats.y = (56.75 / 600) * h;
+			
+			pnlMain.width = (618.5 / 800) * w;
+			pnlMain.x = (167.75 / 800) * w;
+			pnlMain.y = (56.75 / 600) * h;
+			
+			// Buttons
+			
+			var xOffset:Number = (16 / 800) * w;
+			var yOffset:Number = (531 / 600) * h;//(561 / 600) * h;
+			var bHeightPadding:Number = (32 / 600) * h;
+			var bWidthPadding:Number = (129.2 / 800) * w;
+			var bHeight:Number = (30 / 600) * h;
+			var bWidth:Number = (100 / 800) * w;
+			for (var i:int = 0; i < 12; i++)
+			{
+				//var btn:SexButton = addButton((i + 1).toString(), 100, 16 + ((i % 6) * 129.2), 561 + (Math.round(i / 12) * 32));
+				btnAction[i].height = bHeight;
+				btnAction[i].width = bWidth;
+				btnAction[i].x = xOffset + ((i % 6) * bWidthPadding);
+				btnAction[i].y = yOffset + (Math.round(i / 12) * bHeightPadding);
+			}
+			
+			
+			// Top row of buttons
+			xOffset = (129.2 / 800) * w;
+			var toprow:Number = (21 / 600) * h; // 51 - 21 = 30
+			var x:Number = (16 / 800) * w;
+			btnNewGame.width = bWidth;
+			btnNewGame.height = bHeight;
+			btnNewGame.y = toprow;
+			btnNewGame.x = x;
+			x += xOffset;
+			
+			btnLoadSaveGame.width = bWidth;
+			btnLoadSaveGame.height = bHeight;
+			btnLoadSaveGame.y = toprow;
+			btnLoadSaveGame.x = x;
+			x += xOffset;
+			
+			btnImportGame.width = bWidth;
+			btnImportGame.height = bHeight;
+			btnImportGame.y = toprow;
+			btnImportGame.x = x;
+			x += xOffset;
+			
+			btnExportGame.width = bWidth;
+			btnExportGame.height = bHeight;
+			btnExportGame.y = toprow;
+			btnExportGame.x = x;
+			x += xOffset;
+			
+			btnDebugMenu.width = bWidth;
+			btnDebugMenu.height = bHeight;
+			btnDebugMenu.y = toprow;
+			btnDebugMenu.x = x;
+			x += xOffset;
+			
+			btnAppearance.width = bWidth;
+			btnAppearance.height = bHeight;
+			btnAppearance.y = toprow;
+			btnAppearance.x = x;
 		}
 		
 		private function initBG():void

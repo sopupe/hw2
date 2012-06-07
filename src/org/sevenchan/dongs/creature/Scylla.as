@@ -11,7 +11,7 @@ package org.sevenchan.dongs.creature
 	import org.sevenchan.dongs.screens.InfoScreen;
 	
 	/**
-	 * A gigantic sea serpant with the upper body of a 
+	 * A gigantic sea serpent with the upper body of a 
 	 * beautiful woman who just happens to have 3 rows
 	 * of needle-like teeth and an affinity for eating
 	 * people whole.

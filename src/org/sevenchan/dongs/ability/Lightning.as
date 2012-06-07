@@ -29,7 +29,7 @@ package org.sevenchan.dongs.ability
 					InfoScreen.push("<p>You do not have enough mana.</p>");
 					return false;
 				}
-				InfoScreen.push("<h2>Lightning</h2><p>You raise your hands to the sky, and dark clouds immediately form, darkening the blaster landscape.  The clouds flicker with internal electrical discharges, and then, suddenly, a bolt slams into your opponent's head, causing significant damage.  The shockwave caused by the hot air expanding suddenly causes even more.</p>");
+				InfoScreen.push("<h2>Lightning</h2><p>You raise your hands to the sky, and dark clouds immediately form, darkening the blasted landscape.  The clouds flicker with internal electrical discharges, and then, suddenly, a bolt slams into your opponent's head, causing significant damage.  The shockwave caused by the hot air expanding suddenly causes even more.</p>");
 				activator.mana = 0;
 			}
 			rapee.HP -= rapee.HP / Math.max(1, rapee.level - activator.level);

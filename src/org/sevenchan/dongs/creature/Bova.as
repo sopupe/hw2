@@ -125,11 +125,13 @@ package org.sevenchan.dongs.creature
 			skin.color = "patterned";
 			skin.texture = "short furry";
 			this._abilities.flatulence = new Flatulence();
+				breasts = new Vector.<Breast>();
+				dicks = new Vector.<Penis>();
+				balls = new Vector.<Testicle>();
+			this._gender = Gender.FEMALE;
+			this.initialGenderSetup();
 			if (oldMe.gender == Gender.MALE||oldMe.gender == Gender.ASEXUAL) {
 				text += "Your facial hair vanishes, replaced by smooth skin.  Your facial structure changes, becoming more feminine, and your breasts grow immensely, putting incredible stress on your back.  You also shudder as you feel your groin split in two, the crack spreading up into your body and forming a new womb.";
-				breasts = new Vector.<Breast>();
-				addBreast();
-				addBreast();
 			}
 			text += "</p>";
 			InfoScreen.push(text);

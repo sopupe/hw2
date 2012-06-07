@@ -4,6 +4,7 @@ package org.sevenchan.dongs.screens.encounters
 	import org.sevenchan.dongs.ActionNode;
 	import org.sevenchan.dongs.creature.Bova;
 	import org.sevenchan.dongs.creature.Harpy;
+	import org.sevenchan.dongs.creature.Player;
 	import org.sevenchan.dongs.MenuNode;
 	import org.sevenchan.dongs.screens.Encounter;
 	import org.sevenchan.dongs.screens.InfoScreen;
@@ -29,7 +30,8 @@ package org.sevenchan.dongs.screens.encounters
 			lustCost = 3;
 			currentItem.content = "<p>The cowgirl looks at you tiredly, flicking one of her ears at a fly.  \"What?\", she asks in her deep voice, tilting her head in frustration at your indecisiveness.  The movement causes her cowbell to ding.</p>";
 			currentItem.children.push(new ActionNode(currentItem, "Milk", MathUtils.rand(250, 300), "Buy some milk from her for a few hundred gold.", onBuyMilk));
-			if(main.player.dicks.length>0)
+			main = Main.main;
+			if (main.player.dicks.length > 0)
 				currentItem.children.push(new ActionNode(currentItem, "Sex", 0, "Tempt her with sex", onFuck));
 		}
 		
@@ -67,7 +69,8 @@ package org.sevenchan.dongs.screens.encounters
 			}
 		}
 		
-		public function onBuyMilk(ply:Creature, node:ActionNode):Boolean {
+		public function onBuyMilk(ply:Creature, node:ActionNode):Boolean
+		{
 			text = "<h2>Bova Milk</h2><p>The pretty cowgirl lights up with joy, though "
 			text += "the burdens of city life have left obvious mental and physical scars "
 			text += "that still dampen her strange enthusiasm.  After counting the change, "
@@ -82,27 +85,33 @@ package org.sevenchan.dongs.screens.encounters
 			return false;
 		}
 		
-		public function onFuck(ply:Creature, node:ActionNode):Boolean {
+		public function onFuck(ply:Creature, node:ActionNode):Boolean
+		{
 			// You didn't use a fucking gas mask
 			
-			if(!ply.hasItem(ItemRegistry.GAS_MASK.id)) {
-				text = "<h2>Always Use Protection</h2>"; 
+			if (!ply.hasItem(ItemRegistry.GAS_MASK.id))
+			{
+				text = "<h2>Always Use Protection</h2>";
 				text += "<p>She smiles mischieviously again as you unzip, and then blushes as she, too, slips out of her clothing, letting her huge tits spill out of her tight shirt.  You lick their puffy, swollen nipples, eliciting a soft moan as you soothe her skin.  You finish undressing each other in a cheap hotel room you hurriedly purchase together from a bored innkeeper who was all too happy to see bare breasts.  The door barely closes behind the both of you as you throw yourselves into bed.</p>";
 				text += "<p>Your " + ply.getDickDescr() + " throb uncontrollably against her thigh, and it doesn't take long to find yourself balls-deep in a moaning cowgirl while suffocating in her massive tits.</p>";
 				text += "<p>And that's when it all goes terribly wrong.</p>";
 				text += "<p>You loudly stifle a giggle as a loud fart escapes her buns while in the middle of orgasm.  Her eyes shoot open, and you finish into her right before she screams at you to run.  &quot;Why?  It's not like there's a fucking Ala in this room.  Are you concerned about the fart, because I don't m-&quot;  She interrupts you by shoving you out of bed and huddling you towards the door, but it's too late as the effects of her gasses take hold</p>";
-				text += "<p>TODO: Transformation into a Bova</p>";
-				ply.changeFrom(CreatureRegistry.bova);
-			} else {
+				//text += "<p>TODO: Transformation into a Bova</p>";
+				InfoScreen.push(text);
+				ply.lust = 0;
+				if (ply is Player)
+					(ply as Player).changeTo(CreatureRegistry.bova);
+			}
+			else
+			{
 				var paid:int = Math.min(100, ply.gold);
 				ply.gold -= paid;
 				node.content = "<p>She smiles mischieviously again as you unzip, and then blushes as she, too, slips out of her clothing, letting her huge tits spill out of her tight shirt.  She notices your gas mask fall out of your bag, and she puts it on you.  You look at her in confusion, but she merely plants a wet kiss on the goggles and whispers &quot;trust me&quot; into your ear.   You finish undressing each other in a cheap hotel room you hurriedly purchase together from a bored innkeeper who was all too happy to see bare breasts.  The door barely closes behind the both of you as you throw yourselves into bed.</p>";
 				node.content += "<p>Your " + ply.getDickDescr() + " " + Utils.pluralize(ply.dicks.length, "throbs", "throb") + " uncontrollably against her thing, and it doesn't take yourself long to find yourself ball-deep in her wet cunt.<p>";
 				node.content += "<p>After a about half an hour of slow thrusting,  your goggles are completely steamed up on the inside and smeared with cheap lipstick on the outside.  You can't see a thing, but you understand why the mask was put on, as she passed gas the entire time you were in bed with her.  Even though it is hot and stale inside of the mask, it's certainly tolerable compared to outside...</p>";
-				node.content += "<p>After you leave, she leaves a stack of gold on the nightstand, explaining it was for the ruined, milk-soaked bed and the miasma.  You pay her "+paid+"G for the experience, receiving a warm kiss and a hug in exchange.  As she turns to leave, you see her wiggle  her bum and wink back at you before she vanishes into the crowd.</p>";
+				node.content += "<p>After you leave, she leaves a stack of gold on the nightstand, explaining it was for the ruined, milk-soaked bed and the miasma.  You pay her " + paid + "G for the experience, receiving a warm kiss and a hug in exchange.  As she turns to leave, you see her wiggle  her bum and wink back at you before she vanishes into the crowd.</p>";
+				ply.lust = 0;
 			}
-			ply.lust = 0;
-			InfoScreen.push(text);
 			return true;
 		}
 	}

@@ -49,6 +49,9 @@ package org.sevenchan.dongs
 		
 		public function processButtonPress(id:int):Boolean 
 		{
+			if (main == null) {
+			main = Main.main;
+			}
 			if (id == -1) {
 				updateScreen()
 				return false;

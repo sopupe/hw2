@@ -1,37 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
-               xmlns:s="library://ns.adobe.com/flex/spark"
-               xmlns:dongs="org.sevenchan.dongs.*"
-			   creationComplete="dicks(this)">
-<fx:Script>
-	<![CDATA[
-	import spark.components.Application;
-	import org.sevenchan.AdventureController;
-	
-	public function dicks(hurf:Application):void {
-		dongs.addChild(new AdventureController(Main(hurf)));
-	}
-	
-	public function showBodyParts(show:Boolean):void {
-		trace(show);
-		bodyparts.visible = show;
-		creatures.visible = !show;
-		dongs.visible = !show;
-		dongs.alpha = show ? 0 : 1;
-		dongs.percentHeight = dongs.percentWidth = show ? 0 : 100;
-	}
-	
-	public function showCreatureViewer(show:Boolean):void {
-		trace(show);
-		creatures.visible = show;
-		bodyparts.visible = !show;
-		dongs.visible = !show;
-		dongs.alpha = show ? 0 : 1;
-		dongs.percentHeight = dongs.percentWidth = show ? 0 : 100;
-	}
-	]]>
-</fx:Script>
-	<dongs:frmBodyPartsPool id="bodyparts" visible="false" width="100%" height="100%" horizontalCenter="true" verticalCenter="true" />
-	<dongs:frmCreatureViewer id="creatures" visible="false" width="100%" height="100%" horizontalCenter="true" verticalCenter="true" />
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:dongs="org.sevenchan.dongs.*"
+			   creationComplete="dicks(this)"
+			   resize="onResize();">
+	<fx:Script>
+		<![CDATA[
+			import spark.components.Application;
+			import org.sevenchan.AdventureController;
+			public static var main:AdventureController;
+			
+			public function dicks(hurf:Application):void
+			{
+				main = new AdventureController(Main(hurf));
+				dongs.addChild(main);
+			}
+			
+			public function showBodyParts(show:Boolean):void
+			{
+				trace(show);
+				bodyparts.visible = show;
+				creatures.visible = !show;
+				dongs.visible = !show;
+				dongs.alpha = show ? 0 : 1;
+				dongs.percentHeight = dongs.percentWidth = show ? 0 : 100;
+			}
+			
+			public function showCreatureViewer(show:Boolean):void
+			{
+				trace(show);
+				creatures.visible = show;
+				bodyparts.visible = !show;
+				dongs.visible = !show;
+				dongs.alpha = show ? 0 : 1;
+				dongs.percentHeight = dongs.percentWidth = show ? 0 : 100;
+			}
+			
+			private function onResize():void
+			{
+				var ratio:Number = width / measuredWidth;
+				if (dongs != null)
+				{
+					//dongs.scaleX *= ratio;
+					//dongs.scaleY *= ratio;
+				}
+				if (main != null)
+				{
+					main.onResize(height, width, measuredHeight, measuredWidth);
+				}
+			}
+		]]>
+	</fx:Script>
+	<dongs:frmBodyPartsPool id="bodyparts"
+							visible="false"
+							width="100%"
+							height="100%"
+							horizontalCenter="true"
+							verticalCenter="true" />
+	<dongs:frmCreatureViewer id="creatures"
+							 visible="false"
+							 width="100%"
+							 height="100%"
+							 horizontalCenter="true"
+							 verticalCenter="true" />
 	<s:SpriteVisualElement id="dongs" />
 </s:Application>
