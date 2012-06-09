@@ -18,7 +18,7 @@ package org.sevenchan.dongs.creature
 	 * 
 	 * Based off of the greek version, except this one is amphibious.
 	 * 
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class Scylla extends Creature 
 	{

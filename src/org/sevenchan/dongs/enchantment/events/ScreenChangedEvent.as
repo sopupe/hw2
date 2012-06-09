@@ -2,7 +2,7 @@ package org.sevenchan.dongs.enchantment.events
 {
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class ScreenChangedEvent 
 	{

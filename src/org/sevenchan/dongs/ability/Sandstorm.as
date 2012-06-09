@@ -7,7 +7,7 @@ package org.sevenchan.dongs.ability
 	
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class Sandstorm extends Ability 
 	{

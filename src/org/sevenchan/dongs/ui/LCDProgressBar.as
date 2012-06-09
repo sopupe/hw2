@@ -3,7 +3,7 @@ package org.sevenchan.dongs.ui
 	import flash.display.Sprite;
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class LCDProgressBar extends Sprite
 	{

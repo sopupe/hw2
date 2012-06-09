@@ -4,7 +4,7 @@ package org.sevenchan.dongs.ui
 	import flash.text.*;
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class StackHeader extends Sprite //implements IHovertextRecipient 
 	{

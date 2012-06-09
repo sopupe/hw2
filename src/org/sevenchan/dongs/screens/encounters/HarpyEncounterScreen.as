@@ -9,7 +9,7 @@ package org.sevenchan.dongs.screens.encounters
 	
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class HarpyEncounterScreen extends Screen
 	{

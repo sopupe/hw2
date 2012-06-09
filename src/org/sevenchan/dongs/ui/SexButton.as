@@ -13,7 +13,7 @@ package org.sevenchan.dongs.ui
 	
 	/**
 	 * Black, translucent, rounded button with text.
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class SexButton extends Sprite 
 	{

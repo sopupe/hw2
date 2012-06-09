@@ -5,7 +5,7 @@ package org.sevenchan.dongs.items
 	import org.sevenchan.dongs.screens.InfoScreen;
 	/**
 	 * Used for bad smells.
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class GasMask extends Item 
 	{

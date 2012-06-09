@@ -12,7 +12,7 @@ package org.sevenchan.dongs.creature
 	 * 
 	 * Based off of MGE's Arachne.  Loosely, as I cannot read moonspeak.
 	 * 
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class Arachnid extends Creature
 	{

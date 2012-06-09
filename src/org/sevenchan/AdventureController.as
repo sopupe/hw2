@@ -18,7 +18,7 @@ package org.sevenchan
 	import org.sevenchan.dongs.screens.*;
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	[Frame(factoryClass="Preloader",backgroundColor=0x666666,frames=10)]
 	[SWF(width=800,height=600,frameRate=60,backgroundColor="#666666")]

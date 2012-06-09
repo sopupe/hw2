@@ -6,7 +6,7 @@ package org.sevenchan.dongs.ability
 	import org.sevenchan.dongs.screens.InfoScreen;
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class Lightning extends Ability 
 	{

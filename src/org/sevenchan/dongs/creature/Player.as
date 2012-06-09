@@ -12,7 +12,7 @@ package org.sevenchan.dongs.creature
 	import org.sevenchan.dongs.screens.CombatScreen;
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class Player extends Creature
 	{

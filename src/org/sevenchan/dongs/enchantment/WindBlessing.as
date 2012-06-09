@@ -2,7 +2,7 @@ package org.sevenchan.dongs.enchantment
 {
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class WindBlessing extends Enchantment 
 	{

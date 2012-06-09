@@ -7,7 +7,7 @@ package org.sevenchan.dongs.items
 	import org.sevenchan.dongs.screens.InfoScreen;
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class GoldPotion extends Potion 
 	{

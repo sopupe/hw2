@@ -6,7 +6,7 @@ package org.sevenchan.dongs.ability
 	
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class Instawin extends Ability 
 	{
@@ -22,7 +22,7 @@ package org.sevenchan.dongs.ability
 		
 		override public function activate(activator:Creature, rapee:Creature):Boolean 
 		{
-			InfoScreen.push("<h2>Insta-win!</h2><p>You fucking cheat and win because N3X15 is too tired to fix the punch damage thing.</p>");
+			InfoScreen.push("<h2>Insta-win!</h2><p>You fucking cheat and win because Harbinger is too tired to fix the punch damage thing.</p>");
 			rapee.HP = 0;
 			return true;
 		}

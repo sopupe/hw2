@@ -15,7 +15,7 @@ package org.sevenchan.dongs.ui
 	
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class SexPanel extends MovieClip 
 	{

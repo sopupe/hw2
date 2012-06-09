@@ -7,7 +7,7 @@ package org.sevenchan.dongs.enchantment
 	
 	/**
 	 * MAGICK
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class Enchantment
 	{

@@ -6,7 +6,7 @@ package org.sevenchan.dongs.creature
 	
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class Human extends Creature 
 	{

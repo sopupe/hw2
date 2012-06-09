@@ -3,7 +3,7 @@ package org.sevenchan.dongs
 	import org.sevenchan.AdventureController;
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class Screen 
 	{

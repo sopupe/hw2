@@ -6,7 +6,7 @@ package org.sevenchan.dongs.screens
 	import org.sevenchan.dongs.*;
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class NewGameScreen extends Screen
 	{

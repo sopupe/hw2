@@ -4,7 +4,7 @@ package org.sevenchan.dongs.screens
 	import org.sevenchan.dongs.Screen;
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class AppearanceScreen extends Screen
 	{

@@ -3,7 +3,7 @@ package org.sevenchan.dongs
 	
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public interface INode 
 	{

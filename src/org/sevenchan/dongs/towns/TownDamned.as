@@ -6,7 +6,7 @@ package org.sevenchan.dongs.towns
 	
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class TownDamned extends Town 
 	{

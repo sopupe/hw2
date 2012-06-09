@@ -7,7 +7,7 @@ package org.sevenchan.dongs.enchantment
 	import org.sevenchan.dongs.screens.InfoScreen;
 	/**
 	 * Oh look I made an STD
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class Corruption extends Enchantment 
 	{

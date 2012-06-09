@@ -17,7 +17,7 @@ package org.sevenchan.dongs.screens
 	
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class CombatScreen extends Screen 
 	{

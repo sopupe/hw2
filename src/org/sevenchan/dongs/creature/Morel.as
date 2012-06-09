@@ -14,7 +14,7 @@ package org.sevenchan.dongs.creature
 	 * Abilities:
 	 * 	Spore - Releases a cloud of spores from head
 	 * 
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class Morel extends Creature 
 	{

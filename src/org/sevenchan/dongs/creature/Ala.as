@@ -11,7 +11,7 @@ package org.sevenchan.dongs.creature
 	 * the folklore of Bulgarians, Macedonians, and Serbs. 
 	 *  (Monsterpedia)
 	 * 
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class Ala extends Creature
 	{

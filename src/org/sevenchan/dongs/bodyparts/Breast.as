@@ -5,7 +5,7 @@ package org.sevenchan.dongs.bodyparts
 	import org.sevenchan.dongs.screens.InfoScreen;
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class Breast implements IBodyPart
 	{

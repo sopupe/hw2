@@ -13,7 +13,7 @@ package org.sevenchan.dongs
 	
 	/**
 	 * It's alive!
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class Creature
 	{

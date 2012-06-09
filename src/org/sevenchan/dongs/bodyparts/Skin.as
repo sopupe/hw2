@@ -6,7 +6,7 @@ package org.sevenchan.dongs.bodyparts
 	import flash.net.registerClassAlias;
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class Skin implements IBodyPart
 	{

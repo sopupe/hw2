@@ -7,7 +7,7 @@ package org.sevenchan.dongs.bodyparts
 	
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class Penis implements IBodyPart
 	{

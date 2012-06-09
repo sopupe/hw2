@@ -3,7 +3,7 @@ package org.sevenchan.dongs.screens
 	import org.sevenchan.dongs.*;
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class StartupScreen extends Screen
 	{
@@ -21,7 +21,7 @@ package org.sevenchan.dongs.screens
 		{
 			var text:String = "<h2>Adventure of the Seven Leaves</h2>";
 			text += "<p>Inspired by Corruption of Champions by Fenoxo</p>";
-			text += "<p>Written in ActionScript 3 by N3X15 for the Open-Source Adobe Flex 4 platform.  Visit <a href=\"http://adventure.nexisonline.net\">the project blog</a> for sourcecode links, updates, and news, among other silly bullshit.</p>";
+			text += "<p>Written in ActionScript 3 by Harbinger for the Open-Source Adobe Flex 4 platform.  Visit <a href=\"http://adventure.nexisonline.net\">the project blog</a> for sourcecode links, updates, and news, among other silly bullshit.</p>";
 			return text;
 		}
 		

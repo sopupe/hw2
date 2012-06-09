@@ -5,7 +5,7 @@ package org.sevenchan.dongs.bodyparts
 	import org.sevenchan.dongs.enchantment.Enchantment;
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class Asshole implements IBodyPart
 	{

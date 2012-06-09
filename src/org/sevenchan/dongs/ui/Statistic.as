@@ -9,7 +9,7 @@ package org.sevenchan.dongs.ui
 	import org.sevenchan.dongs.ui.TinyButton;
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class Statistic extends Sprite implements IHovertextRecipient
 	{

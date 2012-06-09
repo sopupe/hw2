@@ -4,7 +4,7 @@ package org.sevenchan.dongs.bodyparts
 	import flash.net.registerClassAlias;
 	/**
 	 * A nice, stupid way for creatures to have defined builds.
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class Build
 	{

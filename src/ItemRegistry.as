@@ -3,7 +3,7 @@ package
 	import org.sevenchan.dongs.items.*;
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class ItemRegistry 
 	{

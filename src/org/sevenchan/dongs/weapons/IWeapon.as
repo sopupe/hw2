@@ -1,14 +1,26 @@
-package org.sevenchan.dongs.bodyparts 
+package org.sevenchan.dongs.weapons 
 {
+	
+	/**
+	 * ...
+	 * @author Harbinger
+	 */
+	public interface IWeapon 
+	{
+		
 	import org.sevenchan.dongs.Creature;
 	/**
 	 * ...
 	 * @author Harbinger
 	 */
-	public interface IBodyPart 
+	public interface IWeapon
 	{
-		function get name():String;
-		function get category():String;
+		function get baseName():String;
+		function get description():String;
+		function get category():WeaponCategory;
+		function get baseDamage():Number;
+		function get wear():Number;
+		
 		/**
 		 * Retrieve a long description of the body part
 		 * 
@@ -23,5 +35,5 @@ package org.sevenchan.dongs.bodyparts
 		function onFailedAttack(from:Creature, to:Creature):void;
 		function onGoodAttack(from:Creature, to:Creature):void;
 	}
-
+	
 }

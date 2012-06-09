@@ -7,7 +7,7 @@ package
 	import org.sevenchan.dongs.enchantment.Hunger;
 	/**
 	 * ...
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class BodyPartRegistry 
 	{

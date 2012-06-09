@@ -14,7 +14,7 @@ package org.sevenchan.dongs.creature
 	 * A travelling merchant who sell body modifications and potions.
 	 * 
 	 * Some are also hostile.
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class Witch extends Creature 
 	{

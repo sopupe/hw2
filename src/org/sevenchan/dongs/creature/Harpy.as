@@ -22,7 +22,7 @@ package org.sevenchan.dongs.creature
 	 *  satisfy his hunger, and befouled the remains of his food." - (Wikipedia:Harpy)
 	 * tl;dr zeus got made at some faggot and made birds shit in his soup.
 	 * 
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class Harpy extends Creature
 	{

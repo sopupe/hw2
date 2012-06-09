@@ -13,7 +13,7 @@ package org.sevenchan.dongs.creature
 	 * 
 	 * Friendly creature that sells milk and sex, although
 	 * sex without a gas mask = you turn into a cowgirl.
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class Bova extends Creature 
 	{

@@ -13,7 +13,7 @@ package org.sevenchan.dongs.screens.encounters
 	import org.sevenchan.dongs.towns.WildsHorusSpine;
 	
 	/**
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class BovaEncounterScreen extends Encounter
 	{

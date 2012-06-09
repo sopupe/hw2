@@ -10,7 +10,7 @@ package org.sevenchan.dongs.creature
 	 * Demons are basically magically corrupted humans, so many of the features should remain the same.
 	 * 
 	 * Should add in some mutations, though.
-	 * @author N3X15
+	 * @author Harbinger
 	 */
 	public class Demon extends Creature
 	{
