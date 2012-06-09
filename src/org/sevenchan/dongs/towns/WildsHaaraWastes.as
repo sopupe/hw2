@@ -17,12 +17,12 @@ package org.sevenchan.dongs.towns
 			super();
 			ID = "haara";
 			name = "Haara Wastes";
-			inhabitants = [
-				CreatureRegistry.oldspace,
-				CreatureRegistry.arachnid,
-				CreatureRegistry.arachnid_pregnant,
-				CreatureRegistry.witch,
-			];
+			
+			inhabitants[CreatureRegistry.oldspace] = 0.1;
+			inhabitants[CreatureRegistry.arachnid] = 0.1;
+			inhabitants[CreatureRegistry.arachnid_pregnant] = 0.1;
+			inhabitants[CreatureRegistry.witch] = 0.1;
+			
 			isWilds = true;
 			freeRest = true;
 			connectedTowns = [

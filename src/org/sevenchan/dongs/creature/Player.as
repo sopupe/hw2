@@ -237,7 +237,7 @@ package org.sevenchan.dongs.creature
 			baseType.abilities["instawin"] = new Instawin();
 		}
 		
-		
+		/*
 		override public function hasEnchantment(name:String):Boolean {
 			return baseType.hasEnchantment(name);
 		}
@@ -250,7 +250,7 @@ package org.sevenchan.dongs.creature
 		{
 			return baseType.notifyEnchantments(e);
 		}
-		
+		*/
 		override public function get assholes():Vector.<Asshole> { return baseType._assholes; }
 		override public function set assholes(balls:Vector.<Asshole>):void { baseType._assholes=balls;
 			customized = true; }
@@ -305,7 +305,7 @@ package org.sevenchan.dongs.creature
 		public override function set sensitivity(value:int):void { baseType.sensitivity = value; }
 		
 		public override function get abilities():Object { return baseType.abilities; }
-		public override function set abilities(arr:Object):void{ baseType.abilities=arr; }
+		public override function set abilities(arr:Object):void { baseType.abilities = arr; }
 		
 		public override function get gender():Gender{ return baseType.gender; }
 		public override function set gender(arr:Gender):void { baseType.gender = arr; }

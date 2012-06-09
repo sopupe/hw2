@@ -18,6 +18,11 @@ package org.sevenchan.dongs.items
 			this.value = 45;
 		}
 		
+		override public function copy():Item 
+		{
+			return new DarkHarpyEgg(amount);
+		}
+		
 	}
 
 }

@@ -1,5 +1,6 @@
 package org.sevenchan.dongs.towns 
 {
+	import flash.utils.Dictionary;
 	import org.sevenchan.dongs.*;
 	import org.sevenchan.dongs.screens.*;
 	
@@ -15,10 +16,11 @@ package org.sevenchan.dongs.towns
 			super();
 			ID = "banala";
 			name = "Banala";
-			inhabitants = [
-				CreatureRegistry.demon,
-				CreatureRegistry.witch,
-			];
+			
+			inhabitants = new Dictionary();
+			inhabitants[CreatureRegistry.demon] = 0.25;
+			inhabitants[CreatureRegistry.witch] = 0.25;
+			
 			isWilds = false;
 			freeRest = false;
 			connectedTowns = [

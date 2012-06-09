@@ -16,11 +16,10 @@ package org.sevenchan.dongs.towns
 			super();
 			ID = "damned";
 			name = "Damned";
-			inhabitants = [
-				CreatureRegistry.demon,
-				CreatureRegistry.bova,
-				CreatureRegistry.witch,
-			];
+			inhabitants[CreatureRegistry.demon] = 0.1;
+			inhabitants[CreatureRegistry.bova] = 0.1;
+			inhabitants[CreatureRegistry.witch] = 0.1;
+			
 			isWilds = false;
 			freeRest = false;
 			connectedTowns = [
@@ -55,7 +54,7 @@ package org.sevenchan.dongs.towns
 				return true;
 			} else {
 				// WIND BOSS
-				trace("COMBATTIEM");
+				//trace("COMBATTIEM");
 				main.startCombat(null, CreatureRegistry.ala);
 				return false;
 			}

@@ -169,6 +169,8 @@ package org.sevenchan.dongs.creature
 				return true;
 			} else if (gender.hasDick) {
 				var rectum:String = (ply.gender.hasVag)?"birth canal and into your womb":"rectum";
+				var enchTxt:String = "";
+				var asshole:Boolean = false;
 				text = "<p>You collapse to the ground";
 				text += " once again,";
 				text += " defeated and exhausted.  Blood drips from seemingly every part of your body, and you " +
@@ -216,6 +218,12 @@ package org.sevenchan.dongs.creature
 					}
 				}
 				InfoScreen.push(gender.doReplace(text));
+				
+				
+				for (var i:int = 0; i < balls.length; i++) {
+					var t:Testicle = balls[i];
+					enchTxt += ply.addEnchantment(t.targetFX) + "  ";
+				}
 				return true;
 			}
 			return false;

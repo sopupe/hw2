@@ -17,7 +17,7 @@ package org.sevenchan.dongs.towns
 			super();
 			ID = "barn";
 			name = "The Barn";
-			inhabitants = [];
+			//inhabitants = [];
 			isWilds = false;
 			freeRest = true;
 			connectedTowns = [

@@ -11,8 +11,10 @@ package org.sevenchan.dongs.screens
 	 */
 	public class WinnerScreen extends Screen 
 	{
+		public static var immediatelyConsume:Boolean = false;
 		private var player:Creature;
 		private var loser:Creature;
+	
 		
 		public static function push(ply:Creature, loser:Creature):void {
 			AdventureController.screenQueue.write(new WinnerScreen(ply, loser));
@@ -31,8 +33,10 @@ package org.sevenchan.dongs.screens
 			var text:String = "<h2>You won!</h2><p>You received:<ul>";
 			trace("LOSER INVENTORY");
 			for each (var item:Item in loser.inventory) {
-				text += "<li>" + item.amount + "x " + item.name + "</li>";
-				player.addToInventory(item);
+				if(player.inventoryUpdate(item,true)) {
+					text += "<li>" + item.amount + "x " + item.name + "</li>";
+					player.addToInventory(item);
+				}
 			}
 			text += "<li>" + loser.gold + " gold</li>";
 			text += "<li>" + (6+((player.level - loser.level)*1)) + " XP</li>";

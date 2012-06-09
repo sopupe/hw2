@@ -4,6 +4,7 @@ package
 	import org.sevenchan.dongs.bodyparts.asshole.*;
 	import org.sevenchan.dongs.bodyparts.eye.*;
 	import org.sevenchan.dongs.enchantment.Corruption;
+	import org.sevenchan.dongs.enchantment.Hunger;
 	/**
 	 * ...
 	 * @author N3X15
@@ -17,7 +18,7 @@ package
 		//arms
 		public static function get human_arm():Arm { return new Arm("human", null, null); }
 		//balls
-		public static function get arachnid_testicle():Testicle { return new Testicle("internal testes", 3785, null, null, "spider egg"); }
+		public static function get arachnid_testicle():Testicle { return new Testicle("internal testes", 3785, new Hunger(ItemRegistry.DARK_HARPY_EGG.id,1), null, "spider egg"); }
 		public static function get demon_testicle():Testicle { return new Testicle("demon nut",38,new Corruption(10),null,"boiling-hot sticky black substance"); }
 		public static function get human_testicle():Testicle { return new Testicle("human testicle", 17, null, null, "hot stringy off-white seed"); }
 		//breasts

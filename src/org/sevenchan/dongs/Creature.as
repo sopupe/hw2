@@ -113,7 +113,7 @@ package org.sevenchan.dongs
 		
 		public function yourMove(cs:CombatScreen, ply:Creature):void
 		{
-			if ((turnsToLose > 0) || notifyEnchantments(new CombatTurnEvent(ply)))
+			if ((turnsToLose > 0) || notifyEnchantments(new CombatTurnEvent(cs,ply)))
 			{
 				InfoScreen.push("<p>The " + getTypeName() + " cannot attack!</p>");
 				return;
@@ -780,10 +780,35 @@ package org.sevenchan.dongs
 				}
 				if (e is CombatTurnEvent)
 				{
-					return ench.onMyCombatTurn(e.other);
+					return ench.onMyCombatTurn(e.screen,e.other);
 				}
 			}
 			return false;
+		}
+		
+		
+		public function inventoryUpdate(item:Item,received:Boolean):Boolean
+		{
+			var actionToTake:int = -1;
+			for (var eID:String in enchantments)
+			{
+				var act:int = enchantments[eID].onInventoryReceived(item);
+				if (act != Enchantment.INTERCEPT_ACTION_NONE) {
+				actionToTake = act;
+				break;
+				}
+			}
+			switch(actionToTake) {
+			case Enchantment.INTERCEPT_ACTION_TOSS:
+				// Do nothing, we're already tossing.
+				break;
+			case Enchantment.INTERCEPT_ACTION_USE:
+				item.Use(this);
+				break;
+			default:
+				break;
+			}
+			return actionToTake==Enchantment.INTERCEPT_ACTION_NONE;
 		}
 		
 		public function getTesticleDescr():String

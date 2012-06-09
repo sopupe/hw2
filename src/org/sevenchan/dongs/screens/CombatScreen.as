@@ -21,6 +21,15 @@ package org.sevenchan.dongs.screens
 	 */
 	public class CombatScreen extends Screen 
 	{
+		public var passAction:int = -1;
+		
+		public static const PASS_SKIP:int = -2;
+		public static const PASS_NONE:int = -1;
+		public static const PASS_ATTACK:int = 0;
+		public static const PASS_RUN:int = 3;
+		public static const PASS_FORFEIT:int = 4;
+		public static const PASS_RAPE:int = 5;
+		
 		private var oldScreen:Screen;
 		private var combatant:Creature;
 		private var text:String = "";
@@ -86,7 +95,7 @@ package org.sevenchan.dongs.screens
 		}
 		private function mainMenu(id:int):Boolean {
 			clearButtons();
-			if (!Paralyze.isParalyzed(main.player)) {
+			if (!Enchantment.isLockedOut(main.player)) {
 				setButton(0, "Attack");
 				setButton(1, "Items");
 				setButton(2, "Abilities");
@@ -96,16 +105,27 @@ package org.sevenchan.dongs.screens
 				if (combatant.getRapable())
 					setButton(5, "Rape");
 			} else {
-				setButton(0, "PARALYZED");
+				setButton(0, Enchantment.getLockoutEffectText(main.player));
 			}
 			
 			switch(id) {
 				case 0://attack
-					main.player.notifyEnchantments(new CombatTurnEvent(combatant));
-					if (Paralyze.isParalyzed(main.player))
-					{
-						InfoScreen.push("<h2>Paralyzed</h2><p>You are paralyzed, so you can't do <em>shit</em>.</p>");
-						combatant.yourMove(this, main.player);
+					var bypassNotification:Boolean = passAction == -3;
+					passAction = -1;
+					if (!bypassNotification)
+						main.player.notifyEnchantments(new CombatTurnEvent(this,combatant));
+					//if (Paralyze.isParalyzed(main.player))
+					//{
+					//	InfoScreen.push("<h2>Paralyzed</h2><p>You are paralyzed, so you can't do <em>shit</em>.</p>");
+					if (passAction != -1) {
+						if(passAction==-2) { 
+							// Skip entirely.
+							combatant.yourMove(this, main.player);
+						}else { 
+							passAction = -3; // Just in case we're forcing attack
+							// Force an action
+							mainMenu(passAction);
+						}
 					} else {
 						tryAttack(main.player, combatant);
 					}
@@ -140,7 +160,7 @@ package org.sevenchan.dongs.screens
 						main.endCombat(oldScreen);
 					} else {
 						text = "<p>You're unable to get away!</p>";
-						main.player.notifyEnchantments(new CombatTurnEvent(combatant));
+						main.player.notifyEnchantments(new CombatTurnEvent(this,combatant));
 					}
 					updateScreen();
 					return true;
@@ -191,7 +211,7 @@ package org.sevenchan.dongs.screens
 				return false;
 			} else {
 				(ab[id - 1] as Ability).activate(main.player, combatant);
-				main.player.notifyEnchantments(new CombatTurnEvent(combatant));
+				main.player.notifyEnchantments(new CombatTurnEvent(this,combatant));
 				if (combatant.HP<=0)
 				{
 					win();

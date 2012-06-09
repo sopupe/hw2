@@ -16,6 +16,7 @@ package org.sevenchan.dongs
 		public var descr:String = "";
 		public var value:int = 0;
 		public var amount:uint = 0;
+		public var isSexuallyTransmitted:Boolean = false;
 		
 		public function Item(num:uint=0) {
 			amount = num;
@@ -40,6 +41,7 @@ package org.sevenchan.dongs
 		}
 		
 		public static function findByID(id:int):Item {
+			trace("Asked to find", id);
 			for each(var item:Item in Registry) {
 				trace(item.name, item.id);
 				if (item.id == id) return item.copy();

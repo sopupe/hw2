@@ -34,11 +34,13 @@ package org.sevenchan.dongs.screens
 		override public function getScreenText():String 
 		{
 			var txt:String = main.player.getDescription();
+			trace(main.player.enchantments);
 			if(MathUtils.lengthOf(main.player.enchantments)) {
 				txt += "<h2>Enchantments/Effects</h2><ul>";
+				var i:int = 0;
 				for (var e:String in main.player.enchantments) {
 					var ench:Enchantment = main.player.enchantments[e];
-					txt += "<li><b>" + ench.getName() + "</b> - " + ench.getDescr() + "</li>";
+					txt += "<li><b>" +ench.getName() + "</b> - " + ench.getDescr() + "</li>";
 				}
 				txt += "</ul>";
 			}

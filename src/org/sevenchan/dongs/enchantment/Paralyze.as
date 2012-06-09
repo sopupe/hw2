@@ -1,6 +1,8 @@
 package org.sevenchan.dongs.enchantment 
 {
+	import flash.sampler.NewObjectSample;
 	import org.sevenchan.dongs.Creature;
+	import org.sevenchan.dongs.screens.CombatScreen;
 	import org.sevenchan.dongs.screens.InfoScreen;
 	/**
 	 * ...
@@ -25,7 +27,7 @@ package org.sevenchan.dongs.enchantment
 			return "You are now paralyzed.";
 		}
 		
-		override public function onMyCombatTurn(other:Creature):Boolean 
+		override public function onMyCombatTurn(screen:CombatScreen,other:Creature):Boolean
 		{
 			turn++;
 			trace("Paralyze.onMyCombatTurn()")
@@ -33,7 +35,7 @@ package org.sevenchan.dongs.enchantment
 			{
 				remove();
 			}
-			return super.onMyCombatTurn(other);
+			return super.onMyCombatTurn(screen,other);
 		}
 		
 		override public function onCombatComplete(hostWon:Boolean, other:Creature):void 

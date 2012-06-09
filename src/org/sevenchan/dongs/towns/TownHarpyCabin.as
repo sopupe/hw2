@@ -17,7 +17,7 @@ package org.sevenchan.dongs.towns
 		{
 			ID = "harpycabin";
 			name = "Harpy Cabin";
-			inhabitants = [];
+			//inhabitants[] = ;
 			isWilds = false;
 			freeRest = true;
 			connectedTowns = [
