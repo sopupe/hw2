@@ -29,6 +29,7 @@ package org.sevenchan.dongs.items
 			var action:Function = function(nut:*, index:int, array:Array):void {
 				(nut as Testicle).loadMult += 1;
 			};
+			host.balls.forEach(action);
 			InfoScreen.push("<h2>Spider Venom</h2><p>You drink the spider venom, and your semen output is increased by 1.</p>");
 			return true;
 		}

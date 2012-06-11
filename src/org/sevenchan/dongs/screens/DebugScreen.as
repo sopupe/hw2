@@ -1,6 +1,7 @@
 package org.sevenchan.dongs.screens 
 {
 	import com.adobe.serialization.json.JSONEncoder;
+	import org.sevenchan.AdventureController;
 	import org.sevenchan.dongs.Screen;
 	
 	/**
@@ -44,7 +45,8 @@ package org.sevenchan.dongs.screens
 						return false;
 						break;
 					case 2: // Super Store (Free shit)
-						text = "<h2>Super Store</h2><p>Not implemented</p>";
+						SuperStoreScreen.push();
+						return true;
 						updateScreen();
 						return false;
 						break;

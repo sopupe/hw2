@@ -17,8 +17,10 @@ package org.sevenchan.dongs.screens
 		
 		public function Encounter(target:Creature) {
 			subject = target;
-			currentItem.children.push(new ActionNode(currentItem, "Rape", 0, target.gender.doReplace("Try to rape %POS%."), performRape));
-			currentItem.children.push(new ActionNode(currentItem, "Fight", 0, target.gender.doReplace("Try to fight %POS%."), fight));
+			if(target != null) {
+			currentItem.children.push(new ActionNode(currentItem, "Rape", 0, target.gender.doReplace("Try to rape %POS%."), performRape,null));
+			currentItem.children.push(new ActionNode(currentItem, "Fight", 0, target.gender.doReplace("Try to fight %POS%."), fight,null));
+			}
 		}
 		public function onStartupScreen():void { }
 		public function onLeaving():void { }

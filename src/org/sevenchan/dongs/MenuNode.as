@@ -57,8 +57,8 @@ package org.sevenchan.dongs
 			return n;
 		}
 		
-		public function pushAction(name:String, cost:int, desc:String, callback:Function):ActionNode {
-			var n:ActionNode = new ActionNode(this, name, cost, desc, callback);
+		public function pushAction(name:String, cost:int, desc:String, callback:Function, arg:*=null):ActionNode {
+			var n:ActionNode = new ActionNode(this, name, cost, desc, callback,arg);
 			pushChild(n);
 			return n;
 		}

@@ -12,14 +12,16 @@ package org.sevenchan.dongs
 		private var _name:String;
 		private var _desc:String;
 		private var _cost:int;
+		public var arg:*;
 		public var callback:Function;
 		private var _content:String = "[?]";
-		public function ActionNode(parent:INode,name:String,cost:int,desc:String,callback:Function) 
+		public function ActionNode(parent:INode,name:String,cost:int,desc:String,callback:Function,arg:*) 
 		{
 			this._name = name;
 			this._desc = desc;
 			this._parent = parent;
 			this.callback = callback;
+			this.arg = arg;
 		}
 		
 		public function get name():String {
@@ -53,14 +55,14 @@ package org.sevenchan.dongs
 			return n;
 		}
 		
-		public function pushAction(name:String, cost:int, desc:String, callback:Function):ActionNode {
-			var n:ActionNode = new ActionNode(this, name, cost, desc, callback);
+		public function pushAction(name:String, cost:int, desc:String, callback:Function,arg:*=null):ActionNode {
+			var n:ActionNode = new ActionNode(this, name, cost, desc, callback,arg);
 			pushChild(n);
 			return n;
 		}
 		
-		public function invoke(context:Encounter,ply:Creature):Boolean {
-			return callback.call(context, ply, this);
+		public function invoke(context:Encounter,ply:Creature, arg:*=null):Boolean {
+			return callback.call(context, ply, this, arg);
 		}
 		
 		public function hasEnoughMoney(ply:Creature):Boolean {

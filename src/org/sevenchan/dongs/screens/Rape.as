@@ -112,6 +112,12 @@ package org.sevenchan.dongs.screens
 			node.content = "<h2>Finger Cunt</h2>";
 			node.content += otherCreature.gender.doReplace("<p>%SUB% strains against the restraints as you push your finger into %POS% warm " + cunt_s + ", teasing %OBJ%.</p>");
 			cunt.timesFucked++;
+			if (otherCreature.getInterested(ply)) {
+			otherCreature.lust += 5;
+			}
+			if (ply.getInterested(otherCreature) && ply.dicks.length>0) {
+				ply.lust += 5;
+				}
 			return true;
 		}
 		
@@ -142,6 +148,12 @@ package org.sevenchan.dongs.screens
 			}
 			node.content += "you wrap your hands around %POS% " + firm + " buns and feel them vigourously, appreciating their shape with your anxious hands.  Your victim doesn't seem to appreciate it much.</p>"
 			node.content = otherCreature.gender.doReplace(node.content);
+			if (otherCreature.getInterested(ply)) {
+			otherCreature.lust += 2;
+			}
+			if (ply.getInterested(otherCreature) && ply.dicks.length>0) {
+				ply.lust += 2;
+				}
 			return true;
 		}
 		

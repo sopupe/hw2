@@ -29,10 +29,10 @@ package org.sevenchan.dongs.screens.encounters
 			super(subj);
 			lustCost = 3;
 			currentItem.content = "<p>The cowgirl looks at you tiredly, flicking one of her ears at a fly.  \"What?\", she asks in her deep voice, tilting her head in frustration at your indecisiveness.  The movement causes her cowbell to ding.</p>";
-			currentItem.children.push(new ActionNode(currentItem, "Milk", MathUtils.rand(250, 300), "Buy some milk from her for a few hundred gold.", onBuyMilk));
+			currentItem.children.push(new ActionNode(currentItem, "Milk", MathUtils.rand(250, 300), "Buy some milk from her for a few hundred gold.", onBuyMilk,null));
 			main = Main.main;
 			if (main.player.dicks.length > 0)
-				currentItem.children.push(new ActionNode(currentItem, "Sex", 0, "Tempt her with sex", onFuck));
+				currentItem.children.push(new ActionNode(currentItem, "Sex", 0, "Tempt her with sex", onFuck,null));
 		}
 		
 		override public function onStartupScreen():void

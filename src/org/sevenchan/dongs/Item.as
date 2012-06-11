@@ -36,7 +36,8 @@ package org.sevenchan.dongs
 				potion_gold:new GoldPotion(),
 				spider_egg:new SpiderEgg(),
 				gas_mask:new GasMask(),
-				milk:new Milk()
+				milk:new Milk(),
+				spider_gonad:new SpiderGonad()
 			};
 		}
 		

@@ -629,9 +629,9 @@ package org.sevenchan.dongs
 			return _dicks;
 		}
 		
-		public function set dicks(balls:Vector.<Penis>):void
+		public function set dicks(aaa:Vector.<Penis>):void
 		{
-			_dicks = balls;
+			_dicks = aaa;
 			customized = true;
 		}
 		
