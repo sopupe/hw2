@@ -1,4 +1,6 @@
 package {
+	
+	import flash.utils.getTimer;
 	public class MathUtils {
 		public static function lerp(value:Number, a:Number, b:Number):Number 
 		{
@@ -34,8 +36,37 @@ package {
 			return out;
 		}
 		
-		public static function rand(from:Number, to:Number, round:Boolean=true):Number {
-			var o:Number =  (Math.random() * (to - from)) + from;
+		//http://blog.controul.com/2009/04/true-random-numbers-in-flash-clock-drift/ (Heavily modified)
+		public static function random ( bits : uint = 32 ) : Number
+		{
+			if ( bits > 32 )
+				bits = 32;
+			var	r : uint = 0,
+				i : uint = 0,
+				t : uint = getTimer ();
+			for ( ;; )
+			{
+				if ( t != ( t = getTimer () ) )
+				{
+					if ( i & 1 )
+						r |= 1;
+					bits --;
+					if ( bits > 0 )
+					{
+						i = 0;
+						r <<= 1;
+					}
+					else
+						break;
+				}
+				i ++;
+			}
+			return Number(r) / Number(uint.MAX_VALUE);
+		}
+		public static function rand(from:Number, to:Number, round:Boolean = true):Number {
+			var rnd:Number = random();
+			trace("RNG Sample: ", rnd.toFixed(5));
+			var o:Number =  (rnd * (to - from)) + from;
 			if (round)
 				o = Math.round(o);
 			return o;

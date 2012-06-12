@@ -86,63 +86,63 @@ package org.sevenchan.dongs.screens
 						switch (bp.category)
 						{
 							case "arms": 
-								ArmsMenu.pushAction(bp.name, 250, bp.getShortDescr(), function(ply:Creature, node:ActionNode, o:*)
+								ArmsMenu.pushAction(bp.name, 250, bp.getShortDescr(), function(ply:Creature, node:ActionNode, o:*):Boolean
 									{
 										ply.arms.push(o as IBodyPart);
 										return true;
 									}, bp);
 								break;
 							case "assholes": 
-								AssholesMenu.pushAction(bp.name, 100, bp.getShortDescr(), function(ply:Creature, node:ActionNode, o:*)
+								AssholesMenu.pushAction(bp.name, 100, bp.getShortDescr(), function(ply:Creature, node:ActionNode, o:*):Boolean
 									{
 										ply.assholes.push(o as IBodyPart);
 										return true;
 									}, bp);
 								break;
 							case "breasts": 
-								BreastsMenu.pushAction(bp.name, 250, bp.getShortDescr(), function(ply:Creature, node:ActionNode, o:*)
+								BreastsMenu.pushAction(bp.name, 250, bp.getShortDescr(), function(ply:Creature, node:ActionNode, o:*):Boolean
 									{
 										ply.breasts.push(o as IBodyPart);
 										return true;
 									}, bp);
 								break;
 							case "hair": 
-								HairMenu.pushAction(bp.name, 250, bp.getShortDescr(), function(ply:Creature, node:ActionNode, o:*)
+								HairMenu.pushAction(bp.name, 250, bp.getShortDescr(), function(ply:Creature, node:ActionNode, o:*):Boolean
 									{
 										ply.hair = bp as Hair;
 										return true;
 									}, bp);
 								break;
 							case "legs": 
-								LegsMenu.pushAction(bp.name, 250, bp.getShortDescr(), function(ply:Creature, node:ActionNode, o:*)
+								LegsMenu.pushAction(bp.name, 250, bp.getShortDescr(), function(ply:Creature, node:ActionNode, o:*):Boolean
 									{
 										ply.legs.push(o as IBodyPart);
 										return true;
 									}, bp);
 								break;
 							case "dicks": 
-								PenisMenu.pushAction(bp.name, 100, bp.getShortDescr(), function(ply:Creature, node:ActionNode, o:*)
+								PenisMenu.pushAction(bp.name, 100, bp.getShortDescr(), function(ply:Creature, node:ActionNode, o:*):Boolean
 									{
 										ply.dicks.push(o as IBodyPart);
 										return true;
 									}, bp);
 								break;
 							case "balls": 
-								TesticleMenu.pushAction(bp.name, 100, bp.getShortDescr(), function(ply:Creature, node:ActionNode, o:*)
+								TesticleMenu.pushAction(bp.name, 100, bp.getShortDescr(), function(ply:Creature, node:ActionNode, o:*):Boolean
 									{
 										ply.balls.push(o as IBodyPart);
 										return true;
 									}, bp);
 								break;
 							case "vaginas": 
-								VaginaMenu.pushAction(bp.name, 250, bp.getShortDescr(), function(ply:Creature, node:ActionNode, o:*)
+								VaginaMenu.pushAction(bp.name, 250, bp.getShortDescr(), function(ply:Creature, node:ActionNode, o:*):Boolean
 									{
 										ply.vaginas.push(o as IBodyPart);
 										return true;
 									}, bp);
 								break;
 							case "wings": 
-								WingMenu.pushAction(bp.name, 250, bp.getShortDescr(), function(ply:Creature, node:ActionNode, o:*)
+								WingMenu.pushAction(bp.name, 250, bp.getShortDescr(), function(ply:Creature, node:ActionNode, o:*):Boolean
 									{
 										ply.wings.push(o as IBodyPart);
 										return true;
@@ -155,30 +155,30 @@ package org.sevenchan.dongs.screens
 			var BuyEnchantments:MenuNode = BuyMenu.pushMenu("Enchant", "Buy any enchantment or curse possible.");
 			{
 				
-				BuyEnchantments.pushAction("Corruption", 0, "Add +10 Corruption", function(ply:Creature, node:ActionNode)
+				BuyEnchantments.pushAction("Corruption", 0, "Add +10 Corruption", function(ply:Creature, node:ActionNode, o:*):Boolean
 					{
 						ply.addEnchantment(new Corruption(10));
 						return true;
 					});
-				BuyEnchantments.pushAction("Hunger(Egg)", 0, "Add hunger for Harpy Eggs.", function(ply:Creature, node:ActionNode)
+				BuyEnchantments.pushAction("Hunger(Egg)", 0, "Add hunger for Harpy Eggs.", function(ply:Creature, node:ActionNode, o:*):Boolean
 					{
 						ply.addEnchantment(new Hunger(ItemRegistry.DARK_HARPY_EGG.id, 1));
 						return true;
 					});
 				
-				BuyEnchantments.pushAction("Hunger(Gonad)", 0, "Add hunger for gonad.", function(ply:Creature, node:ActionNode)
+				BuyEnchantments.pushAction("Hunger(Gonad)", 0, "Add hunger for gonad.", function(ply:Creature, node:ActionNode, o:*):Boolean
 					{
 						ply.addEnchantment(new Hunger(ItemRegistry.SPIDER_GONAD.id, 2));
 						return true;
 					});
 				
-				BuyEnchantments.pushAction("Paralyze", 0, "Duh, 5 turns", function(ply:Creature, node:ActionNode)
+				BuyEnchantments.pushAction("Paralyze", 0, "Duh, 5 turns", function(ply:Creature, node:ActionNode, o:*):Boolean
 					{
 						ply.addEnchantment(new Paralyze());
 						return true;
 					});
 				
-				BuyEnchantments.pushAction("WindBless", 1500, "Add wind blessing", function(ply:Creature, node:ActionNode)
+				BuyEnchantments.pushAction("WindBless", 1500, "Add wind blessing", function(ply:Creature, node:ActionNode, o:*):Boolean
 					{
 						ply.addEnchantment(new WindBlessing());
 						return true;
@@ -187,10 +187,10 @@ package org.sevenchan.dongs.screens
 			var BuyItems:MenuNode = BuyMenu.pushMenu("Items", "Any materialistic item you could dream of.");
 			for each (var item:Item in Item.Registry)
 			{
-				BuyItems.pushAction(item.name, item.value, item.descr, function(ply:Creature, node:ActionNode, o:*)
+				BuyItems.pushAction(item.name, item.value, item.descr, function(ply:Creature, node:ActionNode, o:*):Boolean
 					{
 						ply.addToInventory(o as Item);
-					
+						return true;
 					}, item);
 			}
 			var BuyTransformations:MenuNode = BuyMenu.pushMenu("Preg", "Order up any kind of pregnancy.", needsOriface);

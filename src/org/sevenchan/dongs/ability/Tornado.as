@@ -1,4 +1,4 @@
-package org.sevenchan.dongs.ability 
+package org.sevenchan.dongs.ability
 {
 	import org.sevenchan.dongs.Ability;
 	import org.sevenchan.dongs.Creature;
@@ -8,10 +8,10 @@ package org.sevenchan.dongs.ability
 	 * ...
 	 * @author Harbinger
 	 */
-	public class Tornado extends Ability 
+	public class Tornado extends Ability
 	{
 		
-		public function Tornado() 
+		public function Tornado()
 		{
 			this.manaCost = 75;
 			this.description = "Summons a tornado to return player to barn.";
@@ -20,8 +20,10 @@ package org.sevenchan.dongs.ability
 			this.cannotBeRestrainedToUse = false;
 		}
 		
-		override public function activate(activator:Creature, rapee:Creature):Boolean 
+		override public function activate(activator:Creature, rapee:Creature):Boolean
 		{
+			if (rapee.hasItem(ItemRegistry.ANCHOR_STONE.id))
+				return false;
 			var text:String = "<h2>Tornado</h2>";
 			text += "<p>The ghastly spirit's face splits in two as it bares its enormous, foot-long ";
 			text += "shark-like teeth.  Strands of ethereal saliva bridge the gaps, and a foul odor ";
@@ -37,7 +39,7 @@ package org.sevenchan.dongs.ability
 			rapee.HP = 0;
 			return true;
 		}
-		
+	
 	}
 
 }
