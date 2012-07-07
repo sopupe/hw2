@@ -1,46 +1,67 @@
 <p>
-	The darkened skies have been pouring a cold, miserable rain upon the convoy as it snaked around the black cliffs for weeks.
+	The darkened skies had been pouring a cold, miserable rain upon the convoy as it snaked around the blackened cliffs for weeks.
 	Wagons getting stuck in the thick black mud was common, and the horses were tense, to say the least.  Even a pebble 
-	rolling down from the cliff above was enough to set them off, and the frequent imp attacks were not helping the situation.
-	Only a third of the original convoy from Aldoria was left, and they were all pitiful souls; All malnourished, hungry, 
-	and tired.  However, they all know they cannot fail to reach the destination, which is now exposed as the 
-	clouds part and the rain is left behind.  The convoy hesistantly halts to rest, and you have your first chance to 
-	examine the volcanic plains of Therma.
+	rolling down from the cliff above was enough to startle the beasts, and the frequent imp incursions during the night were not helping 
+	the army's situation very much.
 </p>
 <p>
-	&quot;By the Gods...&quot; you hear someone croak behind you.
+	Only a third of the original convoy from Aldoria is left, and they are all pitiful souls; All malnourished, hungry, 
+	and tired.  However, they all know they must reach the destination at all costs, the destination you now see as the acidic fog 
+	thins, exposing the volcanic plains of Therma below.  The convoy reluctantly grinds to a halt to take a short break and examine the road 
+	ahead.  You take a seat on a small boulder on the edge of the cliff to think of the past, the present, and your task.
 </p>
 <p>
-	Startled, you whip around to see a pale, sunken face, scarred heavily by time and a lack of food and sleep.  
-	It takes you a few moments to recognise King Gregor, but you nod, turning back to the lava-scarred landscape ahead.
+	Growing up, you never would have expected your current predicament.  Aldoria was a small sea-hugging kingdom on the western coast,
+	far away from volcanoes and such.  In fact, you recall that the must rugged terrain there were the dunes near Grant Beach.  The rest of 
+	the King's domain involved plenty of hills and many lakes, and a river that drunkenly snaked through the countryside.  As is typical
+	of future adventurers, you were a simple farmhand whose most dangerous opponent was a horse who had very strong objections to being
+	saddled.
 </p>
 <p>
-	&quot;I still can't beleive anything can survive in that hellish wasteland,&quot; you concur with the King, gesturing at the massive 
+	That all changed several weeks ago, when the villages were suddenly awakened by a rumble, and then watched helplessly as demons rode 
+	in to their towns, and rode out with most of the women and some of the men.  Entire townships were destroyed by roaming beasts the size of castles, and
+	even the mighty walls of the Temple of Langhorne were breached.  The situation was dire.
+</p>
+<p>
+	King Gregor managed to pull together enough monks and wise men to figure out where the demons were, and gathered the remnants of his army 
+	together for one final, desperate adventure:  To deliver you, the only surviving virgin of the kingdom, to Mount Thermoplyae, the portal through which the 
+	demons came, and seal the portal.  The only problem is that no one knows how.  Oh, and the demons will definately try to seduce or 
+	kill you before you complete your mission.
+</p>
+<p>
+	You sigh, rubbing your temples.  You've been reading through scriptures, holy texts, and even arcane tablets trying to figure out
+	what you were supposed to do when you got to the summit of the volcano, all to no avail.  The portal is apparently operated on the other 
+	side, so no wizard has been able to investigate too thoroughly.  You glance at the massive 
 	cone-snaped volcano dominating the skyline.  The red sky is brightened by yet another eruption, which tosses 
-	thousands of burning rocks, some the size of a castle, thundering down onto the landscape below. You shiver, despite the growing heat. 
-	&quot;Are you absolutely sure about this, my leige?&quot;  You turn to him, as do several  observing soldiers.  
+	thousands of burning rocks, some the size of houses, thundering down onto the landscape below. You shiver, despite the growing heat, 
+	just as the quartermaster motions the wagon train back into motion.
 </p>
 <p>
-	The king's eyes harden into intense determination. &quot;If Aldoria is to survive, we must proceed.  There are no alternatives.&quot;
+	On his word, the convoy of horses, soldiers, and wagons lurch forward and begin the arduous journey up the craggy slopes.  It soon 
+	becomes apparent that the rest of the journey must be made on foot, as wagons begin to break apart on the uneven terrain or light afire
+	by way of the burning debris rolling down the mountain.  The convoy is parked in a massive overhang, and everyone takes a breather.
 </p>
 <p>
-	On his word, the convoy of horses, soldiers, and wagons lurch forward, and enter the demonic lands ahead, and spend the day dodging lava bombs
-	and orc raids, all while scaling the immense, booming  Mount Terror.
+	Aldoria, up until recently, did not have a standing army, as it had a peaceful relationship with its neighbors with regard to shipping
+	products overseas, and those neighbors provided a nice, strong buffer against other nations who were not on great terms with the King.
+	However, what Aldoria did have, and in great volume, was a Navy, and the Royal Aldorian Marines were the most highly trained part of it.
+	Although the Navy's ships ended up at the bottom of the ocean, the Marines still made up a significant part of the current column making 
+	its way through the volcanic plains.  You turn to the nearest Marine, a weary-looking soul with a shredded blue uniform hanging off 
+	his bones.
 </p>
 <p>
-	A year ago, before the demons burst through into the world and began the systematic destruction of Aldoria, wiser men
-	would have called the mission insane.  But now, with nothing more to do, and no choices left, the last convoy of free men 
-	scale the  sharp, hot, volcanic rock of Mount Terror, using their last ounces of strength to make it to the summit.  
-	Many succumb to the heat, lava, and rock slides, but soon, it is just you and the king standing at the rim of the 
-	volcano, staring down at the swirling vortex of molten rock below.
+	&quot;Major, are you and your men ready?&quot;  You inquire, aware of the fact that you have been given the remainder of the water 
+	over the past hour, and this man probably feels like hell decided to throw a party in his throat.  He snaps smartly to attention though,
+	and croaks, &quot;Yes, sir!&quot;  
 </p>
 <p>
-	You look up at the king, and a single tear flows down his ashen cheek.  Years of happy memories play through your 
-	head, remembering your friendship with the king back when you were both young. &quot;I will sorely miss your companionship and loyalty,&quot; 
-	he rasps, coughing on the thick, foul smoke that hangs in the air. &quot;I will await your return.&quot; You exchange an embrace with the frail, 
-	but young king, and then take a few steps back from the edge and fling yourself into the searing heat below.
+	You nod, and join up with the 12 marines who are tasked with getting you to the top of the mountain alive.  
+	After making sure that all the weapons and provisions you need are crammed into your pack, and that the men helping you know the plan, you
+	set off.  As soon as you step into towards the summit, the mountain trembles beneath your feet and blasts fresh lava down its slopes.  
+	You break into a dead sprint up the roaring volcano, dodging falling rocks and jumping over yawning crevasses.  Orcs and demons step up 
+	their game, and many of your men are picked off along the way up.  Soon, however, it is just you standing at the rim of the 
+	volcano, staring down at the swirling vortex of molten rock below, with hordes of hungry banshees tearing towards you.
 </p>
 <p>
-	Your body screams from the heat, but, as trained by the elves who inhabited the now-burning Great Woods, you clear your 
-	mind and concentrate on the task ahead, and one name.
+	You fling yourself into the beckoning crater, and close your eyes as the heat envelops you.
 </p>

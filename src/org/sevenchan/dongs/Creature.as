@@ -1,11 +1,8 @@
 package org.sevenchan.dongs
 {
-	import flash.media.ID3Info;
-	import org.sevenchan.AdventureController;
 	import flash.net.*;
+	import org.sevenchan.AdventureController;
 	import org.sevenchan.dongs.bodyparts.*;
-	import org.sevenchan.dongs.bodyparts.asshole.Abdomen;
-	import org.sevenchan.dongs.bodyparts.eye.GhostEye;
 	import org.sevenchan.dongs.creature.*;
 	import org.sevenchan.dongs.enchantment.*;
 	import org.sevenchan.dongs.enchantment.events.*;

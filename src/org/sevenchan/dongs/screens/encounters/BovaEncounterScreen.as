@@ -2,15 +2,11 @@ package org.sevenchan.dongs.screens.encounters
 {
 	import org.sevenchan.AdventureController;
 	import org.sevenchan.dongs.ActionNode;
+	import org.sevenchan.dongs.Creature;
 	import org.sevenchan.dongs.creature.Bova;
-	import org.sevenchan.dongs.creature.Harpy;
 	import org.sevenchan.dongs.creature.Player;
-	import org.sevenchan.dongs.MenuNode;
 	import org.sevenchan.dongs.screens.Encounter;
 	import org.sevenchan.dongs.screens.InfoScreen;
-	import org.sevenchan.dongs.Town;
-	import org.sevenchan.dongs.Creature;
-	import org.sevenchan.dongs.towns.WildsHorusSpine;
 	
 	/**
 	 * @author Harbinger
@@ -41,13 +37,13 @@ package org.sevenchan.dongs.screens.encounters
 			{
 				main.player.setExplored("seenbova");
 				text = "<h2>Bova</h2><p>While exploring the markets (which typically involves you ";
-				text += "poking an item of food with a stick to see if it'd try to eat ";
+				text += "poking an item of food with a stick to see if it'll try to eat ";
 				text += "you), you are grabbed from behind and dragged into an alley by ";
 				text += "a firm hand.  Scared stupid and not afraid to admit it, you ";
 				text += "ball your fists and swing at the hand.  You miss, of course, ";
 				text += "but the hand releases you, letting your head hit the pavement ";
-				text += "with a muffled <i>thud</i>.  You then jump to your feet and ";
-				text += "whirl on your attacker, a cute, female human, but side from the ";
+				text += "with a muffled <i>thud</i>.  Jumping to your feet and ";
+				text += "whirling on your attacker, you find yourself face to face with a cute, female, but beyond the ";
 				text += "head and general body structure, something strikes you as ";
 				text += "odd.  First, she doesn't seem interested in killing you, so ";
 				text += "your anger fades.  Second, she has bovine horns erupting from ";
@@ -69,7 +65,7 @@ package org.sevenchan.dongs.screens.encounters
 			}
 		}
 		
-		public function onBuyMilk(ply:Creature, node:ActionNode):Boolean
+		public function onBuyMilk(ply:Creature, node:ActionNode,o:*):Boolean
 		{
 			text = "<h2>Bova Milk</h2><p>The pretty cowgirl lights up with joy, though "
 			text += "the burdens of city life have left obvious mental and physical scars "
@@ -85,10 +81,9 @@ package org.sevenchan.dongs.screens.encounters
 			return false;
 		}
 		
-		public function onFuck(ply:Creature, node:ActionNode):Boolean
+		public function onFuck(ply:Creature, node:ActionNode,o:*):Boolean
 		{
 			// You didn't use a fucking gas mask
-			
 			if (!ply.hasItem(ItemRegistry.GAS_MASK.id))
 			{
 				text = "<h2>Always Use Protection</h2>";
