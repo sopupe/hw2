@@ -10,7 +10,8 @@ package org.sevenchan.dongs
 	 */
 	public class Item
 	{
-		public static var Registry:Object = {};
+		public static var Registry:Object = { };
+		public static var IDs:Array = new Array();
 		
 		public var id:int = 0;
 		public var name:String = "";
@@ -44,13 +45,12 @@ package org.sevenchan.dongs
 				spider_gonad: new SpiderGonad(),
 				anchor_stone: new AnchorStone()
 				};
-			var ids:Array = new Array();
 			for each (var i:Item in Registry)
 			{
 				trace(i.name+"\t"+i.id);
-				if (ids[i.id] != null)
-					throw new Error(i.name + " has duplicate ID!  Conflicts with " + (ids[i.id] as Item).name);
-				ids[i.id] = i;
+				if (IDs[i.id] != null)
+					throw new Error(i.name + " has duplicate ID!  Conflicts with " + (IDs[i.id] as Item).name);
+				IDs[i.id] = i;
 			}
 		}
 		

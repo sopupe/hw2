@@ -59,7 +59,7 @@ package org.sevenchan.dongs.screens
 			if (id == -1 && act=="")
 			{
 				act = "main";
-				combatant.onCombatInit();
+				combatant.onCombatInit(main.player);
 				if(playerInitiated) {
 					tryAttack(main.player, combatant);
 					return true;

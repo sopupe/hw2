@@ -33,10 +33,12 @@ package org.sevenchan.dongs.creature
 				BodyPartRegistry.human_arm,
 				BodyPartRegistry.human_arm
 			);
+			addBreast();
+			addBreast();
 			skin = new Skin("morel", "pasty white", "soft but dusty");
 			eyes.push(BodyPartRegistry.human_brown_eye, BodyPartRegistry.human_brown_eye);
 			abilityUseProbability = 2;
-			this.abilities={spore:AbilityRegistry.spore};
+			this.abilities['spore']=AbilityRegistry.spore;
 		}
 		
 		/* No orifaces */

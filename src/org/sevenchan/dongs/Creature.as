@@ -216,7 +216,11 @@ package org.sevenchan.dongs
 		{
 			return false;
 		}
-		
+		/**
+		 * Override this and return true to override the default "YOU WHIN TEH PRIZE!!!!" screen
+		 * @param	ply
+		 * @return
+		 */
 		public function onLose(ply:Creature):Boolean
 		{
 			return false;
@@ -372,7 +376,7 @@ package org.sevenchan.dongs
 				InfoScreen.push("<h2>Levelled up!</h2><p>You are now at level " + level + "!</p>");
 		}
 		
-		public function onCombatInit():void
+		public function onCombatInit(ply:Player):void
 		{
 			HP = this.maxHP;
 		}

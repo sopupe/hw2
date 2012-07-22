@@ -33,6 +33,7 @@ package org.sevenchan.dongs.items
 			InfoScreen.push(text);
 			delete host.enchantments["corruption"];
 			delete host.enchantments["paralyze"];
+			delete host.enchantments['sandworms'];
 			host.HP = host.maxHP;
 			host.HP = host.maxMana;
 			return true;

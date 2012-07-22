@@ -26,7 +26,7 @@ package
 		public static function get morel():Creature { return new Morel(); }
 		
 		// Desert biomes
-		//!
+		public static function get sandworm():Creature { return new Sandworm(); }
 		
 		// In development
 		public static function get human():Creature { return new Human(); }
