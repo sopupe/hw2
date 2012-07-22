@@ -6,8 +6,7 @@ package org.sevenchan.dongs
 	 * @author Harbinger
 	 */
 	public interface INode 
-	{
-		
+	{	
 		function get name():String;
 		function get description():String;
 		function get parent():INode;

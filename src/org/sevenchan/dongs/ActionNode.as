@@ -11,7 +11,7 @@ package org.sevenchan.dongs
 		private var _children:Vector.<INode> = new Vector.<INode>();
 		private var _name:String;
 		private var _desc:String;
-		private var _cost:int;
+		private var _cost:int=-1;
 		public var arg:*;
 		public var callback:Function;
 		private var _content:String = "[?]";

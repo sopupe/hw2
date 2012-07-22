@@ -62,11 +62,6 @@ package org.sevenchan.dongs.screens
 		
 		}
 		
-		public function needsOriface(ply:Creature, node:MenuNode):Boolean
-		{
-			return ply.assholes.length > 0 || ply.vaginas.length > 0;
-		}
-		
 		public function updateSellMenu():void
 		{
 			SellMenu.clearChildren();

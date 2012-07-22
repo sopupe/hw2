@@ -84,16 +84,25 @@ package org.sevenchan.dongs.screens
 			setButton(0, "BACK");
 			for (var i:int = 0; i < currentItem.children.length; i++) {
 				var nci:INode = currentItem.children[i];
+				var showButton:Boolean = true;
 				if (nci is ActionNode) {
 					if (!(ActionNode(nci)).hasEnoughMoney(main.player))
-						continue;
+						showButton=false;
 				}
 				text += "<li>";
-				text += "<b>";
-				text += nci.name;
-				setButton(i + 1, nci.name);
+				if (showButton)
+				{
+					text += "<b>";
+					text += nci.name;
+					setButton(i + 1, nci.name);
+				} else {
+					text += "<i>";
+					text += nci.name;
+					text += "</i><b>";
+				}
 				if (nci is ActionNode)
-					text += " (" + (nci as ActionNode).cost + "G)";
+					text += " (" + (nci as ActionNode).cost.toString() + "G)";
+					
 				text += "</b> - ";
 				text += nci.description;
 				text += "</li>";

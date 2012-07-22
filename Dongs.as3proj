@@ -12,7 +12,6 @@
     <movie minorVersion="3" />
     <movie platform="Flash Player" />
     <movie background="#000000" />
-    <movie preferredSDK="Flex 4.5.1, AIR 2.7;4.5.1, 2.7;" />
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
@@ -38,7 +37,7 @@
     <option useNetwork="True" />
     <option useResourceBundleMetadata="True" />
     <option warnings="True" />
-    <option verboseStackTraces="False" />
+    <option verboseStackTraces="True" />
     <option linkReport="" />
     <option loadExterns="" />
     <option staticLinkRSL="True" />
