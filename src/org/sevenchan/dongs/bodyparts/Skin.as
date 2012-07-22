@@ -24,6 +24,13 @@ package org.sevenchan.dongs.bodyparts
 			this.texture = texture;
 		}
 		
+		public function get sellDesc():String { return getShortDescr(true); }
+		
+		private var _value:Number;
+		public function get value():Number {
+			return _value;
+		}
+		
 		/* INTERFACE org.sevenchan.dongs.bodyparts.IBodyPart */
 		
 		

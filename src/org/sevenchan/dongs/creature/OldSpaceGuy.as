@@ -18,18 +18,18 @@ package org.sevenchan.dongs.creature
 			ownName = "OLDSPACE GUY";
 			//this.abilities = {};
 			this.arms.push(
-				new Arm("expensive", null, null),
-				new Arm("expensive", null, null)
+				new Arm(0,"expensive", null, null),
+				new Arm(0,"expensive", null, null)
 			);
 			this.legs.push(
-				new Leg("sexy black"),
-				new Leg("sexy black")
+				new Leg(600,"sexy black"),
+				new Leg(600,"sexy black")
 			);
 			var t:Testicle = new Testicle("black ball", 100, new Instakill("turns you into a pile of diamonds, from which erupts a large stick of OldSpace deodorant."), null, "white, nice-smelling fluid");
 			this.balls.push(t,t);
 			this.build = Build.PRETTYSTRONG;
 			this.dicks.push(
-				new Penis("stick of OldSpace", 12, new Paralyze(), null)
+				new Penis("stick of OldSpace", 1500,12, new Paralyze(), null)
 			);
 			this.gender = Gender.MALE;
 			this.sexualPreference = SexualPreference.STRAIGHT;

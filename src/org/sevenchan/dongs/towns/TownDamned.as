@@ -1,7 +1,7 @@
 package org.sevenchan.dongs.towns 
 {
 	import org.sevenchan.dongs.Creature;
-	import org.sevenchan.dongs.screens.ShopScreen;
+	import org.sevenchan.dongs.screens.Shop;
 	import org.sevenchan.dongs.Town;
 	
 	/**
@@ -26,12 +26,17 @@ package org.sevenchan.dongs.towns
 				"horus",
 				"lake"
 			];
-			this.shop = new ShopScreen(this, 20, [
-				ItemRegistry.BERRY_WHITE.id,
-				ItemRegistry.POTION_PINK.id,
-				ItemRegistry.SPIDER_VENOM.id,
-				ItemRegistry.GAS_MASK.id,
-			]);
+			this.shops = {
+				BEAKER: new Shop("BEAKER","Judging by the old, broken sign with a beaker scrawled across it, probably a potion shop",this, 0.15, [
+					ItemRegistry.BERRY_WHITE,
+					ItemRegistry.POTION_PINK,
+					ItemRegistry.SPIDER_VENOM
+				]),
+				SHIRTS: new Shop("SHIRTS","You have no idea.  It looks like someone nailed dozens of ragged shirts to the front of the stall, so possibly a clothier.",this, 0.35, [
+					ItemRegistry.GAS_MASK,
+				
+				])
+			};
 		}
 		
 		override public function onEnter():void 

@@ -21,9 +21,15 @@ package org.sevenchan.dongs.bodyparts
 		public var location:String = "right where it should be";
 		public var _pen:Boolean = false;
 
-		public function Asshole(name:String="") 
+		public function Asshole(value:Number,name:String="") 
 		{
+			_value = value;
 			_name = name;
+		}
+		
+		private var _value:Number;
+		public function get value():Number {
+			return _value;
 		}
 		
 		public  function get category():String {
@@ -50,6 +56,8 @@ package org.sevenchan.dongs.bodyparts
 			filledWith = semen;
 		}
 		
+		public function get sellDesc():String { return getDescr(-1,null); }
+		
 		public function getDescr(num:Number, host:Creature):String {
 			var tightness:String = "tight";
 			var filled:String = "";
@@ -62,9 +70,12 @@ package org.sevenchan.dongs.bodyparts
 				if (filledWith.length != 0)
 					filled = ", " + filledWith + "-filled";
 			}
-			if (volumeFilled > capacity)
-				stretched=" (<b>Your belly has swelled to accomodate the sheer volume.</b>)";
-			return num + " " +tightness+filled+ " "+_name + " asshole"+((num>1)?"s":"")+", "+location+"."+stretched;
+			if (volumeFilled > capacity && num>0)
+				stretched = " (<b>Your belly has swelled to accomodate the sheer volume.</b>)";
+			var o:String = "";
+			if (num > 0)
+				o += num + " ";
+			return o+tightness+filled+ " "+_name + " asshole"+((num>1)?"s":"")+", "+location+"."+stretched;
 		}
 		
 		

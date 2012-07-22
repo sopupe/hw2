@@ -92,6 +92,8 @@ package org.sevenchan.dongs.screens
 				text += "<b>";
 				text += nci.name;
 				setButton(i + 1, nci.name);
+				if (nci is ActionNode)
+					text += " (" + (nci as ActionNode).cost + "G)";
 				text += "</b> - ";
 				text += nci.description;
 				text += "</li>";

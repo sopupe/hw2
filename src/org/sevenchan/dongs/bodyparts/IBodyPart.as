@@ -7,6 +7,8 @@ package org.sevenchan.dongs.bodyparts
 	 */
 	public interface IBodyPart 
 	{
+		function get value():Number;
+		function get sellDesc():String;
 		function get name():String;
 		function get category():String;
 		/**

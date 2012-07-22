@@ -3,7 +3,7 @@ package org.sevenchan.dongs.towns
 	import org.sevenchan.dongs.Creature;
 	import org.sevenchan.dongs.Item;
 	import org.sevenchan.dongs.items.DarkHarpyEgg;
-	import org.sevenchan.dongs.screens.ShopScreen;
+	import org.sevenchan.dongs.screens.Shop;
 	import org.sevenchan.dongs.Town;
 	
 	/**

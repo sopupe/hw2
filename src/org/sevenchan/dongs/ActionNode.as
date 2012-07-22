@@ -17,6 +17,7 @@ package org.sevenchan.dongs
 		private var _content:String = "[?]";
 		public function ActionNode(parent:INode,name:String,cost:int,desc:String,callback:Function,arg:*) 
 		{
+			this._cost = cost;
 			this._name = name;
 			this._desc = desc;
 			this._parent = parent;
@@ -38,6 +39,9 @@ package org.sevenchan.dongs
 		}
 		public function get parent():INode {
 			return _parent;
+		}
+		public function get cost():Number {
+			return _cost;
 		}
 		public function set content(value:String):void {
 			_content=value;

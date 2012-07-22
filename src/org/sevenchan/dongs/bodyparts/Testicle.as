@@ -19,6 +19,11 @@ package org.sevenchan.dongs.bodyparts
 		public var hostFX:Enchantment = null; // Enchantment to apply to the host once the balls are applied, and once every action.
 		public var host:Creature = null;
 		
+		private var _value:Number;
+		public function get value():Number {
+			return _value;
+		}
+		
 		public var TESTICLE_SYNONYMS:Array = [
 			"ball","nut","knocker","testicle"
 		];
@@ -45,6 +50,7 @@ package org.sevenchan.dongs.bodyparts
 			host.addEnchantment(hostFX);
 		}
 
+		public function get sellDesc():String { return getDescr( -1, null); }
 		
 		public function getDescr(num:Number, host:Creature):String {
 			var sizeDesc:String="standard-issue";
@@ -66,10 +72,12 @@ package org.sevenchan.dongs.bodyparts
 			}
 			if (loadMult == 1)
 				sizeDesc = "standard-issue ";
-			var s:String = "";
-			if (num > 1)
-				s = "s";
-			return num + " " + sizeDesc + name+s;
+			var o:String = "";
+			if (num > 0)
+				o += num + " ";
+			o += sizeDesc +" ";
+			o += Utils.pluralize(num, name);
+			return o;
 		}
 		
 		public function getShortDescr(withModifier:Boolean = false):String {

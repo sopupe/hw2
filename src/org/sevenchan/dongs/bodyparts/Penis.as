@@ -17,8 +17,14 @@ package org.sevenchan.dongs.bodyparts
 		public var sizeMult:Number = 1;
 		public var _name:String;
 		
-		public function Penis(name:String = "", sz:Number = 1, targetEnch:Enchantment = null, hostEnch:Enchantment = null)
+		private var _value:Number;
+		public function get value():Number {
+			return _value;
+		}
+		
+		public function Penis(name:String = "", value:Number=400,sz:Number = 1, targetEnch:Enchantment = null, hostEnch:Enchantment = null)
 		{
+			_value = value;
 			size = sz;
 			this._name = name;
 		}
@@ -33,17 +39,22 @@ package org.sevenchan.dongs.bodyparts
 			return "dicks";
 		}
 		
+		
+		public function get sellDesc():String { return getDescr(-1,null); }
+		
 		public function getDescr(num:Number, host:Creature):String
 		{
 			var sizeDesc:String = "average";
 			var erectDesc:String = "flaccid";
 			var dick:String = getShortDescr();
 			
-			var lust:Number = host.lust;
+			var lust:Number = 0;
+			if (host != null)
+			lust=host.lust;
 			var sz:Number = size * sizeMult;
 			
 			if (sz > 100)
-				sizeDesc = "car-sized, bloated and";
+				sizeDesc = "bus-sized, bloated and";
 			else if (sz > 50)
 				sizeDesc = "man-sized, bulging and";
 			else if (sz > 35)

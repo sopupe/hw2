@@ -3,6 +3,7 @@ package org.sevenchan.dongs.towns
 	import flash.utils.Dictionary;
 	import org.sevenchan.dongs.*;
 	import org.sevenchan.dongs.screens.*;
+	import org.sevenchan.dongs.screens.shops.BodyShop;
 	
 	/**
 	 * ...
@@ -27,11 +28,23 @@ package org.sevenchan.dongs.towns
 				"barn","haara","horus"
 			];
 			
-			shop = new ShopScreen(this, 10, [
-				ItemRegistry.BERRY_WHITE.id,
-				ItemRegistry.SPIDER_VENOM.id,
-				ItemRegistry.POTION_PINK.id
-			]);
+			shops = {
+				SQUIGGLE: new Shop("SQUIGGLE","You're not entirely sure;  All you can see are two carved vertical squiggles.  For all yiou know, they might be two S's.",this, 0.40, [
+					ItemRegistry.BERRY_WHITE,
+					ItemRegistry.SPIDER_VENOM,
+					ItemRegistry.POTION_PINK
+				]),
+				PARTS: new BodyShop("PARTS", "An arm is beautifully painted on an old, distressed sign.  Below that are unintelligable slashes.  Well, unintelligable to you, anyway.", this, 0.35,
+				[
+					BodyPartRegistry.arachnid_leg,
+					BodyPartRegistry.arachnid_penis,
+					BodyPartRegistry.demon_breast,
+					BodyPartRegistry.demon_eye,
+					BodyPartRegistry.demon_penis,
+					BodyPartRegistry.human_penis,
+					BodyPartRegistry.human_breast
+				])
+			};
 		}
 		
 		override public function onEnter():void 

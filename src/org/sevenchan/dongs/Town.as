@@ -2,9 +2,7 @@ package org.sevenchan.dongs
 {
 	import flash.utils.Dictionary;
 	import org.sevenchan.AdventureController;
-	import org.sevenchan.dongs.creature.Player;
-	import org.sevenchan.dongs.screens.InventoryScreen;
-	import org.sevenchan.dongs.screens.ShopScreen;
+	import org.sevenchan.dongs.screens.Shop;
 	import org.sevenchan.dongs.towns.TownBanala;
 	import org.sevenchan.dongs.towns.TownBarn;
 	import org.sevenchan.dongs.towns.TownDamned;
@@ -23,7 +21,7 @@ package org.sevenchan.dongs
 		
 		public static var knownTowns:Object = {};
 		
-		public var shop:ShopScreen = null;
+		public var shops:Object = null;
 		
 		/**
 		 * ID of the town
@@ -62,7 +60,11 @@ package org.sevenchan.dongs
 		public static function setup():void
 		{
 			Item.fillRegistry();
-			knownTowns = {barn: new TownBarn(), banala: new TownBanala(), damned: new TownDamned(), haara: new WildsHaaraWastes(), harpycabin: new TownHarpyCabin(), horus: new WildsHorusSpine(), lake: new WildsLake()};
+			knownTowns = {
+				barn: new TownBarn(), 
+				banala: new TownBanala(), 
+				damned: new TownDamned(), 
+				haara: new WildsHaaraWastes(), harpycabin: new TownHarpyCabin(), horus: new WildsHorusSpine(), lake: new WildsLake()};
 		}
 		
 		public function Town()
@@ -93,6 +95,7 @@ package org.sevenchan.dongs
 		}
 		
 		// Explore, Shop, Rest (10G), Leave, Fap
+			var context:Array = [];
 		override public function processButtonPress(id:int):Boolean
 		{
 			if (id == -1)
@@ -118,7 +121,7 @@ package org.sevenchan.dongs
 				setButton(0, "Explore");
 				if (!isWilds)
 				{
-					if (shop != null)
+					if (shops != null)
 						setButton(1, "Shop");
 					if (freeRest)
 						setButton(2, "Rest");
@@ -164,8 +167,22 @@ package org.sevenchan.dongs
 							onExplore(null);
 							break;
 						case 1: 
-							AdventureController.screenQueue.write(this.shop);
-							return true;
+							menu = "shop";
+							clearButtons();
+							setButton(0, "Back");
+							var i:int = 0;
+							text = "<h2>Shop</h2><p>You look around cautiously for a place to buy some wares.  After a cursory examination of your surroundings, you find the following places of commerce:</p><ul>";
+							context = [];
+							for(var shopName:String in shops)
+							{
+								i++;
+								setButton(i, shopName);
+								context.push(shopName);
+								text += "<li><b>" + shopName + "</b> - " + (shops[shopName] as Shop).description+"</li>";
+							}
+							text += "</ul>";
+							updateScreen();
+							return false;
 							break;
 						case 2: 
 							menu = "rest";
@@ -237,6 +254,14 @@ package org.sevenchan.dongs
 						return false;
 						break;
 					case "shop": 
+						if (id == 0)
+						{
+							processButtonPress( -1);
+							return false;
+						}
+						AdventureController.screenQueue.write(shops[context[id - 1]] as Shop);
+						return true;
+						break;
 					case "rest": 
 						processButtonPress(-1);
 						break;

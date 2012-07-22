@@ -20,6 +20,11 @@ package org.sevenchan.dongs.bodyparts
 			this.pupilShape = pupilShape;
 		}
 		
+		private var _value:Number;
+		public function get value():Number {
+			return _value;
+		}
+		
 		/* INTERFACE org.sevenchan.dongs.bodyparts.IBodyPart */
 		
 		
@@ -34,6 +39,9 @@ package org.sevenchan.dongs.bodyparts
 				t = name + " " + t;
 			return t;
 		}
+		
+		
+		public function get sellDesc():String { return getShortDescr(true); }
 		
 		public function get name():String 
 		{

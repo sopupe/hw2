@@ -11,12 +11,20 @@ package org.sevenchan.dongs.bodyparts
 		private var species:String;
 		private var reptilian:Boolean;
 		private var wingspan:Number;
-		public function Wing(species:String,reptilian:Boolean,_descr:String,wingspan:Number) 
+		public function Wing(species:String,reptilian:Boolean,_descr:String,wingspan:Number,value:Number) 
 		{
+			this._value = value;
 			this.species = species;
 			this.reptilian = reptilian;
 			descriptor = _descr;
 			this.wingspan = wingspan;
+		}
+		
+		public function get sellDesc():String { return getShortDescr(true); }
+		
+		private var _value:Number;
+		public function get value():Number {
+			return _value;
 		}
 		
 		public function get category():String {

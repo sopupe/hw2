@@ -35,12 +35,21 @@ package org.sevenchan.dongs.bodyparts
 			"tit",
 			"titty"
 		];
-		public function Breast(name:String="",size:int=1,milkMultiplier:Number=1) 
+		public function Breast(value:Number,name:String="",size:int=1,milkMultiplier:Number=1) 
 		{
+			_value = value;
 			_name = name;
 			this.size = size;
 			this.milkMult = milkMultiplier;
 		}
+		
+		private var _value:Number;
+		public function get value():Number {
+			return _value;
+		}
+		
+		
+		public function get sellDesc():String { return getShortDescr(true); }
 		
 		public  function get category():String {
 			return "breasts";

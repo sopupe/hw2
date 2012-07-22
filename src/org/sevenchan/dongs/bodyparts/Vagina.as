@@ -10,9 +10,9 @@ package org.sevenchan.dongs.bodyparts
 	{
 		registerClassAlias("P_Vag", Vagina);
 		
-		public function Vagina(name:String="") 
+		public function Vagina(value:Number,name:String="") 
 		{
-			_name = name;
+			super(value,name);
 		}
 		
 		

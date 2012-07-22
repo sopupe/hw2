@@ -3,7 +3,7 @@ package org.sevenchan.dongs.towns
 	import org.sevenchan.dongs.Creature;
 	import org.sevenchan.dongs.creature.Player;
 	import org.sevenchan.dongs.Item;
-	import org.sevenchan.dongs.screens.ShopScreen;
+	import org.sevenchan.dongs.screens.Shop;
 	import org.sevenchan.dongs.Town;
 	
 	/**
@@ -24,9 +24,11 @@ package org.sevenchan.dongs.towns
 				"banala"
 			];
 			
-			this.shop = new ShopScreen(this, 1, [
-				Item.Registry.berry_white.id
-			]);
+			this.shops = {
+				CART: new Shop("CART","The old demon's cart of wonders",this, 0.3, [
+					ItemRegistry.BERRY_WHITE
+				])
+			};
 		}
 		
 		override public function onRevelation():Boolean 

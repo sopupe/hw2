@@ -11,9 +11,11 @@ package org.sevenchan.dongs.bodyparts.asshole
 		
 		public function Abdomen(species:String) 
 		{
+			super(1500);
 			this.capacity = 18927; // 5 gallons?
 			this._name = species;
 		}
+		
 		override public function getDescr(num:Number, host:Creature):String 
 		{
 			var tightness:String = "tight";

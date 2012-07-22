@@ -14,9 +14,15 @@ package org.sevenchan.dongs.bodyparts
 		registerClassAlias("P_Arm", Arm);
 		
 		private var _name:String;
-		public function Arm(name:String="human",atkEnch:Enchantment=null,defEnch:Enchantment=null) 
+		public function Arm(value:Number,name:String="human",atkEnch:Enchantment=null,defEnch:Enchantment=null) 
 		{
+			_value = value;
 			_name = name;
+		}
+		
+		private var _value:Number;
+		public function get value():Number {
+			return _value;
 		}
 		
 		public function get name():String {
@@ -26,6 +32,8 @@ package org.sevenchan.dongs.bodyparts
 		public  function get category():String {
 			return "arms";
 		}
+		
+		public function get sellDesc():String { return getShortDescr(true); }
 		
 		public function getDescr(num:Number, host:Creature):String {
 			return num + " "+Utils.pluralize(num,getShortDescr(true));

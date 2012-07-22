@@ -3,11 +3,8 @@ package org.sevenchan.dongs.screens
 	import flash.utils.*;
 	import org.sevenchan.AdventureController;
 	import org.sevenchan.dongs.ActionNode;
-	import org.sevenchan.dongs.bodyparts.Arm;
-	import org.sevenchan.dongs.bodyparts.Breast;
 	import org.sevenchan.dongs.bodyparts.Hair;
 	import org.sevenchan.dongs.bodyparts.IBodyPart;
-	import org.sevenchan.dongs.bodyparts.Penis;
 	import org.sevenchan.dongs.Creature;
 	import org.sevenchan.dongs.enchantment.Corruption;
 	import org.sevenchan.dongs.enchantment.Hunger;
@@ -15,12 +12,7 @@ package org.sevenchan.dongs.screens
 	import org.sevenchan.dongs.enchantment.WindBlessing;
 	import org.sevenchan.dongs.INode;
 	import org.sevenchan.dongs.Item;
-	import org.sevenchan.dongs.items.GoldPotion;
-	import org.sevenchan.dongs.items.PinkPotion;
-	import org.sevenchan.dongs.items.Potion;
-	import org.sevenchan.dongs.items.SpiderEgg;
 	import org.sevenchan.dongs.MenuNode;
-	import org.sevenchan.dongs.Screen;
 	
 	/**
 	 * ...

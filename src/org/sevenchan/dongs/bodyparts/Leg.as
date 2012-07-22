@@ -13,9 +13,15 @@ package org.sevenchan.dongs.bodyparts
 		registerClassAlias("P_Leg", Leg);
 		
 		private var _name:String;
-		public function Leg(name:String="") 
+		public function Leg(value:Number,name:String="") 
 		{
+			_value = value;
 			_name = name;
+		}
+		
+		private var _value:Number;
+		public function get value():Number {
+			return _value;
 		}
 		
 		public function get category():String {
@@ -29,6 +35,8 @@ package org.sevenchan.dongs.bodyparts
 		public function getDescr(num:Number, host:Creature):String {
 			return num + " " + name + " leg"+((num>1)?"s":"");
 		}
+		public function get sellDesc():String { return getShortDescr(true); }
+		
 		public function onFailedAttack(from:Creature, to:Creature):void
 		{
 			if (from is Player)

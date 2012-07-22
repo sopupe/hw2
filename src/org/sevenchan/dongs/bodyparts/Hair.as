@@ -11,6 +11,11 @@ package org.sevenchan.dongs.bodyparts
 		registerClassAlias("P_Hair", Hair);
 		public static const BALD:Hair = new Hair("no hair whatsoever");
 		
+		
+		private var _value:Number;
+		public function get value():Number {
+			return _value;
+		}
 		public var descr:String;
 		public function Hair(_descr:String="") 
 		{
