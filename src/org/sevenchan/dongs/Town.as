@@ -17,6 +17,9 @@ package org.sevenchan.dongs
 	 */
 	public class Town extends Screen
 	{
+		// Explore, Shop, Rest (10G), Leave, Fap
+		private var context:Array = [];
+			
 		public var text:String = "";
 		
 		public static var knownTowns:Object = {};
@@ -64,7 +67,11 @@ package org.sevenchan.dongs
 				barn: new TownBarn(), 
 				banala: new TownBanala(), 
 				damned: new TownDamned(), 
-				haara: new WildsHaaraWastes(), harpycabin: new TownHarpyCabin(), horus: new WildsHorusSpine(), lake: new WildsLake()};
+				haara: new WildsHaaraWastes(), 
+				harpycabin: new TownHarpyCabin(), 
+				horus: new WildsHorusSpine(), 
+				lake: new WildsLake()
+			};
 		}
 		
 		public function Town()
@@ -81,21 +88,22 @@ package org.sevenchan.dongs
 		
 		public function onShopBuyMenu():String
 		{
+			// TODO: Needs work
 			return "<p>&quot;So, what interests you today, buddy?&quot;  The shopkeeper asks, watching you (and your money-bag) with great intensity.</p>";
 		}
 		
 		public function onShopSellMenu():String
 		{
+			// TODO: Needs work
 			return "<p>&quot;All right, let's see what you got, chief.&quot;</p>";
 		}
 		
 		public function onShopWelcome():String
 		{
+			// TODO: Needs work
 			return "<p>The shopkeeper is, as usual, mopping the old, dirty floor with an equally old and dirty mop when he notices you enter.  His piggish face brightens a bit.</p>" + "<p>&quot;Oh great. My favorite customer.&quot; He mutters sarcastically, continuing to mop.  &quot;So, do you wanna buy, or sell?&quot;</p>";
 		}
 		
-		// Explore, Shop, Rest (10G), Leave, Fap
-			var context:Array = [];
 		override public function processButtonPress(id:int):Boolean
 		{
 			if (id == -1)

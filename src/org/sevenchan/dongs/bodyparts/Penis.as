@@ -103,10 +103,11 @@ package org.sevenchan.dongs.bodyparts
 		
 		public function onAdded(atStore:Boolean, ply:Creature):void
 		{
+			// TODO: Needs work
 			var text:String = "<h2>New Penis</h2>";
 			if (atStore)
 			{
-				text += "<p>The witch whispers a few words, and then pokes your groin with her wand.  You begin ";
+				text += "<p>The shopkeeper whispers a few words, and then pokes your groin with her wand.  You begin ";
 				text += "whispering your own hushed curses as you ";
 			}
 			else
@@ -120,6 +121,7 @@ package org.sevenchan.dongs.bodyparts
 		
 		public function onRemoved(atStore:Boolean, ply:Creature):void
 		{
+			// TODO: Needs work
 			var text:String = "<h2>Remove a Penis</h2>";
 			
 			if (atStore)
@@ -131,12 +133,14 @@ package org.sevenchan.dongs.bodyparts
 		}
 		
 		public function grow(ply:Creature, atStore:Boolean, _size:Number):String {
+			// TODO: Needs work
 			this.size += _size;
 			var descr:String = getDescr(1, ply);
 			return "You feel more weight in your trousers.  Frightened, you look down and see a penis has grown to become " +Utils.A(descr)+" "+descr+ ".";
 		}
 		
 		public function shrink(ply:Creature,atStore:Boolean, _size:Number):String {
+			// TODO: Needs work
 			this.size -= _size;
 			return "You groan as you feel your " + getDescr(1, ply) + " sucked back into your body a few inches.";
 		}
