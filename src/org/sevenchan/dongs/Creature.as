@@ -33,7 +33,7 @@ package org.sevenchan.dongs
 		public var _level:int = 0; // In comparison to standard human being.  No attacking rats for 20 levels.
 		private var d_level:int = 0; // Delta
 		public var _strength:int = 1; // Damage caused in case of a successful attack.
-		public var _speed:int = 1; // Chance of dodging.  defending.speed-attacking.speed = relative chance of dodging.
+		public var _speed:int = 1; // Chance of dodging [0-1].  defending.speed-attacking.speed = relative chance of dodging.
 		public var _intellect:int = 1; // Smartness.  Opens dialog trees and gives hints.
 		public var _lust:int = 1; // Slowly increases over time, eliminated by masturbation or smecks.  Some battles are nonsexual and will not affect lust, others will slightly increase it based on ((number of balls x ball hormone output)+(number of vaginas * vagina hormone output)* sensitivity).
 		public var _sensitivity:Number = 0; // 0-1, 0 being not sensitive
@@ -78,7 +78,6 @@ package org.sevenchan.dongs
 		
 		private var main:AdventureController = null;
 		
-		
 		protected var abilityUseProbability:Number = 1;
 		protected var turnsToLose:int = 0;
 		
@@ -110,7 +109,7 @@ package org.sevenchan.dongs
 		
 		public function yourMove(cs:CombatScreen, ply:Creature):void
 		{
-			if ((turnsToLose > 0) || notifyEnchantments(new CombatTurnEvent(cs,ply)))
+			if ((turnsToLose > 0) || notifyEnchantments(new CombatTurnEvent(cs, ply)))
 			{
 				InfoScreen.push("<p>The " + getTypeName() + " cannot attack!</p>");
 				return;
@@ -216,6 +215,7 @@ package org.sevenchan.dongs
 		{
 			return false;
 		}
+		
 		/**
 		 * Override this and return true to override the default "YOU WHIN TEH PRIZE!!!!" screen
 		 * @param	ply
@@ -257,7 +257,7 @@ package org.sevenchan.dongs
 				else
 				{
 					gender = Gender.ASEXUAL;
-				}				
+				}
 			}
 		}
 		
@@ -292,12 +292,13 @@ package org.sevenchan.dongs
 			//
 			// In other words, you're an average human, which probably won't last long down here.
 			//
-			descr = Utils.A(sexualPreference.label) + " " + sexualPreference.label + " " + gender.label + " " + getTypeName() + ", who " + build.getDescription() + " %CSUB% also possesses " + hair.getDescription();
+			descr = Utils.A(sexualPreference.label) + " " + gender.label + " " + getTypeName() + ", who " + build.getDescription() + ".";
 			
 			if (hair == Hair.BALD)
 				descr += ", %POS% glistening scalp distracting from %POS% ";
 			else
 				descr += ", which constrasts nicely with %POS% ";
+				
 			if (eyes.length == 0)
 				descr += " complete lack of eyes (<b>and resulting blindness</b>)";
 			else
@@ -323,18 +324,28 @@ package org.sevenchan.dongs
 			if (!haveBalls && !haveDicks && !haveVags)
 				descr += " %CSUB% doesn't have any sexual organs.  At least you won't get raped.";
 			
-			if (breasts.length > 0) {
+			if (breasts.length > 0)
+			{
 				descr += " %CSUB% has " + getBreastDescr();
-				if(assholes.length>0) {
-					descr += ", and also has "+getAssDescr() + ".";
-				} else {
+				if (assholes.length > 0)
+				{
+					descr += ", and also has " + getAssDescr() + ".";
+				}
+				else
+				{
 					descr += ", but does not have any rectal orifaces to speak of.";
 				}
-			}else{
+			}
+			else
+			{
 				descr += " %CSUB% doesn't have any breasts";
-				if(assholes.length>0) {
-					descr += ", but does have "+getAssDescr() + ".";;
-				} else {
+				if (assholes.length > 0)
+				{
+					descr += ", but does have " + getAssDescr() + ".";
+					;
+				}
+				else
+				{
 					descr += ", nor do you see any rectal orifaces.";
 				}
 			}
@@ -413,17 +424,19 @@ package org.sevenchan.dongs
 			explored.push(loc);
 		}
 		
-		public function getEffectivenessMultiplier(defender:Creature):Number {
+		public function getEffectivenessMultiplier(defender:Creature):Number
+		{
 			var a:Number = strength;
 			var e:Number = defender.strength;
-			return (a * (100 - e))/10000;
+			return (a * (100 - e)) / 10000;
 		}
 		
 		/**
 		 * Calculation from http://www.gamedev.net/topic/183822-rpg-combat-formula-question/
 		 * @param	attacker
 		 */
-		public function speedCheckAgainst(attacker:Creature):Boolean {
+		public function speedCheckAgainst(attacker:Creature):Boolean
+		{
 			// C = A * (100% - E)
 			// WHERE
 			// C = Chance to hit
@@ -431,14 +444,15 @@ package org.sevenchan.dongs
 			// E = Defender's evasion rate (speed, again)
 			var a:Number = attacker.speed;
 			var e:Number = speed;
-			return Math.random() <= (a * (100 - e))/10000;
+			return Math.random() <= (a * (100 - e)) / 10000;
 		}
 		
 		/**
 		 * Calculation from http://www.gamedev.net/topic/183822-rpg-combat-formula-question/
 		 * @param	attacker
 		 */
-		public function strengthCheckAgainst(attacker:Creature):Boolean {
+		public function strengthCheckAgainst(attacker:Creature):Boolean
+		{
 			// C = A * (100% - E)
 			// WHERE
 			// C = Chance to hit
@@ -446,7 +460,7 @@ package org.sevenchan.dongs
 			// E = Defender's evasion rate (strength, again)
 			var a:Number = attacker.strength;
 			var e:Number = strength;
-			return Math.random() <= (a * (100 - e))/10000;
+			return Math.random() <= (a * (100 - e)) / 10000;
 		}
 		
 		public function get strength():int
@@ -541,13 +555,16 @@ package org.sevenchan.dongs
 			customized = true;
 		}
 		
-		public function hasItem(id:int):Boolean {
-			for each (var item:Item in this.inventory) {
+		public function hasItem(id:int):Boolean
+		{
+			for each (var item:Item in this.inventory)
+			{
 				if (item.id == id)
 					return true;
 			}
 			return false;
 		}
+		
 		public function get breasts():Vector.<Breast>
 		{
 			return this._breasts;
@@ -695,6 +712,10 @@ package org.sevenchan.dongs
 			if (main != null)
 			{
 				main.refreshStats();
+			} else {
+				// AI
+				if (_eyes.length == 0)
+					_speed = 0.1; // 1/10 chance of hitting when blind
 			}
 		}
 		
@@ -708,7 +729,7 @@ package org.sevenchan.dongs
 			
 			if (collection.length == 0)
 			{
-				return "no " + Utils.pluralize(2,singular);
+				return "no " + Utils.pluralize(2, singular);
 			}
 			var out:String = "";
 			var varying:Boolean = false;
@@ -781,35 +802,36 @@ package org.sevenchan.dongs
 				}
 				if (e is CombatTurnEvent)
 				{
-					return ench.onMyCombatTurn(e.screen,e.other);
+					return ench.onMyCombatTurn(e.screen, e.other);
 				}
 			}
 			return false;
 		}
 		
-		
-		public function inventoryUpdate(item:Item,received:Boolean):Boolean
+		public function inventoryUpdate(item:Item, received:Boolean):Boolean
 		{
 			var actionToTake:int = -1;
 			for (var eID:String in enchantments)
 			{
 				var act:int = enchantments[eID].onInventoryReceived(item);
-				if (act != Enchantment.INTERCEPT_ACTION_NONE) {
-				actionToTake = act;
-				break;
+				if (act != Enchantment.INTERCEPT_ACTION_NONE)
+				{
+					actionToTake = act;
+					break;
 				}
 			}
-			switch(actionToTake) {
-			case Enchantment.INTERCEPT_ACTION_TOSS:
-				// Do nothing, we're already tossing.
-				break;
-			case Enchantment.INTERCEPT_ACTION_USE:
-				item.Use(this);
-				break;
-			default:
-				break;
+			switch (actionToTake)
+			{
+				case Enchantment.INTERCEPT_ACTION_TOSS: 
+					// Do nothing, we're already tossing.
+					break;
+				case Enchantment.INTERCEPT_ACTION_USE: 
+					item.Use(this);
+					break;
+				default: 
+					break;
 			}
-			return actionToTake==Enchantment.INTERCEPT_ACTION_NONE;
+			return actionToTake == Enchantment.INTERCEPT_ACTION_NONE;
 		}
 		
 		public function getTesticleDescr():String
@@ -896,7 +918,8 @@ package org.sevenchan.dongs
 			turnsToLose += numturns;
 		}
 		
-		public function getRapable():Boolean {
+		public function getRapable():Boolean
+		{
 			return canRun();
 		}
 	}

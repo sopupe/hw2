@@ -69,6 +69,28 @@ package org.sevenchan.dongs.enchantment
 		}
 		
 		/**
+		 * Can the player attack?
+		 * @param	player
+		 * @param	other
+		 * @return
+		 */
+		public function canAttack(player:Creature, other:Creature):Boolean
+		{
+			return true;
+		}
+		
+		/**
+		 * Can the player run?
+		 * @param	player
+		 * @param	other
+		 * @return
+		 */
+		public function canRun(player:Creature, other:Creature):Boolean
+		{
+			return true;
+		}
+		
+		/**
 		 * Do stuff after each screen update.
 		 * @return
 		 */
@@ -107,6 +129,24 @@ package org.sevenchan.dongs.enchantment
 		public static function isLockedOut(subj:Creature):Boolean
 		{
 			return subj.hasEnchantment("paralyze") || subj.hasEnchantment("hunger");
+		}
+		public static function canAttack(subj:Creature,combatant:Creature):Boolean
+		{
+			for each(var e:Enchantment in subj.enchantments)
+			{
+				if (!e.canAttack(subj, combatant))
+					return false;
+			}
+			return true;
+		}
+		public static function canRun(subj:Creature,combatant:Creature):Boolean
+		{
+			for each(var e:Enchantment in subj.enchantments)
+			{
+				if (!e.canRun(subj, combatant))
+					return false;
+			}
+			return true;
 		}
 		
 		public static function getLockoutEffectText(subj:Creature):String

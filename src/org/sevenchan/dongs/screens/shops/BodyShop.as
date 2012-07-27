@@ -1,7 +1,6 @@
 package org.sevenchan.dongs.screens.shops 
 {
 	import flash.utils.Dictionary;
-	import mx.collections.ArrayList;
 	import org.sevenchan.dongs.ActionNode;
 	import org.sevenchan.dongs.bodyparts.IBodyPart;
 	import org.sevenchan.dongs.Creature;
@@ -38,7 +37,7 @@ package org.sevenchan.dongs.screens.shops
 				You hold up your hands in defense.  “Uh, sorry.  I’ve never seen a, uh…”  You flail your hands a bit, indicating the shop 
 				in its entirety.  The store owner narrows his eyes. “You’ve never seen a body shop before?  Seriously?”  You nod in 
 				response, eyes focused on the bat.   He scratches his balding head, and then sighs, his rotund body collapsing in 
-				exasperation as he throws the bat into a cupboard. “Alright, I guess I’ve got nothing better to do than give people the 
+				exasperation as he throws the bat into a cupboard and rolls his eyes. “Alright, I guess I’ve got nothing better to do than give people the 
 				grand fucking tour.”  He starts to explain, and the pieces begin to fall together.
 			</p>
 			<p>
@@ -95,10 +94,10 @@ package org.sevenchan.dongs.screens.shops
 						AddToOrCreateMenu(SkinMenu, "skin", "Skin", "Skin, scales, fur, slime.  Change your body texture.", bp);
 						break;
 					case "testicle":
-						AddToOrCreateMenu(HairMenu, "balls", "Testes", "Balls affect how your semen looks and how it affects people who get pumped full of it.", bp);
+						AddToOrCreateMenu(TesticleMenu, "balls", "Testes", "Balls affect how your semen looks and how it affects people who get pumped full of it.", bp);
 						break;
 					case "vagina":
-						AddToOrCreateMenu(HairMenu, "vaginas", "Vaginas", "Female sex organs of all shapes and sizes.", bp);
+						AddToOrCreateMenu(VaginaMenu, "vaginas", "Vaginas", "Female sex organs of all shapes and sizes.", bp);
 						break;
 					default:
 						trace("!!!!!!WAAAAAAAT!!!!",typeof(bp), bp.category);
@@ -107,11 +106,13 @@ package org.sevenchan.dongs.screens.shops
 			}
 		}
 		
-		function AddToOrCreateMenu(menu:MenuNode, bodyGroup:String, menuName:String, menuDescription:String, bp:IBodyPart):void 
+		private function AddToOrCreateMenu(menu:MenuNode, bodyGroup:String, menuName:String, menuDescription:String, bp:IBodyPart):void 
 		{
 				trace("Adding " + bp.sellDesc + ": " + bp.value);
-				if (menu == null)
+				if (menu == null) {
 					menu = BuyItems.pushMenu(menuName, menuDescription);
+					menu.content = menuDescription;
+				}
 				menu.pushAction(bp.name,bp.value+(bp.value*markup),bp.sellDesc,function(ply:Creature, node:ActionNode, o:*):Boolean
 				{
 					ply[bodyGroup].push(bp);

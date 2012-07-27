@@ -8,7 +8,7 @@ package org.sevenchan.dongs.creature
 	/**
 	 * A two-inch-thick worm that move through loose soil or sand.  Only attack individuals impregnated with eggs.
 	 * 
-	 * Anchors its head in soil when attacked and fills its ass with sand, forming a very heavy club.
+	 * Likes to restrain legs and bite.
 	 * Burrows underground for a few turns before coming back up.
 	 * Can spit a mild poison when heavily injured.
 	 * 

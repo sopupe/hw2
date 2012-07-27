@@ -177,13 +177,13 @@ package org.sevenchan.dongs.screens
 					});
 			}
 			var BuyItems:MenuNode = BuyMenu.pushMenu("Items", "Any materialistic item you could dream of.");
-			for each (var item:Item in Item.Registry)
+			for each (var ii:Item in Item.Registry)
 			{
-				BuyItems.pushAction(item.name, item.value, item.descr, function(ply:Creature, node:ActionNode, o:*):Boolean
+				BuyItems.pushAction(ii.name, ii.value, ii.descr, function(ply:Creature, node:ActionNode, o:*):Boolean
 					{
 						ply.addToInventory(o as Item);
 						return true;
-					}, item);
+					}, ii);
 			}
 			var BuyTransformations:MenuNode = BuyMenu.pushMenu("Preg", "Order up any kind of pregnancy.", needsOriface);
 		

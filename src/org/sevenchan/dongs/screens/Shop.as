@@ -29,6 +29,7 @@ package org.sevenchan.dongs.screens
 		protected var town:Town;
 		protected var name:String;
 		public var description:String;
+		public var discoveredDescription:String="A typical shop.";
 		protected var SellMenu:MenuNode;
 		
 		public static function push():void

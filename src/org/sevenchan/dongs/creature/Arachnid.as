@@ -220,9 +220,9 @@ package org.sevenchan.dongs.creature
 				InfoScreen.push(gender.doReplace(text));
 				
 				
-				for (var i:int = 0; i < balls.length; i++) {
-					var t:Testicle = balls[i];
-					enchTxt += ply.addEnchantment(t.targetFX) + "  ";
+				for (var ii:int = 0; ii < balls.length; ii++) {
+					var tt:Testicle = balls[ii];
+					enchTxt += ply.addEnchantment(tt.targetFX) + "  ";
 				}
 				return true;
 			}
