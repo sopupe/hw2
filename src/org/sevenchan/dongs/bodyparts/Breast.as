@@ -12,6 +12,7 @@ package org.sevenchan.dongs.bodyparts
 		registerClassAlias("P_Boob", Breast);
 		
 		private var _name:String;
+		public var isHairy:Boolean=false;
 		public var size:int = 1;
 		public var milkMult:Number = 1;
 		private static var breastSizes:Array = [
@@ -35,12 +36,18 @@ package org.sevenchan.dongs.bodyparts
 			"tit",
 			"titty"
 		];
-		public function Breast(value:Number,name:String="",size:int=1,milkMultiplier:Number=1) 
+		//public function Breast(value:Number,name:String="",size:int=1,milkMultiplier:Number=1) 
+		//{
+			//_value = value;
+			//_name = name;
+			//this.size = size;
+			//this.milkMult = milkMultiplier;
+		//}
+		public function Breast(value:Number,name:String="",furry:Boolean=false) 
 		{
 			_value = value;
 			_name = name;
-			this.size = size;
-			this.milkMult = milkMultiplier;
+			isHairy = furry;
 		}
 		
 		private var _value:Number;
@@ -109,6 +116,8 @@ package org.sevenchan.dongs.bodyparts
 			var t:String = MathUtils.getRandomArrayEntry(breastSynonyms);
 			if(withModifier)
 				t = name + " " + t;
+			if (isHairy)
+				t = "fuzzy " + t;
 			return t;
 		}
 		

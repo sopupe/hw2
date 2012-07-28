@@ -161,7 +161,7 @@ package org.sevenchan.dongs.creature
 			//
 			// In other words, you're an average human, which probably won't last long down here.
 			//
-			descr += "<p>You, " + baseType.ownName + ", are " + Utils.A(baseType.gender.label) + " " + baseType.gender.label + " " + baseType.getTypeName() + " whose body " + baseType.build.getDescription()
+			descr += "<p>You, " + baseType.ownName + ", are " + Utils.A(baseType.gender.label) + " " + baseType.gender.label + " " + baseType.getTypeName() + " whose body " + baseType.build.getDescription() + "."
 			+" You also possess " + baseType.hair.getDescription();
 			
 			if (baseType.hair == Hair.BALD)

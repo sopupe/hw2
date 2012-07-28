@@ -94,12 +94,48 @@ package org.sevenchan.dongs
 			return null;
 		}
 		
+		public function breastDelta(delta:Number, mult:Boolean):void
+		{
+			for (var i:int = 0; i < _breasts.length; i++)
+				if (!mult)
+					_breasts[i].size += (delta);
+				else
+					_breasts[i].milkMult
+		}
+		
+		public function dickDelta(delta:Number, mult:Boolean):void
+		{
+			for (var i:int = 0; i < _dicks.length; i++)
+				if (mult)
+					_dicks[i].sizeMult += (delta);
+				else
+					_dicks[i].size += (delta);
+		}
+		
+		public function testicleDelta(delta:Number, mult:Boolean):void
+		{
+			for (var i:int = 0; i < _balls.length; i++)
+				if (mult)
+					_balls[i].loadMult += (delta);
+				else
+					_balls[i].normalLoad += (delta);
+		}
+		
 		public function addEnchantment(ench:Enchantment):String
 		{
 			var story:String = ench.onInit(this);
 			if (!ench.cancelAddition)
 				this.enchantments[ench.getID()] = ench;
 			return story;
+		}
+		
+		public function setupBody():void
+		{
+			initialGenderSetup();
+			if (this._assholes.length == 0)
+				throw new Error(this.getTypeName() + " needs anuses");
+			if (this._eyes.length == 0)
+				throw new Error(this.getTypeName() + " needs eyes");
 		}
 		
 		public function initialGenderSetup():void
@@ -292,13 +328,13 @@ package org.sevenchan.dongs
 			//
 			// In other words, you're an average human, which probably won't last long down here.
 			//
-			descr = Utils.A(sexualPreference.label) + " " + gender.label + " " + getTypeName() + ", who " + build.getDescription() + ".";
+			descr = Utils.A(sexualPreference.label) + " " + gender.label + " " + getTypeName() + ", who " + build.getDescription();
 			
 			if (hair == Hair.BALD)
 				descr += ", %POS% glistening scalp distracting from %POS% ";
 			else
-				descr += ", which constrasts nicely with %POS% ";
-				
+				descr += ". %CSUB% has "+hair+", which constrasts nicely with %POS% ";
+			
 			if (eyes.length == 0)
 				descr += " complete lack of eyes (<b>and resulting blindness</b>)";
 			else
@@ -712,7 +748,9 @@ package org.sevenchan.dongs
 			if (main != null)
 			{
 				main.refreshStats();
-			} else {
+			}
+			else
+			{
 				// AI
 				if (_eyes.length == 0)
 					_speed = 0.1; // 1/10 chance of hitting when blind

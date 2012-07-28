@@ -157,7 +157,7 @@ package org.sevenchan.dongs
 								trace("CRND", flash.utils.getQualifiedClassName(c), rnd);
 								if (inhabitants[type] > rnd)
 								{
-									c.initialGenderSetup();
+									c.setupBody();
 									if (c.getHostile(main.player))
 									{
 										main.startCombat(this, c);

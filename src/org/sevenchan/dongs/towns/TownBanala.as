@@ -170,21 +170,6 @@ package org.sevenchan.dongs.towns
 		{
 			text = "<p>You toss the money required onto the innkeeper's countertop.  The fat innkeeper drops the key onto the counter, and you plod off to your room, ignoring the spiderwebs and roaches that scurry across the floors.  Every room sounds occupied, judging by the loud moans and grunting, but you manage to sleep on the bedbug-infested bed quite well, recovering all of your health and mana.</p>";
 		}
-		
-		override public function onShopBuyMenu():String 
-		{
-			return super.onShopBuyMenu();
-		}
-		
-		override public function onShopSellMenu():String 
-		{
-			return super.onShopSellMenu();
-		}
-		
-		override public function onShopWelcome():String 
-		{
-			return super.onShopWelcome();
-		}
 	}
 
 }

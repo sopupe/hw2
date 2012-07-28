@@ -31,6 +31,7 @@ package
 		// In development
 		public static function get human():Creature { return new Human(); }
 		public static function get scylla():Creature { return new Scylla(); }
+		public static function get manticore():Creature { return new Manticore(); }
 	}
 
 }
