@@ -34,7 +34,7 @@ package org.sevenchan.dongs.towns
 		override public function onRevelation():Boolean 
 		{
 			text = (<![CDATA[
-			<h2>Welcome to Hell</h2>
+			<h2>Welcome to Ora</h2>
 			<p>You slowly awaken.</p>
 			<p>
 				You stand up, cursing from both pain and frustration as you survey your surroundings. You appear to have landed 
@@ -54,7 +54,7 @@ package org.sevenchan.dongs.towns
 			</p>
 			<p>
 				Satisfied that he’s probably not a threat, you quietly set up camp in the shaded back of the barn. However, you decide to 
-				take your time and observe the merchant some more before approaching him for wares. This is Hell, after all. Who knows 
+				take your time and observe the merchant some more before approaching him for wares. This is Ora, after all. Who knows 
 				what could happen?
 			</p> 
 			]]>).toString();
