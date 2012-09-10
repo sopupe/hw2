@@ -21,7 +21,7 @@ package org.sevenchan.dongs.bodyparts
 		public var location:String = "right where it should be";
 		public var _pen:Boolean = false;
 
-		public function Asshole(value:Number,name:String="") 
+		public function Asshole(value:Number=0,name:String="") 
 		{
 			_value = value;
 			_name = name;

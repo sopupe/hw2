@@ -14,7 +14,7 @@ package org.sevenchan.dongs.bodyparts
 		registerClassAlias("P_Arm", Arm);
 		
 		private var _name:String;
-		public function Arm(value:Number,name:String="human",atkEnch:Enchantment=null,defEnch:Enchantment=null) 
+		public function Arm(value:Number=0,name:String="human",atkEnch:Enchantment=null,defEnch:Enchantment=null) 
 		{
 			_value = value;
 			_name = name;

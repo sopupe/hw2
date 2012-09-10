@@ -43,7 +43,7 @@ package org.sevenchan.dongs.bodyparts
 			//this.size = size;
 			//this.milkMult = milkMultiplier;
 		//}
-		public function Breast(value:Number,name:String="",furry:Boolean=false) 
+		public function Breast(value:Number=0,name:String="",furry:Boolean=false) 
 		{
 			_value = value;
 			_name = name;

@@ -3,13 +3,7 @@ package org.sevenchan.dongs
 	import flash.utils.Dictionary;
 	import org.sevenchan.AdventureController;
 	import org.sevenchan.dongs.screens.Shop;
-	import org.sevenchan.dongs.towns.TownBanala;
-	import org.sevenchan.dongs.towns.TownBarn;
-	import org.sevenchan.dongs.towns.TownDamned;
-	import org.sevenchan.dongs.towns.TownHarpyCabin;
-	import org.sevenchan.dongs.towns.WildsHaaraWastes;
-	import org.sevenchan.dongs.towns.WildsHorusSpine;
-	import org.sevenchan.dongs.towns.WildsLake;
+	import org.sevenchan.dongs.towns.*;
 	
 	/**
 	 * ...
@@ -225,10 +219,10 @@ package org.sevenchan.dongs
 							else
 							{
 								text += "<ul>";
-								for (var i:int = 0; i < connectedTowns.length; i++)
+								for (var j:int = 0; j < connectedTowns.length; j++)
 								{
-									var t:Town = Town.knownTowns[connectedTowns[i]];
-									setButton(i + 1, t.ID);
+									var t:Town = Town.knownTowns[connectedTowns[j]];
+									setButton(j + 1, t.ID);
 									if (t.isWilds)
 										text += "<li><b>" + t.ID + "</b> - " + t.name + " (Wilds)</li>";
 									else

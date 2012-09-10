@@ -170,7 +170,6 @@ package org.sevenchan.dongs.creature
 		override public function initialGenderSetup():void 
 		{
 			var gi:int = MathUtils.rand(0, 5);
-			trace("DEMON GENDER SAMPLE", gi);
 			switch(gi) {
 				case 0:
 				case 1:

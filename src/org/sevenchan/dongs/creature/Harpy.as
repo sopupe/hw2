@@ -20,7 +20,7 @@ package org.sevenchan.dongs.creature
 	 *  putting him on an island with a buffet of food which he could never eat. The 
 	 *  harpies always arrived and stole the food out of his hands before he could 
 	 *  satisfy his hunger, and befouled the remains of his food." - (Wikipedia:Harpy)
-	 * tl;dr zeus got made at some faggot and made birds shit in his soup.
+	 * tl;dr zeus got mad at some faggot and made birds shit in his soup.
 	 * 
 	 * @author Harbinger
 	 */

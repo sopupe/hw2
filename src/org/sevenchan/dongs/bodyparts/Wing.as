@@ -1,17 +1,19 @@
 package org.sevenchan.dongs.bodyparts 
 {
 	import org.sevenchan.dongs.*;
+	import flash.net.registerClassAlias;
 	/**
 	 * ...
 	 * @author Harbinger
 	 */
 	public class Wing implements IBodyPart
 	{
+		registerClassAlias("P_Wing", Wing);
 		private var descriptor:String;
 		private var species:String;
 		private var reptilian:Boolean;
 		private var wingspan:Number;
-		public function Wing(species:String,reptilian:Boolean,_descr:String,wingspan:Number,value:Number) 
+		public function Wing(species:String="",reptilian:Boolean=false,_descr:String="",wingspan:Number=0,value:Number=0) 
 		{
 			this._value = value;
 			this.species = species;

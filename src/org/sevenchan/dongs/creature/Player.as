@@ -1,4 +1,4 @@
-package org.sevenchan.dongs.creature 
+package org.sevenchan.dongs.creature
 {
 	import org.sevenchan.AdventureController;
 	import com.adobe.serialization.json.*;
@@ -10,6 +10,7 @@ package org.sevenchan.dongs.creature
 	import flash.utils.*;
 	import org.sevenchan.dongs.enchantment.Enchantment;
 	import org.sevenchan.dongs.screens.CombatScreen;
+	
 	/**
 	 * ...
 	 * @author Harbinger
@@ -24,22 +25,25 @@ package org.sevenchan.dongs.creature
 		public var currentTown:Town = Town.knownTowns["barn"];
 		public var main:AdventureController;
 		
-		public function Player(main:AdventureController) 
+		public function Player(main:AdventureController)
 		{
 			this.main = main;
-			trace("Player.init()");
+			//trace("Player.init()");
 			super();
 		}
 		
-		override public function addBreast():Breast 
+		override public function addBreast():Breast
 		{
 			return baseType.addBreast();
 		}
 		
-		override public function addDick(type:String = "default"):Penis {
+		override public function addDick(type:String = "default"):Penis
+		{
 			return baseType.addDick(type);
 		}
-		public function changeTo(t:Creature):void {
+		
+		public function changeTo(t:Creature):void
+		{
 			var tmp:Creature = baseType;
 			baseType = t;
 			baseType._speed = tmp._speed;
@@ -59,49 +63,54 @@ package org.sevenchan.dongs.creature
 			baseType.performConversion(tmp);
 		}
 		
-		
-		
-		override public function getExplored(loc:String):Boolean {
-			for (var i:int = 0; i < baseType.explored.length; i++) {
+		override public function getExplored(loc:String):Boolean
+		{
+			for (var i:int = 0; i < baseType.explored.length; i++)
+			{
 				if (baseType.explored[i] == loc)
 					return true;
 			}
 			return false;
 		}
 		
-		override public function setExplored(loc:String):void {
-			if (getExplored(loc)) return;
+		override public function setExplored(loc:String):void
+		{
+			if (getExplored(loc))
+				return;
 			baseType.explored.push(loc);
 		}
 		
-		public function save(slot:int=-1):void {
-			if(slot==-1) { // Export
+		public function save(slot:int = -1):void
+		{
+			if (slot == -1)
+			{ // Export
 				var ba:ByteArray = new ByteArray();
-				ba.writeObject(
-				{
-					currentTown: currentTown.ID,
-					body: baseType
-				}
-				);
+				ba.writeObject({currentTown: currentTown.ID, body: baseType});
 				var f:FileReference = new FileReference();
 				f.save(ba, "save.dat");
-			} else {
+			}
+			else
+			{
 				var so:SharedObject = SharedObject.getLocal("7la_slot" + slot.toString());
 				so.data.currentTown = currentTown.ID;
-				so.data.body= baseType;
+				so.data.body = baseType;
 				so.flush();
 			}
 		}
 		
-		public function load(slot:int=-1):Boolean {
-			if(slot==-1) {
+		public function load(slot:int = -1):Boolean
+		{
+			if (slot == -1)
+			{
 				waitingForLoad = true;
 				f.addEventListener(Event.SELECT, onFileSelected);
 				f.addEventListener(Event.CANCEL, onFileCancelled);
-				if (!f.browse([new FileFilter("Saves","*.dat")]))
+				if (!f.browse([new FileFilter("Saves", "*.dat")]))
 					return false;
 				return true;
-			} else {
+			}
+			else
+			{
 				var so:SharedObject = SharedObject.getLocal("7la_slot" + slot.toString());
 				currentTown = Town.knownTowns[so.data.currentTown];
 				baseType = so.data.body;
@@ -111,46 +120,57 @@ package org.sevenchan.dongs.creature
 		
 		// Slot 1: Level 150 Bova in Horus's Spine 
 		// [HP: 50, Lust: 50]
-		public static function previewSlot(slot:int):String {
-			var so:SharedObject = SharedObject.getLocal("7la_slot" + slot.toString());
-			
-			if (so == null || so.data == null)
-				return "Empty Slot";
-			
-			var t:Town = Town.knownTowns[so.data.currentTown];
-			var c:Creature = so.data.body;
-			if (t == null || c == null)
-				return "Empty Slot";
-			var o:String = "Slot " + slot + ": Level " + c.level + " " + c.getTypeName() + " at " + t.name + "<br />";
-			o += "[HP: " + c.HP + ", Lust: " + c.lust + "]";
-			return o;
+		public static function previewSlot(slot:int):String
+		{
+			try {
+				var so:SharedObject = SharedObject.getLocal("7la_slot" + slot.toString());
+				
+				if (so == null || so.data == null)
+					return "Empty Slot";
+				
+				var t:Town = Town.knownTowns[so.data.currentTown];
+				var c:Creature = so.data.body;
+				if (t == null || c == null)
+					return "Empty Slot";
+				var o:String = "Slot " + slot + ": Level " + c.level + " " + c.getTypeName() + " at " + t.name + "<br />";
+				o += "[HP: " + c.HP + ", Lust: " + c.lust + "]";
+				return o;
+			} catch (e:Error) {
+				trace(e.message + ": " + e.getStackTrace());
+				return "Slot "+slot+": Corrupt/Outdated!";
+			}
+			return "???";
 		}
 		
-		private function onFileSelected(e:Event):void {
+		private function onFileSelected(e:Event):void
+		{
 			f.addEventListener(Event.COMPLETE, onFileLoaded);
 			f.load();
 		}
 		
-		private function onFileLoaded(e:Event):void {
+		private function onFileLoaded(e:Event):void
+		{
 			var saveData:Object = f.data.readObject();
 			this.currentTown = Town.knownTowns[saveData.currentTown];
 			this.baseType = saveData.body;
 			main.onPlayerLoaded();
 		}
 		
-		private function onFileCancelled(e:Event):void {
+		private function onFileCancelled(e:Event):void
+		{
 		}
 		
-		override public function initialGenderSetup():void 
+		override public function initialGenderSetup():void
 		{
 			baseType.initialGenderSetup();
 		}
 		
-		override public function yourMove(cs:CombatScreen, ply:Creature):void 
+		override public function yourMove(cs:CombatScreen, ply:Creature):void
 		{
 		}
 		
-		public override function getDescription():String {
+		public override function getDescription():String
+		{
 			var descr:String = "<h2>Appearance</h2>";
 			// You, Charles Cockhammer, are a gay human male of average height and build.  You also possess a long, flowing mane of golden hair, 
 			// which contrasts nicely with your blue eyes and light skin.
@@ -161,14 +181,13 @@ package org.sevenchan.dongs.creature
 			//
 			// In other words, you're an average human, which probably won't last long down here.
 			//
-			descr += "<p>You, " + baseType.ownName + ", are " + Utils.A(baseType.gender.label) + " " + baseType.gender.label + " " + baseType.getTypeName() + " whose body " + baseType.build.getDescription() + "."
-			+" You also possess " + baseType.hair.getDescription();
+			descr += "<p>You, " + baseType.ownName + ", are " + Utils.A(baseType.gender.label) + " " + baseType.gender.label + " " + baseType.getTypeName() + " whose body " + baseType.build.getDescription() + "." + " You also possess " + baseType.hair.getDescription();
 			
 			if (baseType.hair == Hair.BALD)
 				descr += ", your glistening scalp distracting from your ";
 			else
 				descr += ", which constrasts nicely with your ";
-			if(baseType.eyes.length == 0)
+			if (baseType.eyes.length == 0)
 				descr += " complete lack of eyes (<b>and resulting blindness</b>)";
 			else
 				descr += baseType.getEyesDescr();
@@ -197,7 +216,6 @@ package org.sevenchan.dongs.creature
 			if (!haveBalls && !haveDicks && !haveVags)
 				descr += "You don't have any sexual organs, so you can't masturbate.  On the bright side, you won't get horny, either.";
 			
-			
 			if (baseType.breasts.length > 0)
 				descr += "You have " + baseType.getBreastDescr() + ", and you wear ";
 			else
@@ -205,128 +223,273 @@ package org.sevenchan.dongs.creature
 			descr += baseType.getAssDescr() + ".";
 			
 			if (baseType.arms.length > 0)
-					descr += "You have "+baseType.getArmsDescr()+", ";
+				descr += "You have " + baseType.getArmsDescr() + ", ";
 			else
 				descr += "You don't have any arms (<b>and therefore can't attack</b>), ";
 			
-			if (baseType.legs.length > 0) {
-					if (baseType.arms.length == 0)
-						descr += "but you DO have ";
-					else 
-						descr += "and ";
-					descr += baseType.getLegsDescr()+".";
-			} else
+			if (baseType.legs.length > 0)
+			{
+				if (baseType.arms.length == 0)
+					descr += "but you DO have ";
+				else
+					descr += "and ";
+				descr += baseType.getLegsDescr() + ".";
+			}
+			else
 				descr += "and no legs (<b>so you can't dodge attacks</b>).";
 			descr += "</p>";
 			
 			return baseType.gender.doReplace(descr);
 		}
 		
-		override public function getTypeName():String 
+		override public function getTypeName():String
 		{
 			return baseType.getTypeName();
 		}
 		
-		override public function levelUp(firstTime:Boolean=false):void 
+		override public function levelUp(firstTime:Boolean = false):void
 		{
 			baseType.levelUp(firstTime);
 		}
 		
-		public function setBaseType(base:Creature):void {
+		public function setBaseType(base:Creature):void
+		{
 			baseType = base;
 			baseType.abilities["instawin"] = new Instawin();
 		}
 		
 		/*
-		override public function hasEnchantment(name:String):Boolean {
-			return baseType.hasEnchantment(name);
-		}
+		   override public function hasEnchantment(name:String):Boolean {
+		   return baseType.hasEnchantment(name);
+		   }
 		
-		override public function addEnchantment(ench:Enchantment):String 
+		   override public function addEnchantment(ench:Enchantment):String
+		   {
+		   return baseType.addEnchantment(ench);
+		   }
+		   override public function notifyEnchantments(e:*):Boolean
+		   {
+		   return baseType.notifyEnchantments(e);
+		   }
+		 */
+		override public function get assholes():Vector.<Asshole>
 		{
-			return baseType.addEnchantment(ench);
+			return baseType._assholes;
 		}
-		override public function notifyEnchantments(e:*):Boolean 
+		
+		override public function set assholes(balls:Vector.<Asshole>):void
 		{
-			return baseType.notifyEnchantments(e);
+			baseType._assholes = balls;
+			customized = true;
 		}
-		*/
-		override public function get assholes():Vector.<Asshole> { return baseType._assholes; }
-		override public function set assholes(balls:Vector.<Asshole>):void { baseType._assholes=balls;
-			customized = true; }
 		
-		override public function get breasts():Vector.<Breast> { return baseType._breasts; }
-		override public function set breasts(balls:Vector.<Breast>):void { baseType._breasts=balls;
-			customized = true; }
+		override public function get breasts():Vector.<Breast>
+		{
+			return baseType._breasts;
+		}
 		
-		override public function get eyes():Vector.<Eye> { return baseType._eyes; }
-		override public function set eyes(balls:Vector.<Eye>):void { baseType._eyes=balls;
-			customized = true; }
+		override public function set breasts(balls:Vector.<Breast>):void
+		{
+			baseType._breasts = balls;
+			customized = true;
+		}
 		
-		override public function get vaginas():Vector.<Vagina> { return baseType._vaginas; }
-		override public function set vaginas(balls:Vector.<Vagina>):void { baseType._vaginas=balls;
-			customized = true; }
+		override public function get eyes():Vector.<Eye>
+		{
+			return baseType._eyes;
+		}
 		
-		override public function get arms():Vector.<Arm> { return baseType._arms; }
-		override public function set arms(arr:Vector.<Arm>):void { 
+		override public function set eyes(balls:Vector.<Eye>):void
+		{
+			baseType._eyes = balls;
+			customized = true;
+		}
+		
+		override public function get vaginas():Vector.<Vagina>
+		{
+			return baseType._vaginas;
+		}
+		
+		override public function set vaginas(balls:Vector.<Vagina>):void
+		{
+			baseType._vaginas = balls;
+			customized = true;
+		}
+		
+		override public function get arms():Vector.<Arm>
+		{
+			return baseType._arms;
+		}
+		
+		override public function set arms(arr:Vector.<Arm>):void
+		{
 			baseType._arms = arr;
 			customized = true;
 		}
 		
-		override public function get legs():Vector.<Leg>{ return baseType._legs; }
-		override public function set legs(arr:Vector.<Leg>):void { baseType._legs = arr;
-			customized = true; }
-			
-		override public function get wings():Vector.<Wing> { return baseType._wings; }
-		override public function set wings(arr:Vector.<Wing>):void { baseType._wings = arr;
-			customized = true; }
+		override public function get legs():Vector.<Leg>
+		{
+			return baseType._legs;
+		}
 		
-		override public function get balls():Vector.<Testicle> { return baseType._balls; }
-		override public function set balls(balls:Vector.<Testicle>):void { baseType._balls=balls;
-			customized = true; }
+		override public function set legs(arr:Vector.<Leg>):void
+		{
+			baseType._legs = arr;
+			customized = true;
+		}
 		
-		override public function get dicks():Vector.<Penis> { return baseType._dicks; }
-		override public function set dicks(balls:Vector.<Penis>):void { baseType._dicks=balls;
-			customized = true; }
-			
-		public override function get strength():int { return baseType.strength; }
-		public override function set strength(value:int):void { baseType.strength = value; }
-			
-		public override function get mana():int { return baseType.mana; }
-		public override function set mana(value:int):void { baseType.mana = value; }
+		override public function get wings():Vector.<Wing>
+		{
+			return baseType._wings;
+		}
 		
-		public override function get speed():int { return baseType.speed; }
-		public override function set speed(value:int):void { baseType.speed=value; }
+		override public function set wings(arr:Vector.<Wing>):void
+		{
+			baseType._wings = arr;
+			customized = true;
+		}
 		
-		public override function get intellect():int { return baseType.intellect; }
-		public override function set intellect(value:int):void { baseType.intellect = value; }
+		override public function get balls():Vector.<Testicle>
+		{
+			return baseType._balls;
+		}
 		
-		public override function get sensitivity():int { return baseType.sensitivity; }
-		public override function set sensitivity(value:int):void { baseType.sensitivity = value; }
+		override public function set balls(balls:Vector.<Testicle>):void
+		{
+			baseType._balls = balls;
+			customized = true;
+		}
 		
-		public override function get abilities():Object { return baseType.abilities; }
-		public override function set abilities(arr:Object):void { baseType.abilities = arr; }
+		override public function get dicks():Vector.<Penis>
+		{
+			return baseType._dicks;
+		}
 		
-		public override function get gender():Gender{ return baseType.gender; }
-		public override function set gender(arr:Gender):void { baseType.gender = arr; }
+		override public function set dicks(balls:Vector.<Penis>):void
+		{
+			baseType._dicks = balls;
+			customized = true;
+		}
 		
-		public override function get level():int{ return baseType.level; }
+		public override function get strength():int
+		{
+			return baseType.strength;
+		}
 		
-		public override function get HP():int{ return baseType.HP; }
-		public override function get maxHP():int{ return baseType.maxHP; }
-		public override function get maxMana():int{ return baseType.maxMana; }
-		public override function set HP(value:int):void { baseType.HP = value; main.refreshStats(); }
+		public override function set strength(value:int):void
+		{
+			baseType.strength = value;
+		}
 		
-		public override function get XP():int{ return baseType.XP; }
-		public override function get maxXP():int { trace("maxXP", baseType.maxXP); return baseType.maxXP; }
-		public override function set XP(value:int):void { baseType.XP = value; main.refreshStats(); }
+		public override function get mana():int
+		{
+			return baseType.mana;
+		}
 		
-		override public function get gold():int 
+		public override function set mana(value:int):void
+		{
+			baseType.mana = value;
+		}
+		
+		public override function get speed():int
+		{
+			return baseType.speed;
+		}
+		
+		public override function set speed(value:int):void
+		{
+			baseType.speed = value;
+		}
+		
+		public override function get intellect():int
+		{
+			return baseType.intellect;
+		}
+		
+		public override function set intellect(value:int):void
+		{
+			baseType.intellect = value;
+		}
+		
+		public override function get sensitivity():int
+		{
+			return baseType.sensitivity;
+		}
+		
+		public override function set sensitivity(value:int):void
+		{
+			baseType.sensitivity = value;
+		}
+		
+		public override function get abilities():Object
+		{
+			return baseType.abilities;
+		}
+		
+		public override function set abilities(arr:Object):void
+		{
+			baseType.abilities = arr;
+		}
+		
+		public override function get gender():Gender
+		{
+			return baseType.gender;
+		}
+		
+		public override function set gender(arr:Gender):void
+		{
+			baseType.gender = arr;
+		}
+		
+		public override function get level():int
+		{
+			return baseType.level;
+		}
+		
+		public override function get HP():int
+		{
+			return baseType.HP;
+		}
+		
+		public override function get maxHP():int
+		{
+			return baseType.maxHP;
+		}
+		
+		public override function get maxMana():int
+		{
+			return baseType.maxMana;
+		}
+		
+		public override function set HP(value:int):void
+		{
+			baseType.HP = value;
+			main.refreshStats();
+		}
+		
+		public override function get XP():int
+		{
+			return baseType.XP;
+		}
+		
+		public override function get maxXP():int
+		{
+			trace("maxXP", baseType.maxXP);
+			return baseType.maxXP;
+		}
+		
+		public override function set XP(value:int):void
+		{
+			baseType.XP = value;
+			main.refreshStats();
+		}
+		
+		override public function get gold():int
 		{
 			return baseType.gold;
 		}
 		
-		override public function set gold(value:int):void 
+		override public function set gold(value:int):void
 		{
 			baseType.gold = value;
 		}

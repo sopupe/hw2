@@ -2,13 +2,14 @@ package org.sevenchan.dongs.bodyparts.asshole
 {
 	import org.sevenchan.dongs.bodyparts.Asshole;
 	import org.sevenchan.dongs.Creature;
+	import flash.net.registerClassAlias;
 	/**
 	 * As in spiders.
 	 * @author Harbinger
 	 */
 	public class Abdomen extends Asshole
 	{
-		
+		registerClassAlias("P_Abdomen", Abdomen);
 		public function Abdomen(species:String) 
 		{
 			super(1500);

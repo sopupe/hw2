@@ -1,6 +1,8 @@
 package org.sevenchan.dongs.creature 
 {
+	import flash.display.Sprite;
 	import flash.net.*;
+	import mx.effects.effectClasses.BlurInstance;
 	import org.sevenchan.dongs.*;
 	import org.sevenchan.dongs.bodyparts.*;
 	import org.sevenchan.dongs.items.*;
@@ -23,10 +25,13 @@ package org.sevenchan.dongs.creature
 	{
 		
 		registerClassAlias("ESandworm", Sandworm);
+		// Setup genders and bodyparts
 		public function Sandworm() 
 		{
 			gender = Gender.ASEXUAL;
 			sexualPreference = SexualPreference.ASEXUAL;
+			//_abilities['bite'] = new Bite();
+			//_abilities['acidspit'] = new AcidSpit();
 		}
 		
 		override public function onCombatInit(ply:Player):void 
@@ -45,6 +50,11 @@ package org.sevenchan.dongs.creature
 		{
 			ply.setExplored("wonAgainstSandworm");
 			return true;
+		}
+		
+		override public function combatDescr(subj:Creature):String 
+		{
+			return "[Sandworm intro, WIP]";
 		}
 	}
 

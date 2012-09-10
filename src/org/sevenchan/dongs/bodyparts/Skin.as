@@ -10,7 +10,7 @@ package org.sevenchan.dongs.bodyparts
 	 */
 	public class Skin implements IBodyPart
 	{
-		registerClassAlias("P_Arm", Arm);
+		registerClassAlias("P_Skin", Skin);
 		
 		public var _name:String;
 		public var color:String;

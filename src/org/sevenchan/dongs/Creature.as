@@ -132,10 +132,17 @@ package org.sevenchan.dongs
 		public function setupBody():void
 		{
 			initialGenderSetup();
-			if (this._assholes.length == 0)
-				throw new Error(this.getTypeName() + " needs anuses");
-			if (this._eyes.length == 0)
-				throw new Error(this.getTypeName() + " needs eyes");
+CONFIG::debug
+{
+			if (this._arms.length == 0) trace("[WARNING] ", this.getTypeName(), " has no arms!");
+			if (this._assholes.length == 0) trace("[WARNING] ", this.getTypeName(), " has no anuses!");
+			if (this._gender.hasDick && this._balls.length == 0) trace("[WARNING] ", this.getTypeName(), " has no balls!");
+			if (this._breasts.length == 0) trace("[WARNING] ", this.getTypeName(), " has no breasts!");
+			if (this._gender.hasDick && this._dicks.length == 0) trace("[WARNING] ", this.getTypeName(), " has no dick!");
+			if (this._eyes.length==0) trace("[WARNING] ", this.getTypeName(), " has no eyes!");
+			if (this._legs.length == 0) trace("[WARNING] ", this.getTypeName(), " has no legs!");
+			if (this._gender.hasVag && this._vaginas.length == 0) trace("[WARNING] ", this.getTypeName(), " has no vag!");
+}
 		}
 		
 		public function initialGenderSetup():void

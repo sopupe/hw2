@@ -13,7 +13,7 @@ package org.sevenchan.dongs.bodyparts
 		registerClassAlias("P_Leg", Leg);
 		
 		private var _name:String;
-		public function Leg(value:Number,name:String="") 
+		public function Leg(value:Number=0,name:String="") 
 		{
 			_value = value;
 			_name = name;
