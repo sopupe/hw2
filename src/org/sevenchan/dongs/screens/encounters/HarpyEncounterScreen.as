@@ -67,7 +67,7 @@ package org.sevenchan.dongs.screens.encounters
 		
 		public function addHarpyCabin():void
 		{
-			if (main.player.getExplored("harpycabin"))
+			if (!main.player.getExplored("harpycabin"))
 			{
 				main.player.setExplored("harpycabin");
 			}
