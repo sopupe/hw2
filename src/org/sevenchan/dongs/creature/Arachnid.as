@@ -59,6 +59,7 @@ package org.sevenchan.dongs.creature
 				breasts.push(BodyPartRegistry.human_breast, BodyPartRegistry.human_breast);
 				vaginas.push(BodyPartRegistry.arachnid_vagina);
 			}
+			inventory = new Vector.<Item>();
 			if (gender.hasDick) {
 				addDick("arachnid");
 				balls.push(BodyPartRegistry.arachnid_testicle, BodyPartRegistry.arachnid_testicle);
