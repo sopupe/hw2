@@ -14,6 +14,8 @@ package org.sevenchan.dongs.bodyparts
 		registerClassAlias("P_Arm", Arm);
 		
 		private var _name:String;
+		public var _location:String = "";
+		public function get location():String { return _location;}
 		public function Arm(value:Number=0,name:String="human",atkEnch:Enchantment=null,defEnch:Enchantment=null) 
 		{
 			_value = value;
@@ -36,7 +38,10 @@ package org.sevenchan.dongs.bodyparts
 		public function get sellDesc():String { return getShortDescr(true); }
 		
 		public function getDescr(num:Number, host:Creature):String {
-			return num + " "+Utils.pluralize(num,getShortDescr(true));
+			var o:String = num + " " + Utils.pluralize(num, getShortDescr(true));
+			if (location.length > 0)
+			o += " growing out of %POS% " + location;
+			return o;
 		}
 		
 		public function getShortDescr(withModifier:Boolean = false):String {

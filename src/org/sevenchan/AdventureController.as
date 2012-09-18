@@ -523,11 +523,16 @@ package org.sevenchan
 				combatant.notifyEnchantments(new CombatStartEvent(player));
 				player.notifyEnchantments(new CombatStartEvent(combatant));
 			}
-			
-			combatScreen = new Rape(combatant);
-			setScreen(combatScreen);
-			currentBGColor = 0x330000;
-			redrawBG();
+			if(combatant.tryRape(player)){
+				combatScreen = new Rape(combatant);
+				setScreen(combatScreen);
+				currentBGColor = 0x330000;
+				redrawBG();
+			} else {
+				if (!(oldScreen is CombatScreen)) {
+					startCombat(oldScreen, combatant, false);
+				}
+			}
 		}
 		
 		public function startCombat(oldScreen:Screen, combatant:Creature, playerInitiated:Boolean = false):void

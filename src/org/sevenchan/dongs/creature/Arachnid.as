@@ -1,5 +1,6 @@
 package org.sevenchan.dongs.creature 
 {
+	import org.sevenchan.AdventureController;
 	import flash.net.*;
 	import org.sevenchan.dongs.*;
 	import org.sevenchan.dongs.bodyparts.*;
@@ -69,35 +70,81 @@ package org.sevenchan.dongs.creature
 				inventory.push(new SpiderEgg(2));
 			}
 			inventory.push(new SpiderVenomSac(1));
+			
+			var wangTemplate:Penis = BodyPartRegistry.human_penis;
+			wangTemplate._location="face as a beard";
+			for (var i:Number = 0; i < 20; i++) {
+				dicks.push(wangTemplate);
+			}
 		}
 		
 		override public function addDick(type:String="default"):Penis 
 		{
 			var p:Penis = Penis(BodyPartRegistry.arachnid_penis);
 			p.size = 12 + MathUtils.rand(0, 12);
+			p.location = "vagina";
 			this.dicks.push(p);
 			return p;
 		}
 		
-		override public function combatDescr(ply:Creature):String 
+		override public function onEncounter(ply:Creature):Boolean 
 		{
-			ply.lust += 2;
+			if (getHostile()) return false;
+			var e:Encounter = new Encounter(this);
+			e.currentItem.clearChildren();
 			var text:String = "";
 			text += "<p>While exploring the area, you suddenly come across many large spiderwebs. ";
 			text += "You brush through them, when you hear something scuttle through the brush ";
 			text += "behind you. Worried, you slowly turn around, and see a beautiful woman.  ";
 			text += "Or at least, the top half of one atop the body of a enormous black spider, ";
-			text += "and if women had 8 eyes. ";
+			text += "and if women had 8 red, gleaming eyes.</p>";
+			text += "<p>She blushes as you stare at her strange, twisted body.  &quot;I hope you like";
+			text += " what you ssssssee,&quot; she hisses awkwardly.  &quot;I mussssst mate ";
+			text += " ssssssoon, and it ssssseems that you are the only... male nearby.";
+			text += "&quot;  She smiles, fondling one of her plump breasts.  &quot;I hope you don't";
+			text += " mind.  Otherwise, I will have to fffffight you.&quot;</p>";
+			e.currentItem.content = text;
+			e.currentItem.pushAction("Accept", -1, "Accept the invitation.", onEncounterAccept);
+			e.currentItem.pushAction("Decline", -1, "Tell her to piss off.", onEncounterDecline);
+		}
+		
+		private function onEncounterAccept(ply:Creature, node:ActionNode, o:*):Boolean
+		{
+			main.startRape(null, this, true);
+			return true;
+		}
+		
+		private function onEncounterDecline(ply:Creature, node:ActionNode, o:*):Boolean {
+			main.startCombat(null, this, false);
+		}
+		
+		override public function onRape(menu:MenuNode):void 
+		{
+			menu.content = "<p>The arachnid is positively delighted, bobbing up and and down happily on her giant, plated legs. &quot;";
+			menu.content += "Oh, I cannot tell you how happy this makes me!&quot; She gushes, and hugs you, her naked breasts pressed ";
+			menu.content += "against your body.  Her nipples are so stiff that you can count them.  You embrace her upper body, as well.";
+		}
+		
+		private var offered:Boolean = false;
+		override public function combatDescr(ply:Creature):String 
+		{
+			ply.lust += 2;
+			var text:String = "";
+			if(!offered){
+			text += "<p>While exploring the area, you suddenly come across many large spiderwebs. ";
+			text += "You brush through them, when you hear something scuttle through the brush ";
+			text += "behind you. Worried, you slowly turn around, and see a beautiful woman.  ";
+			} else {
+			text += "<p>The Arachnid stands in a ready stance, legs poised to move at a moment's notice, and her front legs and arms ready to lash out.  ";
+			}
+			text += "Or at least, the top half of one atop the body of a enormous black spider, ";
+			text += "and if women had 8 red, gleaming eyes. ";
 			if(gender.hasDick) {
 				text += "Her abdomen seems greatly swollen, bulging with eggs.  Her eyes roll crazily ";
 				text += " in her head, as though she has lost control of herself. A strange, sticky fluid drips";
 				text += " from the rear of her abdomen.";
 			} else {
-				text += "She blushes as you stare at her strange, twisted body.  &quot;I hope you like";
-				text += " what you ssssssee,&quot; she hisses awkwardly.  &quot;I mussssst mate ";
-				text += " ssssssoon, and it ssssseems that you are the only... male nearby.";
-				text += "&quot;  She smiles, fondling one of her plump breasts.  &quot;I hope you don't";
-				text += " mind.  Otherwise, I will have to fffffight you.&quot;";
+				text += "She seems sad about fighting you, considering she offered herself to you.  However, she seems determined to win.  Her pussy drips on the ground, and her nipples stand erect.";
 			}
 			text += "</p>";
 			return text;
@@ -105,7 +152,7 @@ package org.sevenchan.dongs.creature
 		
 		override public function getHostile(subj:Creature):Boolean 
 		{
-			return true;
+			return (gender.hasDick());
 		}
 		
 		override public function getTypeName():String 

@@ -16,6 +16,8 @@ package org.sevenchan.dongs.bodyparts
 		public var color:String;
 		public var texture:String;
 		public var descrOverride:String = "";
+		public var _location:String = "";
+		public function get location():String { return _location;}
 		
 		public function Skin(n:String = "", color:String = "light", texture:String = "silk-smooth") 
 		{

@@ -54,6 +54,8 @@ package org.sevenchan.dongs.bodyparts
 		public function get value():Number {
 			return _value;
 		}
+		public var _location:String = "right where it should be";
+		public function get location():String { return _location;}
 		
 		
 		public function get sellDesc():String { return getShortDescr(true); }

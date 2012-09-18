@@ -16,8 +16,11 @@ package org.sevenchan.dongs.bodyparts
 		public var size:Number = 0;
 		public var sizeMult:Number = 1;
 		public var _name:String;
+		public var _loc:String;
 		
 		private var _value:Number;
+		public var _location:String = "";
+		public function get location():String { return _location;}
 		public function get value():Number {
 			return _value;
 		}
@@ -27,6 +30,7 @@ package org.sevenchan.dongs.bodyparts
 			_value = value;
 			size = sz;
 			this._name = name;
+			_loc = "";
 		}
 		
 		public function get name():String
@@ -75,6 +79,7 @@ package org.sevenchan.dongs.bodyparts
 			else if (lust >= 25)
 				erectDesc = "growing";
 			
+			// massive rock-hard, throbbing 5" dicks
 			var dm:String = sizeDesc + " " + erectDesc + " " + MathUtils.inchesToFootInches(sz) + " " + name + " " + dick + ((num > 1) ? "s" : "");
 			if (num == -1)
 				return dm;
@@ -82,6 +87,8 @@ package org.sevenchan.dongs.bodyparts
 				dm = "single "+dm;
 			if (num > 1)
 				dm = num + " " + dm;
+			if (_loc.length > 0)
+				dm = dm + " growing out of %POS% " + _loc;
 			return dm;
 		}
 		

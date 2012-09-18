@@ -34,7 +34,10 @@ package org.sevenchan.dongs.bodyparts
 				if (filledWith.length != 0)
 					filled = ", " + filledWith + "-filled";
 			}
-			return num + " " +tightness+filled+ " "+getShortDescr(true);
+			var loc:String = "right where it should be, between your legs";
+			if (location.length > 0)
+				loc = ", " + location;
+			return num + " " +tightness + filled + " " + getShortDescr(true) + " " + loc;
 		}
 		
 		override public function getShortDescr(withModifier:Boolean = false):String 

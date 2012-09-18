@@ -19,6 +19,8 @@ package org.sevenchan.dongs.bodyparts
 			this.color = color;
 			this.pupilShape = pupilShape;
 		}
+		public var _location:String = "";
+		public function get location():String { return _location;}
 		
 		private var _value:Number;
 		public function get value():Number {

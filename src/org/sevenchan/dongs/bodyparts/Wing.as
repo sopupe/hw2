@@ -50,6 +50,8 @@ package org.sevenchan.dongs.bodyparts
 		
 		public function onFailedAttack(from:Creature, to:Creature):void {}
 		public function onGoodAttack(from:Creature, to:Creature):void {}
+		public var _location:String = "right where it should be";
+		public function get location():String { return _location;}
 		
 	}
 

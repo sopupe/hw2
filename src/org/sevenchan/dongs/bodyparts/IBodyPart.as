@@ -11,6 +11,8 @@ package org.sevenchan.dongs.bodyparts
 		function get sellDesc():String;
 		function get name():String;
 		function get category():String;
+		function get location():String; // In case the body part grows in an abnormal location.
+		
 		/**
 		 * Retrieve a long description of the body part
 		 * 

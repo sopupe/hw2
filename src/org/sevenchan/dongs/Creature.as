@@ -76,7 +76,7 @@ package org.sevenchan.dongs
 		 */
 		public var staticStats:Boolean = false;
 		
-		private var main:AdventureController = null;
+		protected var main:AdventureController = null;
 		
 		protected var abilityUseProbability:Number = 1;
 		protected var turnsToLose:int = 0;
@@ -943,6 +943,17 @@ CONFIG::debug
 			return sexualPreference.isOppositeGender(gender, subj.gender);
 		}
 		
+		/**
+		 * By default, only allow rape if health == 0 or paralyzed.
+		 * @param	rapist WHO BE RAPIN ME
+		 *
+		 */
+		public function tryRape(rapist:Creature):Boolean
+		{
+			return (HP == 0 || Paralyze.isParalyzed(this));
+				
+		}
+		
 		public function getHostile(subj:Creature):Boolean
 		{
 			return false;
@@ -966,6 +977,9 @@ CONFIG::debug
 		public function getRapable():Boolean
 		{
 			return canRun();
+		}
+		public function onRape(menu:MenuNode):void {
+			
 		}
 	}
 }

@@ -18,7 +18,7 @@ package org.sevenchan.dongs.bodyparts
 		public var filledWith:String = "";
 		public var pregCounter:Number = -1;
 		public var pregnantWith:Creature = null;
-		public var location:String = "right where it should be";
+		public var _location:String = "right where it should be";
 		public var _pen:Boolean = false;
 
 		public function Asshole(value:Number=0,name:String="") 
@@ -39,6 +39,8 @@ package org.sevenchan.dongs.bodyparts
 		public function get name():String {
 			return _name;
 		}
+		
+		public function get location():String { return _location;}
 		
 		public function impregnate(balls:Vector.<Testicle>):void {
 			var amtCum:Number = 0;

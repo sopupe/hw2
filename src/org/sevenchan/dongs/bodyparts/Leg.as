@@ -1,9 +1,10 @@
-package org.sevenchan.dongs.bodyparts 
+package org.sevenchan.dongs.bodyparts
 {
 	import org.sevenchan.dongs.*;
 	import org.sevenchan.dongs.creature.*;
 	import org.sevenchan.dongs.screens.InfoScreen;
 	import flash.net.registerClassAlias;
+	
 	/**
 	 * ...
 	 * @author Harbinger
@@ -13,29 +14,47 @@ package org.sevenchan.dongs.bodyparts
 		registerClassAlias("P_Leg", Leg);
 		
 		private var _name:String;
-		public function Leg(value:Number=0,name:String="") 
+		private var _location:String = "";
+		private var _value:Number;
+		
+		public function Leg(value:Number = 0, name:String = "")
 		{
 			_value = value;
 			_name = name;
 		}
 		
-		private var _value:Number;
-		public function get value():Number {
+		public function get value():Number
+		{
 			return _value;
 		}
 		
-		public function get category():String {
+		public function get category():String
+		{
 			return "legs";
 		}
 		
-		public function get name():String {
+		public function get name():String
+		{
 			return _name;
 		}
 		
-		public function getDescr(num:Number, host:Creature):String {
-			return num + " " + name + " leg"+((num>1)?"s":"");
+		public function get location():String
+		{
+			return _location;
 		}
-		public function get sellDesc():String { return getShortDescr(true); }
+		
+		public function getDescr(num:Number, host:Creature):String
+		{
+			var o:String = num + " " + name + " leg" + ((num > 1) ? "s" : "");
+			if (_location.length > 0)
+			o += " growing out of %POS% " + location;
+			return o;
+		}
+		
+		public function get sellDesc():String
+		{
+			return getShortDescr(true);
+		}
 		
 		public function onFailedAttack(from:Creature, to:Creature):void
 		{
@@ -44,30 +63,28 @@ package org.sevenchan.dongs.bodyparts
 			else
 				InfoScreen.push(from.gender.doReplace("<p>%CSUB% attempts to kick you, but you move too quickly and evade the attack!</p>"));
 		}
-		public function onGoodAttack(from:Creature, to:Creature):void{
+		
+		public function onGoodAttack(from:Creature, to:Creature):void
+		{
 			var dmg:Number = Math.max(7, from.strength - to.strength);
 			var txt:String = "";
-			if (from is Player) {
-				txt=MathUtils.getRandomArrayEntry([
-					"You deliver a powerful round kick to the " + to.getTypeName(),
-					"You kick the " + to.getTypeName(),
-					"The "+to.getTypeName()+" gets a foot to the face",
-				]);
-				InfoScreen.push(to.gender.doReplace("<p>"+txt+", dealing " + dmg + " damage!</p>"));
-			} else {
-				txt=MathUtils.getRandomArrayEntry([
-					"%CSUB% kicks you",
-					"You discover how "+from.getTypeName()+" feet taste",
-					"One of %POS%'s kicks find your face",
-				]);
-				InfoScreen.push(from.gender.doReplace("<p>"+txt+", causing " + dmg + " damage!</p>"));
+			if (from is Player)
+			{
+				txt = MathUtils.getRandomArrayEntry(["You deliver a powerful round kick to the " + to.getTypeName(), "You kick the " + to.getTypeName(), "The " + to.getTypeName() + " gets a foot to the face",]);
+				InfoScreen.push(to.gender.doReplace("<p>" + txt + ", dealing " + dmg + " damage!</p>"));
+			}
+			else
+			{
+				txt = MathUtils.getRandomArrayEntry(["%CSUB% kicks you", "You discover how " + from.getTypeName() + " feet taste", "One of %POS%'s kicks find your face",]);
+				InfoScreen.push(from.gender.doReplace("<p>" + txt + ", causing " + dmg + " damage!</p>"));
 			}
 			to.HP -= dmg;
 		}
 		
-		public function getShortDescr(withModifier:Boolean = false):String {
+		public function getShortDescr(withModifier:Boolean = false):String
+		{
 			var t:String = "leg";
-			if(withModifier)
+			if (withModifier)
 				t = name + " " + t;
 			return t;
 		}
