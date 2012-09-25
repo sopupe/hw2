@@ -12,7 +12,7 @@ package org.sevenchan.dongs.bodyparts
 												            //derp			I		me		myself 		my		mine	dick	vag
 		public static const MALE:Gender 		= new Gender("male",		"he",	"his",	"himself",	"his",	"his",	true,	false);
 		public static const FEMALE:Gender 		= new Gender("female",		"she",	"her",	"herself",	"her",	"hers",	false,	true);
-		public static const HERM:Gender 		= new Gender("hermophrodite","shi",	"hir",	"hirself",	"hir",	"hirs",	true,	true); // Might change to its
+		public static const HERM:Gender 		= new Gender("hermophrodite","she",	"her",	"herself",	"her",	"hers",	true,	true); 
 		public static const ASEXUAL:Gender		= new Gender("asexual",		"it",	"its",	"itself",	"its",	"its",	false,	false);
 		public static const YOU:Gender			= new Gender("-",			"you",	"your",	"yourself",	"your",	"your",	false,	false);
 		
