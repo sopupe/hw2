@@ -1,6 +1,7 @@
 package org.sevenchan.dongs.bodyparts 
 {
 	import org.sevenchan.dongs.Creature;
+	import org.sevenchan.dongs.weapons.IWeapon;
 	/**
 	 * ...
 	 * @author Harbinger
@@ -12,6 +13,7 @@ package org.sevenchan.dongs.bodyparts
 		function get name():String;
 		function get category():String;
 		function get location():String; // In case the body part grows in an abnormal location.
+		function get weapon():IWeapon;
 		
 		/**
 		 * Retrieve a long description of the body part
@@ -26,6 +28,8 @@ package org.sevenchan.dongs.bodyparts
 		
 		function onFailedAttack(from:Creature, to:Creature):void;
 		function onGoodAttack(from:Creature, to:Creature):void;
+		
+		function tryEquip(weapon:IWeapon):Boolean;
 	}
 
 }

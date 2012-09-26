@@ -4,6 +4,7 @@ package org.sevenchan.dongs.bodyparts
 	import org.sevenchan.dongs.creature.*;
 	import org.sevenchan.dongs.screens.InfoScreen;
 	import flash.net.registerClassAlias;
+	import org.sevenchan.dongs.weapons.IWeapon;
 	
 	/**
 	 * ...
@@ -66,7 +67,9 @@ package org.sevenchan.dongs.bodyparts
 		
 		public function onGoodAttack(from:Creature, to:Creature):void
 		{
-			var dmg:Number = Math.max(7, from.strength - to.strength);
+			if (weapon != null)
+			return onGoodAttack(from, to);
+			var dmg:Number = from.damageAgainst(to,weapon);
 			var txt:String = "";
 			if (from is Player)
 			{
@@ -87,6 +90,17 @@ package org.sevenchan.dongs.bodyparts
 			if (withModifier)
 				t = name + " " + t;
 			return t;
+		}
+		
+		private var _weapon:IWeapon = null;
+		public function get weapon():IWeapon { return _weapon; }
+		public function tryEquip(weap:IWeapon):Boolean
+		{
+			if (weap.canEquipOn(this)){
+				_weapon = weap;
+				return true;
+			}
+			return false;
 		}
 	}
 

@@ -3,6 +3,7 @@ package org.sevenchan.dongs.bodyparts
 	import org.sevenchan.dongs.Creature;
 	import flash.net.registerClassAlias;
 	import org.sevenchan.dongs.screens.InfoScreen;
+	import org.sevenchan.dongs.weapons.IWeapon;
 	/**
 	 * ...
 	 * @author Harbinger
@@ -151,6 +152,17 @@ package org.sevenchan.dongs.bodyparts
 				text += "<p>One of your breasts ";
 			text += "slowly deflates, and then recedes back into your body with a warm tingling sensation.</p>";
 			InfoScreen.push(text);
+		}
+		
+		private var _weapon:IWeapon = null;
+		public function get weapon():IWeapon { return _weapon; }
+		public function tryEquip(weap:IWeapon):Boolean
+		{
+			if (weap.canEquipOn(this)){
+				_weapon = weap;
+				return true;
+			}
+			return false;
 		}
 	}
 

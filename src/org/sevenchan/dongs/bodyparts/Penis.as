@@ -4,6 +4,7 @@ package org.sevenchan.dongs.bodyparts
 	import org.sevenchan.dongs.enchantment.*;
 	import flash.net.registerClassAlias;
 	import org.sevenchan.dongs.screens.InfoScreen;
+	import org.sevenchan.dongs.weapons.IWeapon;
 	
 	/**
 	 * ...
@@ -150,6 +151,13 @@ package org.sevenchan.dongs.bodyparts
 			// TODO: Needs work
 			this.size -= _size;
 			return "You groan as you feel your " + getDescr(1, ply) + " sucked back into your body a few inches.";
+		}
+		
+		private var _weapon:IWeapon = null;
+		public function get weapon():IWeapon { return _weapon; }
+		public function tryEquip(weap:IWeapon):Boolean
+		{
+			return false;
 		}
 	}
 

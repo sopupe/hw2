@@ -82,14 +82,14 @@ package org.sevenchan.dongs.creature
 		{
 			var p:Penis = Penis(BodyPartRegistry.arachnid_penis);
 			p.size = 12 + MathUtils.rand(0, 12);
-			p.location = "vagina";
+			p._location = "vagina";
 			this.dicks.push(p);
 			return p;
 		}
 		
 		override public function onEncounter(ply:Creature):Boolean 
 		{
-			if (getHostile()) return false;
+			if (getHostile(ply)) return false;
 			var e:Encounter = new Encounter(this);
 			e.currentItem.clearChildren();
 			var text:String = "";
@@ -106,6 +106,8 @@ package org.sevenchan.dongs.creature
 			e.currentItem.content = text;
 			e.currentItem.pushAction("Accept", -1, "Accept the invitation.", onEncounterAccept);
 			e.currentItem.pushAction("Decline", -1, "Tell her to piss off.", onEncounterDecline);
+			AdventureController.screenQueue.write(e);
+			return true;
 		}
 		
 		private function onEncounterAccept(ply:Creature, node:ActionNode, o:*):Boolean
@@ -116,6 +118,7 @@ package org.sevenchan.dongs.creature
 		
 		private function onEncounterDecline(ply:Creature, node:ActionNode, o:*):Boolean {
 			main.startCombat(null, this, false);
+			return true;
 		}
 		
 		override public function onRape(menu:MenuNode):void 
@@ -123,6 +126,7 @@ package org.sevenchan.dongs.creature
 			menu.content = "<p>The arachnid is positively delighted, bobbing up and and down happily on her giant, plated legs. &quot;";
 			menu.content += "Oh, I cannot tell you how happy this makes me!&quot; She gushes, and hugs you, her naked breasts pressed ";
 			menu.content += "against your body.  Her nipples are so stiff that you can count them.  You embrace her upper body, as well.";
+			
 		}
 		
 		private var offered:Boolean = false;
@@ -152,7 +156,7 @@ package org.sevenchan.dongs.creature
 		
 		override public function getHostile(subj:Creature):Boolean 
 		{
-			return (gender.hasDick());
+			return (gender.hasDick);
 		}
 		
 		override public function getTypeName():String 

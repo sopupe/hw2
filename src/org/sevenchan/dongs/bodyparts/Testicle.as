@@ -3,6 +3,7 @@ package org.sevenchan.dongs.bodyparts
 	import org.sevenchan.dongs.Creature;
 	import org.sevenchan.dongs.enchantment.*;
 	import flash.net.registerClassAlias;
+	import org.sevenchan.dongs.weapons.IWeapon;
 	/**
 	 * ...
 	 * @author Harbinger
@@ -94,6 +95,14 @@ package org.sevenchan.dongs.bodyparts
 		
 		public function onFailedAttack(from:Creature, to:Creature):void{}
 		public function onGoodAttack(from:Creature, to:Creature):void{}
+		
+		private var _weapon:IWeapon = null;
+		public function get weapon():IWeapon { return _weapon; }
+		
+		public function tryEquip(weap:IWeapon):Boolean
+		{
+			return false;
+		}
 	}
 
 }

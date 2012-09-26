@@ -2,6 +2,7 @@ package org.sevenchan.dongs.bodyparts
 {
 	import org.sevenchan.dongs.*;
 	import flash.net.registerClassAlias;
+	import org.sevenchan.dongs.weapons.IWeapon;
 	/**
 	 * ...
 	 * @author Harbinger
@@ -53,6 +54,16 @@ package org.sevenchan.dongs.bodyparts
 		public var _location:String = "right where it should be";
 		public function get location():String { return _location;}
 		
+		private var _weapon:IWeapon = null;
+		public function get weapon():IWeapon { return _weapon; }
+		public function tryEquip(weap:IWeapon):Boolean
+		{
+			if (weap.canEquipOn(this)){
+				_weapon = weap;
+				return true;
+			}
+			return false;
+		}
 	}
 
 }

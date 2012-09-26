@@ -5,6 +5,7 @@ package org.sevenchan.dongs.bodyparts
 	import org.sevenchan.dongs.enchantment.*;
 	import flash.net.registerClassAlias;
 	import org.sevenchan.dongs.screens.InfoScreen;
+	import org.sevenchan.dongs.weapons.IWeapon;
 	/**
 	 * ...
 	 * @author Harbinger
@@ -59,7 +60,7 @@ package org.sevenchan.dongs.bodyparts
 				InfoScreen.push(from.gender.doReplace("<p>%VSUB% attempts to strike you with %POS% fist, but you move too quickly and evade the attack!</p>"));
 		}
 		public function onGoodAttack(from:Creature, to:Creature):void{
-			var dmg:Number = Math.max(5, from.strength - to.strength);
+			var dmg:Number = from.damageAgainst(to,weapon);
 			if (from is Player)
 				InfoScreen.push(to.gender.doReplace("<p>You smash the " + to.getTypeName() + " in the face with your fist, dealing " + dmg + " damage!</p>"));
 			else 
@@ -67,6 +68,19 @@ package org.sevenchan.dongs.bodyparts
 			//trace("["+getDescr(1,from)+"] BEFORE: "+to.HP);
 			to.HP -= dmg;
 			//trace("["+getDescr(1,from)+"] AFTER: "+to.HP);
+		}
+		
+		
+		
+		private var _weapon:IWeapon = null;
+		public function get weapon():IWeapon { return _weapon; }
+		public function tryEquip(weap:IWeapon):Boolean
+		{
+			if (weap.canEquipOn(this)){
+				_weapon = weap;
+				return true;
+			}
+			return false;
 		}
 	}
 

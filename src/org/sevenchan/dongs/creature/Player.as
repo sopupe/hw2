@@ -8,6 +8,7 @@ package org.sevenchan.dongs.creature
 	import org.sevenchan.dongs.bodyparts.*;
 	import org.sevenchan.dongs.*;
 	import flash.utils.*;
+	import org.sevenchan.dongs.creature.npc.NPC;
 	import org.sevenchan.dongs.enchantment.Enchantment;
 	import org.sevenchan.dongs.screens.CombatScreen;
 	
@@ -23,7 +24,6 @@ package org.sevenchan.dongs.creature
 		private var waitingForLoad:Boolean = false;
 		private var cancelled:Boolean = false;
 		public var currentTown:Town = Town.knownTowns["barn"];
-		public var main:AdventureController;
 		
 		public function Player(main:AdventureController)
 		{
@@ -85,7 +85,11 @@ package org.sevenchan.dongs.creature
 			if (slot == -1)
 			{ // Export
 				var ba:ByteArray = new ByteArray();
-				ba.writeObject({currentTown: currentTown.ID, body: baseType});
+				ba.writeObject( {
+					currentTown: currentTown.ID, 
+					body: baseType,
+					npcs: NPC.instances
+				});
 				var f:FileReference = new FileReference();
 				f.save(ba, "save.dat");
 			}
@@ -94,6 +98,7 @@ package org.sevenchan.dongs.creature
 				var so:SharedObject = SharedObject.getLocal("7la_slot" + slot.toString());
 				so.data.currentTown = currentTown.ID;
 				so.data.body = baseType;
+				so.data.npcs = NPC.instances;
 				so.flush();
 			}
 		}
@@ -153,6 +158,12 @@ package org.sevenchan.dongs.creature
 			var saveData:Object = f.data.readObject();
 			this.currentTown = Town.knownTowns[saveData.currentTown];
 			this.baseType = saveData.body;
+			if (saveData.hasOwnProperty("npcs"))
+			{
+				for(var k:Object in saveData.npcs){
+					NPC.instances[k] = saveData.npcs[k];
+				}
+			}
 			main.onPlayerLoaded();
 		}
 		

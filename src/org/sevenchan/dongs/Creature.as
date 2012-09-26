@@ -7,6 +7,7 @@ package org.sevenchan.dongs
 	import org.sevenchan.dongs.enchantment.*;
 	import org.sevenchan.dongs.enchantment.events.*;
 	import org.sevenchan.dongs.screens.*;
+	import org.sevenchan.dongs.weapons.IWeapon;
 	
 	/**
 	 * It's alive!
@@ -76,7 +77,7 @@ package org.sevenchan.dongs
 		 */
 		public var staticStats:Boolean = false;
 		
-		protected var main:AdventureController = null;
+		public var main:AdventureController = null;
 		
 		protected var abilityUseProbability:Number = 1;
 		protected var turnsToLose:int = 0;
@@ -132,17 +133,25 @@ package org.sevenchan.dongs
 		public function setupBody():void
 		{
 			initialGenderSetup();
-CONFIG::debug
-{
-			if (this._arms.length == 0) trace("[WARNING] ", this.getTypeName(), " has no arms!");
-			if (this._assholes.length == 0) trace("[WARNING] ", this.getTypeName(), " has no anuses!");
-			if (this._gender.hasDick && this._balls.length == 0) trace("[WARNING] ", this.getTypeName(), " has no balls!");
-			if (this._breasts.length == 0) trace("[WARNING] ", this.getTypeName(), " has no breasts!");
-			if (this._gender.hasDick && this._dicks.length == 0) trace("[WARNING] ", this.getTypeName(), " has no dick!");
-			if (this._eyes.length==0) trace("[WARNING] ", this.getTypeName(), " has no eyes!");
-			if (this._legs.length == 0) trace("[WARNING] ", this.getTypeName(), " has no legs!");
-			if (this._gender.hasVag && this._vaginas.length == 0) trace("[WARNING] ", this.getTypeName(), " has no vag!");
-}
+			CONFIG::debug
+			{
+				if (this._arms.length == 0)
+					trace("[WARNING] ", this.getTypeName(), " has no arms!");
+				if (this._assholes.length == 0)
+					trace("[WARNING] ", this.getTypeName(), " has no anuses!");
+				if (this._gender.hasDick && this._balls.length == 0)
+					trace("[WARNING] ", this.getTypeName(), " has no balls!");
+				if (this._breasts.length == 0)
+					trace("[WARNING] ", this.getTypeName(), " has no breasts!");
+				if (this._gender.hasDick && this._dicks.length == 0)
+					trace("[WARNING] ", this.getTypeName(), " has no dick!");
+				if (this._eyes.length == 0)
+					trace("[WARNING] ", this.getTypeName(), " has no eyes!");
+				if (this._legs.length == 0)
+					trace("[WARNING] ", this.getTypeName(), " has no legs!");
+				if (this._gender.hasVag && this._vaginas.length == 0)
+					trace("[WARNING] ", this.getTypeName(), " has no vag!");
+			}
 		}
 		
 		public function initialGenderSetup():void
@@ -340,7 +349,7 @@ CONFIG::debug
 			if (hair == Hair.BALD)
 				descr += ", %POS% glistening scalp distracting from %POS% ";
 			else
-				descr += ". %CSUB% has "+hair+", which constrasts nicely with %POS% ";
+				descr += ". %CSUB% has " + hair + ", which constrasts nicely with %POS% ";
 			
 			if (eyes.length == 0)
 				descr += " complete lack of eyes (<b>and resulting blindness</b>)";
@@ -496,14 +505,33 @@ CONFIG::debug
 		 */
 		public function strengthCheckAgainst(attacker:Creature):Boolean
 		{
+			var a:Number = attacker.strength;
+			var e:Number = strength;
 			// C = A * (100% - E)
 			// WHERE
 			// C = Chance to hit
 			// A = Attacker's accuracy (strength, in our case)
 			// E = Defender's evasion rate (strength, again)
+			return Math.random() <= (a * (100 - e)) / 10000;
+		}
+		
+		/**
+		 * Figure out how much shit we're going to wreck.
+		 * @param	attacker
+		 * @param	weapon or null
+		 * @return
+		 */
+		public function damageAgainst(attacker:Creature, weapon:IWeapon):Number
+		{
+			// from D&D?
+			// TODO:  Probably need to factor in speed or something at some point. I ain't a math guy.
 			var a:Number = attacker.strength;
 			var e:Number = strength;
-			return Math.random() <= (a * (100 - e)) / 10000;
+			var weaponDamage:Number = 0;
+			if (weapon != null)
+				weaponDamage = weapon.calcDamage(this, attacker);
+			var dmg:Number = (MathUtils.rand(0, 1) + level + (strength / 50) + weaponDamage) - (MathUtils.rand(0, 1) + attacker.level + (attacker.strength / 50));
+			return (dmg > 0) ? dmg : 0; // Keep above 0 (no negatives)
 		}
 		
 		public function get strength():int
@@ -951,7 +979,7 @@ CONFIG::debug
 		public function tryRape(rapist:Creature):Boolean
 		{
 			return (HP == 0 || Paralyze.isParalyzed(this));
-				
+		
 		}
 		
 		public function getHostile(subj:Creature):Boolean
@@ -978,8 +1006,10 @@ CONFIG::debug
 		{
 			return canRun();
 		}
-		public function onRape(menu:MenuNode):void {
-			
+		
+		public function onRape(menu:MenuNode):void
+		{
+		
 		}
 	}
 }

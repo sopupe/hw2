@@ -14,6 +14,7 @@ package org.sevenchan.dongs.screens
 	import org.sevenchan.dongs.Ability;
 	import org.sevenchan.dongs.Town;
 	import org.sevenchan.dongs.towns.TownBarn;
+	import org.sevenchan.dongs.weapons.IWeapon;
 	
 	/**
 	 * ...
@@ -237,9 +238,15 @@ package org.sevenchan.dongs.screens
 			return text;
 		}
 		
-		private function missed(limb:IBodyPart, from:Creature, to:Creature):Boolean {
+		private function limbMissed(limb:IBodyPart, from:Creature, to:Creature):Boolean {
 			var chances:Number = (from.speed - to.speed);
 			trace("Probability of " + limb.getDescr(1,from) + " successfully attacking: " + (chances/100));
+			return (/*to.counter(limb) &&*/ Math.random() * 100 <= chances);
+		}
+		
+		private function weaponMissed(weapon:IWeapon, from:Creature, to:Creature,hostLimb:IBodyPart):Boolean {
+			var chances:Number = (from.speed - to.speed);
+			trace("Probability of " + weapon.getDescr(1,from,hostLimb) + " successfully attacking: " + (chances/100));
 			return (/*to.counter(limb) &&*/ Math.random() * 100 <= chances);
 		}
 		
@@ -247,16 +254,23 @@ package org.sevenchan.dongs.screens
 			// Check if paralyze affects from
 			if (from.arms.length > 0 && (from.legs.length==0 || MathUtils.rand(0,1) == 0)) {
 				var arm:IBodyPart = MathUtils.getRandomVectorEntry(Vector.<*>(from.arms));
-				if(missed(arm,from,to))
-					arm.onFailedAttack(from,to);
-				else
-					arm.onGoodAttack(from, to);
+				if (arm.weapon != null) {
+					if(weaponMissed(arm.weapon,from,to,arm))
+						arm.weapon.onFailedAttack(from,to);
+					else
+						arm.weapon.onGoodAttack(from, to);
+				} else {
+					if(limbMissed(arm,from,to))
+						arm.onFailedAttack(from,to);
+					else
+						arm.onGoodAttack(from, to);
+				}
 				to.yourMove(this,main.player);
 				return;
 			}
 			if (from.legs.length > 0) {
 				var leg:IBodyPart = MathUtils.getRandomVectorEntry(Vector.<*>(from.legs));
-				if(missed(leg,from,to))
+				if(limbMissed(leg,from,to))
 					leg.onFailedAttack(from,to);
 				else
 					leg.onGoodAttack(from,to);
