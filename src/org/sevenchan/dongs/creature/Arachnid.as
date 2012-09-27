@@ -1,4 +1,4 @@
-package org.sevenchan.dongs.creature 
+package org.sevenchan.dongs.creature
 {
 	import org.sevenchan.AdventureController;
 	import flash.net.*;
@@ -6,13 +6,15 @@ package org.sevenchan.dongs.creature
 	import org.sevenchan.dongs.bodyparts.*;
 	import org.sevenchan.dongs.items.*;
 	import org.sevenchan.dongs.screens.*;
+	import org.sevenchan.dongs.screens.encounters.ArachnidEncounter;
+	
 	/**
 	 * Spiderbitch, spiderbitch, does whatever a spiderbitch does...
 	 * Will she suck, on a dick?  Goddamnit I dunno.
 	 * Watch out, here comes a spiderbitch.
-	 * 
+	 *
 	 * Based off of MGE's Arachne.  Loosely, as I cannot read moonspeak.
-	 * 
+	 *
 	 * @author Harbinger
 	 */
 	public class Arachnid extends Creature
@@ -21,7 +23,8 @@ package org.sevenchan.dongs.creature
 		registerClassAlias("EArachnid", Arachnid);
 		
 		private var isPregnant:Boolean = false;
-		public function Arachnid(pregnant:Boolean) 
+		
+		public function Arachnid(pregnant:Boolean)
 		{
 			super();
 			isPregnant = pregnant;
@@ -56,15 +59,18 @@ package org.sevenchan.dongs.creature
 			//this.gender = Gender.FEMALE;
 			this.sexualPreference = SexualPreference.STRAIGHT;
 			
-			if (gender.hasVag) {
+			if (gender.hasVag)
+			{
 				breasts.push(BodyPartRegistry.human_breast, BodyPartRegistry.human_breast);
 				vaginas.push(BodyPartRegistry.arachnid_vagina);
 			}
 			inventory = new Vector.<Item>();
-			if (gender.hasDick) {
+			if (gender.hasDick)
+			{
 				addDick("arachnid");
 				balls.push(BodyPartRegistry.arachnid_testicle, BodyPartRegistry.arachnid_testicle);
-				for each(var t:Testicle in balls) {
+				for each (var t:Testicle in balls)
+				{
 					t.loadMult = 10;
 				}
 				inventory.push(new SpiderEgg(2));
@@ -72,13 +78,14 @@ package org.sevenchan.dongs.creature
 			inventory.push(new SpiderVenomSac(1));
 			
 			var wangTemplate:Penis = BodyPartRegistry.human_penis;
-			wangTemplate._location="face as a beard";
-			for (var i:Number = 0; i < 20; i++) {
+			wangTemplate._location = "face as a beard";
+			for (var i:Number = 0; i < 20; i++)
+			{
 				dicks.push(wangTemplate);
 			}
 		}
 		
-		override public function addDick(type:String="default"):Penis 
+		override public function addDick(type:String = "default"):Penis
 		{
 			var p:Penis = Penis(BodyPartRegistry.arachnid_penis);
 			p.size = 12 + MathUtils.rand(0, 12);
@@ -87,96 +94,136 @@ package org.sevenchan.dongs.creature
 			return p;
 		}
 		
-		override public function onEncounter(ply:Creature):Boolean 
+		override public function onEncounter(ply:Creature):Boolean
 		{
-			if (getHostile(ply)) return false;
-			var e:Encounter = new Encounter(this);
-			e.currentItem.clearChildren();
-			var text:String = "";
-			text += "<p>While exploring the area, you suddenly come across many large spiderwebs. ";
-			text += "You brush through them, when you hear something scuttle through the brush ";
-			text += "behind you. Worried, you slowly turn around, and see a beautiful woman.  ";
-			text += "Or at least, the top half of one atop the body of a enormous black spider, ";
-			text += "and if women had 8 red, gleaming eyes.</p>";
-			text += "<p>She blushes as you stare at her strange, twisted body.  &quot;I hope you like";
-			text += " what you ssssssee,&quot; she hisses awkwardly.  &quot;I mussssst mate ";
-			text += " ssssssoon, and it ssssseems that you are the only... male nearby.";
-			text += "&quot;  She smiles, fondling one of her plump breasts.  &quot;I hope you don't";
-			text += " mind.  Otherwise, I will have to fffffight you.&quot;</p>";
-			e.currentItem.content = text;
-			e.currentItem.pushAction("Accept", -1, "Accept the invitation.", onEncounterAccept);
-			e.currentItem.pushAction("Decline", -1, "Tell her to piss off.", onEncounterDecline);
-			AdventureController.screenQueue.write(e);
+			if (getHostile(ply))
+				return false;
+			ArachnidEncounter.push(this);
 			return true;
 		}
 		
-		private function onEncounterAccept(ply:Creature, node:ActionNode, o:*):Boolean
+		override public function onRape(ply:Creature,rapeEncounter:Rape):void
 		{
-			main.startRape(null, this, true);
-			return true;
-		}
-		
-		private function onEncounterDecline(ply:Creature, node:ActionNode, o:*):Boolean {
-			main.startCombat(null, this, false);
-			return true;
-		}
-		
-		override public function onRape(menu:MenuNode):void 
-		{
-			menu.content = "<p>The arachnid is positively delighted, bobbing up and and down happily on her giant, plated legs. &quot;";
-			menu.content += "Oh, I cannot tell you how happy this makes me!&quot; She gushes, and hugs you, her naked breasts pressed ";
-			menu.content += "against your body.  Her nipples are so stiff that you can count them.  You embrace her upper body, as well.";
-			
+			var rapeText:String = "";
+			if (!ply.getExplored("sexedArachnid"))
+			{
+				ply.setExplored("sexedArachnid");
+				
+				var amtCum:Number = 0;
+				for (var i:int = 0; i < ply.balls.length; i++)
+				{
+					(ply.balls[i] as Testicle).loadMult += 1;
+					var t:Testicle = ply.balls[i];
+					amtCum += t.loadMult * t.normalLoad;
+				}
+				rapeText = "<p>The arachnid is positively delighted, bobbing up and and down happily on her giant, plated legs. &quot;";
+				rapeText += "Oh, I cannot tell you how happy this makes me!&quot; She gushes, and hugs you, her naked breasts pressed ";
+				rapeText += "against your body.  Her nipples are so stiff that you can count them.  You embrace her upper body, as well, ";
+				rapeText += "with an awkwardness you have never felt before in your life.</p>";
+				
+				rapeText += "<p>And then you feel her fangs dig into your neck. <i>Shit.</i> ";
+				rapeText += "&quot;It'sssss all right,&quot; %CSUB% whispers in a thick accent, ";
+				rapeText += "a silky hand stroking your cheek softly. %CSUB% kisses the wound, a blush ";
+				rapeText += "slowly spreading across %POS% face as %SUB% becomes more aroused. ";
+				rapeText += "&quot;You’ll be fffine, do not be worried.&quot;</p>";
+				
+				rapeText += "<p>After stripping you of any clothing, %SUB% pulls webbing from %POS% abdomen ";
+				rapeText += "and wraps you tightly in it, sparing your nose, eyes, and your dick, and ";
+				rapeText += "then anchors you to the floor. Seeing your flaccid dick, %SUB% leans over ";
+				rapeText += "and brushes it between %POS% large breasts and licks it hungrily. When ";
+				rapeText += "it’s satisfiably hard, %SUB% takes a few steps forwards and %POS% body ";
+				rapeText += "descends, your dick disappearing into %POS% wet, needy pussy. Quietly, %SUB% ";
+				rapeText += "begins to repeatedly plunge you into %POS% sticky depths, and you find ";
+				rapeText += "yourself enjoying it, aside from the claustrophobic webbing and poison ";
+				rapeText += "keeping you still.</p>";
+				
+				rapeText += "<p>As soon as the first wave of precum enters %POS% body, %POS% entire abdomen ";
+				rapeText += "begins pulsing, the powerful muscles milking your dick. %CSUB% reaches down ";
+				rapeText += "and pulls you tighter to %POS% body. %CSUB% bites you again, and your balls ";
+				rapeText += "go into overdrive, pumping more semen into %POS% thrusting body. The ";
+				rapeText += "pleasure is unbearable, and %POS% cunt feels amazing, despite how ";
+				rapeText += "terrifying the entire situation is. After a few minutes, the flow stops, ";
+				rapeText += "and %SUB% releases you. &quot;Sssso ssssorry ffffor the trouble,&quot; ";
+				rapeText += "%SUB% apologizes, a clawed foot cutting slits into the webbing around your ";
+				rapeText += "arms, somehow without opening your veins. You realize that she is helping you ";
+				rapeText += "get lose of the webbing once the neurotoxin is gone from your body. &quot; ";
+				rapeText += "Hopeffffully thissss will help...&quot;</p>";
+				
+				rapeText += "<p>%CSUB% slowly moves away. &quot;You will ssssleeep now. I hope you ";
+				rapeText += "ffforgive me, and maybe we will meet again...&quot; %CSUB% vanishes into ";
+				rapeText += "the underbrush, and the world fades to black as you pass out.</p>";
+				
+				rapeText += "<p><b>Your semen output has increased by 1, bringing your total seminal volume to " + MathUtils.fmtMilliLiters(amtCum) + ".</b></p>";
+				rapeText += "<p>You will now gain lust faster.</p>";
+				
+			}
+			else
+			{
+				// TODO Sex menu if sexedArachnid == true
+				rapeText += "<i>[TODO: Sex menu AFTER getting dateraped by Arachnid.  Soz.]</i>";
+			}
+			rapeEncounter.setText(rapeText);
 		}
 		
 		private var offered:Boolean = false;
-		override public function combatDescr(ply:Creature):String 
+		
+		override public function combatDescr(ply:Creature):String
 		{
 			ply.lust += 2;
 			var text:String = "";
-			if(!offered){
-			text += "<p>While exploring the area, you suddenly come across many large spiderwebs. ";
-			text += "You brush through them, when you hear something scuttle through the brush ";
-			text += "behind you. Worried, you slowly turn around, and see a beautiful woman.  ";
-			} else {
-			text += "<p>The Arachnid stands in a ready stance, legs poised to move at a moment's notice, and her front legs and arms ready to lash out.  ";
+			if (!offered)
+			{
+				text += "<p>While exploring the area, you suddenly come across many large spiderwebs. ";
+				text += "You brush through them, when you hear something scuttle through the brush ";
+				text += "behind you. Worried, you slowly turn around, and see a beautiful woman.  ";
+			}
+			else
+			{
+				text += "<p>The Arachnid stands in a ready stance, legs poised to move at a moment's notice, and her front legs and arms ready to lash out.  ";
 			}
 			text += "Or at least, the top half of one atop the body of a enormous black spider, ";
 			text += "and if women had 8 red, gleaming eyes. ";
-			if(gender.hasDick) {
+			if (gender.hasDick)
+			{
 				text += "Her abdomen seems greatly swollen, bulging with eggs.  Her eyes roll crazily ";
 				text += " in her head, as though she has lost control of herself. A strange, sticky fluid drips";
 				text += " from the rear of her abdomen.";
-			} else {
+			}
+			else
+			{
 				text += "She seems sad about fighting you, considering she offered herself to you.  However, she seems determined to win.  Her pussy drips on the ground, and her nipples stand erect.";
+				if (ply.getExplored("sexedArachnid"))
+					text += "You aren't fooled by her sorrowful demeanor, considering one of her kind paralyzed you after you gave in to her demands.";
 			}
 			text += "</p>";
 			return text;
 		}
 		
-		override public function getHostile(subj:Creature):Boolean 
+		override public function getHostile(subj:Creature):Boolean
 		{
 			return (gender.hasDick);
 		}
 		
-		override public function getTypeName():String 
+		override public function getTypeName():String
 		{
-			return (isPregnant)?"Pregnant Arachnid":"Arachnid";
+			return (isPregnant) ? "Pregnant Arachnid" : "Arachnid";
 		}
 		
-		override public function onWin(ply:Creature):Boolean 
+		override public function onWin(ply:Creature):Boolean
 		{
 			var text:String = "<h2>YOU LOSE</h2>";
 			
-			if (ply.gender.hasDick && gender==Gender.FEMALE) {
-				if(ply.getExplored("lostToArachnid"))
+			if (ply.gender.hasDick && gender == Gender.FEMALE)
+			{
+				if (ply.getExplored("lostToArachnid"))
 					ply.setExplored("lostToArachnid");
-					
+				
 				var amtCum:Number = 0;
-				for (var i:int = 0; i < ply.balls.length; i++) {
+				for (var i:int = 0; i < ply.balls.length; i++)
+				{
 					(ply.balls[i] as Testicle).loadMult += 1;
 					var t:Testicle = ply.balls[i];
-					amtCum+=t.loadMult * t.normalLoad;
+					amtCum += t.loadMult * t.normalLoad;
 				}
 				text += "<p>Seeing weakness, the Arachnid surges forward and bites your neck. You ";
 				text += "punch %POS% in %POS% own neck, causing %POS% to break from you, but it’s too ";
@@ -188,7 +235,7 @@ package org.sevenchan.dongs.creature
 				text += "a silky hand stroking your cheek softly. %CSUB% kisses the wound, a blush ";
 				text += "slowly spreading across %POS% face as %SUB% becomes more aroused. ";
 				text += "&quot;You’ll be fffine, do not be worried.&quot;</p>";
-
+				
 				text += "<p>After stripping you of any clothing, %SUB% pulls webbing from %POS% abdomen ";
 				text += "and wraps you tightly in it, sparing your nose, eyes, and your dick, and ";
 				text += "then anchors you to the floor. Seeing your flaccid dick, %SUB% leans over ";
@@ -198,7 +245,7 @@ package org.sevenchan.dongs.creature
 				text += "begins to repeatedly plunge you into %POS% sticky depths, and you find ";
 				text += "yourself enjoying it, aside from the claustrophobic webbing and poison ";
 				text += "keeping you still.</p>";
-
+				
 				text += "<p>As soon as the first wave of precum enters %POS% body, %POS% entire abdomen ";
 				text += "begins pulsing, the powerful muscles milking your dick. %CSUB% reaches down ";
 				text += "and pulls you tighter to %POS% body. %CSUB% bites you again, and your balls ";
@@ -210,7 +257,7 @@ package org.sevenchan.dongs.creature
 				text += "arms, somehow without opening your veins. You realize that she is helping you ";
 				text += "get lose of the webbing once the neurotoxin is gone from your body. &quot; ";
 				text += "Hopeffffully thissss will help...&quot;</p>";
-
+				
 				text += "<p>%CSUB% slowly moves away. &quot;You will ssssleeep now. I hope you ";
 				text += "ffforgive me, and maybe we will meet again...&quot; %CSUB% vanishes into ";
 				text += "the underbrush, and the world fades to black as you pass out.</p>";
@@ -219,18 +266,22 @@ package org.sevenchan.dongs.creature
 				text += "<p>You will now gain lust faster.</p>";
 				InfoScreen.push(gender.doReplace(text));
 				return true;
-			} else if (gender.hasDick) {
-				var rectum:String = (ply.gender.hasVag)?"birth canal and into your womb":"rectum";
+			}
+			else if (gender.hasDick)
+			{
+				var rectum:String = (ply.gender.hasVag) ? "birth canal and into your womb" : "rectum";
 				var enchTxt:String = "";
 				var asshole:Boolean = false;
 				text = "<p>You collapse to the ground";
 				text += " once again,";
-				text += " defeated and exhausted.  Blood drips from seemingly every part of your body, and you " +
-				"look up at the creature through a single swollen eye.  ";
-				if (HP < maxHP) {
+				text += " defeated and exhausted.  Blood drips from seemingly every part of your body, and you " + "look up at the creature through a single swollen eye.  ";
+				if (HP < maxHP)
+				{
 					text += "She isn't unscatched herself, gashes and dents mar her exoskeleton and ";
 					text += "humanlike upper body.";
-				} else {
+				}
+				else
+				{
 					text += "She is completely unscratched, her maniacal grin accentuating her ";
 					text += "complete victory."
 				}
@@ -250,18 +301,25 @@ package org.sevenchan.dongs.creature
 				
 				text += "<p>The pain becomes too much and, mercifully, you pass out.</p>";
 				var idx:int = 0;
-				if(!ply.gender.hasVag) {
-					for (idx = 0; idx < ply.assholes.length; idx++) {
-						if ((ply.assholes[idx]).pregnantWith == null) {
+				if (!ply.gender.hasVag)
+				{
+					for (idx = 0; idx < ply.assholes.length; idx++)
+					{
+						if ((ply.assholes[idx]).pregnantWith == null)
+						{
 							ply.assholes[idx].impregnate(balls);
 							text += "<p><b>Your " + ply.assholes[idx].getShortDescr() + " is now ";
 							text += "pregnant.</p></b>";
 							break;
 						}
-					} 
-				} else {
-					for (idx = 0; idx < ply.vaginas.length; idx++) {
-						if ((ply.vaginas[idx]).pregnantWith == null) {
+					}
+				}
+				else
+				{
+					for (idx = 0; idx < ply.vaginas.length; idx++)
+					{
+						if ((ply.vaginas[idx]).pregnantWith == null)
+						{
 							ply.vaginas[idx].impregnate(balls);
 							text += "<p><b>Your " + ply.vaginas[idx].getShortDescr() + " is now ";
 							text += "pregnant.</p></b>";
@@ -271,8 +329,8 @@ package org.sevenchan.dongs.creature
 				}
 				InfoScreen.push(gender.doReplace(text));
 				
-				
-				for (var ii:int = 0; ii < balls.length; ii++) {
+				for (var ii:int = 0; ii < balls.length; ii++)
+				{
 					var tt:Testicle = balls[ii];
 					enchTxt += ply.addEnchantment(tt.targetFX) + "  ";
 				}

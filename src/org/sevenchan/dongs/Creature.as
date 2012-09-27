@@ -530,8 +530,9 @@ package org.sevenchan.dongs
 			var weaponDamage:Number = 0;
 			if (weapon != null)
 				weaponDamage = weapon.calcDamage(this, attacker);
-			var dmg:Number = (MathUtils.rand(0, 1) + level + (strength / 50) + weaponDamage) - (MathUtils.rand(0, 1) + attacker.level + (attacker.strength / 50));
-			return (dmg > 0) ? dmg : 0; // Keep above 0 (no negatives)
+			var dmg:Number = (MathUtils.rand(0, 1, false) + level + (strength / 50) + weaponDamage) - (MathUtils.rand(0, 1, false) + attacker.level + (attacker.strength / 50));
+			dmg *= 10;
+			return Math.ceil((dmg > 0) ? dmg : 0); // Keep above 0 (no negatives)
 		}
 		
 		public function get strength():int
@@ -1004,10 +1005,15 @@ package org.sevenchan.dongs
 		
 		public function getRapable():Boolean
 		{
-			return canRun();
+			return canRun() && HP < (maxHP/3);
 		}
 		
-		public function onRape(menu:MenuNode):void
+		/**
+		 * Alter the rape menu to fit your needs.
+		 * @param	ply
+		 * @param	menu
+		 */
+		public function onRape(ply:Creature,rape:Rape):void
 		{
 		
 		}

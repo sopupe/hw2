@@ -528,6 +528,7 @@ package org.sevenchan
 				setScreen(combatScreen);
 				currentBGColor = 0x330000;
 				redrawBG();
+				updateScreen(combatScreen);
 			} else {
 				if (!(oldScreen is CombatScreen)) {
 					startCombat(oldScreen, combatant, false);

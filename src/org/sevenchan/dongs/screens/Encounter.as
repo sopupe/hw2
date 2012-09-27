@@ -18,8 +18,8 @@ package org.sevenchan.dongs.screens
 		public function Encounter(target:Creature) {
 			subject = target;
 			if(target != null) {
-			currentItem.children.push(new ActionNode(currentItem, "Rape", 0, target.gender.doReplace("Try to rape %POS%."), performRape,null));
-			currentItem.children.push(new ActionNode(currentItem, "Fight", 0, target.gender.doReplace("Try to fight %POS%."), fight,null));
+				currentItem.children.push(new ActionNode(currentItem, "Rape", 0, target.gender.doReplace("Try to rape %POS%."), performRape,null));
+				currentItem.children.push(new ActionNode(currentItem, "Fight", 0, target.gender.doReplace("Try to fight %POS%."), fight,null));
 			}
 		}
 		public function onStartupScreen():void { }
@@ -100,7 +100,7 @@ package org.sevenchan.dongs.screens
 					text += nci.name;
 					text += "</i><b>";
 				}
-				if (nci is ActionNode)
+				if (nci is ActionNode && (nci as ActionNode).cost!=-1)
 					text += " (" + (nci as ActionNode).cost.toString() + "G)";
 					
 				text += "</b> - ";

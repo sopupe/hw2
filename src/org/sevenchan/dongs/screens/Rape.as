@@ -14,7 +14,14 @@ package org.sevenchan.dongs.screens
 			super(target);
 			lustCost = 3;
 			currentItem.clearChildren();
-			target.onRape(MenuNode(currentItem));
+			target.onRape(main.player,this);
+		}
+		
+		public function setText(t:String):void { text = t;}
+		
+		override public function onStartupScreen():void 
+		{
+			text = currentItem.content;
 		}
 	}
 

@@ -97,7 +97,7 @@ package org.sevenchan.dongs.screens
 		private function mainMenu(id:int):Boolean {
 			clearButtons();
 			if (!Enchantment.isLockedOut(main.player)) {
-				if(!Enchantment.canAttack(main.player,combatant))
+				if(Enchantment.canAttack(main.player,combatant))
 					setButton(0, "Attack");
 				setButton(1, "Items");
 				setButton(2, "Abilities");
