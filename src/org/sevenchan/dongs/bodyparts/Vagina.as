@@ -37,7 +37,7 @@ package org.sevenchan.dongs.bodyparts
 			var loc:String = "right where it should be, between your legs";
 			if (location.length > 0)
 				loc = ", " + location;
-			return num + " " +tightness + filled + " " + getShortDescr(true) + " " + loc;
+			return num + " " +tightness + filled + " " + name+" "+Utils.pluralize(num,"pussy","pussies") + " " + location;
 		}
 		
 		override public function getShortDescr(withModifier:Boolean = false):String 

@@ -19,15 +19,15 @@ package org.sevenchan.dongs.bodyparts
 		public var targetFX:Enchantment = null; // Enchantment to apply to the target after cumming
 		public var hostFX:Enchantment = null; // Enchantment to apply to the host once the balls are applied, and once every action.
 		public var host:Creature = null;
-		public var _loc:String = "";
+		public var _location:String = "";
 		
 		private var _value:Number;
 		public function get value():Number {
 			return _value;
 		}
 		
-		public function get location():String { return _loc; }
-		public function set location(value:String):void { _loc=value; }
+		public function get location():String { return _location; }
+		public function set location(value:String):void { _location=value; }
 		
 		public var TESTICLE_SYNONYMS:Array = [
 			"ball","nut","knocker","testicle"
@@ -40,7 +40,7 @@ package org.sevenchan.dongs.bodyparts
 		public function Testicle(name:String="",load:Number=0,targetEnch:Enchantment=null,hostEnch:Enchantment=null,semenDesc:String="") 
 		{
 			this._name = name;
-			this._loc = "";
+			this._location = "";
 			normalLoad = load;
 			targetFX = targetEnch;
 			hostFX = hostEnch;
@@ -64,7 +64,7 @@ package org.sevenchan.dongs.bodyparts
 				sizeDesc = "shrivelled ";
 			}
 			if (loadMult > 100) {
-				sizeDesc = "canteloped-sized, ballooning ";
+				sizeDesc = "melon-sized, ballooning ";
 			}
 			if (loadMult < 10) {
 				sizeDesc = "apple-sized, greatly swollen ";
@@ -83,6 +83,8 @@ package org.sevenchan.dongs.bodyparts
 				o += num + " ";
 			o += sizeDesc +" ";
 			o += Utils.pluralize(num, name);
+			if (_location.length > 0)
+				o = o + " growing out of " + _location;
 			return o;
 		}
 		

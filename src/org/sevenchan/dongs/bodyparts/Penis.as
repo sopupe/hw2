@@ -17,7 +17,6 @@ package org.sevenchan.dongs.bodyparts
 		public var size:Number = 0;
 		public var sizeMult:Number = 1;
 		public var _name:String;
-		public var _loc:String;
 		
 		private var _value:Number;
 		public var _location:String = "";
@@ -31,7 +30,7 @@ package org.sevenchan.dongs.bodyparts
 			_value = value;
 			size = sz;
 			this._name = name;
-			_loc = "";
+			_location = "";
 		}
 		
 		public function get name():String
@@ -88,8 +87,8 @@ package org.sevenchan.dongs.bodyparts
 				dm = "single "+dm;
 			if (num > 1)
 				dm = num + " " + dm;
-			if (_loc.length > 0)
-				dm = dm + " growing out of %POS% " + _loc;
+			if (_location.length > 0)
+				dm = dm + " growing out of " + _location;
 			return dm;
 		}
 		

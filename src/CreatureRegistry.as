@@ -2,12 +2,15 @@ package
 {
 	import org.sevenchan.dongs.Creature;
 	import org.sevenchan.dongs.creature.*;
+	import org.sevenchan.dongs.creature.npc.*;
 	/**
 	 * ...
 	 * @author Harbinger
 	 */
 	public class CreatureRegistry 
 	{
+		// NPCs
+		public static function get gargoyle():Creature { return new Gargoyle();}
 		// BOSSDUDES
 		public static function get ala():Creature { return new Ala(); }
 		

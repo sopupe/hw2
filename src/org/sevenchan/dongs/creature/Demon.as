@@ -184,6 +184,10 @@ package org.sevenchan.dongs.creature
 					this.gender = Gender.HERM;
 					break;
 			}
+			this.balls = new Vector.<Testicle>();
+			this._dicks = new Vector.<Penis>();
+			this.breasts = new Vector.<Breast>();
+			this.vaginas = new Vector.<Vagina>();
 			if(gender.hasDick) {
 				this.balls.push(
 					BodyPartRegistry.demon_testicle,
@@ -202,7 +206,9 @@ package org.sevenchan.dongs.creature
 					BodyPartRegistry.demon_breast
 				);
 			}
-			doMutations();
+			// Cionflip to get mutations or not
+			if(MathUtils.rand(0,1)==0)
+				doMutations();
 		}
 		
 		private function getNewDick():Penis {
@@ -211,23 +217,68 @@ package org.sevenchan.dongs.creature
 			return wang;
 		}
 		
+		private const mutationLocations:Array = new Array(
+			"a leg",
+			"%POS% chin",
+			"", // the normal spot
+			"an arm",
+			"%POS% face"
+		);
 		private function doMutations():void {
 			var i:int = 0;
 			
 			// Dick & Balls
 			if(gender.hasDick) {
 				for (i = 0; i < MathUtils.rand(0, 2); i++) {
-					this.dicks.push(getNewDick());
+					var p:Penis = null;
+					switch(MathUtils.rand(0, 2))
+					{
+					case 0:
+						p = BodyPartRegistry.human_penis;
+					case 1:
+						p = BodyPartRegistry.arachnid_penis;
+					case 2:
+						p = BodyPartRegistry.demon_penis;
+					}
+					p._location = MathUtils.getRandomArrayEntry(mutationLocations);
+					p.size = MathUtils.rand(1, 24, false);
+					this.dicks.push(t);
 				}
 				for (i = 0; i < MathUtils.rand(0, 3); i++) {
-					this.balls.push(BodyPartRegistry.demon_testicle);
+					var t:Testicle = null;
+					switch(MathUtils.rand(0, 3))
+					{
+					case 0:
+						t = BodyPartRegistry.human_testicle;
+					case 1:
+						t = BodyPartRegistry.demon_testicle;
+					case 2:
+						t = BodyPartRegistry.arachnid_testicle;
+					case 3:
+						t = BodyPartRegistry.manticore_testicle;
+					}
+					t._location = MathUtils.getRandomArrayEntry(mutationLocations);
+					t.normalLoad = MathUtils.rand(1, 1000, false);
+					t.loadMult = MathUtils.rand(1, 200, false);
+					this.balls.push(t);
 				}
 			}
 			
 			// Vags & Boobs
 			if(gender.hasVag) {
 				for (i = 0; i < MathUtils.rand(0, 2); i++) {
-					this.vaginas.push(BodyPartRegistry.demon_vagina);
+					var v:Vagina = null;
+					switch(MathUtils.rand(0, 2))
+					{
+					case 0:
+						v = BodyPartRegistry.human_vagina;
+					case 1:
+						v = BodyPartRegistry.demon_vagina;
+					case 2:
+						v = BodyPartRegistry.arachnid_vagina;
+					}
+					v._location = MathUtils.getRandomArrayEntry(mutationLocations);
+					this.vaginas.push(v);
 				}
 				for (i = 0; i < MathUtils.rand(0, 2); i++) {
 					this.breasts.push(BodyPartRegistry.demon_breast);

@@ -209,8 +209,7 @@ package org.sevenchan.dongs.screens
 			}
 			if (id == 0) {
 				act = "main";
-				updateScreen();
-				return false;
+				return processButtonPress(-1);
 			} else {
 				(ab[id - 1] as Ability).activate(main.player, combatant);
 				main.player.notifyEnchantments(new CombatTurnEvent(this,combatant));

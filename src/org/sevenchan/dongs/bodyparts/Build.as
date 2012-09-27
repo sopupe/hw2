@@ -14,7 +14,7 @@ package org.sevenchan.dongs.bodyparts
 		public static const CHUBBY:Build = new Build(1.5, -0.5,"is a bit chubby, with a slightly bulging belly and a round face");
 		public static const MALNOURISHED:Build = new Build(-1.5, -0.5,"is terrifyingly malnourished;  Bones poke out in seemingly every direction");
 		public static const PRETTYSTRONG:Build = new Build(1, 1.5,"has lean muscles rippling across %POS% slim body");
-		public static const EATSTRAINS:Build = new Build(1, 1.5, "is covered in a swarm of immense, car-crushing muscles that even ten bucket-fulls of steroids couldn't possibly produce");
+		public static const EATSTRAINS:Build = new Build(1, 1.5, "is covered in a swarm of immense muscles that you suspect could crush boulders");
 		
 		public var weightMultiplier:Number;
 		public var strengthMultiplier:Number;
