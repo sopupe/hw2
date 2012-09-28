@@ -90,6 +90,7 @@ package org.sevenchan.dongs.creature
 					body: baseType,
 					npcs: NPC.instances
 				});
+				ba.objectEncoding = ObjectEncoding.AMF3;
 				var f:FileReference = new FileReference();
 				f.save(ba, "save.dat");
 			}

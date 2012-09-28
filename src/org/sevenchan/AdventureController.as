@@ -111,9 +111,11 @@ package org.sevenchan
 			y += 129.2;
 			btnLoadSaveGame.addEventListener(MouseEvent.CLICK, onLoadOrSave);
 			btnImportGame = addButton("Import Game", 100, y, toprow);
-			y += 129.2; //btnNewGame.addEventListener(MouseEvent.CLICK, onSelectPerk);
+			y += 129.2;
+			btnImportGame.addEventListener(MouseEvent.CLICK, onImport);
 			btnExportGame = addButton("Export Game", 100, y, toprow);
-			y += 129.2; //btnNewGame.addEventListener(MouseEvent.CLICK, onExport);
+			y += 129.2; 
+			btnExportGame.addEventListener(MouseEvent.CLICK, onExport);
 			btnDebugMenu = addButton("Debug Menu", 100, y, toprow);
 			y += 129.2;
 			btnDebugMenu.addEventListener(MouseEvent.CLICK, onDebugMenu);
@@ -179,6 +181,16 @@ package org.sevenchan
 			app.bodyparts.init(player);
 			app.creatures.init(player);
 			setScreen(new NewGameScreen());
+		}
+		private function onImport(e:MouseEvent):void
+		{
+			player = new Player(this);
+			player.setMain(this);
+			player.load(-1);
+		}
+		private function onExport(e:MouseEvent):void
+		{
+			player.save(-1);
 		}
 		
 		private function onLoadOrSave(e:MouseEvent):void

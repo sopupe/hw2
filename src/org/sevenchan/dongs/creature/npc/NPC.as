@@ -14,7 +14,7 @@ package org.sevenchan.dongs.creature.npc
 		/**
 		 * All NPCs in the world.
 		 */
-		public static var instances:Object = new Object();
+		public static var instances:Object = {};
 		
 		/**
 		 * The unique ID of this particular NPC.

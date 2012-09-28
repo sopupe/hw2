@@ -78,7 +78,7 @@ package org.sevenchan.dongs.bodyparts
 			var o:String = "";
 			if (num > 0)
 				o += num + " ";
-			return o+tightness+filled+ " "+_name + " asshole"+((num>1)?"s":"")+", "+location+""+stretched;
+			return o+tightness+filled+ " "+_name + " asshole"+((num>1)?"s":"")+", "+location+stretched;
 		}
 		
 		

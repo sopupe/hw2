@@ -8,8 +8,6 @@ package org.sevenchan.dongs.creature
 	import flash.net.registerClassAlias;
 	/**
 	 * Demons are basically magically corrupted humans, so many of the features should remain the same.
-	 * 
-	 * Should add in some mutations, though.
 	 * @author Harbinger
 	 */
 	public class Demon extends Creature
