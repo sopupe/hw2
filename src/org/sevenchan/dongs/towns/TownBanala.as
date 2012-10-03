@@ -49,8 +49,6 @@ package org.sevenchan.dongs.towns
 					BodyPartRegistry.human_breast
 				])
 			};
-			(shops.SQUIGGLE as Shop).discoveredDescription = "A basic potion shop.";
-			(shops.PARTS as BodyShop).discoveredDescription = "A small Body Shop.";
 		}
 		
 		override public function onEnter():void 

@@ -85,7 +85,7 @@ package org.sevenchan.dongs.screens
 						text += "<p>Demons can be any gender except asexual.</p>";
 						clearButtons();
 						setButton(0, "Male");
-						setButton(1, "Hermophrodite");
+						setButton(1, "Hermaphrodite");
 						setButton(2, "Female");
 						break;
 				}

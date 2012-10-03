@@ -94,7 +94,7 @@ package org.sevenchan.dongs.bodyparts
 			if (num == -1)
 				return dm;
 			if (num == 1)
-				dm = "single " + dm;
+				dm = "a single " + dm;
 			if (num > 1)
 				dm = num + " " + dm;
 			if (_location.length > 0)
@@ -180,10 +180,20 @@ package org.sevenchan.dongs.bodyparts
 		{
 			if (c.type != ClothingType.PANTS)
 				return 0;
-			return Math.min(0.1, Number(host.lust) / 100.0) * size;
+				var horniness:Number = Number(host.lust+0.0) / 100.0;
+			var realsize:Number = Math.max(0.5, horniness) * (size*sizeMult);
+			trace("bsize of a " + MathUtils.inchesToFootInches(size * sizeMult) + "("+(size*sizeMult)+", h"+horniness+") dick = " + realsize.toString());
+			return realsize;
 		}
 		
-		public function isProducingABulge(host:Creature, clothing:Vector.<Clothing>):Boolean
+		public function isProducingABulge(host:Creature, c:Clothing):Boolean
+		{
+			if (getBulgeSize(host, c) > 7)
+				return true;
+			return false;
+		}
+		
+		public function isProducingABulgeInSomething(host:Creature, clothing:Vector.<Clothing>):Boolean
 		{
 			for each (var c:Clothing in clothing)
 			{
@@ -200,7 +210,7 @@ package org.sevenchan.dongs.bodyparts
 					var c:Clothing = Clothing(c_);
 					if (c != null)
 					{
-						return (c.type.obscures.indexOf(category) > -1 && !(getBulgeSize(host, c)>7));
+						return (c.type.obscures.indexOf(category) > -1 && !isProducingABulge(host, c));
 					}
 					else
 					{

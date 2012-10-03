@@ -472,7 +472,7 @@ package org.sevenchan.dongs
 				{
 					if (isHeadConcealed())
 						descr += " a";
-					descr += " complete lack of eyes (<b>and resulting blindness</b>)";
+					descr += " complete lack of eyes";
 				}
 				else
 					descr += getEyesDescr();
@@ -498,9 +498,9 @@ package org.sevenchan.dongs
 			
 			if (!haveBalls && !haveDicks && !haveVags)
 			{
-				descr += " You can't see dangly parts, nor anything else between %POS% legs.";
+				descr += " You can't see any dangly parts, nor anything else between %POS% legs.";
 				if (breasts.length > 0)
-					descr += "However, ";
+					descr += " However, ";
 			}
 			
 			if (breasts.length > 0)
@@ -554,7 +554,7 @@ package org.sevenchan.dongs
 			
 			descr += "<p>%CSUB% is wearing " + ((clothing.length > 0) ? "a " + getClothingDescr() : "nothing") + ".</p>";
 			if(aGender.label!=gender.label)
-				descr += "<p><small>DEBUG: %CSUB% is actually a " + gender.label + ". TEE HEE.</small></p>";
+				descr += "<p><small>DEBUG: %CSUB% is actually a " + gender.label + " with "+getDickDescr()+"/"+getTesticleDescr()+"/"+getVagDescr()+". TEE HEE.</small></p>";
 			
 			return aGender.doReplace(descr);
 		}
@@ -955,10 +955,6 @@ package org.sevenchan.dongs
 					numtypes++;
 				}
 				types[lname]++;
-			}
-			for (var k:String in types)
-			{
-				trace(k + " = " + types[k]);
 			}
 			if (numtypes == 1)
 			{
