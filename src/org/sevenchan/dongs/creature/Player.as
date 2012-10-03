@@ -249,6 +249,9 @@ package org.sevenchan.dongs.creature
 			}
 			else
 				descr += "and no legs (<b>so you can't dodge attacks</b>).";
+				
+			descr += "You are wearing " + ((clothing.length > 0) ? "a " + getClothingDescr() : "nothing" ) + ".";;
+				
 			descr += "</p>";
 			
 			return baseType.gender.doReplace(descr);

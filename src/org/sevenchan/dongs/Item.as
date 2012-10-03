@@ -1,6 +1,7 @@
 package org.sevenchan.dongs
 {
 	import adobe.utils.CustomActions;
+	import org.sevenchan.dongs.clothing.Tunic;
 	import org.sevenchan.dongs.items.*;
 	import org.sevenchan.dongs.screens.InfoScreen;
 	
@@ -43,7 +44,8 @@ package org.sevenchan.dongs
 				gas_mask: new GasMask(), 
 				milk: new Milk(), 
 				spider_gonad: new SpiderGonad(),
-				anchor_stone: new AnchorStone()
+				anchor_stone: new AnchorStone(),
+				tunic: new Tunic()
 				};
 			for each (var i:Item in Registry)
 			{

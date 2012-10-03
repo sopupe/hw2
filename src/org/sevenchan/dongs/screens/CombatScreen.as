@@ -255,7 +255,7 @@ package org.sevenchan.dongs.screens
 				var arm:IBodyPart = MathUtils.getRandomVectorEntry(Vector.<*>(from.arms));
 				if (arm.weapon != null) {
 					if(weaponMissed(arm.weapon,from,to,arm))
-						arm.weapon.onFailedAttack(from,to);
+						arm.weapon.onFailedAttack(from, to);
 					else
 						arm.weapon.onGoodAttack(from, to);
 				} else {

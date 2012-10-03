@@ -4,6 +4,7 @@ package org.sevenchan.dongs
 	import org.sevenchan.AdventureController;
 	import org.sevenchan.dongs.bodyparts.*;
 	import org.sevenchan.dongs.clothing.Clothing;
+	import org.sevenchan.dongs.clothing.ClothingType;
 	import org.sevenchan.dongs.creature.*;
 	import org.sevenchan.dongs.enchantment.*;
 	import org.sevenchan.dongs.enchantment.events.*;
@@ -427,6 +428,9 @@ package org.sevenchan.dongs
 			{
 				descr += " %CSUB% also has " + getWingsDescr() + ".";
 			}
+			
+			descr += "%CSUB% is wearing " + ((clothing.length > 0) ? "a " + getClothingDescr() : "nothing" ) + ".";
+			
 			descr += "</p>";
 			
 			return gender.doReplace(descr);
@@ -537,7 +541,7 @@ package org.sevenchan.dongs
 				weaponDamage = weapon.calcDamage(this, attacker);
 			var dmg:Number = (MathUtils.rand(0, 1, false) + level + (strength / 50) + weaponDamage) - (MathUtils.rand(0, 1, false) + attacker.level + (attacker.strength / 50));
 			dmg *= 10;
-			return Math.ceil((dmg > 0) ? dmg : 0); // Keep above 0 (no negatives)
+			return Math.ceil((dmg > 0) ? dmg : 1); // Keep above 1 (no negatives, no 0-damage attacks.)
 		}
 		
 		public function get strength():int
@@ -956,6 +960,45 @@ package org.sevenchan.dongs
 		public function getWingsDescr():String
 		{
 			return getBodyPartDesc(Vector.<IBodyPart>(wings), "wing");
+		}
+		
+		public function getClothingDescr():String
+		{
+			var desc:String = "";
+			
+			for (var i:int = 0; i < clothing.length; i++)
+			{
+				var item:Clothing = clothing[i];
+				
+				desc  += item.getDescr(this);
+				
+				switch(item.type)
+				{
+				case ClothingType.HEADGEAR:
+					desc += " as a hat";
+					break;
+				case ClothingType.TOP:
+					desc += " as a shirt";
+					break;
+				case ClothingType.FOOTWEAR:
+					desc += " as shoes";
+					break;
+				case ClothingType.PANTS:
+					desc += " as trousers";
+					break;
+				}
+				
+				if (i < (clothing.length - 3))
+				{
+					desc += ", ";
+				}
+				else if (i == (clothing.length - 2))
+				{
+					desc += "and ";
+				}
+			}
+			
+			return desc;
 		}
 		
 		/**

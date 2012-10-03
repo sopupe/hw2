@@ -114,7 +114,7 @@ package org.sevenchan
 			y += 129.2;
 			btnImportGame.addEventListener(MouseEvent.CLICK, onImport);
 			btnExportGame = addButton("Export Game", 100, y, toprow);
-			y += 129.2; 
+			y += 129.2;
 			btnExportGame.addEventListener(MouseEvent.CLICK, onExport);
 			btnDebugMenu = addButton("Debug Menu", 100, y, toprow);
 			y += 129.2;
@@ -182,12 +182,14 @@ package org.sevenchan
 			app.creatures.init(player);
 			setScreen(new NewGameScreen());
 		}
+		
 		private function onImport(e:MouseEvent):void
 		{
 			player = new Player(this);
 			player.setMain(this);
 			player.load(-1);
 		}
+		
 		private function onExport(e:MouseEvent):void
 		{
 			player.save(-1);
@@ -432,7 +434,7 @@ package org.sevenchan
 			// Buttons
 			
 			var xOffset:Number = (16 / 800) * w;
-			var yOffset:Number = (531 / 600) * h;//(561 / 600) * h;
+			var yOffset:Number = (531 / 600) * h; //(561 / 600) * h;
 			var bHeightPadding:Number = (32 / 600) * h;
 			var bWidthPadding:Number = (129.2 / 800) * w;
 			var bHeight:Number = (30 / 600) * h;
@@ -445,7 +447,6 @@ package org.sevenchan
 				btnAction[i].x = xOffset + ((i % 6) * bWidthPadding);
 				btnAction[i].y = yOffset + (Math.round(i / 12) * bHeightPadding);
 			}
-			
 			
 			// Top row of buttons
 			xOffset = (129.2 / 800) * w;
@@ -535,14 +536,18 @@ package org.sevenchan
 				combatant.notifyEnchantments(new CombatStartEvent(player));
 				player.notifyEnchantments(new CombatStartEvent(combatant));
 			}
-			if(combatant.tryRape(player)){
+			if (combatant.tryRape(player))
+			{
 				combatScreen = new Rape(combatant);
 				setScreen(combatScreen);
 				currentBGColor = 0x330000;
 				redrawBG();
 				updateScreen(combatScreen);
-			} else {
-				if (!(oldScreen is CombatScreen)) {
+			}
+			else
+			{
+				if (!(oldScreen is CombatScreen))
+				{
 					startCombat(oldScreen, combatant, false);
 				}
 			}
@@ -552,8 +557,16 @@ package org.sevenchan
 		{
 			if (!combatant.staticStats)
 			{
-				combatant._level = Math.max(1, player.level + MathUtils.rand(-2, 2));
-				combatant._strength = Math.max(1, player.strength + MathUtils.rand(-2, 2));
+				if (player.level < 5)
+				{
+					combatant._level = Math.max(1, player.level + MathUtils.rand(-2, 0));
+					combatant._strength = Math.max(1, player.strength + MathUtils.rand(-2, 0));
+				}
+				else
+				{
+					combatant._level = Math.max(1, player.level + MathUtils.rand(-2, 2));
+					combatant._strength = Math.max(1, player.strength + MathUtils.rand(-2, 2));
+				}
 			}
 			combatant.HP = combatant.maxHP;
 			combatant.mana = combatant.maxMana;
