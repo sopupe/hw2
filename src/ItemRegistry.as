@@ -1,5 +1,6 @@
 package  
 {
+	import org.sevenchan.dongs.clothing.*;
 	import org.sevenchan.dongs.items.*;
 	/**
 	 * ...
@@ -18,6 +19,11 @@ package
 		public static var MILK:Milk = new Milk(1);								//8
 		public static var SPIDER_GONAD:SpiderGonad = new SpiderGonad(1);		//9
 		public static var ANCHOR_STONE:AnchorStone = new AnchorStone(1);		//10
+		public static var BROWN_TUNIC:Tunic = new Tunic(1,"brown");		//13
+		public static var WHITE_TUNIC:Tunic = new Tunic(1,"white");		//13
+		public static var BLACK_TUNIC:Tunic = new Tunic(1,"black");		//13
+		public static var BROWN_PANTS:Pants = new Pants(1,"brown");		//14
+		public static var GRAY_PANTS:Pants = new Pants(1,"gray");		//14
 	}
 
 }

@@ -4,21 +4,21 @@ package org.sevenchan.dongs.clothing
 	import org.sevenchan.dongs.Creature;
 	
 	/**
-	 * Peasant shirt
+	 * Peasant pants
 	 * @author Harbinger
 	 */
-	public class Tunic extends Clothing 
+	public class Pants extends Clothing 
 	{
-		public var color:String = "brown";
+		public var color:String = "gray";
 
-		public function Tunic(num:uint=0,color:String="brown") 
+		public function Pants(num:uint=0,color:String="gray") 
 		{
 			super(num);
-			value = 5;
-			this.id = 13;
+			value = 10;
+			this.id = 14;
 			this.name = "Tunic";
 			this.HP = maxHP;
-			this.type = ClothingType.TOP;
+			this.type = ClothingType.PANTS;
 			this.isSexuallyTransmitted = false;
 			this.isArmor = false;
 			this.opaque = true;
@@ -27,12 +27,12 @@ package org.sevenchan.dongs.clothing
 		
 		override public function copy():Item 
 		{
-			return new Tunic(amount, color);
+			return new Pants(amount, color);
 		}
 		
 		override public function getDescr(host:Creature):String
 		{
-			return "bland, nondescript " + color + " tunic";
+			return "boring, plain " + color + " pants";
 		}
 	}
 

@@ -1,5 +1,6 @@
 package org.sevenchan.dongs.bodyparts 
 {
+	import org.sevenchan.dongs.clothing.Clothing;
 	import org.sevenchan.dongs.Creature;
 	import org.sevenchan.dongs.weapons.IWeapon;
 	/**
@@ -30,6 +31,7 @@ package org.sevenchan.dongs.bodyparts
 		function onGoodAttack(from:Creature, to:Creature):void;
 		
 		function tryEquip(weapon:IWeapon):Boolean;
+		function isConcealedBy(host:Creature, clothing:Vector.<Clothing>):Boolean;
 	}
 
 }

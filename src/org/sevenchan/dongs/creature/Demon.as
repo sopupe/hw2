@@ -41,6 +41,10 @@ package org.sevenchan.dongs.creature
 			this.assholes.push(
 				BodyPartRegistry.demon_anus
 			);
+			this.clothing.push(
+				ItemRegistry.BROWN_TUNIC,
+				ItemRegistry.GRAY_PANTS
+			);
 			skin = SKIN;
 			eyes.push(BodyPartRegistry.demon_eye, BodyPartRegistry.demon_eye);
 		}

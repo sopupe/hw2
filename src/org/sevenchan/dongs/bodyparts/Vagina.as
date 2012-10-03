@@ -1,7 +1,8 @@
 package org.sevenchan.dongs.bodyparts 
 {
-	import org.sevenchan.dongs.Creature;
 	import flash.net.registerClassAlias;
+	import org.sevenchan.dongs.clothing.Clothing;
+	import org.sevenchan.dongs.Creature;
 	/**
 	 * ...
 	 * @author Harbinger

@@ -1,7 +1,10 @@
 package org.sevenchan.dongs.bodyparts 
 {
-	import org.sevenchan.dongs.Creature;
+
 	import flash.net.registerClassAlias;
+	import org.sevenchan.dongs.clothing.Clothing;
+	import org.sevenchan.dongs.clothing.ClothingType;
+	import org.sevenchan.dongs.Creature;
 	import org.sevenchan.dongs.screens.InfoScreen;
 	import org.sevenchan.dongs.weapons.IWeapon;
 	/**
@@ -17,11 +20,11 @@ package org.sevenchan.dongs.bodyparts
 		public var size:int = 1;
 		public var milkMult:Number = 1;
 		private static var breastSizes:Array = [
-			"flat",
-			"puffy",
-			"small",
-			"round",
-			"large",
+			"flat", // AA
+			"puffy", // A
+			"small", // B
+			"round", // C
+			"large", // D
 			"big",
 			"immense"
 		];
@@ -163,6 +166,39 @@ package org.sevenchan.dongs.bodyparts
 				return true;
 			}
 			return false;
+		}
+		
+		public function getBulgeSize(host:Creature, c:Clothing):Number
+		{
+			if (c.type != ClothingType.TOP)
+				return 0;
+			return size;
+		}
+		
+		public function isProducingABulge(host:Creature, clothing:Vector.<Clothing>):Boolean
+		{
+			for each (var c:Clothing in clothing)
+			{
+				if (getBulgeSize(host, c) >= 2)
+					return true;
+			}
+			return false;
+		}
+		
+		public function isConcealedBy(host:Creature, clothing:Vector.<Clothing>):Boolean
+		{
+			return clothing.some(function(c_:Object, index:int, vector:Vector.<Clothing>):Boolean
+				{
+					var c:Clothing = Clothing(c_);
+					if (c != null)
+					{
+						return (c.type.obscures.indexOf(category) > -1 && !(getBulgeSize(host, c)>=2));
+					}
+					else
+					{
+						return false;
+					}
+				});
 		}
 	}
 

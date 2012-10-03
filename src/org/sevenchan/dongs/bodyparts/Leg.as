@@ -5,6 +5,7 @@ package org.sevenchan.dongs.bodyparts
 	import org.sevenchan.dongs.screens.InfoScreen;
 	import flash.net.registerClassAlias;
 	import org.sevenchan.dongs.weapons.IWeapon;
+	import org.sevenchan.dongs.clothing.Clothing;
 	
 	/**
 	 * ...
@@ -101,6 +102,18 @@ package org.sevenchan.dongs.bodyparts
 				return true;
 			}
 			return false;
+		}
+		
+		public function isConcealedBy(host:Creature, clothing:Vector.<Clothing>):Boolean
+		{
+			return clothing.some(function(c_:Object, index:int, vector:Vector.<Clothing>):Boolean 
+				{
+					var c:Clothing = Clothing(c_);
+					if (c != null)
+						return (c.type.obscures.indexOf(category) > -1);
+					else
+						return false;
+				});
 		}
 	}
 

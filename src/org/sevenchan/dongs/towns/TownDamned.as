@@ -37,7 +37,9 @@ package org.sevenchan.dongs.towns
 				SHIRTS: new Shop(
 				"Cruel Clothing","A small clothing shop.",
 				"SHIRTS","You have no idea.  It looks like someone nailed dozens of ragged shirts to the front of the stall, so possibly a clothier.",this, 0.35, [
-					ItemRegistry.GAS_MASK, // TODO: CLOTHES
+					ItemRegistry.GAS_MASK,
+					ItemRegistry.BROWN_TUNIC,
+					ItemRegistry.GRAY_PANTS
 				])
 			};
 		}

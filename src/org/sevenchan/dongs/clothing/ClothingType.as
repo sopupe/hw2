@@ -5,8 +5,8 @@ package org.sevenchan.dongs.clothing
 	public class ClothingType
 	{
 		public static const HEADGEAR:ClothingType = new ClothingType("headgear", [], "head");
-		public static const TOP:ClothingType = new ClothingType("top", ["breasts"], "torso");
-		public static const PANTS:ClothingType = new ClothingType("pants", ["dicks","balls","vaginas"], "legs");
+		public static const TOP:ClothingType = new ClothingType("top", [""], "torso");
+		public static const PANTS:ClothingType = new ClothingType("pants", ["dicks","balls","vaginas","assholes"], "legs");
 		public static const FOOTWEAR:ClothingType = new ClothingType("footwear", [], "feet");
 		
 		public var name:String = "";

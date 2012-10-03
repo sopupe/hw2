@@ -2,8 +2,10 @@ package org.sevenchan.dongs.bodyparts
 {
 	import org.sevenchan.dongs.Creature;
 	import flash.net.registerClassAlias;
+	import org.sevenchan.dongs.creature.Player;
 	import org.sevenchan.dongs.enchantment.Enchantment;
 	import org.sevenchan.dongs.weapons.IWeapon;
+	import org.sevenchan.dongs.clothing.Clothing;
 	/**
 	 * ...
 	 * @author Harbinger
@@ -98,6 +100,18 @@ package org.sevenchan.dongs.bodyparts
 		public function tryEquip(weap:IWeapon):Boolean
 		{
 			return false;
+		}
+		
+		public function isConcealedBy(host:Creature, clothing:Vector.<Clothing>):Boolean
+		{
+			return clothing.some(function(c_:Object, index:int, vector:Vector.<Clothing>):Boolean 
+				{
+					var c:Clothing = Clothing(c_);
+					if (c != null)
+						return (c.type.obscures.indexOf(category) > -1);
+					else
+						return false;
+				});
 		}
 		
 	}

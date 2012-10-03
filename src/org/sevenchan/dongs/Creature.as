@@ -75,8 +75,6 @@ package org.sevenchan.dongs
 		
 		public var clothing:Vector.<Clothing> = new Vector.<Clothing>();
 		
-		
-		
 		/**
 		 * Do stats scale with the PC (false) or stay the same (true)?
 		 * Mostly useful for bosses.
@@ -99,6 +97,71 @@ package org.sevenchan.dongs
 		{
 			trace("USING CREATURE.ADDBREAST INSTEAD OF OVERRIDING");
 			return null;
+		}
+		
+		/**
+		 * IT'S A TRAP
+		 * @return What the gender LOOKS like, given what you can see with clothing.
+		 */
+		public function getApparentGender():Gender
+		{
+			var canSeeDick:Boolean = false;
+			var canSeeBalls:Boolean = false;
+			var canSeeBoobs:Boolean = false;
+			var canSeeVag:Boolean = false;
+			
+			for each (var d:Penis in dicks)
+			{
+				if (d == null) continue;
+				if (!d.isConcealedBy(this, clothing))
+				{
+					trace(d.getDescr(1, this), "gave", getTypeName(), "away");
+					canSeeDick = true;
+					break;
+				}
+			}
+			
+			for each (var t:Testicle in balls)
+			{
+				if (t == null) continue;
+				if (!t.isConcealedBy(this, clothing))
+				{
+					trace(t.getDescr(1, this), "gave", getTypeName(), "away");
+					canSeeBalls = true;
+					break;
+				}
+			}
+			
+			for each (var b:Breast in breasts)
+			{
+				if (b == null) continue;
+				if (!b.isConcealedBy(this, clothing))
+				{
+					trace(b.getDescr(1, this), "gave", getTypeName(), "away");
+					canSeeBoobs = true;
+					break;
+				}
+			}
+			
+			for each (var v:Vagina in vaginas)
+			{
+				if (v == null) continue;
+				if (!v.isConcealedBy(this, clothing))
+				{
+					trace(v.getDescr(1, this), "gave", getTypeName(), "away");
+					canSeeVag = true;
+					break;
+				}
+			}
+			var masc:Boolean = canSeeDick || canSeeBalls;
+			var fem:Boolean = canSeeBoobs || canSeeVag;
+			if (masc && fem)
+				return Gender.HERM;
+			if (masc && !fem)
+				return Gender.MALE;
+			if (!masc && fem)
+				return Gender.FEMALE;
+			return Gender.MALE;
 		}
 		
 		public function breastDelta(delta:Number, mult:Boolean):void
@@ -338,6 +401,35 @@ package org.sevenchan.dongs
 			return true;
 		}
 		
+		public function areAnyConcealed(parts:Vector.<IBodyPart>):Boolean
+		{
+			var yes:Boolean = false;
+			for each (var p:IBodyPart in parts)
+			{
+				if (p != null && p.isConcealedBy(this, clothing))
+					return true;
+			}
+			return false;
+		}
+		
+		public function isHeadConcealed():Boolean
+		{
+			var wat:Function = function(c_:Object, index:int, vector:Vector.<Clothing>):Boolean
+			{
+				var c:Clothing = Clothing(c_);
+				if (c != null)
+					return (c.type.obscures.indexOf("head") > -1);
+				else
+					return false;
+			}
+			return clothing.some(wat);
+		}
+		
+		public function areEyesConcealed():Boolean
+		{
+			return areAnyConcealed(Vector.<IBodyPart>(eyes));
+		}
+		
 		public function getDescription():String
 		{
 			var descr:String = "";
@@ -350,25 +442,50 @@ package org.sevenchan.dongs
 			//
 			// In other words, you're an average human, which probably won't last long down here.
 			//
-			descr = Utils.A(sexualPreference.label) + " " + gender.label + " " + getTypeName() + ", who " + build.getDescription();
 			
-			if (hair == Hair.BALD)
-				descr += ", %POS% glistening scalp distracting from %POS% ";
+			// NOW WITH ENEMY TRAPS
+			var aGender:Gender = getApparentGender();
+			descr = Utils.A(sexualPreference.label) + " " + aGender.label + " " + getTypeName() + ", who " + build.getDescription();
+			
+			if (!isHeadConcealed())
+			{
+				if (hair == Hair.BALD)
+				{
+					descr += ", %POS% glistening scalp";
+					if (!areEyesConcealed())
+						descr += " distracting from %POS%";
+				}
+				else
+				{
+					descr += ". %CSUB% has " + hair;
+					if (!areEyesConcealed())
+						descr += ", which constrasts nicely with %POS%";
+				}
+			}
 			else
-				descr += ". %CSUB% has " + hair + ", which constrasts nicely with %POS% ";
+			{
+				descr += ", and has";
+			}
+			if (!areEyesConcealed())
+			{
+				if (eyes.length == 0)
+				{
+					if (isHeadConcealed())
+						descr += " a";
+					descr += " complete lack of eyes (<b>and resulting blindness</b>)";
+				}
+				else
+					descr += getEyesDescr();
+				descr += " and "
+			}
 			
-			if (eyes.length == 0)
-				descr += " complete lack of eyes (<b>and resulting blindness</b>)";
-			else
-				descr += getEyesDescr();
-			
-			descr += " and " + skin.getDescr(0, this);
+			descr += skin.getDescr(0, this);
 			descr += ".</p>";
 			
 			descr += "<p>In the equipment department, ";
-			var haveBalls:Boolean = (balls.length > 0);
-			var haveDicks:Boolean = (dicks.length > 0);
-			var haveVags:Boolean = (vaginas.length > 0);
+			var haveBalls:Boolean = (balls.length > 0 && !areAnyConcealed(Vector.<IBodyPart>(balls)));
+			var haveDicks:Boolean = (dicks.length > 0 && !areAnyConcealed(Vector.<IBodyPart>(dicks)));
+			var haveVags:Boolean = (vaginas.length > 0 && !areAnyConcealed(Vector.<IBodyPart>(vaginas)));
 			if (haveBalls && haveDicks)
 				descr += "%SUB% has " + getTesticleDescr() + " swinging between %POS% legs, paired with " + getDickDescr() + ".";
 			if (!haveBalls && haveDicks)
@@ -380,38 +497,42 @@ package org.sevenchan.dongs
 				descr += " %CPOS% body possesses " + getVagDescr() + ".";
 			
 			if (!haveBalls && !haveDicks && !haveVags)
-				descr += " %CSUB% doesn't have any sexual organs.  At least you won't get raped.";
+			{
+				descr += " You can't see dangly parts, nor anything else between %POS% legs.";
+				if (breasts.length > 0)
+					descr += "However, ";
+			}
 			
 			if (breasts.length > 0)
 			{
 				descr += " %CSUB% has " + getBreastDescr();
-				if (assholes.length > 0)
+				if (assholes.length > 0 && !areAnyConcealed(Vector.<IBodyPart>(assholes)))
 				{
 					descr += ", and also has " + getAssDescr() + ".";
 				}
 				else
 				{
-					descr += ", but does not have any rectal orifaces to speak of.";
+					descr += ".";
 				}
 			}
 			else
 			{
 				descr += " %CSUB% doesn't have any breasts";
-				if (assholes.length > 0)
+				if (assholes.length > 0 && !areAnyConcealed(Vector.<IBodyPart>(assholes)))
 				{
 					descr += ", but does have " + getAssDescr() + ".";
 					;
 				}
 				else
 				{
-					descr += ", nor do you see any rectal orifaces.";
+					descr += ".";
 				}
 			}
 			
 			if (arms.length > 0)
 				descr += " %CSUB% has " + getArmsDescr() + ", ";
 			else
-				descr += " %CSUB% doesn't have any arms (<b>and therefore can't attack</b>), ";
+				descr += " %CSUB% doesn't have any arms, ";
 			
 			if (legs.length > 0)
 			{
@@ -422,18 +543,20 @@ package org.sevenchan.dongs
 				descr += getLegsDescr() + ".";
 			}
 			else
-				descr += "and no legs (<b>so %SUB% can't dodge attacks</b>).";
+				descr += "and no legs.";
 			
 			if (wings.length > 0)
 			{
 				descr += " %CSUB% also has " + getWingsDescr() + ".";
 			}
 			
-			descr += "%CSUB% is wearing " + ((clothing.length > 0) ? "a " + getClothingDescr() : "nothing" ) + ".";
-			
 			descr += "</p>";
 			
-			return gender.doReplace(descr);
+			descr += "<p>%CSUB% is wearing " + ((clothing.length > 0) ? "a " + getClothingDescr() : "nothing") + ".</p>";
+			if(aGender.label!=gender.label)
+				descr += "<p><small>DEBUG: %CSUB% is actually a " + gender.label + ". TEE HEE.</small></p>";
+			
+			return aGender.doReplace(descr);
 		}
 		
 		public function hasEnchantment(name:String):Boolean
@@ -922,6 +1045,54 @@ package org.sevenchan.dongs
 			return getBodyPartDesc(Vector.<IBodyPart>(balls), "ball");
 		}
 		
+		public function getBulgesInPants():String
+		{
+			var numBulge:int = 0;
+			var peeks:Vector.<Penis> = new Vector.<Penis>();
+			for each (var p:Penis in dicks)
+			{
+				if (p == null) 
+				continue;
+				if (!p.isConcealedBy(this, clothing))
+				{
+					for each (var c:Clothing in clothing)
+					{
+						if (c == null)
+							continue;
+						var bsize:Number = p.getBulgeSize(this, c);
+						trace(p.getDescr(1, this), "bsize=" + bsize.toString());
+						if (bsize > 7)
+						{
+							if (bsize < 8)
+							{
+								numBulge++;
+							}
+							else
+							{
+								peeks.push(p)
+							}
+						}
+					}
+				}
+			}
+			if (numBulge == 0 && peeks.length == 0)
+				return "";
+			var fo:String = " (which has ";
+			if (numBulge > 0)
+			{
+				fo += numBulge + " " + Utils.pluralize(numBulge, "bulge", "bulges");
+			}
+			if (numBulge > 0 && peeks.length > 0)
+			{
+				fo += " and ";
+			}
+			if (peeks.length > 0)
+			{
+				fo += getBodyPartDesc(Vector.<IBodyPart>(peeks), "dick") + " peeking over %POS% waistband";
+			}
+			return fo + ")";
+		}
+		
 		public function getDickDescr():String
 		{
 			return getBodyPartDesc(Vector.<IBodyPart>(dicks), "dick");
@@ -970,22 +1141,22 @@ package org.sevenchan.dongs
 			{
 				var item:Clothing = clothing[i];
 				
-				desc  += item.getDescr(this);
+				desc += item.getDescr(this);
 				
-				switch(item.type)
+				switch (item.type)
 				{
-				case ClothingType.HEADGEAR:
-					desc += " as a hat";
-					break;
-				case ClothingType.TOP:
-					desc += " as a shirt";
-					break;
-				case ClothingType.FOOTWEAR:
-					desc += " as shoes";
-					break;
-				case ClothingType.PANTS:
-					desc += " as trousers";
-					break;
+					case ClothingType.HEADGEAR: 
+						desc += " as a hat";
+						break;
+					case ClothingType.TOP: 
+						desc += " as a shirt";
+						break;
+					case ClothingType.FOOTWEAR: 
+						desc += " as shoes";
+						break;
+					case ClothingType.PANTS: 
+						desc += " as trousers" + getBulgesInPants();
+						break;
 				}
 				
 				if (i < (clothing.length - 3))
@@ -994,7 +1165,7 @@ package org.sevenchan.dongs
 				}
 				else if (i == (clothing.length - 2))
 				{
-					desc += "and ";
+					desc += " and ";
 				}
 			}
 			
@@ -1017,7 +1188,7 @@ package org.sevenchan.dongs
 		 */
 		public function getInterested(subj:Creature):Boolean
 		{
-			return sexualPreference.isOppositeGender(gender, subj.gender);
+			return sexualPreference.isOppositeGender(gender, subj.getApparentGender()); // trollface.jpg
 		}
 		
 		/**
@@ -1053,7 +1224,7 @@ package org.sevenchan.dongs
 		
 		public function getRapable():Boolean
 		{
-			return canRun() && HP < (maxHP/3);
+			return canRun() && HP < (maxHP / 3);
 		}
 		
 		/**
@@ -1061,7 +1232,7 @@ package org.sevenchan.dongs
 		 * @param	ply
 		 * @param	menu
 		 */
-		public function onRape(ply:Creature,rape:Rape):void
+		public function onRape(ply:Creature, rape:Rape):void
 		{
 		
 		}
