@@ -29,12 +29,16 @@ package org.sevenchan.dongs.towns
 			];
 			
 			shops = {
-				SQUIGGLE: new Shop("SQUIGGLE","You're not entirely sure;  All you can see are two carved vertical squiggles.  For all you know, they might be two S's.",this, 0.40, [
+				SQUIGGLE: new Shop(
+				"Banala Potions", "Basic potion shop.",
+				"SQUIGGLE","You're not entirely sure;  All you can see are two carved vertical squiggles.  For all you know, they might be two S's.",this, 0.40, [
 					ItemRegistry.BERRY_WHITE,
 					ItemRegistry.SPIDER_VENOM,
 					ItemRegistry.POTION_PINK
 				]),
-				PARTS: new BodyShop("PARTS", "An arm is beautifully painted on an old, distressed sign.  Below that are unintelligable slashes.  Well, unintelligable to you, anyway.", this, 0.35,
+				PARTS: new BodyShop(
+				"Banala Body Shop","A place to buy and sell body parts.",
+				"PARTS", "An arm is beautifully painted on an old, distressed sign.  Below that are unintelligable slashes.  Well, unintelligable to you, anyway.", this, 0.35,
 				[
 					BodyPartRegistry.arachnid_leg,
 					BodyPartRegistry.arachnid_penis,
