@@ -28,18 +28,17 @@ package org.sevenchan.dongs.screens
 		protected var inventory:Array = [];
 		protected var town:Town;
 		protected var name:String;
+		protected var discoveredName:String;
 		public var description:String;
 		public var discoveredDescription:String="A typical shop.";
 		protected var SellMenu:MenuNode;
 		
-		public static function push():void
+		public function Shop(discoveredName:String,discoveredDesc:String,undiscoveredname:String, undiscovereddescription:String,t:Town, markup:Number, itemsSold:Array) 
 		{
-			AdventureController.screenQueue.write(new SuperStoreScreen());
-		}
-		
-		public function Shop(name:String, description:String,t:Town, markup:Number, itemsSold:Array) 
-		{
-			this.description = description;
+			this.discoveredName = discoveredName;
+			this.discoveredDescription = discoveredDescription;
+			this.name = undiscoveredname;
+			this.description = undiscovereddescription;
 			this.name = name;
 			this.town = t;
 			this.markup = markup;
@@ -48,7 +47,6 @@ package org.sevenchan.dongs.screens
 			inventory = [];
 			
 			currentItem.clearChildren();
-			;
 			var BuyItems:MenuNode = currentItem.pushMenu("Buy", "Buy things at terrible prices.");
 			for each (var item:Item in itemsSold)
 			{

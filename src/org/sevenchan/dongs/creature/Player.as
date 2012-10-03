@@ -19,7 +19,7 @@ package org.sevenchan.dongs.creature
 	public class Player extends Creature
 	{
 		private var f:FileReference = new FileReference();
-		private var baseType:Creature = new Human();
+		public var baseType:Creature = new Human();
 		private var saveFile:FileReference = null;
 		private var waitingForLoad:Boolean = false;
 		private var cancelled:Boolean = false;

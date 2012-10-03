@@ -16,9 +16,9 @@ package org.sevenchan.dongs.screens.shops
 	{
 		private var partsInventory:Dictionary = new Dictionary();
 		private var BuyItems:MenuNode;
-		public function BodyShop(name:String, description:String, t:Town, markup:Number, itemsSold:Array) 
+		public function BodyShop(dName:String,dDesc:String, name:String, description:String,t:Town, markup:Number, itemsSold:Array) 
 		{
-			super(name, description, t, markup, []);
+			super(dName,dDesc,name, description,t, markup, []);
 			inventory = [];
 			
 			currentItem.clearChildren();

@@ -4,6 +4,7 @@ package org.sevenchan.dongs.screens
 	import org.sevenchan.dongs.creature.*;
 	import org.sevenchan.dongs.bodyparts.*;
 	import org.sevenchan.dongs.*;
+	import org.sevenchan.dongs.creature.Bova;
 	/**
 	 * ...
 	 * @author Harbinger
@@ -67,10 +68,12 @@ package org.sevenchan.dongs.screens
 							break;
 						case 1:
 							main.player.setBaseType(new Bova());
-							text += "<p>You are a Bova, a cow-girl who transforms others into Bovae via flatulence.</p>";
-							text += "<p>Bovae can be Female or Hermophrodites (Franks, beans AND tacos).</p>";
+							text += "<p>You are a Bova, a race of cow-girls that was once enslaved by man.  Throwing off their shackles, they formed their own nation after a bloody war.</p>";
+							text += "<p>Bovae can be Male or Female.</p>";
+							text += "<p>Males (bulls) are very strong, yet not very smart.</p>";
+							text += "<p>Females are more cunning, yet they need their bulls for protection.</p>";
 							clearButtons();
-							setButton(1, "Hermophrodite");
+							setButton(0, "Male");
 							setButton(2, "Female");
 							break;
 						case 2:
@@ -101,18 +104,15 @@ package org.sevenchan.dongs.screens
 					this.stage = 3;
 					clearButtons();
 					text = "<h2>Class Selection</h2>";
-					text += "<p>Here, you choose your initial startup benefits.  These aren't classes in the traditional sense, they merely boost your initial stats.</p>";
+					text += "<p>Here, you choose your initial startup benefits and weapons.</p>";
 					text += "<ul>";
-					setButton(0, "Balanced");
-					text += "<li>Balanced - You trained all of your skills.  (+1 STR, +1 SPD, +1 INT).</li>";
-					setButton(1, "Brute");
-					text += "<li>Brute - You excel in brute strength, and can benchpress a horse.  However, you're not too fast, and not too smart. (+3 STR)</li>";
+					setButton(0, "Avg. Joe");
+					text += "<li>Avg. Joe - Just go in with the clothes on your back. (1 STR, 1 INT, 1 SPD)</li>";
+					setButton(1, "Soldier");
+					text += "<li>Soldier - You spent more time on swordplay than books. This lets you dive right into the combat. (+3 STR, Cheap Sword, Leather Armor)</li>";
 					setButton(2, "Bookworm");
-					text += "<li>Bookworm - You read a lot of scrolls as a kid, and paid attention in class. Strength, however, is not your forte. (+2 INT, +1 SPD)</li>";
-					if(main.player.gender == Gender.MALE || main.player.gender == Gender.HERM) {
-						text += "<li>Freak - You were cursed at birth with a third testicle, which gives you more volume and lust, but it reduced your muscle development, despite the extra testosterone. (+1 TESTICLE, +1 STR, +1 SPD)</li>";
-						setButton(3, "Freak");
-					}
+					text += "<li>Bookworm - You read a lot of scrolls as a kid, and paid attention in class. Strength, however, is not your forte. (+3 INT, Glasses, Daemonology Book)</li>";
+					
 					text += "</ul>";
 					updateScreen();
 					break;

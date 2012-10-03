@@ -27,14 +27,17 @@ package org.sevenchan.dongs.towns
 				"lake"
 			];
 			this.shops = {
-				BEAKER: new Shop("BEAKER","Judging by the old, broken sign with a beaker scrawled across it, probably a potion shop",this, 0.15, [
+				BEAKER: new Shop(
+				"Damned Potions","Headquarters of a potion shop franchise",
+				"BEAKER","Judging by the old, broken sign with a beaker scrawled across it, probably a potion shop",this, 0.15, [
 					ItemRegistry.BERRY_WHITE,
 					ItemRegistry.POTION_PINK,
 					ItemRegistry.SPIDER_VENOM
 				]),
-				SHIRTS: new Shop("SHIRTS","You have no idea.  It looks like someone nailed dozens of ragged shirts to the front of the stall, so possibly a clothier.",this, 0.35, [
-					ItemRegistry.GAS_MASK,
-				
+				SHIRTS: new Shop(
+				"Cruel Clothing","A small clothing shop.",
+				"SHIRTS","You have no idea.  It looks like someone nailed dozens of ragged shirts to the front of the stall, so possibly a clothier.",this, 0.35, [
+					ItemRegistry.GAS_MASK, // TODO: CLOTHES
 				])
 			};
 		}

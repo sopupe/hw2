@@ -40,7 +40,7 @@ package org.sevenchan.dongs.creature
 					this.gender = Gender.HERM;
 					break;
 			}
-			this.build = Build.AVG;
+			this.build = Build.CHUBBY;
 			this.hair = new Hair("long, blonde");
 			this.arms.push(BodyPartRegistry.human_arm, BodyPartRegistry.human_arm);
 			this.legs.push(BodyPartRegistry.human_leg, BodyPartRegistry.human_leg);

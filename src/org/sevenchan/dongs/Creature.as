@@ -3,6 +3,7 @@ package org.sevenchan.dongs
 	import flash.net.*;
 	import org.sevenchan.AdventureController;
 	import org.sevenchan.dongs.bodyparts.*;
+	import org.sevenchan.dongs.clothing.Clothing;
 	import org.sevenchan.dongs.creature.*;
 	import org.sevenchan.dongs.enchantment.*;
 	import org.sevenchan.dongs.enchantment.events.*;
@@ -70,6 +71,10 @@ package org.sevenchan.dongs
 		public var _wings:Vector.<Wing> = new Vector.<Wing>();
 		// Explored locations
 		public var explored:Vector.<String> = new Vector.<String>();
+		
+		public var clothing:Vector.<Clothing> = new Vector.<Clothing>();
+		
+		
 		
 		/**
 		 * Do stats scale with the PC (false) or stay the same (true)?

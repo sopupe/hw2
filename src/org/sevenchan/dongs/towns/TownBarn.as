@@ -25,7 +25,7 @@ package org.sevenchan.dongs.towns
 			];
 			
 			this.shops = {
-				CART: new Shop("CART","The old demon's cart of wonders",this, 0.3, [
+				CART: new Shop("CART","The old demon's cart of wonders","CART","The old demon's cart of wonders",this, 0.3, [
 					ItemRegistry.BERRY_WHITE
 				])
 			};
