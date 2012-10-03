@@ -112,7 +112,8 @@ package org.sevenchan.dongs
 			
 			for each (var d:Penis in dicks)
 			{
-				if (d == null) continue;
+				if (d == null)
+					continue;
 				if (!d.isConcealedBy(this, clothing))
 				{
 					trace(d.getDescr(1, this), "gave", getTypeName(), "away");
@@ -123,7 +124,8 @@ package org.sevenchan.dongs
 			
 			for each (var t:Testicle in balls)
 			{
-				if (t == null) continue;
+				if (t == null)
+					continue;
 				if (!t.isConcealedBy(this, clothing))
 				{
 					trace(t.getDescr(1, this), "gave", getTypeName(), "away");
@@ -134,7 +136,8 @@ package org.sevenchan.dongs
 			
 			for each (var b:Breast in breasts)
 			{
-				if (b == null) continue;
+				if (b == null)
+					continue;
 				if (!b.isConcealedBy(this, clothing))
 				{
 					trace(b.getDescr(1, this), "gave", getTypeName(), "away");
@@ -145,7 +148,8 @@ package org.sevenchan.dongs
 			
 			for each (var v:Vagina in vaginas)
 			{
-				if (v == null) continue;
+				if (v == null)
+					continue;
 				if (!v.isConcealedBy(this, clothing))
 				{
 					trace(v.getDescr(1, this), "gave", getTypeName(), "away");
@@ -425,6 +429,19 @@ package org.sevenchan.dongs
 			return clothing.some(wat);
 		}
 		
+		public function isWearing(ct:ClothingType):Boolean
+		{
+			var wat:Function = function(c_:Object, index:int, vector:Vector.<Clothing>):Boolean
+			{
+				var c:Clothing = Clothing(c_);
+				if (c != null)
+					return (c.type == ct);
+				else
+					return false;
+			}
+			return clothing.some(wat);
+		}
+		
 		public function areEyesConcealed():Boolean
 		{
 			return areAnyConcealed(Vector.<IBodyPart>(eyes));
@@ -483,9 +500,10 @@ package org.sevenchan.dongs
 			descr += ".</p>";
 			
 			descr += "<p>In the equipment department, ";
-			var haveBalls:Boolean = (balls.length > 0 && !areAnyConcealed(Vector.<IBodyPart>(balls)));
-			var haveDicks:Boolean = (dicks.length > 0 && !areAnyConcealed(Vector.<IBodyPart>(dicks)));
-			var haveVags:Boolean = (vaginas.length > 0 && !areAnyConcealed(Vector.<IBodyPart>(vaginas)));
+			var wearingPants:Boolean = isWearing(ClothingType.PANTS);
+			var haveBalls:Boolean = (balls.length > 0 && !wearingPants);
+			var haveDicks:Boolean = (dicks.length > 0 && !wearingPants);
+			var haveVags:Boolean = (vaginas.length > 0 && !wearingPants);
 			if (haveBalls && haveDicks)
 				descr += "%SUB% has " + getTesticleDescr() + " swinging between %POS% legs, paired with " + getDickDescr() + ".";
 			if (!haveBalls && haveDicks)
@@ -496,7 +514,7 @@ package org.sevenchan.dongs
 			if (haveVags)
 				descr += " %CPOS% body possesses " + getVagDescr() + ".";
 			
-			if (!haveBalls && !haveDicks && !haveVags)
+			if (!haveBalls && !haveDicks && !haveVags )
 			{
 				descr += " You can't see any dangly parts, nor anything else between %POS% legs.";
 				if (breasts.length > 0)
@@ -553,8 +571,8 @@ package org.sevenchan.dongs
 			descr += "</p>";
 			
 			descr += "<p>%CSUB% is wearing " + ((clothing.length > 0) ? "a " + getClothingDescr() : "nothing") + ".</p>";
-			if(aGender.label!=gender.label)
-				descr += "<p><small>DEBUG: %CSUB% is actually a " + gender.label + " with "+getDickDescr()+"/"+getTesticleDescr()+"/"+getVagDescr()+". TEE HEE.</small></p>";
+			if (aGender.label != gender.label)
+				descr += "<p><small>DEBUG: %CSUB% is actually a " + gender.label + " with " + getDickDescr() + "/" + getTesticleDescr() + "/" + getVagDescr() + ". TEE HEE.</small></p>";
 			
 			return aGender.doReplace(descr);
 		}
@@ -1047,8 +1065,8 @@ package org.sevenchan.dongs
 			var peeks:Vector.<Penis> = new Vector.<Penis>();
 			for each (var p:Penis in dicks)
 			{
-				if (p == null) 
-				continue;
+				if (p == null)
+					continue;
 				if (!p.isConcealedBy(this, clothing))
 				{
 					for each (var c:Clothing in clothing)
@@ -1057,7 +1075,7 @@ package org.sevenchan.dongs
 							continue;
 						var bsize:Number = p.getBulgeSize(this, c);
 						trace(p.getDescr(1, this), "bsize=" + bsize.toString());
-						if (bsize > 7)
+						if (bsize > 6)
 						{
 							if (bsize < 8)
 							{

@@ -42,7 +42,7 @@ package org.sevenchan.dongs.creature
 				BodyPartRegistry.demon_anus
 			);
 			this.clothing.push(
-				ItemRegistry.BROWN_TUNIC,
+				ItemRegistry.BLACK_TUNIC,
 				ItemRegistry.GRAY_PANTS
 			);
 			skin = SKIN;
@@ -215,7 +215,7 @@ package org.sevenchan.dongs.creature
 		
 		private function getNewDick():Penis {
 			var wang:Penis = BodyPartRegistry.demon_penis
-			wang.size += MathUtils.rand(1, 3, false);
+			wang.size = MathUtils.rand(4, 12, true);
 			return wang;
 		}
 		

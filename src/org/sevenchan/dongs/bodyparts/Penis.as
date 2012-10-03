@@ -181,14 +181,14 @@ package org.sevenchan.dongs.bodyparts
 			if (c.type != ClothingType.PANTS)
 				return 0;
 				var horniness:Number = Number(host.lust+0.0) / 100.0;
-			var realsize:Number = Math.max(0.5, horniness) * (size*sizeMult);
-			trace("bsize of a " + MathUtils.inchesToFootInches(size * sizeMult) + "("+(size*sizeMult)+", h"+horniness+") dick = " + realsize.toString());
+			var realsize:Number = Math.max(0.1, horniness) * (size*sizeMult);
+			trace("bsize of a " + MathUtils.inchesToFootInches(size * sizeMult) + "("+(size*sizeMult).toString()+", h"+horniness.toString()+") dick = " + realsize.toString());
 			return realsize;
 		}
 		
 		public function isProducingABulge(host:Creature, c:Clothing):Boolean
 		{
-			if (getBulgeSize(host, c) > 7)
+			if (getBulgeSize(host, c) > 6)
 				return true;
 			return false;
 		}
@@ -197,7 +197,7 @@ package org.sevenchan.dongs.bodyparts
 		{
 			for each (var c:Clothing in clothing)
 			{
-				if (getBulgeSize(host, c) > 7)
+				if (getBulgeSize(host, c) > 6)
 					return true;
 			}
 			return false;

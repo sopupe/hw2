@@ -28,7 +28,7 @@ package {
 		
 		public static function inchesToFootInches(_in:int):String {
 			var inches:Number = _in % 12;
-			var feet:Number = Math.round(_in / 12);
+			var feet:Number = Math.floor(_in / 12);
 			var out:String = inches + "\"";
 			if (feet > 0) {
 				out =feet + "' " + out;
