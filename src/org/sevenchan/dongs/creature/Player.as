@@ -1,15 +1,15 @@
 package org.sevenchan.dongs.creature
 {
-	import org.sevenchan.AdventureController;
-	import com.adobe.serialization.json.*;
+//	import com.adobe.serialization.json.JSON;
+	import com.adobe.serialization.json.JSONEncoder;
 	import flash.events.Event;
 	import flash.net.*;
+	import flash.utils.*;
+	import org.sevenchan.AdventureController;
+	import org.sevenchan.dongs.*;
 	import org.sevenchan.dongs.ability.Instawin;
 	import org.sevenchan.dongs.bodyparts.*;
-	import org.sevenchan.dongs.*;
-	import flash.utils.*;
 	import org.sevenchan.dongs.creature.npc.NPC;
-	import org.sevenchan.dongs.enchantment.Enchantment;
 	import org.sevenchan.dongs.screens.CombatScreen;
 	
 	/**
@@ -83,16 +83,21 @@ package org.sevenchan.dongs.creature
 		public function save(slot:int = -1):void
 		{
 			if (slot == -1)
-			{ // Export
-				var ba:ByteArray = new ByteArray();
-				ba.writeObject( {
+			{ 
+				// Export
+				var savo:Object = {
 					currentTown: currentTown.ID, 
 					body: baseType,
 					npcs: NPC.instances
-				});
+				};
+				/*
+				var ba:ByteArray = new ByteArray();
+				ba.writeObject( savo );
 				ba.objectEncoding = ObjectEncoding.AMF3;
+				*/
+				var json:JSONEncoder = new JSONEncoder(savo);
 				var f:FileReference = new FileReference();
-				f.save(ba, "save.dat");
+				f.save(json.getString(), "save.7la");
 			}
 			else
 			{
@@ -111,7 +116,7 @@ package org.sevenchan.dongs.creature
 				waitingForLoad = true;
 				f.addEventListener(Event.SELECT, onFileSelected);
 				f.addEventListener(Event.CANCEL, onFileCancelled);
-				if (!f.browse([new FileFilter("Saves", "*.dat")]))
+				if (!f.browse([new FileFilter("Saves", "*.7la")]))
 					return false;
 				return true;
 			}
@@ -156,7 +161,8 @@ package org.sevenchan.dongs.creature
 		
 		private function onFileLoaded(e:Event):void
 		{
-			var saveData:Object = f.data.readObject();
+			//var saveData:Object = f.data.readObject();
+			var saveData:Object = JSON.stringify(f.data.toString());
 			this.currentTown = Town.knownTowns[saveData.currentTown];
 			this.baseType = saveData.body;
 			if (saveData.hasOwnProperty("npcs"))

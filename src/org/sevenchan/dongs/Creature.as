@@ -1250,6 +1250,30 @@ package org.sevenchan.dongs
 		{
 		
 		}
+		
+		/**
+		 * Does this character have any weapons?
+		 * @return
+		 */
+		public function hasAnyWeapon():Boolean {
+			for (var i:int = 0; i < arms.length; i++) {
+				if (arms[0].weapon != null)
+					return true;
+			}
+			return false;
+		}
+		
+		/**
+		 * Find any equipped weapon.
+		 * @return
+		 */
+		public function getFirstWeapon():IWeapon {
+			for (var i:int = 0; i < arms.length; i++) {
+				if (arms[0].weapon != null)
+					return arms[0].weapon;
+			}
+			return null;
+		}
 	}
 }
 

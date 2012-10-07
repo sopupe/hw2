@@ -86,16 +86,24 @@ package org.sevenchan.dongs.screens.encounters
 			// You didn't use a fucking gas mask
 			if (!ply.hasItem(ItemRegistry.GAS_MASK.id))
 			{
-				text = "<h2>Always Use Protection</h2>";
-				text += "<p>She smiles mischieviously again as you unzip, and then blushes as she, too, slips out of her clothing, letting her huge tits spill out of her tight shirt.  You lick their puffy, swollen nipples, eliciting a soft moan as you soothe her skin.  You finish undressing each other in a cheap hotel room you hurriedly purchase together from a bored innkeeper who was all too happy to see bare breasts.  The door barely closes behind the both of you as you throw yourselves into bed.</p>";
-				text += "<p>Your " + ply.getDickDescr() + " throb uncontrollably against her thigh, and it doesn't take long to find yourself balls-deep in a moaning cowgirl while suffocating in her massive tits.</p>";
-				text += "<p>And that's when it all goes terribly wrong.</p>";
-				text += "<p>You loudly stifle a giggle as a loud fart escapes her buns while in the middle of orgasm.  Her eyes shoot open, and you finish into her right before she screams at you to run.  &quot;Why?  It's not like there's a fucking Ala in this room.  Are you concerned about the fart, because I don't m-&quot;  She interrupts you by shoving you out of bed and huddling you towards the door, but it's too late as the effects of her gasses take hold</p>";
+				if (!ply.getExplored("bovafarts"))
+				{
+					ply.setExplored("bovafarts");
+					text = "<h2>Always Wear Protection</h2>";
+					text += "<p>She smiles mischieviously again as you unzip, and then blushes as she, too, slips out of her clothing, letting her huge tits spill out of her tight shirt.  You lick their puffy, swollen nipples, eliciting a soft moan as you soothe her skin.  You finish undressing each other in a cheap hotel room you hurriedly purchase together from a bored innkeeper who was all too happy to see bare breasts.  The door barely closes behind the both of you before she hands you a strange looking copper mask with a tubular filter on the end.  Curious, you look at her in pure puzzlement.</p>";
+					text += "<p>A sad smile parts her lips, and she blushes and sways her hips in mild embarassment.  &quot;Trust me.&quot; She says, turning her face away a bit. &quot;You want to wear that.&quot;  You comply and don the mask without further questions and climb into bed with her.</p>";
+					text += "<p>Your " + ply.getDickDescr() + " throb uncontrollably against her thigh, and it doesn't take long to find yourself balls-deep in a moaning cowgirl while suffocating in her massive tits.</p>";
+					text += "<p>Just as the both of you finish, you are startled from the moment by a soft, but still audible report from your partner's buttocks.  &quot;And now you see why you need to wear the mask.&quot;  She says softly between pants.  Her earlier embarassment has returned, you notice.  &quot;Here in Ora, the Corruption makes us Bovae a bit gassy.  The gas changes men into Bovae, and there's no known reversal, which is the reason for the mask. I'm sorry for leaving that as a...  Surprise, but I wasn't sure how you'd take it.&quot; She wipes her forehead with the back of her hand.  &quot;Then again,  I'd rather not anticipate your reaction if you had not worn the mask.&quot;  She trails off, and you decide she's probably referring to your many battle scars.</p>";
+					text += "<p>You nod in understanding, still breathing heavily yourself, and suddenly glad for the mask.  Aware of the awkward silence, you thank her, and stroke her side appreciatively.</p>";
+					text += "<p>&quot;My master will want me back on the streets soon,&quot;  She says, eying a copper device clamped around her delicate wrists.  She notices your confusion, and explains that her master has a thing for watching her milk herself in public, and gets testy if she's gone for too long.  You nod, and dutifully begin to dress.  You hand the mask back to her ater she assures you it's okay to take off, and get on your way, thinking carefully of what transpired.</p>";
+				} else {
+					text += "<p>A sad smile crosses her face.  &quot;I'm sorry, but my master took my gas mask, so if you want us to... Do anything in the future, you'll have to acquire your own mask at the clothier.&quot;</p>";
+				}
 				//text += "<p>TODO: Transformation into a Bova</p>";
 				InfoScreen.push(text);
-				ply.lust = 0;
-				if (ply is Player)
-					(ply as Player).changeTo(CreatureRegistry.bova);
+				//ply.lust = 0;
+				//if (ply is Player)
+					//(ply as Player).changeTo(CreatureRegistry.bova);
 			}
 			else
 			{

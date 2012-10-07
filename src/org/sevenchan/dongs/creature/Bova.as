@@ -11,8 +11,8 @@ package org.sevenchan.dongs.creature
 	/**
 	 * Bova == Cow-girl
 	 *
-	 * Friendly creature that sells milk and sex, although
-	 * sex without a gas mask = you turn into a cowgirl.
+	 * Friendly creature that sells milk and sex<s>, although
+	 * sex without a gas mask = you turn into a cowgirl.</s>
 	 *
 	 * This is based off of a creature from a picture drawn by 7chan /d/, so bite me.
 	 * @author Harbinger
@@ -46,7 +46,7 @@ package org.sevenchan.dongs.creature
 			this.legs.push(BodyPartRegistry.human_leg, BodyPartRegistry.human_leg);
 			this.eyes.push(BodyPartRegistry.human_blue_eye, BodyPartRegistry.human_blue_eye);
 			this.skin = SKIN;
-			this.abilities["flatulence"] = new Flatulence();
+			//this.abilities["flatulence"] = new Flatulence();
 		}
 		
 		override public function addBreast():Breast

@@ -28,6 +28,15 @@ package
 			return (caps)?"A":"a";
 		}
 		
+		// Strip stuff like a/an
+		public static function stripA(hurr:String):String {
+			if (hurr.substr(0, 3).toLowerCase() == "an ")
+				return hurr.substring(4);
+			if (hurr.substr(0, 2).toLowerCase() == "a ")
+				return hurr.substring(3);
+			return hurr;
+		}
+		
 		public static function nTh(n:Number):String {
 			if (n == 1) return n + "st";
 			if (n == 2) return n + "nd";
