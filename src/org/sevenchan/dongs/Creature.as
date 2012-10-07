@@ -89,8 +89,42 @@ package org.sevenchan.dongs
 		public function Creature()
 		{
 			trace("Creature.init()");
+			clearFuckingEverything();
+			
 			_gold = MathUtils.rand(0, 50);
 			_mana = maxMana;
+		}
+		
+		/**
+		 * IF YOU ADD ANY NEW VARIABLES TO THIS CLASS, RESET THEM TO DEFAULT VALUES HERE!
+		 */
+		private function clearFuckingEverything():void {
+			_level = 0; // In comparison to standard human being.  No attacking rats for 20 levels.
+			d_level = 0; // Delta
+			_strength = 1; // Damage caused in case of a successful attack.
+			_speed = 1; // Chance of dodging [0-1].  defending.speed-attacking.speed = relative chance of dodging.
+			_intellect = 1; // Smartness.  Opens dialog trees and gives hints.
+			_lust = 1; // Slowly increases over time, eliminated by masturbation or smecks.  Some battles are nonsexual and will not affect lust, others will slightly increase it based on ((number of balls x ball hormone output)+(number of vaginas * vagina hormone output)* sensitivity).
+			_sensitivity = 0; // 0-1, 0 being not sensitive
+			_HP = 100; //100*(level*0.02)
+			_XP = 0; // 50*(level*0.5)
+			_mana = 0; // Magic shit, increases over time, especially near relaxing places.
+			_gold = 0; // Currency
+			
+			_abilities = new Object();
+			_assholes = new Vector.<Asshole>();
+			_arms = new Vector.<Arm>();
+			_balls = new Vector.<Testicle>();
+			_breasts = new Vector.<Breast>();
+			_dicks = new Vector.<Penis>();
+			enchantments = new Object();
+			_eyes = new Vector.<Eye>();
+			inventory = new Vector.<Item>();
+			_legs = new Vector.<Leg>();
+			_vaginas = new Vector.<Vagina>();
+			_wings = new Vector.<Wing>();
+			explored = new Vector.<String>();
+			clothing = new Vector.<Clothing>();
 		}
 		
 		public function addBreast():Breast

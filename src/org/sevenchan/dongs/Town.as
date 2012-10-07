@@ -144,7 +144,7 @@ package org.sevenchan.dongs
 					{
 						case 0: 
 							var c:Creature = getRandomInhabitant();
-							if (c == null)
+							if (c != null)
 							{
 								if (c.getHostile(main.player))
 								{
@@ -592,7 +592,7 @@ package org.sevenchan.dongs
 		
 		public function getRandomInhabitant():Creature
 		{
-			for each (var type:Object in inhabitants)
+			for (var type:Object in inhabitants)
 			{
 				var c:Creature = type as Creature;
 				var rnd:Number = Math.random();
