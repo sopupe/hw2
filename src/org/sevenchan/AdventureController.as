@@ -96,7 +96,7 @@ package org.sevenchan
 			var tf:TextFormat = new TextFormat();
 			tf.color = 0xffffff;
 			tf.font = "_sans";
-			txtHeader.htmlText = "ADVENTURE OF THE SEVEN LEAVES <b>TEST BUILD</b>";
+			txtHeader.htmlText = "ADVENTURE OF THE SEVEN LEAVES <b>RELEASE 28</b>";
 			txtHeader.setTextFormat(tf);
 			txtHeader.autoSize = "left";
 			addChild(txtHeader);
