@@ -17,6 +17,8 @@ package org.sevenchan.dongs
 		function pushAction(name:String, cost:int, desc:String, callback:Function, arg:*=null):ActionNode;
 		function get content():String;
 		function set content(val:String):void;
+		function get canGoBack():Boolean;
+		function set canGoBack(value:Boolean):void;
 	}
 	
 }

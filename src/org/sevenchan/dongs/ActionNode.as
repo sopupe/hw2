@@ -11,7 +11,8 @@ package org.sevenchan.dongs
 		private var _children:Vector.<INode> = new Vector.<INode>();
 		private var _name:String;
 		private var _desc:String;
-		private var _cost:int=-1;
+		private var _cost:int = -1;
+		private var _canGoBack:Boolean = true;
 		public var arg:*;
 		public var callback:Function;
 		private var _content:String = "[?]";
@@ -45,6 +46,13 @@ package org.sevenchan.dongs
 		}
 		public function set content(value:String):void {
 			_content=value;
+		}
+		
+		public function set canGoBack(value:Boolean):void {
+			_canGoBack = value;
+		}
+		public function get canGoBack():Boolean{
+			return _canGoBack;
 		}
 		
 		

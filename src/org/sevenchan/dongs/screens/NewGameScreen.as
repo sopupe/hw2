@@ -52,7 +52,10 @@ package org.sevenchan.dongs.screens
 					setButton(0, "Human");
 					setButton(1, "Bova");
 					setButton(2, "Demon");
-					text = "<h2>Species</h2><p>Select whatever the hell you want to be.  Note that this list is very incomplete.</p>";
+					text = "<h2>What are you?</h2>";
+					text += "<p><b>Human:</b> You were born human. If you’re playing this, you probably know what a human looks like.</p>"; // Added commas, reworded a bit - Harb
+					text += "<p><b>Bova:</b> You were born as a Bova, more widely known as a cow-girl.  Bovae are cow-morphs with predominantly human features save for hoofs, larger than usual breasts and milk output (assuming they're female, of course), floppy cow ears, and a black and white tail.</p>"; // s/bovine/bova/
+					text += "<p><b>Demon:</b> You were born a demon, with an unusual skin color compared to humans and bovae as well as a high libido, leaving you more easily aroused. However, you are quite capable of “exciting” your lovers and foes.</p>"; // Grammatical fixes
 					updateScreen();
 					break;
 				case 1: // Gender selection
@@ -91,21 +94,94 @@ package org.sevenchan.dongs.screens
 				}
 					updateScreen();
 					break;
-				case 2: // Profile
+				case 2: // Skin color
+					stage = 3;
 					switch (id)
-				{
-					case 0: 
-						main.player.gender = Gender.MALE;
-						break;
-					case 1: 
-						main.player.gender = Gender.HERM;
-						break;
-					case 2: 
-						main.player.gender = Gender.FEMALE;
-						break;
-				}
+					{
+						case 0: 
+							main.player.gender = Gender.MALE;
+							break;
+						case 1: 
+							main.player.gender = Gender.HERM;
+							break;
+						case 2: 
+							main.player.gender = Gender.FEMALE;
+							break;
+					}
 					main.player.initialGenderSetup();
-					this.stage = 3;
+					text = "<h2>Skin color</h2>";
+					text += "<p>What color is your skin?</p>";
+					var isDemon:Boolean = main.player.getTypeName() == "demon";
+					clearButtons();
+					if(!isDemon){
+						setButton(0, "White");
+						setButton(1, "Brown");
+						setButton(2, "Black");
+						setButton(3, "Tan");
+						setButton(4, "Albino");
+					} else {
+						// idfk
+						setButton(0, "RedishBrown");
+						setButton(1, "Violet");
+						setButton(2, "Dark Red");
+					}
+					updateScreen();
+					break;
+				case 3: // Hair type
+					stage = 4;
+					var isDemon:Boolean = main.player.getTypeName() == "demon";
+					if (!isDemon) {
+						switch(id)
+						{
+							case 0: main.player.skin.color = "white"; break;
+							case 1: main.player.skin.color = "brown"; break;
+							case 2: main.player.skin.color = "black"; break;
+							case 3: main.player.skin.color = "tan"; break;
+							case 4: main.player.skin.color = "albino"; break;
+						}
+					}
+					else
+					{
+						switch(id) {
+							case 0: main.player.skin.color = "reddish brown"; break;
+							case 1: main.player.skin.color = "violet"; break;
+							case 2: main.player.skin.color = "dark red"; break;
+						}
+					}
+					text = "<h2>Hair Style</h2>";
+					text += "<p>What kind of hair do you want, assuming you want any at all?</p>";
+					setButton(0, "Plain");
+					setButton(1, "Bob cut");    
+					setButton(2, "Wild&Proud");  
+					setButton(3, "Ponytail");
+					setButton(4, "Bald");
+					setButton(5, "Shaven");
+					updateScreen();
+					break;
+				case 4:
+					this.stage = 5;
+					main.player.hair = new Hair();
+					// TODO: Add public set member for hair description.
+					switch(id) {
+						case 0: // Plain
+							main.player.hair.style = "plain";
+							break;
+						case 1: // Bob cut
+							main.player.hair.style = "bob-cut";
+							break;
+						case 2: // Wild and proud
+							main.player.hair.style = "wild";
+							break;
+						case 3: // Ponytail
+							main.player.hair.style = "ponytail";
+							break;
+						case 4: // Bald
+							main.player.hair.style = "bald";
+							break;
+						case 5: // Shaven
+							main.player.hair.style = "close-shaven";
+							break;
+					}
 					clearButtons();
 					text = "<h2>Class Selection</h2>";
 					text += "<p>Here, you choose your initial startup benefits and weapons.</p>";

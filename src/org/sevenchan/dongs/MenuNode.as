@@ -12,6 +12,7 @@ package org.sevenchan.dongs
 		private var _name:String;
 		private var _desc:String;
 		private var _content:String = "[?]";
+		private var _canGoBack:Boolean = true;
 		private var conditionalCallback:Function = null;
 		public function MenuNode(parent:INode,name:String,desc:String, conditionalCallback:Function=null) 
 		{
@@ -45,6 +46,12 @@ package org.sevenchan.dongs
 				return true;
 			else
 				return conditionalCallback.call(context, ply, otherCreature, this);
+		}
+		public function set canGoBack(value:Boolean):void {
+			_canGoBack = value;
+		}
+		public function get canGoBack():Boolean{
+			return _canGoBack;
 		}
 		
 		public function pushChild(c:INode):void {

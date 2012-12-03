@@ -1,21 +1,18 @@
 package org.sevenchan
 {
-	import com.adobe.utils.IntUtil;
 	import flash.display.*;
 	import flash.events.*;
-	import flash.sampler.NewObjectSample;
 	import flash.text.*;
-	import org.sevenchan.dongs.enchantment.events.ScreenChangedEvent;
-	import spark.components.Application;
 	import mx.core.UIComponent;
 	import org.sevenchan.dongs.Creature;
 	import org.sevenchan.dongs.creature.*;
 	import org.sevenchan.dongs.enchantment.events.CombatStartEvent;
+	import org.sevenchan.dongs.enchantment.events.ScreenChangedEvent;
 	import org.sevenchan.dongs.Item;
 	import org.sevenchan.dongs.Screen;
+	import org.sevenchan.dongs.screens.*;
 	import org.sevenchan.dongs.Town;
 	import org.sevenchan.dongs.ui.*;
-	import org.sevenchan.dongs.screens.*;
 	/**
 	 * ...
 	 * @author Harbinger
