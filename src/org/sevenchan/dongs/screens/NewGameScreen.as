@@ -161,7 +161,6 @@ package org.sevenchan.dongs.screens
 				case 4:
 					this.stage = 5;
 					main.player.hair = new Hair();
-					// TODO: Add public set member for hair description.
 					switch(id) {
 						case 0: // Plain
 							main.player.hair.style = "plain";
@@ -192,12 +191,11 @@ package org.sevenchan.dongs.screens
 					text += "<li>Soldier - You spent more time on swordplay than books. This lets you dive right into the combat. (+3 STR, Cheap Sword, Leather Armor)</li>";
 					setButton(2, "Bookworm");
 					text += "<li>Bookworm - You read a lot of scrolls as a kid, and paid attention in class. Strength, however, is not your forte. (+3 INT, Glasses, Daemonology Book)</li>";
-					
 					text += "</ul>";
 					updateScreen();
 					break;
-				case 3: 
-					stage = 4;
+				case 5: 
+					stage = 6;
 					main.player.strength = 5;
 					main.player.speed = 5;
 					main.player.intellect = 5;
@@ -231,7 +229,7 @@ package org.sevenchan.dongs.screens
 					updateScreen();
 					done = false;
 					break;
-				case 4: 
+				case 6: 
 					return true;
 			}
 			trace(id, stage, done);
