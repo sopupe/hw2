@@ -6,6 +6,7 @@ package org.sevenchan.dongs.screens.encounters
 	import org.sevenchan.dongs.MenuNode;
 	import org.sevenchan.dongs.screens.Encounter;
 	import org.sevenchan.AdventureController;
+	import org.sevenchan.dongs.screens.InfoScreen;
 	import org.sevenchan.dongs.Town;
 	
 	/**
@@ -22,7 +23,8 @@ package org.sevenchan.dongs.screens.encounters
 		{
 			super(target);
 			lustCost = 0;
-			currentItem.content = <![CDATA[
+			currentItem.clearChildren();
+			text = <![CDATA[
 				<p>
 					For some reason, you get it into your thick skull to wander out into the desert surrounding Banala
 					(which - according to the grouchy Innkeeper, anyway - is called the Haara Wastes, after the demon
@@ -40,6 +42,7 @@ package org.sevenchan.dongs.screens.encounters
 					you are gives you pause.
 				</p>
 			]]>.toString();
+			currentItem.content = text;
 			currentItem.canGoBack = false;
 			currentItem.pushAction("Banala", -1, "Head back to Banala.", onBanala, null);
 			var mnuCamp:MenuNode = currentItem.pushMenu("Camp", "Set up camp.");
@@ -175,7 +178,8 @@ package org.sevenchan.dongs.screens.encounters
 					You attempt to dig around for the flask, but find nothing. Sighing, you begin to trudge back towards Banala.
 				</p>
 			]]>.toString();
-			node.content = text;
+			main.setTown(Town.knownTowns.banala);
+			InfoScreen.push(text);
 			return true;
 		}
 		
@@ -192,8 +196,8 @@ package org.sevenchan.dongs.screens.encounters
 				</p>
 			]]>.toString();
 			main.player.HP = main.player.HP / 4;
-			main.player.currentTown = Town.knownTowns.banala;
-			node.content = text;
+			main.setTown(Town.knownTowns.banala);
+			InfoScreen.push(text);
 			return true;
 		}
 	}

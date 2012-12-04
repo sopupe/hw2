@@ -61,8 +61,9 @@ package org.sevenchan.dongs.towns
 		
 		override public function onRevelation():Boolean 
 		{
-			HaaraRevelationEncounter.push();
-			return false;
+			main.player.setExplored(this.ID);
+			main.setScreen(new HaaraRevelationEncounter(null));
+			return false; // Only way to get the screen to switch over, apparently.
 		}
 		
 	}

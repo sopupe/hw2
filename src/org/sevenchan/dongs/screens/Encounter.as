@@ -81,7 +81,8 @@ package org.sevenchan.dongs.screens
 		
 		public function appendMenu():void {
 			text += "<ul>";
-			setButton(0, "BACK");
+			if(currentItem.canGoBack)
+				setButton(0, "BACK");
 			for (var i:int = 0; i < currentItem.children.length; i++) {
 				var nci:INode = currentItem.children[i];
 				var showButton:Boolean = true;

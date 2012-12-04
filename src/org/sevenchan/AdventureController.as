@@ -325,7 +325,7 @@ package org.sevenchan
 			player.XP = value;
 		}
 		
-		private function setScreen(screen:Screen):void
+		public function setScreen(screen:Screen):void
 		{
 			//trace("setscreen ",screen);
 			if (screen == null)
