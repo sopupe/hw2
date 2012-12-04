@@ -46,6 +46,7 @@ package org.sevenchan.dongs.creature
 		{
 			var tmp:Creature = baseType;
 			baseType = t;
+			baseType.ownName = tmp.ownName;
 			baseType._speed = tmp._speed;
 			baseType._strength = tmp._strength;
 			baseType.abilities = tmp.abilities;
@@ -85,6 +86,7 @@ package org.sevenchan.dongs.creature
 			if (slot == -1)
 			{ 
 				// Export
+				//baseType.ownName = ownName;
 				var savo:Object = {
 					currentTown: currentTown.ID, 
 					body: baseType,
@@ -143,7 +145,7 @@ package org.sevenchan.dongs.creature
 				var c:Creature = so.data.body;
 				if (t == null || c == null)
 					return "Empty Slot";
-				var o:String = "Slot " + slot + ": Level " + c.level + " " + c.getTypeName() + " at " + t.name + "<br />";
+				var o:String = "Slot " + slot + ": "+c.ownName+", Level " + c.level + " " + c.getTypeName() + " at " + t.name + "<br />";
 				o += "[HP: " + c.HP + ", Lust: " + c.lust + "]";
 				return o;
 			} catch (e:Error) {
@@ -165,6 +167,7 @@ package org.sevenchan.dongs.creature
 			var saveData:Object = JSON.stringify(f.data.toString());
 			this.currentTown = Town.knownTowns[saveData.currentTown];
 			this.baseType = saveData.body;
+			//ownName=baseType.ownName;
 			if (saveData.hasOwnProperty("npcs"))
 			{
 				for(var k:Object in saveData.npcs){

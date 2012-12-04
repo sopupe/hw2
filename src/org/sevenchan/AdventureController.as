@@ -38,6 +38,8 @@ package org.sevenchan
 		private var btnAppearance:SexButton;
 		private var btnAction:Array;
 		
+		private var txtInput:SexText;
+		
 		private var pnlMain:SexPanel;
 		private var pnlStats:SexPanel;
 		
@@ -57,6 +59,11 @@ package org.sevenchan
 		public var player:Player;
 		
 		public static var screenQueue:Queue = new Queue();
+		
+		public var currentHeight:Number = 600;
+		public var currentWidth:Number = 800;
+		public var currentMeasuredHeight:Number = 1; //idfk
+		public var currentMeasuredWidth:Number = 1; // idfk
 		
 		public function AdventureController(appl:Main):void
 		{
@@ -132,6 +139,9 @@ package org.sevenchan
 				btn.addEventListener(MouseEvent.CLICK, onActionClick);
 			}
 			
+			txtInput = addTextBox("", 100, 0, 0);
+			txtInput.visible = false;
+			
 			setScreen(new StartupScreen());
 		}
 		
@@ -152,6 +162,14 @@ package org.sevenchan
 			app.showCreatureViewer(show);
 			visible = !show;
 			updateScreen(currentScreen);
+		}
+		public function showTextInput(show:Boolean, x:Number, y:Number):void {
+			txtInput.setPosition(this, x, y);
+			txtInput.visible = show;
+		}
+		
+		public function getTextBoxContents():String {
+			return txtInput.getText();
 		}
 		
 		public function setCheatMode(val:Boolean):void
@@ -403,6 +421,21 @@ package org.sevenchan
 			return btn;
 		}
 		
+		private function setLocationOf(sprite:Sprite, x:Number, y:Number):void {
+			
+			sprite.x = x;
+			sprite.y = y - sprite.height;
+		}
+		
+		private function addTextBox(text:String, size:Number, x:Number, y:Number):SexText
+		{
+			var txt:SexText = new SexText(size, text);
+			stage.addChild(txt);
+			txt.x = x;
+			txt.y = y - txt.height;
+			return txt;
+		}
+		
 		private function addPanel(text:String, h:Number, w:Number, x:Number, y:Number):SexPanel
 		{
 			var btn:SexPanel = new SexPanel(text);
@@ -415,6 +448,11 @@ package org.sevenchan
 		
 		public function onResize(h:Number, w:Number, measuredHeight:Number, measuredWidth:Number):void
 		{
+			currentHeight = h;
+			currentWidth = w;
+			currentMeasuredHeight = measuredHeight;
+			currentMeasuredWidth = measuredWidth;
+			
 			var originalPanelHeightPCT:Number = 464.5 / 600;
 			//pnlStats = addPanel("", 464.5, 144.9, 15.75, 56.75);
 			//pnlMain = addPanel("", 464.5, 618.5, 167.75, 56.75);
@@ -483,6 +521,9 @@ package org.sevenchan
 			btnAppearance.height = bHeight;
 			btnAppearance.y = toprow;
 			btnAppearance.x = x;
+			
+			// Text input (moves around)
+			txtInput.dynamicResize(this);
 		}
 		
 		private function initBG():void
