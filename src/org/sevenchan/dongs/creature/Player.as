@@ -204,7 +204,7 @@ package org.sevenchan.dongs.creature
 			//
 			descr += "<p>You, " + baseType.ownName + ", are " + Utils.A(baseType.gender.label) + " " + baseType.gender.label + " " + baseType.getTypeName() + " whose body " + baseType.build.getDescription() + "." + " You also possess " + baseType.hair.toString();
 			
-			if (baseType.hair == Hair.BALD)
+			if (baseType.hair.isBald())
 				descr += ", your glistening scalp distracting from your ";
 			else
 				descr += ", which constrasts nicely with your ";
@@ -296,6 +296,12 @@ package org.sevenchan.dongs.creature
 		   return baseType.notifyEnchantments(e);
 		   }
 		 */
+		   override public function get hair():Hair {
+			   return baseType.hair;
+		   }
+		   override public function set hair(value:Hair):void {
+			   baseType.hair = value;
+		   }
 		override public function get assholes():Vector.<Asshole>
 		{
 			return baseType._assholes;

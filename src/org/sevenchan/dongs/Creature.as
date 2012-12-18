@@ -25,7 +25,7 @@ package org.sevenchan.dongs
 		public var height:Number = 0.0; // How tall am I?
 		public var build:Build = Build.AVG; // How fat am I?
 		public var material:Material = Material.NO_MATERIAL_MODIFIER; // What am I made of?
-		public var hair:Hair = Hair.BALD; // His/her/hir hair is...
+		public var _hair:Hair = new Hair("bald",""); // His/her/hir hair is...
 		public var skin:Skin = new Skin("human"); // His/her/hir hair is...
 		public var _gender:Gender = Gender.ASEXUAL; // Boy, Girl, Neither, Both?
 		public var sexualPreference:SexualPreference = SexualPreference.ASEXUAL; // Straight, Gay, ASexual, Bi?
@@ -44,6 +44,7 @@ package org.sevenchan.dongs
 		public var _XP:int = 0; // 50*(level*0.5)
 		public var _mana:int = 0; // Magic shit, increases over time, especially near relaxing places.
 		public var _gold:int = 0; // Currency
+		
 		
 		// Collections
 		// What magic/techniques can I use?
@@ -500,7 +501,7 @@ package org.sevenchan.dongs
 			
 			if (!isHeadConcealed())
 			{
-				if (hair == Hair.BALD)
+				if (hair.isBald())
 				{
 					descr += ", %POS% glistening scalp";
 					if (!areEyesConcealed())
@@ -1308,6 +1309,9 @@ package org.sevenchan.dongs
 			}
 			return null;
 		}
+		
+		public function get hair():Hair { return _hair; }
+		public function set hair(value:Hair):void { _hair=value; }
 	}
 }
 

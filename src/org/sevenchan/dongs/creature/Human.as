@@ -27,7 +27,7 @@ package org.sevenchan.dongs.creature
 					break;
 			}
 			this.build = Build.AVG;
-			this.hair = Hair.BALD;
+			this.hair = new Hair();
 			this.arms.push(
 				BodyPartRegistry.human_arm,
 				BodyPartRegistry.human_arm

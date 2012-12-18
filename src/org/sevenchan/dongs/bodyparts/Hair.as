@@ -9,9 +9,8 @@ package org.sevenchan.dongs.bodyparts
 	public class Hair 
 	{
 		registerClassAlias("P_Hair", Hair);
-		public static const BALD:Hair = new Hair("no hair whatsoever");
 		
-		public var style:String;
+		public var style:String="";
 		public var color:String="";
 		private var _value:Number;
 		public function get value():Number {
@@ -23,9 +22,13 @@ package org.sevenchan.dongs.bodyparts
 			this.color = color;
 		}
 		public function toString():String {
-			if (style == "bald")
+			if (isBald())
 				return "bald head";
 			return style+" "+color+" hair";
+		}
+		
+		public function isBald():Boolean {
+			return (style == "bald" || style == "");
 		}
 		
 		public function getShortDescr(withModifier:Boolean = false):String {

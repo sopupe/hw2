@@ -29,7 +29,7 @@ package org.sevenchan.dongs.creature
 			height = Math.random()*1.5 + 5;
 			this.gender = Gender.FEMALE;
 			this.build = Build.MALNOURISHED;
-			this.hair = Hair.BALD;
+			this.hair = new Hair();
 			this.arms.push(
 				BodyPartRegistry.human_arm,
 				BodyPartRegistry.human_arm

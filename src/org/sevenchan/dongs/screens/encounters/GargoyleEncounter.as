@@ -1716,6 +1716,7 @@ text += "<p>about her thighs. She has two normal human legs sculpted to end in n
 text += "<p>She has a pair of big, pleasingly soft D-cup breasts. They are without nipples.</p>";
 text += "<p>She has a small yet easily stretched pussy between her legs, with a . 2 inch clitoris.</p>";
 text += "<p>She has a tight asshole between her soft butt cheeks, right where it belongs.</p>";
+			}
 		}
 		
 		override public function onStartupScreen():void 
